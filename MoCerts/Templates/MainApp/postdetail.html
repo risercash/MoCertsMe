@@ -1,0 +1,28 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+
+{% block property %}
+<meta property="og:url" content="{{ 'url'|property }}">
+<meta property="og:image" content="{{ 'image'|property }}">
+{% endblock property%}
+
+{% block title %}
+{{ post.headline }} | Mocerts
+{% endblock %}
+
+{% block content %}
+<div class="post_main">
+    <div class="post_block">
+        <h2>{{ post.headline }}</h2> 
+        <div>{{ post.content|safe }}</div>
+    </div>
+</div>
+<div class="video-block">
+    <video>
+          <source src="https://video.wixstatic.com/video/1694f8_029fe95547cf466b9e8433baa0fa7eda/1080p/mp4/file.mp4" type="video/mp4">
+    </video>
+    <i class="material-icons play-btn">play_circle_filled</i>
+</div>
+{% endblock %}

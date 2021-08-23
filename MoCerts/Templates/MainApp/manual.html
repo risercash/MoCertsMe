@@ -1,0 +1,39 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% load custom_filters %}
+{% load i18n %}
+{% load embed_video_tags %}
+
+
+{% block property %}
+<meta property="og:url" content="{{ 'url'|property }}">
+<meta property="og:image" content="{{ 'image'|property }}">
+{% endblock property%}
+
+{% block title %}
+{% trans 'Инструкции' %} | Mocerts
+{% endblock %}
+
+{% block content %}
+<section class="second-section" style="height: auto;!important;">
+      <p class = "section__title"><span>Instructions</span></p>
+      <div class = "section__decor"><img src = "{% static 'img/icons/decor.svg' %}" alt=""></div>
+    </section>
+        {% for post in manuals %}
+    <section class="second-section">
+      <p class = "section__title">{{post.title}}</p>
+      <div class="video-block">
+        {% video post.video as my_video %}
+        {% video my_video '470x260' %}
+        {% endvideo %}
+      </div>
+
+    </section>
+        {% endfor %}
+<div class="video-block" style="visibility: hidden;position: absolute;top: -9999px;!important;">
+    <video>
+          <source src="https://video.wixstatic.com/video/1694f8_029fe95547cf466b9e8433baa0fa7eda/1080p/mp4/file.mp4" type="video/mp4">
+    </video>
+    <i class="material-icons play-btn">play_circle_filled</i>
+</div>
+{% endblock %}

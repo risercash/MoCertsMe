@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+{% load static %}
+{% load custom_filters %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% load socialaccount %}
+
+
+<html lang="en">
+<head>
+    <meta property="og:type" content="{{ 'type'|property }}">
+    <meta property="og:site_name" content="{{ 'site_name'|property }}">
+    <meta property="og:title" content="{{ 'title'|property }}">
+    <meta property="og:description" content="{{ 'description'|property }}">
+    <meta property="og:locale" content="{{ 'locale'|property }}">
+    <meta name="twitter:creator" content="{{ 'twitter_creator'|property}} ">
+
+<meta property="og:url" content="{{ 'url'|property }}">
+<meta property="og:image" content="{{ 'image'|property }}">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'swiper/swiper-bundle.min.css' %}" />
+    <title>Money Certificate</title>
+
+    {% block property %}
+    {% endblock property%}
+</head>
+
+<body>
+
+  <button onclick="topFunction()" id="scrollBtn" title="Go to top"><img width="50" height="50" src = "{% static 'img/icons/arrow-top.png' %}" alt = ""></button>
+
+        {% if user.is_authenticated %}
+  <div class = "balance-block">
+     <p><span>$</span>{{ user.balance }}</p>
+  </div>
+        {% endif %}
+  <nav>
+    <ul class="sidebar">
+      <div class="nav-controller">
+        <div class="burger" onclick="toggleSideBar()"><img src = "{% static 'img/icons/toggle.svg' %}" alt=""></div>
+        <div class="flag">🇺🇸</div>
+      </div>
+
+
+        {% if user.is_authenticated %}
+      <li class="user">
+        <div class="logo" style="background-image: url('{% static 'img/logo.webp' %}');"></div>
+        <div class="avatar"><img width="80" height="80" src = "{{ user.photo.url }}"></div>  <!-- avatar.png -->
+        <div class="name">{{ user.last_name }} {{ user.first_name }}</div>
+      </li>
+        {% else %}
+      <li class="user">
+        <div class="logo" style="background-image: url('{% static 'img/logo.webp' %}');"></div>
+        <div class="avatar"></div>  <!-- avatar.png -->
+        <div class="name">Вы не авторизованы</div>
+      </li>
+        {% endif %}
+
+      <li>
+        <a href="{% url 'main_page' %}">
+          <div class="icon-back">
+            <div class="icon" style="background-image: url('{% static 'img/icons/home.svg' %}');background-size: 28px 26px;"> <!-- home.svg -->
+            </div>
+          </div>
+          <span class = "icon-span">Home</span>
+        </a>
+      </li>
+
+      <li class = "menu-link">
+        <a href="/#second">
+          <div class="icon-back menu-link">
+            <div class="icon" style="background-image: url('{% static 'img/icons/info.svg' %}');background-size: 29px 29px;"> <!-- about.svg --></div>
+          </div>
+          <span class = "icon-span">About Property</span>
+        </a>
+      </li>
+        {% if user.is_authenticated %}
+      <li>
+        <a href="{% url 'select_certificate' %}">
+          <div class="icon-back">
+            <div class="icon" style="background-image: url('{% static 'img/icons/s-cert.svg' %}');background-size: 29px 29px;"></div> <!-- cert.svg -->
+          </div>
+          <span class = "icon-span">Select Certificate</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="{% url 'my_certificates' %}" class = "menu-link">
+          <div class="icon-back menu-link">
+            <div class="icon" style="background-image: url('{% static 'img/icons/m-cert.svg' %}');background-size: 29px 29px;"></div> <!-- certs.svg -->
+          </div>
+          <span class = "icon-span">My Certificates</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="{% url 'manual' %}">
+          <div class="icon-back">
+            <div class="icon" style="background-image: url('{% static 'img/icons/instruction.svg' %}');background-size: 29px 29px;"><!-- instruction.svg --></div>
+          </div>
+          <span class = "icon-span">Instructions</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="{% url 'userbalance' %}" class = "menu-link">
+          <div class="icon-back menu-link">
+            <div class="icon" style="background-image: url('{% static 'img/icons/m-balance.svg' %}');background-size: 29px 29px;">
+            </div>
+          </div>
+          <span class = "icon-span">My Balance</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="{% url 'manual' %}">
+          <div class="icon-back">
+            <div class="icon" style="background-image: url('{% static 'img/icons/v-icon.svg' %}');background-size: 29px 29px;"></div>
+          </div>
+          <span class = "icon-span">More Instructions</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="{% url 'account_logout' %}">
+          <div class="icon-back">
+            <div class="icon" style="background-image: url('{% static 'img/icons/user.svg' %}');background-size: 29px 29px;"></div>
+          </div>
+          <span class = "icon-span">Выйти</span>
+        </a>
+      </li>
+        {% else %}
+
+      <li>
+        <a href="{% url 'account_login' %}">
+          <div class="icon-back">
+            <div class="icon" style="background-image: url('{% static 'img/icons/user.svg' %}');background-size: 29px 29px;"></div>
+          </div>
+          <span class = "icon-span">Войти</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="{% url 'account_signup' %}">
+          <div class="icon-back">
+            <div class="icon" style="background-image: url('{% static 'img/icons/user.svg' %}');background-size: 29px 29px;"></div>
+          </div>
+          <span class = "icon-span">Регистрация</span>
+        </a>
+      </li>
+        {% endif %}
+
+      <li class = "mask-block">
+         <div class = "mask-block__border"></div>
+      </li>
+
+
+    </ul>
+  </nav>
+
+  <main>
+    {% block content %}
+
+    {% endblock content%}
+    <footer>
+      <div class="footer__content">
+        <div class="copyright">© 2021 СЧАСТЬЕ ЕСТЬ. и оно уже БЛИЗКО!!! MoCerts.com</div>
+          <ul class="footer__links-block">
+            <li>
+              <a href="#">Home</a>
+              <span class = "block__border">|</span>
+            </li>
+            <li>
+              <a href="#">Select Certificate</a>
+              <span class = "block__border">|</span>
+            </li>
+            <li>
+              <a href="#">My Certificates</a>
+              <span class = "block__border">|</span>
+            </li>
+            <li>
+              <a href="#">Balance</a>
+            </li>
+          </ul>
+      </div>
+    </footer>
+  </main>
+    <script src="{% static 'swiper/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'js/index.js' %}"></script>
+    {% block script %}
+
+    {% endblock script %}
+</body>
+
+</html>
+

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+{% load static %}
+{% load i18n %}
+
+
+<div class="nav__mobile">
+    <i class="fa fa-times close__nav" aria-hidden="true"></i>
+    <ul class="nav__mobile--ul">
+        <li class="nav__ul--item">
+            <a href="{% url 'main_page' %}" style="text-decoration: none;">{% trans 'Home' %}</a>
+        </li>
+        <li class="nav__ul--item">
+            <a href="{% url 'select_certificate' %}" style="text-decoration: none;">{% trans 'Select Certificate' %}</a>
+        </li>
+        <li class="nav__ul--item">
+            <a href="{% url 'my_certificates' %}" style="text-decoration: none;">{% trans 'My Certificates' %}</a>
+        </li>
+        <li class="nav__ul--item">
+            <a href="{% url 'manual' %}" style="text-decoration: none;">{% trans 'Instruction' %}</a>
+        </li>
+        {% if user.is_authenticated %}
+        <li class="nav__ul--item registration">
+            <a href="{% url 'profile' %}" style="text-decoration: none;">{{ user.first_name }} {{ user.last_name }}</a>
+        </li>
+        <li class="nav__ul--item registration">
+            <a href="{% url 'userbalance' %}" style="text-decoration: none;">{{ user.balance }}$</a>
+        </li>
+        {% else %}
+        <li class="nav__ul--item registration">
+            <a href="/accounts/signup/" style="text-decoration: none;">{% trans 'Registration' %}</a>
+        </li>
+        <li class="nav__ul--item registration">
+            <a href="/accounts/login/" style="text-decoration: none;">{% trans 'Login' %}</a>
+        </li>
+        {% endif %}
+
+    </ul>
+
+    <div class="dropdown dropdown__menu--mobile">
+        <div class="select">
+            <img style="margin-left: 10px;" src="{% static 'img/GBR.png' %}" alt="GBR">
+            <span>
+                EN
+            </span>
+            <i class="fa fa-chevron-up open__dropdown"></i>
+        </div>
+        <input type="hidden" name="language">
+
+        <ul class="dropdown-menu">
+            <li id="RU">
+                <img src="{% static 'img/RUS.png' %}" alt="RUS">
+                <a href="/ru/">RU</a>
+            </li>
+            <li id="EN">
+                <img src="{% static 'img/GBR.png' %}" alt="GBR">
+                <a href="/en/">EN</a>
+            </li>
+            <li id="DE">
+                <img src="{% static 'img/DEU.png' %}" alt="DEU">
+                <a href="/de/">DE</a>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,107 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load custom_filters %}
+
+
+
+{% block property %}
+<meta property="og:url" content="{{ 'url'|property }}">
+<meta property="og:image" content="{{ 'image'|property }}">
+{% endblock property%}
+
+{% block title %}
+{% trans 'Сертификат' %} | Mocerts
+{% endblock %}
+
+{% block content %}
+
+{% if need_pay and not need_accept and owner_is_here %}
+<section class="third-section" style="height: auto;!important;">
+    <div class="certs-wrapper">
+      <p class = "section__title"><span>{% trans 'Поздравляю!' %}</span></p>
+        <p class="wrapper__text">Вы получили новый сертификат. Теперь, что бы активировать его и получить пять своих сертификатов 
+         с Вашим именем на третьей строчке нажмите на клавишу перевести. После чего сумма в <b>{{ certificate.nominal }}$</b> будет переведена пользователю с именем 
+          <b>{{ certificate.user1 }}</b>, так как это имя расположено на первой строчке. Убедитесь, что на Вашем балансе достаточно средств!</p>
+    <div class="certificates">
+          <img src="{{ certificate.certificate_image.url }}" alt="">
+    </div>
+        <a href="{% url 'accept' pk=certificate.pk %}" class="button-block__button button" style="background-color: #3f85ce;color: #FFFFFF">
+            <span class="button__text">Перевести       .</span><span class="button__transfer">{{ certificate.nominal }}$</span></a>
+      </div>
+</section>
+{% endif %}
+
+
+{% if need_pay and need_accept and not owner_is_here %}
+<section class="third-section" style="height: auto;!important;">
+    <div class="certs-wrapper">
+      <p class = "section__title"><span>{% trans 'Пожалуйста, подтвердите сертификат' %}</span></p>
+    <div class="certificates">
+          <img src="{{ certificate.certificate_image.url }}" alt="">
+    </div>
+        <a href="{% url 'accept' pk=certificate.pk %}" class="button-block__button button" style="background-color: #3f85ce;color: #FFFFFF">
+            <span class="button__text">Transfer</span><span class="button__span" style="background-color: #3f85ce;color: #FFFFFF">+</span></a>
+      </div>
+</section>
+{% endif %}
+
+<div class="share2_mobil">
+{% if need_pay and need_accept and made_by %}
+<section class="third-section" style="height: auto;!important;">
+    <div class="certs-wrapper">
+      <p class = "section__title"><span>{% trans 'Скопируйте ссылку для отправки или поделитесь в соц сетях' %}</span></p>
+<div class="ya-share2" data-curtain data-shape="round"
+    data-services="vkontakte,facebook,odnoklassniki,telegram,twitter,viber,whatsapp,moimir,linkedin">
+</div>
+    <div class="certificates">
+          <img src="{{ certificate.certificate_image.url }}" alt="">
+    </div>
+      </div>
+</section>
+{% endif %}
+
+{% if not need_pay %}
+<section class="third-section" style="height: auto;!important;">
+    <div class="certs-wrapper">
+      <p class = "section__title"><span>{% trans 'Сертификат оплачен' %}</span></p>
+    <div class="certificates">
+          <img src="{{ certificate.certificate_image.url }}" alt="">
+    </div>
+      </div>
+</section>
+{% endif %}
+</div>
+
+{% if need_pay and not need_accept and made_by and not owner_is_here%}
+<section class="third-section" style="height: auto;!important;">
+    <div class="certs-wrapper">
+      <p class = "section__title"><span>{% trans 'Пользователь принял ваш сертификат' %}</span></p>
+    <div class="certificates">
+          <img src="{{ certificate.certificate_image.url }}" alt="">
+    </div>
+      </div>
+</section>
+{% endif %}
+
+{% if need_pay and not need_accept and not made_by and not owner_is_here%}
+<section class="third-section" style="height: auto;!important;">
+    <div class="certs-wrapper">
+      <p class = "section__title"><span>{% trans 'Сертификат был подтвержден другим пользователем' %}</span></p>
+    <div class="certificates">
+          <img src="{{ certificate.certificate_image.url }}" alt="">
+    </div>
+      </div>
+</section>
+{% endif %}
+<div class="video-block" style="visibility: hidden;position: absolute;top: -9999px;!important;">
+    <video>
+          <source src="https://video.wixstatic.com/video/1694f8_029fe95547cf466b9e8433baa0fa7eda/1080p/mp4/file.mp4" type="video/mp4">
+    </video>
+    <i class="material-icons play-btn">play_circle_filled</i>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="https://yastatic.net/share2/share.js"></script>
+{% endblock script %}

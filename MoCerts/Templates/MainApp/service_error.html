@@ -1,0 +1,31 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load custom_filters %}
+
+
+{% block property %}
+<meta property="og:url" content="{{ 'url'|property }}">
+<meta property="og:image" content="{{ 'image'|property }}">
+{% endblock property%}
+
+{% block title %}
+{% trans 'Сервис не доступен' %} | Mocerts
+{% endblock %}
+
+
+{% block content %}
+
+<section class="third-section" style="height: auto;!important;">
+    <div class="certs-wrapper">
+      <p class = "section__title"><span>{% trans 'Ошибка' %}</span></p>
+      <p class="wrapper__text">На данный момент сервис не доступен, попробуйте позднее!</p>
+    </div>
+</section>
+<div class="video-block" style="visibility: hidden;position: absolute;top: -9999px;!important;">
+    <video>
+          <source src="https://video.wixstatic.com/video/1694f8_029fe95547cf466b9e8433baa0fa7eda/1080p/mp4/file.mp4" type="video/mp4">
+    </video>
+    <i class="material-icons play-btn">play_circle_filled</i>
+</div>
+{% endblock content %}

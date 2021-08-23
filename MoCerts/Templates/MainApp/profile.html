@@ -1,0 +1,57 @@
+{% extends 'layout/base2.html' %}
+{% load static %}
+{% load i18n %}
+{% load custom_filters %}
+
+
+{% block property %}
+<meta property="og:url" content="{{ 'url'|property }}">
+<meta property="og:image" content="{{ 'image'|property }}">
+{% endblock property%}
+
+{% block title %}
+{% trans 'Личный кабинет' %} | Mocerts
+{% endblock %}
+
+{% block content %}
+
+<div class="profile_main">
+    <div class="profile_block">
+        <h1>Ваш профиль</h1>
+        <form method="POST" enctype="multipart/form-data" action="">
+            {% csrf_token %}
+            <div class="profile_form">
+
+                <div class="form_separate">
+                    {% if user.photo %}
+                    <img src="{{ user.photo.url }}" alt="ava">
+                    {% else %}
+                    <img src="{% static 'img/profile.png' %}" alt="ava">
+                    {% endif %}
+                    <!-- <p class="browse">{{ form.photo }}</p> -->
+                </div>
+
+                <div class="form_separate">
+                    <!-- <p><span>Имя:</span><span>{{ form.first_name }}</span></p>
+                    <p><span>Фамилия:</span><span>{{ form.last_name }}</span></p>
+                    <p><span>Email:</span><span>{{ form.email }}</span></p>-->
+                    {{form.as_p}}
+                    <p class="not_form"><span>Баланс:</span><span class="form_span">{{ user.balance }}$</span></p><br> 
+
+                    <button type="submit" class="main__nav--item profile_btn">Сохранить</button>
+
+                    <a class="main__nav--item profile_btn" style="text-decoration: none;" 
+                    href="{% url 'account_logout' %}">Выйти</a>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+<div class="video-block" style="visibility: hidden;position: absolute;top: -9999px;!important;">
+    <video>
+          <source src="https://video.wixstatic.com/video/1694f8_029fe95547cf466b9e8433baa0fa7eda/1080p/mp4/file.mp4" type="video/mp4">
+    </video>
+    <i class="material-icons play-btn">play_circle_filled</i>
+</div>
+{% endblock content%}

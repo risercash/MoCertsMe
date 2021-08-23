@@ -1,0 +1,35 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load custom_filters %}
+
+
+{% block content %}
+
+
+<link rel="stylesheet" href="{% static 'css/secret.css' %}">
+
+
+<body>
+  
+
+        <div class="select_menu">
+            <select name="Номинал">
+                <option selected value="1">1 </option>
+                <option value="5">5 </option>
+                <option value="10">10 </option>
+                <option value="20">20 </option>
+                <option value="50">50 </option>
+                <option value="100">100</option>
+                <option value="200">200</option>
+                <option value="500">500</option>
+            </select>
+            <input type="text">
+            <button type="submit">GENERATE</button>>
+        </div>
+
+
+</body>
+
+</html>
+{% endblock %}

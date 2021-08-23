@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW (Evaluation Version) -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="9.6685mm" height="9.5334mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 11.59 11.43"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str0 {stroke:#36587D;stroke-width:0.85;stroke-miterlimit:22.9256}
+    .fil0 {fill:none}
+   ]]>
+  </style>
+ </defs>
+ <g id="Слой_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g id="_105553206543104">
+   <polyline class="fil0 str0" points="1.94,5.93 1.94,10.98 4.94,10.98 4.94,8.69 6.66,8.69 6.66,11 9.87,11 9.87,5.97 "/>
+   <polyline class="fil0 str0" points="0.3,6.19 5.89,0.6 11.29,6 "/>
+   <line class="fil0 str0" x1="8.66" y1="1.27" x2="8.66" y2= "3.3" />
+  </g>
+ </g>
+</svg>

@@ -1,0 +1,84 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load custom_filters %}
+{% load thumbnail %}
+
+
+{% block property %}
+<meta property="og:url" content="{{ 'url'|property }}">
+<meta property="og:image" content="{{ 'image'|property }}">
+{% endblock property%}
+
+{% block title %}
+{% trans 'Мои сертификаты' %} | Mocerts
+{% endblock %}
+
+{% block content %}
+
+<section class="third-section" style="height: auto;!important;">
+    <div class="certs-wrapper">
+      <p class = "section__title"><span>Мои сертификаты</span></p>
+        <div class="section__decor"><img src="/static/img/icons/decor.svg" alt=""></div>
+            {% if queryset %}
+        {% trans '<p class="wrapper__text">Для отправки сертификатов скопируйте ссылку и нажмите на самолетик, выбрав социальную сеть. После того как человек получит и активирует его, статус меняется на получен, после оплаты на оплачен</p>' %}
+            {% else %}
+        {% trans '<p class="wrapper__text">Сейчас у вас нет сертификатов, вы можете получить новый сертификат на вкладке "Выбрать сертификат"</p>' %}
+            {% endif %}
+      </div>
+
+        <br>
+
+      <div class="instruction-block" style="height: auto;!important;background-color: #ffffff;">
+        {% for my_certs_list in queryset %}
+        <div class="instruction-block__content content" style="">
+             <div class="content__main">
+                <div class="stack_imgs">
+                    {% for cert in my_certs_list %}
+                    <img class="stack_imgs_{{ forloop.counter }}"
+                        src="{{ cert.certificate_image|thumbnail_url:'my_certs_page' }}" alt="certificate">
+                    {% endfor %}
+                </div>
+             </div>
+             <div class = "content__right" style="word-break: normal;!important;">
+                 <p class = "content__right__border"></p>
+
+                 <p class = "content__right__text">{% for cert in my_certs_list %}<a href="{% url 'certificate' number=cert.number %}" style="color: #3f85ce;!important;font-weight: bold;">№ {{ cert.number }}</a>   {% if cert.is_paid %}
+                    <span style="color: black;!important;">{% trans ' - Оплачен' %}</span>
+                    {% else %}
+                    {% if cert.is_accept %}
+                    <span style="color: black;!important;">{% trans ' - Подтвержден' %}</span>
+                    {% else %}
+                    {% if cert.is_received %}
+                    <span style="color: black;!important;">{% trans ' - Отправлен' %}</span>
+                    {% else %}
+                    <span style="color: black;!important;">{% trans ' - Не отправлен' %}</span>
+                    {% endif %}
+                    {% endif %}
+                    {% endif %}
+                     <br>
+                     {% endfor %}</p>
+
+             </div>
+             <div class = "content__button-block">
+                 <p class = "content__right__text">{% for cert in my_certs_list %}{% if cert.is_paid %}{{cert.paid_by_user.first_name}} {{cert.paid_by_user.last_name}}{% else %}
+                     <a href="https://t.me/share?url={{ cert.get_url_for_messengers }}" target="_blank"><img style="max-height: 22px;!important;" src="/static/img/telegram_icon.webp"></a>
+                     <a href="whatsapp://send?text={{ cert.get_url_for_messengers }}" target="_blank"><img style="max-height: 22px;!important;" src="/static/img/whatsup_icon.webp"></a>
+                     <a href="https://www.facebook.com/sharer/sharer.php?u={{ cert.get_url_for_messengers }}" target="_blank"><img style="max-height: 22px;!important;" src="/static/img/fb.webp"></a>
+                     <a href="https://vk.com/share.php?url={{ cert.get_url_for_messengers }}&title=MoCerts&description=Заработай с нами&image={{ cert.certificate_image.url }}&noparse=true" target="_blank"><img style="max-height: 22px;!important;" src="/static/img/vk.png"></a>
+                     <a href="http://connect.mail.ru/share?share_url={{ cert.get_url_for_messengers }}" target="_blank"><img style="max-height: 22px;!important;" src="/static/img/mail_icon.webp"></a>
+                     {% endif %}<br>{% endfor %}</p>
+              </div>
+        </div>
+         {% endfor %}
+    </div>
+
+    </section>
+<div class="video-block" style="visibility: hidden;position: absolute;top: -9999px;!important;">
+    <video>
+          <source src="https://video.wixstatic.com/video/1694f8_029fe95547cf466b9e8433baa0fa7eda/1080p/mp4/file.mp4" type="video/mp4">
+    </video>
+    <i class="material-icons play-btn">play_circle_filled</i>
+</div>
+<script src="{% static 'js/my_certificates.js' %}"></script>
+{% endblock %}

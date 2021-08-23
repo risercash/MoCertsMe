@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+{% load static %}
+{% load custom_filters %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% load socialaccount %}
+
+
+<html lang="en">
+<head>
+    <meta property="og:type" content="{{ 'type'|property }}">
+    <meta property="og:site_name" content="{{ 'site_name'|property }}">
+    <meta property="og:title" content="{{ 'title'|property }}">
+    <meta property="og:description" content="{{ 'description'|property }}">
+    <meta property="og:locale" content="{{ 'locale'|property }}">
+    <meta name="twitter:creator" content="{{ 'twitter_creator'|property}} ">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    {% block property %}
+    {% endblock property%}
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>{% block title %}Mocerts{% endblock %}</title>
+    <link href="https://allfont.ru/allfont.css?fonts=mon-amour-two-medium" rel="stylesheet" type="text/css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:ital,wght@1,300&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:ital,wght@1,300&amp;display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fonts.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style3.css' %}">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'img/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'img/site.webmanifest' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+<body class="common">
+
+    <!-- Registration -->
+    {% include 'layout/base_mobile_nav.html' %}
+
+    <!-- video fon -->
+    <div id="video-bg">
+        <video width="100%" height="auto" preload="auto" autoplay="autoplay"
+        loop="loop" poster="{% static 'img/sea-stock-poster.png' %}">
+            <source src="{% static 'img/bg_video.mp4' %}" type="video/mp4">
+        </video>
+    </div>
+    <!-- Registration -->
+    {% include 'layout/base_register.html' %}
+
+    <!-- Login -->
+    {% include 'layout/base_login.html' %}
+
+
+
+
+    <header class="header" id="header">
+        <img class="header__img" style="position: absolute; left: 0; top: 0; z-index: -1; width: 100%; height: 133px;"
+            src="{% static 'img/header-long.webp' %}" alt="">
+        <img src="{% static 'img/koners.webp' %}" class="header__left--koners koners" alt="Koners">
+
+        <div class="header__container">
+            {% if user.is_authenticated %}
+            {% if user.photo %}
+            <div class="header__avatar--adaptive">
+                <a href="{% url 'profile' %}"><img src="{{ user.photo.url }}" alt="Avatar"></a>
+            </div>
+            {% else %}
+            <div class="header__avatar--adaptive">
+                <img src="{% static 'img/avatar.webp' %}" alt="Avatar">
+            </div>
+            {% endif %}
+            {% endif %}
+            <div class="logo">
+                <a href="{% url 'main_page' %}"><img src="{% static 'img/logo.webp' %}" alt="Logotype"></a>
+            </div>
+            <div class="header__mobile--nav">
+                <span></span>
+            </div>
+            {% if user.is_authenticated %}
+            <a href="{% url 'profile' %}" style="text-decoration: none;">
+                <span class="header__reg">{{ user.first_name }} {{ user.last_name }}</span>
+            </a>
+            {% if user.photo %}
+            <div class="header__avatar">
+                <a href="{% url 'profile' %}"><img src="{{ user.photo.url }}" alt="Avatar"></a>
+            </div>
+            {% else %}
+            <div class="header__avatar">
+                <img src="{% static 'img/avatar.webp' %}" alt="Avatar">
+            </div>
+            {% endif %}
+            <a href="{% url 'userbalance' %}" style="text-decoration: none;">
+                <span class="header__sum">
+                    {{ user.balance }}$
+                </span>
+            </a>
+            {% else %}
+            <a data-bs-toggle="modal" data-bs-target="#registration">
+                <span class="header__reg">{% trans 'Registration' %}</span>
+            </a>
+
+            <div class="header__avatar">
+                <img src="{% static 'img/avatar.webp' %}" alt="Avatar">
+            </div>
+            <a data-bs-toggle="modal" data-bs-target="#login">
+                <span class="header__reg">{% trans 'Login' %}</span>
+            </a>
+            {% endif %}
+
+            <div class="dropdown">
+                <div class="select">
+                    <img style="margin-left: 10px;" src="{% static 'img/RUS.png' %}" alt="RUS">
+                    <span>
+                        RU
+                    </span>
+                    <i class="fa fa-chevron-up"></i>
+                </div>
+                <input type="hidden" name="language">
+                <ul class="dropdown-menu">
+                    <li id="RU">
+                        <img src="{% static 'img/RUS.png' %}" alt="RUS">
+                        RU
+                    </li>
+                    <li id="EN">
+                        <img src="{% static 'img/GBR.png' %}" alt="GBR">
+                        EN
+                    </li>
+                    <li id="DE">
+                        <img src="{% static 'img/DEU.png' %}" alt="DEU">
+                        DE
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <img src="{% static 'img/koners_right.webp' %}" class="header__right--koners koners" alt="Koners">
+    </header>
+
+
+    <section class="nav" id="nav">
+        <nav class="main__nav">
+            <ul class="main__nav--ul">
+                <li class="main__nav--item">
+                    <a href="{% url 'main_page' %}" style="text-decoration: none;">Home</a>
+                </li>
+                <li class="main__nav--item">
+                    <a href="{% url 'select_certificate' %}" style="text-decoration: none;">
+                        {% trans 'Select Certificate' %}
+                    </a>
+                </li>
+                <li class="main__nav--item">
+                    <a href="{% url 'my_certificates' %}" style="text-decoration: none;">{% trans 'My Certificates' %}</a>
+                </li>
+                <li class="main__nav--item">
+                    <a href="{% url 'manual' %}" style="text-decoration: none;">{% trans 'Instruction' %}</a>
+                </li>
+            </ul>
+        </nav>
+    </section>
+
+    <!-- messages -->
+    <div class="container"><br>
+        <div class="row">
+            {% for i in messages %}
+            {% if i.tags == 'error' %}
+            <div class="col">
+                <div style="text-align: center;" class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{i}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+            {% else %}
+            <div class="col">
+                <div style="text-align: center;" class="alert alert-primary alert-dismissible fade show" role="alert">
+                    {{i}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+
+    {% block content %}
+    {% endblock content%}
+
+
+    <footer class="footer" id="footer">
+        <div class="footer__container">
+            <section class="footer__contact">
+                <p>АО MoCersts ®</p>
+                <p>г. Новосибирск, 630007</p>
+                <p>Железнодорожный район,</p>
+                <p style="margin-bottom: 9px;"><u>​Советская, 5​1</u> офис 506</p>
+            </section>
+            <section class="footer__number">
+                <img src="{% static 'img/number_poster.png' %}" alt="Poster" class="footer__number--img">
+                <span>+780085050505</span>
+            </section>
+            <section class="footer__social">
+                <div class="footer__social--icons">
+                    <a class="crown_img" href="https://t.me/mocerts"><img src="{% static 'img/crown.webp' %}" alt="Crown"></a>
+                    <a class="first_img" href="https://t.me/cashriser"><img src="{% static 'img/mc.webp' %}" alt="mc"></a>
+                    <a class="first_img" href="https://t.me/mocertsbot"><img src="{% static 'img/bot.webp' %}" alt="Bot"></a>
+                    <a class="first_img" href="https://instagram.com/mocerts"><img src="{% static 'img/insta.webp' %}"
+                            alt="Instagram"></a>
+                    <a class="first_img" href="https://facebook.com/mocerts"><img src="{% static 'img/fb.webp' %}" alt="Facebook"></a>
+                </div>
+                <p>{% trans '© 2021 СЧАСТЬЕ ЕСТЬ. и оно уже БЛИЗКО!!! MoCerts.com' %}</p>
+            </section>
+            <section class="footer__contact">
+                <p>Certificate of Financial state</p>
+                <p>№1604-21</p>
+                <p>from 15.05.2021 y.</p>
+                <p class="edit__text">admin@mocerts.com &nbsp;</p>
+            </section>
+        </div>
+        <p class="footer__happy">{% trans '© 2021 СЧАСТЬЕ ЕСТЬ. и оно уже БЛИЗКО!!! MoCerts.com' %}</p>
+    </footer>
+
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
+    <script src="{% static 'js/main.js' %}" defer></script>
+    <script src="/static/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+
+    {% block script %}
+    {% endblock script%}
+</body>
+
+</html>

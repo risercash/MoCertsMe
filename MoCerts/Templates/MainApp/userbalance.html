@@ -1,0 +1,112 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load custom_filters %}
+
+
+{% block property %}
+<meta property="og:url" content="{{ 'url'|property }}">
+<meta property="og:image" content="{{ 'image'|property }}">
+{% endblock property%}
+
+{% block title %}
+{% trans 'Пополнение и вывод средств' %} | Mocerts
+{% endblock %}
+
+
+{% block content %}
+
+<section class="third-section" style="height: auto;!important;">
+    <div class="certs-wrapper">
+      <p class = "section__title"><span>{% trans 'Пополнить счет' %}</span></p>
+
+      <p class="wrapper__text">Сумма пополнения</p>
+            <form class="withdrawal_form" action="" name="deposit_form" method="POST">
+                <div class="deposit_form">
+                {% csrf_token %}
+        {{ form.amount }}<br>
+                </div>
+        <button type="submit" class="deposit_button">Оплатить</button>
+            </form>
+        {% if form.errors %}
+        <ul class="form_errors">
+            {% for field in form %}
+            {% for error in field.errors %}
+            <li>
+                {% if field != '__all__' %}
+                <strong>{{ field.label }}:</strong>
+                {% endif %}
+                {{ error }}
+            </li>
+            {% endfor %}
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    <br><br>
+    <br><br>
+    <div class="certs-wrapper">
+      <p class = "section__title"><span>{% trans 'Вывод средств' %}</span></p>
+
+
+            <form class="withdrawal_form" action="{% url 'userbalance' %}" name="deposit_form" method="GET">
+                <div class="deposit_form">
+                {% csrf_token %}
+                    <p class="wrapper__text">Сумма вывода</p>
+        {{ WithdrawalForm.withdrawal_amount }}<br>
+                    <p class="wrapper__text">Номер кошелька QIWI</p>
+        {{ WithdrawalForm.qiwi_wallet }}<br>
+                </div>
+        <button type="submit" class="deposit_button">Оставить заявку</button>
+            </form>
+        {% if form.errors %}
+        <ul class="form_errors">
+            {% for field in form %}
+            {% for error in field.errors %}
+            <li>
+                {% if field != '__all__' %}
+                <strong>{{ field.label }}:</strong>
+                {% endif %}
+                {{ error }}
+            </li>
+            {% endfor %}
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    <br><br>
+    <br><br>
+    <div class="certs-wrapper">
+      <p class = "section__title"><span>{% trans 'История' %}</span></p>
+            <table class="paymen_history">
+                <tr class="history_title">
+                    <td>Дата</td>
+                    <td>Тип транзакции</td>
+                    <td class="payment_id">id номер</td>
+                    <td>Сумма</td>
+                    <td>Статус</td>
+                </tr>
+                {% for transaction in  transactions %}
+                <tr class="history_row">
+                    <td>{{transaction.time}}</td>
+                    <td>{{transaction.type}}</td>
+                    <td class="payment_id">{{transaction.bill_id}}</td>
+                    <td>{{transaction.amount}}</td>
+                    <td>{{transaction.get_status_display}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+    </div>
+</section>
+<div class="video-block" style="visibility: hidden;position: absolute;top: -9999px;!important;">
+    <video>
+          <source src="https://video.wixstatic.com/video/1694f8_029fe95547cf466b9e8433baa0fa7eda/1080p/mp4/file.mp4" type="video/mp4">
+    </video>
+    <i class="material-icons play-btn">play_circle_filled</i>
+</div>
+
+{% endblock content %}
+
+{% block script %}
+<script src="{% static 'js/balanceform.js' %}"></script>
+{% endblock script %}
