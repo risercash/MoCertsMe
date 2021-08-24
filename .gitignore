@@ -11,8 +11,7 @@ local_settings.py
 test.py
 test2.py
 
-.env
-.vscode
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

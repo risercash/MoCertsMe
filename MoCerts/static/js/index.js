@@ -54,7 +54,7 @@ function mouseOut() {
   sideBarMini.querySelectorAll('.icon-back').forEach(menuItem => menuItem.style.backgroundColor = '#161717')
   sideBarMini.querySelectorAll('.icon').forEach(menuItem => menuItem.style.backgroundColor = '#2C2C2C')
   sideBar.querySelectorAll('li:not(.user)').forEach(menuItem => menuItem.style.backgroundColor = '#212121')
-  sideBar.querySelectorAll('a').forEach(menuItem => menuItem.style.color = '#c0a16a')
+  sideBar.querySelectorAll('a').forEach(menuItem => menuItem.style.color = '#f3f0ea')
 }
 
 function toggleSideBar() {

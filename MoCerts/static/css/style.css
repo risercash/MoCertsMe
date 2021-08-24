@@ -146,7 +146,7 @@ nav {
 } */
 
 .sidebar .icon-back {
-  background-color: #161717;
+  background-color: #2f4e4e;
   width: 42px;
   height: 60px;
   margin-right: 16px;
@@ -178,12 +178,12 @@ nav {
 }
 
 .sidebar li a {
-  color: #c0a16a;
+  color: #f3f0ea;
   text-decoration: none;
   width: 100%;
   display: flex;
   align-items: center;
-  height: 42px;
+  height: 62px;
 }
 
 .sidebar li:not(:first-of-type):hover a {
@@ -430,7 +430,7 @@ nav {
   font-family: Georgia!important;
   display: flex;
   align-items: center;
-  border: 1px black solid;
+  border: 2px rgb(226, 218, 218) solid;
 }
 
 .balance-block p {
@@ -568,6 +568,10 @@ section.third {
   margin-bottom: 24px;
 }
 
+
+
+
+
 @media only screen and (min-width:601px) {
   .certs-wrapper {
     width: 800px;
@@ -581,7 +585,11 @@ section.third {
   }
   .certificates img {
     width: 100%;
-    margin: 70px 0;
+    margin: 10px, 10px;
+    /*  */
+    margin: 10px, 10px;
+
+
   }
   .certificate:not(:last-child) {
     margin-right: -100px;
@@ -688,6 +696,7 @@ main {
     display: flex;
     flex-direction:row;
     justify-content: space-around;
+    margin-bottom: 50px;
 }
 
 .documents-wrap .documents-item {
@@ -723,10 +732,13 @@ main {
   justify-content: space-between;
   width: 215px;
   height: 50px;
-  background-color: rgb(255, 255, 255);
+  background-color: #d3d3d3;
   color: #212121;
   font-size: 16px;
-  border: 0;
+  border-bottom: 0;
+  margin-bottom: 0px;
+  margin-left: auto;
+  margin-right: auto;
   cursor: pointer;
 }
 
@@ -777,7 +789,7 @@ main {
 }
 
 .button__text {
-  margin-left: 47px;
+  margin-left: 40px;
   font-weight: 700;
 }
 
@@ -1055,7 +1067,7 @@ footer a {
 .wrapper__text {
   width: 800px;
   margin: 0 auto;
-  color: #1a2d9c;
+  color: #22263a;
   line-height: 26px;
   font-size: 18px;
   font-weight: 400;
@@ -1065,13 +1077,13 @@ svg.intro {
   background: linear-gradient(135deg, #aa3bb1, #582a7e);
   max-width: 500px;
   position: absolute;
-  top: 62%;
+  top: 50%;
   left: 72%;
   transform: translate(-50%, -50%);
   box-shadow: 0 30px 50px -20px #2e0642;
   border-radius: 15px;
   width: 400px;
-  height: 150px;
+  height: 145px;
 }
 
 svg.intro .text {

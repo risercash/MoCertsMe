@@ -19,15 +19,15 @@
 {% if need_pay and not need_accept and owner_is_here %}
 <section class="third-section" style="height: auto;!important;">
     <div class="certs-wrapper">
-      <p class = "section__title"><span>{% trans 'Поздравляю!' %}</span></p>
+      <p class = "section__title" style="font-size 15px"><span>{% trans 'Поздравляем Вас !' %}</span></p>
         <p class="wrapper__text">Вы получили новый сертификат. Теперь, что бы активировать его и получить пять своих сертификатов 
          с Вашим именем на третьей строчке нажмите на клавишу перевести. После чего сумма в <b>{{ certificate.nominal }}$</b> будет переведена пользователю с именем 
           <b>{{ certificate.user1 }}</b>, так как это имя расположено на первой строчке. Убедитесь, что на Вашем балансе достаточно средств!</p>
     <div class="certificates">
           <img src="{{ certificate.certificate_image.url }}" alt="">
     </div>
-        <a href="{% url 'accept' pk=certificate.pk %}" class="button-block__button button" style="background-color: #3f85ce;color: #FFFFFF">
-            <span class="button__text">Перевести       .</span><span class="button__transfer">{{ certificate.nominal }}$</span></a>
+        <a href="{% url 'accept' pk=certificate.pk %}" class="button-block__button button" style="background-color: #3f85ce;color: #FFFFFF; margin-bottom: 50px" >
+            <span class="button__text">Перевести</span><span class="button__transfer">{{ certificate.nominal }}$</span></a>
       </div>
 </section>
 {% endif %}
@@ -40,8 +40,8 @@
     <div class="certificates">
           <img src="{{ certificate.certificate_image.url }}" alt="">
     </div>
-        <a href="{% url 'accept' pk=certificate.pk %}" class="button-block__button button" style="background-color: #3f85ce;color: #FFFFFF">
-            <span class="button__text">Transfer</span><span class="button__span" style="background-color: #3f85ce;color: #FFFFFF">+</span></a>
+        <a href="{% url 'accept' pk=certificate.pk %}" class="button-block__button button" style="background-color: #3f85ce;color: #FFFFFF; margin-bottom: 50px">
+            <span class="button__text">Подтвердить</span><span class="button__span" style="background-color: #3f85ce;color: #FFFFFF">+</span></a>
       </div>
 </section>
 {% endif %}
