@@ -58,6 +58,7 @@
       <li class="user">
         <div class="logo" style="background-image: url('{% static 'img/logo.webp' %}');"></div>
         <div class="avatar"><img width="80" height="80" src = "{{ user.photo.url }}"></div>  <!-- avatar.png -->
+        {% comment %} <a href="{% url 'profile' %}"> {% endcomment %}
         <div class="name">{{ user.last_name }} {{ user.first_name }}</div>
       </li>
         {% else %}

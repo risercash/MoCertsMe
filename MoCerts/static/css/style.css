@@ -556,6 +556,8 @@ section.third {
 
 .certificates {
   margin-top: 20px;
+  border-image: repeating-linear-gradient(45deg, #A7CECC, #A7CECC 10px, transparent 10px, transparent 20px, #F8463F 20px, #F8463F 30px,transparent 30px, transparent 40px) 20 / 20px;
+  width: 75%;
 }
 
 .certificate {
@@ -1336,4 +1338,25 @@ svg.intro.go .text-stroke:nth-child(6) {
   body {
     min-width: 320px;
   }
+}
+
+/* balance */
+
+.funds {
+
+  background-color: #5a68b1;
+  padding: 0px, 20px;
+  height: 280px;
+  width: 500px;
+  
+  
+  margin: auto;
+}
+
+.profile_block {
+  background-color: #5a68b1;
+  padding: 0px, 20px;
+  height: 280px;
+  width: 500px;
+
 }

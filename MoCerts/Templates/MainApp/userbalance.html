@@ -17,14 +17,15 @@
 {% block content %}
 
 <section class="third-section" style="height: auto;!important;">
-    <div class="certs-wrapper">
-      <p class = "section__title"><span>{% trans 'Пополнить счет' %}</span></p>
+    <div class="funds">
+      <p class = "section__title"><span>{% trans 'Пополнить счет' %}</span></p><br>
 
-      <p class="wrapper__text">Сумма пополнения</p>
+      <div class="deposit__text" style="padding: 0px; color: #FFFFFF">Сумма пополнения <----------> Валюта платежа</div>
+      
             <form class="withdrawal_form" action="" name="deposit_form" method="POST">
                 <div class="deposit_form">
                 {% csrf_token %}
-        {{ form.amount }} {{ form.valute}}<br>
+        {{ form.amount }} {{ form.valute}}<br><br>
                 </div>
         <button type="submit" class="deposit_button">Оплатить QIWI</button>
         <button type="submit" class="deposit_button">Оплатить Картой</button>
@@ -47,18 +48,19 @@
     </div>
     <br><br>
     <br><br>
-    <div class="certs-wrapper">
-      <p class = "section__title"><span>{% trans 'Вывод средств' %}</span></p>
+    <div class="funds">
+      <p class = "section__title"><span>{% trans 'Вывод средств' %}</span></p><br>
 
 
             <form class="withdrawal_form" action="{% url 'userbalance' %}" name="deposit_form" method="GET">
                 <div class="deposit_form">
                 {% csrf_token %}
-                    <p class="wrapper__text">Сумма вывода</p>
-        {{ WithdrawalForm.withdrawal_amount }}<br>
-                    <p class="wrapper__text">Номер кошелька QIWI</p>
-        {{ WithdrawalForm.qiwi_wallet }}<br>
-                </div>
+                <div class="deposit__text" style="padding: 0px; color: #FFFFFF">Сумма вывода <----------> Номер кошелька QIWI</div>
+                   
+        {{ WithdrawalForm.withdrawal_amount }}
+                   
+        {{ WithdrawalForm.qiwi_wallet }}
+                </div><br>
         <button type="submit" class="deposit_button">Оставить заявку</button>
             </form>
         {% if form.errors %}
@@ -87,7 +89,7 @@
                     <td class="payment_id">id номер</td>
                     <td>Сумма</td>
                     <td>Статус</td>
-                </tr>
+                </tr><br>
                 {% for transaction in  transactions %}
                 <tr class="history_row">
                     <td>{{transaction.time}}</td>
@@ -97,7 +99,7 @@
                     <td>{{transaction.get_status_display}}</td>
                 </tr>
                 {% endfor %}
-            </table>
+            </table><br>
     </div>
 </section>
 <div class="video-block" style="visibility: hidden;position: absolute;top: -9999px;!important;">

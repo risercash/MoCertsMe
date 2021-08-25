@@ -1,4 +1,4 @@
-{% extends 'layout/base2.html' %}
+{% extends 'layout/base.html' %}
 {% load static %}
 {% load i18n %}
 {% load custom_filters %}
@@ -16,7 +16,7 @@
 {% block content %}
 
 <div class="profile_main">
-    <div class="profile_block">
+    <div class="profile_block" style="  background-color: #5a68b1;  padding: 0px, 20px;  height: 280px;  width: 500px;">
         <h1>Ваш профиль</h1>
         <form method="POST" enctype="multipart/form-data" action="">
             {% csrf_token %}

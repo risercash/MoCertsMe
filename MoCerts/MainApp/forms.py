@@ -3,6 +3,7 @@ from allauth.account.forms import LoginForm, SignupForm
 from django.forms import ModelForm, TextInput, CharField, EmailInput, FileInput, IntegerField, NumberInput, MultipleChoiceField
 from django.core.exceptions import ValidationError
 from django import forms
+from django.forms.fields import ChoiceField
 from .models import CustomUser
 from django.core.validators import MinValueValidator
 from django.core.exceptions import ValidationError
@@ -11,15 +12,21 @@ class myForm(forms.Form):
     val_list = ['USD','EUR', 'RUB', 'KZT']
     valute = forms.ChoiceField(choices=val_list)
 
+VAL_CHOICES =(
+    ("1", 'USD     .'),
+    ("2", 'EUR     .'),
+    ("3", 'RUB     .'),
+    ("4", 'KZT     .'),
+)
+
+VAL = ['USD','EUR','RUB','KZT']
+
 class DepositForm(forms.Form):
     '''форма пополнения'''
     amount = IntegerField(label='Сумма пополнения', widget=NumberInput(attrs={'placeholder': 'сумма'}),\
         validators=[MinValueValidator(1),])
-
-
     """ Не могу комбокса сделать на валюты """
-
-    valute = forms.ModelChoiceField(queryset='')
+    valute = ChoiceField(label='Валюта', choices=VAL_CHOICES)
 
     def __init__(self, *args, **kwargs):
         super(DepositForm, self).__init__(*args, **kwargs)
@@ -29,10 +36,10 @@ class DepositForm(forms.Form):
 class WithdrawalForm(forms.Form):
     '''форма вывода средств'''
     
-    withdrawal_amount = IntegerField(label='Сумма вывода', widget=NumberInput(attrs={'placeholder': 'сумма $'}),\
+    withdrawal_amount = IntegerField(label='Сумма вывода', widget=NumberInput(attrs={'placeholder': 'сумма вывода'}),\
         validators=[MinValueValidator(1),])
     qiwi_wallet = CharField(
-        label='Qiwi кошелек', widget=TextInput(attrs={'placeholder': 'номер кошелька'}), required=True)
+        label='Qiwi кошелек', widget=TextInput(attrs={'placeholder': 'или номер карты'}), required=True)
 
     def __init__(self, *args, **kwargs):
         super(WithdrawalForm, self).__init__(*args, **kwargs)
