@@ -823,9 +823,9 @@ main {
 }
 
 .card-info {
-  background-color: #fff;
+  background-color: rgb(157, 209, 216);
   z-index: 99;
-  padding: 40px 50px;
+  padding: 20px 30px;
   width: 520px;
   height: 270px;
   margin: auto;
@@ -858,7 +858,7 @@ main {
   color: #212121;
   line-height: normal;
   margin-bottom: 20px;
-  text-align: left!important;
+  text-align: left!important; 
 }
 
 .card-content__description {

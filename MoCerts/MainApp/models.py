@@ -52,6 +52,7 @@ class Certificate(models.Model):
                                 related_name='made_by_user')
     #is_prepaid = models.BooleanField(default=False)
     is_paid = models.BooleanField(default=False)
+    is_prepaid = models.BooleanField(default=False)
     is_accept = models.BooleanField(default=True)
     is_received = models.BooleanField(default=False)
     owner = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, default=None, null=True, blank=True,
@@ -124,9 +125,9 @@ class ManualPosts(models.Model):
 
 
 class MainPagePost(models.Model):
-    headline = models.CharField(max_length=36, null=False, verbose_name=pgettext_lazy('Заголовок', 'Заголовок'),
-                            help_text='максимум 36 символов')
-    subtitle = models.CharField(max_length=120, null=False,
+    headline = models.CharField(max_length=90, null=False, verbose_name=pgettext_lazy('Заголовок', 'Заголовок'),
+                            help_text='максимум 50 символов')
+    subtitle = models.CharField(max_length=150, null=False,
                                 verbose_name=pgettext_lazy('Подзаголовок', 'Подзаголовок'))
     date_create = models.DateTimeField(auto_now_add=True, verbose_name=pgettext_lazy(
         'Дата публикации', 'Дата публикации'))

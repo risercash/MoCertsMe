@@ -1,23 +1,24 @@
 import os
 from pathlib import Path
 from colorama import Fore, Style
+from secret.config import *
 
 HOST = '127.0.0.1'
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-try:
+""" try:
     with open(os.path.join(BASE_DIR, 'secret/SECRET_KEY.txt'), 'r') as token:
         secret = token.read()
     SECRET_KEY = secret  # адрес сервера почты для всех один и тот же
 except FileNotFoundError:
     print(Fore.RED + 'Не найден файл для SECRET_KEY')
     print(Style.RESET_ALL)
-    SECRET_KEY = 'sefesfsefsefsfesff'
+    SECRET_KEY = 'sefesfsefsefsfesff' """
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['doszhan.space', 'localhost', '127.0.0.1', '*']
+ALLOWED_HOSTS = ['mocerts.com', 'localhost', '127.0.0.1', '*']
 
 # Настройки для базы данных 
 DATABASES = {

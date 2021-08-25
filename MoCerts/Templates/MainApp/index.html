@@ -120,7 +120,7 @@
       <p class = "section__title">Recent <span>From Blog</span></p>
 
       <div class = "section__decor"><img src = "{% static 'img/icons/decor.svg' %}" alt=""></div>
-      <p class = "wrapper__text">This is Photoshop’s version of Lorem Ipsum. Proin gravida nibh vel velit auctor Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.t akshay handge.</p>
+      <p class = "wrapper__text">В этой части сайта мы будем собирать для Вас интересные статьи о заработке в интернете, работе на дому. На что стоит тратить свое время, а на что нет. О видах мошенничества и аферах в интернете. Как не попасться на уловки мошенников. И многое другое...</p>
 
  <div class = "slider-block">
       <div class="swiper-container mySwiper">
@@ -141,8 +141,8 @@
                   </div>
                 </div>
                 <div class = "card-info__content card-content">
-                   <p class = "card-content__title">{{ post.title }}</p>
-                   <p class = "card-content__description">{{ post.subtitle }}</p>
+                   <p class = "card-content__title">{{ post.headline }}</p>
+                   <p class = "card-content__description">{{ post.subtitle }} ...</p>
                    <a href = "{% url 'postdetail' post.pk %}" class = "card-content__link"><strong>Read more</strong></a>
                 </div>
               </div>

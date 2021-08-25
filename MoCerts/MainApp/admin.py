@@ -60,4 +60,4 @@ admin.site.register(Withdrawal, WithdrawalAdmin)
 
 
 admin.site.site_title = 'Панель администратора'
-admin.site.site_header = 'Mosert Certificates'
+admin.site.site_header = 'Money Certificates'

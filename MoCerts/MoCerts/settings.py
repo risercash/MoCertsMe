@@ -1,13 +1,7 @@
 import os
-import ast
-from colorama import Fore, Style
 from MoCerts.log_settings import log_settings
-
-
-try:
-    from .local_settings import *
-except ImportError:
-    from .prod_settings import *
+from secret.config import *
+from .prod_settings import *
 
 
 MONEY_ADMIN = {'username':'money', 'first_name':'MONEY_ADMIN', 'last_name':'money',
@@ -36,7 +30,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    # 'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.facebook',
     # 'allauth.socialaccount.providers.instagram',
 
 ]
@@ -153,28 +147,17 @@ ACCOUNT_FORMS = {'signup': 'MainApp.forms.MySignupForm', 'login': 'MainApp.forms
 # Настройки почтового сервера
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
-try:
-    with open(os.path.join(BASE_DIR, 'secret/EMAIL_HOST.txt'), 'r') as token:
-        smtp = token.read()
-    EMAIL_HOST = smtp  # адрес сервера почты для всех один и тот же
-    EMAIL_PORT = 587  # порт smtp сервера тоже одинаковый
-    with open(os.path.join(BASE_DIR, 'secret/EMAIL_HOST_USER.txt'), 'r') as token:
-        email = token.read()
-    EMAIL_HOST_USER = email  # ваше имя пользователя
-    with open(os.path.join(BASE_DIR, 'secret/EMAIL_HOST_PASSWORD.txt'), 'r') as token:
-        password = token.read()
-    EMAIL_HOST_PASSWORD = password  # пароль от почты
-    EMAIL_USE_TLS = True
-    with open(os.path.join(BASE_DIR, 'secret/ADMINS.txt'), 'r') as token:
-        admins = token.read()
-    ADMINS = [ast.literal_eval(admins),] # Написать email администратора, для отправки сообщении при ошибках
-    SERVER_EMAIL = email
-    DEFAULT_FROM_EMAIL = email  # Используется для отправки email после регистрации
-    EMAIL_SUBJECT_PREFIX = '[Mosert] '
-except FileNotFoundError:
-    print(Fore.RED + 'Не найдены файлы настроек почтового сервера')
-    print(Style.RESET_ALL)
 
+
+print(EMAIL_HOST) # адрес сервера почты для всех один и тот же
+print(EMAIL_PORT) # порт smtp сервера тоже одинаковый
+print(EMAIL_HOST_USER)
+print(EMAIL_HOST_PASSWORD) # пароль от почты
+EMAIL_USE_TLS = True
+print(ADMINS)# Написать email администратора, для отправки сообщении при ошибках
+SERVER_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # Используется для отправки email после регистрации
+EMAIL_SUBJECT_PREFIX = '[MoCerts] '
 
 CELERY_BROKER_URL = 'redis://localhost:6379'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379'
