@@ -1,6 +1,6 @@
 import re
 from allauth.account.forms import LoginForm, SignupForm
-from django.forms import ModelForm, TextInput, CharField, EmailInput, FileInput, IntegerField, NumberInput, MultipleChoiceField
+from django.forms import ModelForm, TextInput, CharField, EmailInput, FileInput, IntegerField, NumberInput
 from django.core.exceptions import ValidationError
 from django import forms
 from django.forms.fields import ChoiceField
@@ -13,10 +13,10 @@ class myForm(forms.Form):
     valute = forms.ChoiceField(choices=val_list)
 
 VAL_CHOICES =(
-    ("1", 'USD     .'),
-    ("2", 'EUR     .'),
-    ("3", 'RUB     .'),
-    ("4", 'KZT     .'),
+    ("USD", 'USD'),
+    ("EUR", 'EUR'),
+    ("RUB", 'RUB'),
+    ("KZT", 'KZT'),
 )
 
 VAL = ['USD','EUR','RUB','KZT']
@@ -77,28 +77,32 @@ class UserForm(ModelForm):
     class Meta:
         model = CustomUser
 
-        fields = ['first_name', 'last_name', 'email', 'photo',]
+        fields = ['photo', 'first_name', 'last_name', 'email',]
 
         labels = {'first_name': 'Имя',
                     'last_name': 'Фамилия', 'email': 'Email', 'photo': 'Аватар', }
 
         widgets = {
+            'photo': FileInput(attrs={
+                'class': 'form-control',
+                'style': 'width:30ch; border: none; font-size: 16px;',
+            }),
             'first_name': TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Введите текст...',
-                'style': 'width:20ch; background-color: transparent; border: none; font-size: 22px;',
+                'style': 'width:15ch; background-color: transparent; border: none; font-size: 22px; font-color: white',
             }),
             'last_name': TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Введите текст...',
-                'style': 'width:20ch; background-color: transparent; border: none; font-size: 22px;',
+                'style': 'width:15ch; background-color: transparent; border: none; font-size: 22px;',
             }),
             'email': EmailInput(attrs={
                 'multiple class': 'form-control',
                 'style': 'width:20ch; background-color: transparent; border: none; font-size: 22px;',
             }),
-            'photo': FileInput(attrs={
-                'class': 'form-control',
-                'style': 'width:30ch; border: none; font-size: 19px;',
+            'phone': TextInput(attrs={
+                'multiple class': 'form-control',
+                'style': 'width:20ch; background-color: transparent; border: none; font-size: 22px;',
             }),
         }

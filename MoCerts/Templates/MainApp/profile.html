@@ -17,18 +17,18 @@
 {% block content %}
 
 <div class="profile_main">
-<section class="third-section" style="height: auto;!important;">
+<section class="third-section" style="height: auto;!important; box-shadow: 0 4px 16px #ccc;">
     <div class="certs-wrapper">
       <p class = "section__title">My <b>Profile</b></p>
       <div class = "section__decor"><img src = "{% static 'img/icons/decor.svg' %}" alt=""></div>
-    <div class="profile_block" style="  background-color: #5a68b1;  padding: 0px, 20px;  height: 280px;  width: 500px;">
+    <div class="profile_block" style="background-color: #5a68b1;  padding: 0px, 20px;  height: 600px;  width: 500px; ">
         <form method="POST" enctype="multipart/form-data" action="">
             {% csrf_token %}
             <div class="profile_form">
 
-                <div
+                <div class="form_separate">
                     {% if user.photo %}
-                    <img src="{{ user.photo.url }}" alt="ava" style="width: 200px">
+                    <img src="{{ user.photo.url }}" alt="ava" style="box-shadow: 0 4px 16px #ccc; width: 200px; margin-left: -100px; margin-top: 30px">
                     {% else %}
                     <img src="{% static 'img/profile.png' %}" alt="ava">
                     {% endif %}
@@ -36,18 +36,18 @@
                 </div>
 
                 <div class="form_separate">
-                    <!-- <p><span>Имя:</span><span>{{ form.first_name }}</span></p>
-                    <p><span>Фамилия:</span><span>{{ form.last_name }}</span></p>
-                    <p><span>Email:</span><span>{{ form.email }}</span></p>-->
-                    {{form.as_p}}
-                    <p class="not_form"><span>Баланс:</span><span class="form_span">{{ user.balance }}$</span></p><br> 
+                {{form.as_p}}
+{% comment %}                     <p><span>Имя : {{ form.first_name }} </span></p>
+                    <p>Фамилия: {{ form.last_name }}</p>
+                    <p><span>Email:</span><span>{{ form.email }}</span></p> {% endcomment %}
+                    {% comment %} <p class="not_form"><span>Баланс:</span><span class="form_span">{{ user.balance }}$</span></p><br>  {% endcomment %}
 
                     <button type="submit" class="main__nav--item profile_btn">Сохранить</button>
 
                     <a class="main__nav--item profile_btn" style="text-decoration: none;" 
                     href="{% url 'account_logout' %}">Выйти</a>
                 </div>
-            </div>
+            </div><br><br>
         </form>
 
     </div>
