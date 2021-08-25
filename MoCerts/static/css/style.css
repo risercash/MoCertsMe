@@ -570,9 +570,9 @@ section.third {
   margin-bottom: 24px;
 }
 
-
-
-
+.one-cert {
+  margin-top: 30px;
+}
 
 @media only screen and (min-width:601px) {
   .certs-wrapper {
@@ -1355,7 +1355,8 @@ svg.intro.go .text-stroke:nth-child(6) {
 
 .profile_block {
   background-color: #5a68b1;
-  padding: 0px, 20px;
+  margin: 0 auto;
+  padding: 20px;
   height: 280px;
   width: 500px;
 
