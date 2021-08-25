@@ -13,10 +13,10 @@ class myForm(forms.Form):
     valute = forms.ChoiceField(choices=val_list)
 
 VAL_CHOICES =(
-    ("USD", 'USD'),
-    ("EUR", 'EUR'),
-    ("RUB", 'RUB'),
-    ("KZT", 'KZT'),
+    ("USD", 'USD Доллар'),
+    ("EUR", 'EUR Евро'),
+    ("RUB", 'RUB Рубль'),
+    ("KZT", 'KZT Тенге'),
 )
 
 VAL = ['USD','EUR','RUB','KZT']
