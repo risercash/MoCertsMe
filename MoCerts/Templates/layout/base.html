@@ -78,14 +78,6 @@
         </a>
       </li>
 
-      <li class = "menu-link">
-        <a href="/#second">
-          <div class="icon-back menu-link">
-            <div class="icon" style="background-image: url('{% static 'img/icons/info.svg' %}');background-size: 29px 29px;"> <!-- about.svg --></div>
-          </div>
-          <span class = "icon-span">About Property</span>
-        </a>
-      </li>
         {% if user.is_authenticated %}
       <li>
         <a href="{% url 'select_certificate' %}">

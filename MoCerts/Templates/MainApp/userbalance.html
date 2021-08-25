@@ -24,9 +24,11 @@
             <form class="withdrawal_form" action="" name="deposit_form" method="POST">
                 <div class="deposit_form">
                 {% csrf_token %}
-        {{ form.amount }}<br>
+        {{ form.amount }} {{ form.valute}}<br>
                 </div>
-        <button type="submit" class="deposit_button">Оплатить</button>
+        <button type="submit" class="deposit_button">Оплатить QIWI</button>
+        <button type="submit" class="deposit_button">Оплатить Картой</button>
+        <button type="submit" class="deposit_button">Оплатить PayPal</button>
             </form>
         {% if form.errors %}
         <ul class="form_errors">

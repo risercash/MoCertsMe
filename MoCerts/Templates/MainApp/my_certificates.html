@@ -23,8 +23,11 @@
             {% if queryset %}
         {% trans '<p class="wrapper__text">Для отправки сертификатов скопируйте ссылку и нажмите на самолетик, выбрав социальную сеть. После того как человек получит и активирует его, статус меняется на получен, после оплаты на оплачен</p>' %}
             {% else %}
-        {% trans '<p class="wrapper__text">Сейчас у вас нет сертификатов, вы можете получить новый сертификат на вкладке "Выбрать сертификат"</p>' %}
-        <img src = "{% static 'img/404.gif' %}" alt = "">
+        {% trans '<p class="wrapper__text">Сейчас у вас нет сертификатов, вы можете получить новый сертификат. Для этого выберите его на вкладке "Select Certificate"</p>' %}
+        
+        <img src = "{% static 'img/icons/s-cert.svg' %}">
+        <img src = "{% static 'img/404-1.gif' %}"alt = "" style="position:absolute; bottom: 78px; left: 200px">
+        {% comment %} <img src = "{% static 'img/404.gif' %}" alt = "" style="position:absolute; bottom: 78px;"> {% endcomment %}
             {% endif %}
       </div>
 

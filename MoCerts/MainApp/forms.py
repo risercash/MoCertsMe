@@ -1,17 +1,25 @@
 import re
 from allauth.account.forms import LoginForm, SignupForm
-from django.forms import ModelForm, TextInput, CharField, EmailInput, FileInput, IntegerField, NumberInput
+from django.forms import ModelForm, TextInput, CharField, EmailInput, FileInput, IntegerField, NumberInput, MultipleChoiceField
 from django.core.exceptions import ValidationError
 from django import forms
 from .models import CustomUser
 from django.core.validators import MinValueValidator
 from django.core.exceptions import ValidationError
 
+class myForm(forms.Form):
+    val_list = ['USD','EUR', 'RUB', 'KZT']
+    valute = forms.ChoiceField(choices=val_list)
 
 class DepositForm(forms.Form):
     '''форма пополнения'''
-    amount = IntegerField(label='Сумма пополнения', widget=NumberInput(attrs={'placeholder': 'сумма $'}),\
+    amount = IntegerField(label='Сумма пополнения', widget=NumberInput(attrs={'placeholder': 'сумма'}),\
         validators=[MinValueValidator(1),])
+
+
+    """ Не могу комбокса сделать на валюты """
+
+    valute = forms.ModelChoiceField(queryset='')
 
     def __init__(self, *args, **kwargs):
         super(DepositForm, self).__init__(*args, **kwargs)
