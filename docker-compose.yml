@@ -6,10 +6,10 @@ services:
     container_name: mcbot
     build: .
     volumes:
-      - .:/src
+      - .:/site
     command: python manage.py runserver
     restart: always
     network_mode: "host"
 
     env_file:
-      - ".env"
+      - "MoCerts\secret\.env"
