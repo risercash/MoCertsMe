@@ -37,7 +37,7 @@ html {
 
 body {
   font-family: 'Lato', sans-serif;
-  color: #e4e1eb;
+  color: #14092e;
   line-height: 20px;
   font-weight: 400;
 }
@@ -520,9 +520,22 @@ nav {
 }
 
 .section__title span {
-    font-weight: 900;
-}
-
+  border-top: 20px;
+  fill: #35322a;
+  filter: url('#money');
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-size: 40px;
+  font-weight: 900;
+  }
+  
+  html {
+  align-items: center;
+  background: #ebe7e0;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  min-width: 600px;
+  }
 .section__decor {
   margin-bottom: 35px;
 }

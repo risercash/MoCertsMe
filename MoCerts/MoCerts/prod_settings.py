@@ -1,6 +1,5 @@
 import os
 from pathlib import Path
-from colorama import Fore, Style
 from secret.config import *
 
 HOST = '127.0.0.1'
