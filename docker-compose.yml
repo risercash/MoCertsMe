@@ -7,7 +7,7 @@ services:
     build: .
     volumes:
       - .:/src
-    command: python app.py
+    command: python manage.py runserver
     restart: always
     network_mode: "host"
 
