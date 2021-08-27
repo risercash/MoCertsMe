@@ -18,12 +18,14 @@
 
 <section class="third-section" style="height: auto;!important;">
     <div class="funds">
-      <p class = "section__title"><span>{% trans 'Пополнить счет' %}</span></p><br>
+      <p class = "section__title__withdrow">
 
-      <div class="deposit__text" style="padding: 0px; color: #FFFFFF">Сумма пополнения <----------> Валюта платежа</div>
+  <span>{% trans 'Пополнить счет' %}</span></p><br>
+
+      <div class="deposit__text" style="padding: 0px; color: #FFFFFF">Сумма пополнения - - - - - - - - - - Валюта платежа</div>
       
             <form class="withdrawal_form" action="" name="deposit_form" method="POST">
-                <div class="deposit_form">{% comment %}  style="box-shadow:0 0 15px 4px rgba(0,0,0,0.06);" {% endcomment %}
+                <div class="deposit_form" style="border-radius:10px">{% comment %}  style="box-shadow:0 0 15px 4px rgba(0,0,0,0.06);" {% endcomment %}
                 {% csrf_token %}
         {{ form.amount }} {{ form.valute}}<br><br>
                 </div>
@@ -49,13 +51,13 @@
     <br><br>
     <br><br>
     <div class="funds">
-      <p class = "section__title"><span>{% trans 'Вывод средств' %}</span></p><br>
+              <p class = "section__title__withdrow"><span>{% trans 'Вывод средств' %}</span></p><br>
 
 
             <form class="withdrawal_form" action="{% url 'userbalance' %}" name="deposit_form" method="GET">
                 <div class="deposit_form">
                 {% csrf_token %}
-                <div class="deposit__text" style="padding: 0px; color: #FFFFFF">Сумма вывода <----------> Номер кошелька QIWI</div>
+                <div class="deposit__text" style="padding: 0px; color: #FFFFFF">Сумма вывода - - - - - - - - - -  Номер кошелька QIWI</div>
                    
         {{ WithdrawalForm.withdrawal_amount }}
                    

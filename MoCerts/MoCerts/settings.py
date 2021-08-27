@@ -150,12 +150,12 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
 
 
-print(EMAIL_HOST) # адрес сервера почты для всех один и тот же
-print(EMAIL_PORT) # порт smtp сервера тоже одинаковый
-print(EMAIL_HOST_USER)
-print(EMAIL_HOST_PASSWORD) # пароль от почты
+# адрес сервера почты для всех один и тот же
+# порт smtp сервера тоже одинаковый
+
+# пароль от почты
 EMAIL_USE_TLS = True
-print(ADMINS)# Написать email администратора, для отправки сообщении при ошибках
+# Написать email администратора, для отправки сообщении при ошибках
 SERVER_EMAIL = EMAIL_HOST_USER
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # Используется для отправки email после регистрации
 EMAIL_SUBJECT_PREFIX = '[MoCerts] '

@@ -23,7 +23,7 @@
       <div class = "section__decor"><img src = "{% static 'img/icons/decor.svg' %}" alt=""></div>
         <p class="wrapper__text">Вы получили новый сертификат. Теперь, что бы активировать его и получить пять своих сертификатов 
          с Вашим именем на третьей строчке нажмите на клавишу перевести. После чего сумма в <b>{{ certificate.nominal }}$</b> будет переведена пользователю с именем 
-          <b>{{ certificate.user1 }}</b>, так как это имя расположено на первой строчке. Убедитесь, что на Вашем балансе достаточно средств!</p>
+          <b>{{ certificate.user1.first_name }}-{{ certificate.user1.last_name }}</b>, так как это имя расположено на первой строчке. Убедитесь, что на Вашем балансе достаточно средств!</p>
     <div class="one-cert">
           <img src="{{ certificate.certificate_image.url }}" alt="", style="width: 70%; ">
     </div><br>

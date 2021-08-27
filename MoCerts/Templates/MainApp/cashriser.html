@@ -7,13 +7,12 @@
 {% block content %}
 
 
-<link rel="stylesheet" href="{% static 'css/secret.css' %}">
-
 
 <body>
   
 
-        <div class="select_menu">
+        <div class="select_menu" style="margin: 0 auto; padding-top:50px">
+            <input type="text" text="Сколько">
             <select name="Номинал">
                 <option selected value="1">1 </option>
                 <option value="5">5 </option>
@@ -24,9 +23,11 @@
                 <option value="200">200</option>
                 <option value="500">500</option>
             </select>
-            <input type="text">
-            <button type="submit">GENERATE</button>>
-        </div>
+            <button type="submit">GENERATE</button>
+            <label for="horns" style="color: black">Именные?</label>
+            <input type="checkbox" class="custom-checkbox" id="horns" name="horns" value="yes">
+         
+        </div >
 
 
 </body>

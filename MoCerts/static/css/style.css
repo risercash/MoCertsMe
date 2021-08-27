@@ -230,8 +230,10 @@ nav {
 }
 
 .name {
+  font: 1em sans-serif;
+  font-size: larger;
   margin-top: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 9px;
 }
 
 .balance {
@@ -563,16 +565,19 @@ section.third {
   padding-bottom: 35px;
 }
 
-.certificates img {
-  width: 100%;
-}
 
 .certificates {
   margin-top: 20px;
-  border-image: repeating-linear-gradient(45deg, #A7CECC, #A7CECC 10px, transparent 10px, transparent 20px, #F8463F 20px, #F8463F 30px,transparent 30px, transparent 40px) 20 / 20px;
-  width: 75%;
+  /* border-image: repeating-linear-gradient(45deg, #A7CECC, #A7CECC 10px, transparent 10px, transparent 20px, #F8463F 20px, #F8463F 30px,transparent 30px, transparent 40px) 20 / 20px;
+ */  width: 75%;
 }
 
+.certificates img {
+  display: flex;
+  margin: 0 auto;
+  margin: 20px;
+  align-items: center;
+}
 .certificate {
   height: 200px;
   width: 100%;
@@ -1000,7 +1005,7 @@ footer {
   text-align: center;
   font-size: 12px;
   font-weight: 400;
-  padding: 25px 0px;
+  padding: 28px 0px;
 }
 
 footer ul {
@@ -1377,3 +1382,16 @@ svg.intro.go .text-stroke:nth-child(6) {
   width: 500px;
 
 }
+
+.section__title__withdrow {
+  font-family: 'Paytone One'; color: #202020; letter-spacing: -2px;
+
+  display: block;
+  margin: 11px 0 17px 0;
+  font-size: 60px;
+  line-height: 80px;
+  color: black;
+  background-color: #ece5da;
+  text-shadow: 0 13.36px 8.896px #c4b59d,0 -2px 1px #fff;  letter-spacing: -4px;
+}
+

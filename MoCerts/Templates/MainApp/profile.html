@@ -21,7 +21,7 @@
     <div class="certs-wrapper">
       <p class = "section__title">My <b>Profile</b></p>
       <div class = "section__decor"><img src = "{% static 'img/icons/decor.svg' %}" alt=""></div>
-    <div class="profile_block" style="background-color: #5a68b1;  padding: 0px, 20px;  height: 600px;  width: 500px; ">
+    <div class="profile_block" style="background-color: #5a68b1;  padding: 0px, 20px;  height: 600px;  width: 500px; border-radius:10px; box-shadow:10px 500px 15px 4px rgba(10,5,0,0.06);">
         <form method="POST" enctype="multipart/form-data" action="">
             {% csrf_token %}
             <div class="profile_form">
