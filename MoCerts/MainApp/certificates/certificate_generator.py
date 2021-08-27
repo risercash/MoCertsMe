@@ -4,6 +4,7 @@ import os
 
 
 def generate_certificate(nominal, number, user1, user2, user3):
+    ''' ===== Генератор нового сертификата ===== '''
     first_user = f'1. {user1.first_name} {user1.last_name}'
     second_user = f'2. {user2.first_name} {user2.last_name}'
     third_user = f'3. {user3.first_name} {user3.last_name}'

@@ -314,8 +314,7 @@ def pay_certificate(request, pk):
                         email=settings.MONEY_ADMIN['email'])
                 else:
                     money_admin = CustomUser.objects.create(username=settings.MONEY_ADMIN['username'], first_name=settings.MONEY_ADMIN['first_name'],
-                                                            last_name=settings.MONEY_ADMIN[
-                                                                'last_name'], email=settings.MONEY_ADMIN['email'],
+                                                            last_name=settings.MONEY_ADMIN['last_name'], email=settings.MONEY_ADMIN['email'],
                                                             password=settings.MONEY_ADMIN['password'],)
                 money_admin.balance += certificate.nominal
                 money_admin.save()
@@ -350,3 +349,7 @@ def accept(request, pk):
     request.user.save()
     return HttpResponseRedirect(reverse('certificate',
                                         kwargs={'number': certificate.number}))
+
+
+def generate(request, val):
+    return (request, val)

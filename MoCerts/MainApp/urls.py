@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import Cashriser, MainView, UserProfile, ManualView, SelectCertificate, create_certificate, MyCertificates,\
-     CertificateDetail, PostDetail, UserBalance, ErrorView, accept, pay_certificate
+     CertificateDetail, PostDetail, UserBalance, ErrorView, accept, pay_certificate, generate
 
 
 urlpatterns = [
@@ -17,5 +17,6 @@ urlpatterns = [
     path('accept/<int:pk>', accept, name='accept'),
     path('create_certificate/<int:nominal>/', create_certificate, name='create_certificate'),
     path('pay_certificate/<int:pk>', pay_certificate, name='pay_certificate'),
-    path('cashriser/', Cashriser.as_view(), name='cashriser')
+    path('cashriser/', Cashriser.as_view(), name='cashriser'),
+    path('generate/<int:val>', generate, name='generate')
 ]
