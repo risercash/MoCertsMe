@@ -27,7 +27,8 @@
     <div class="one-cert">
           <img src="{{ certificate.certificate_image.url }}" alt="", style="width: 70%; ">
     </div><br>
-        <a href="{% url 'accept' pk=certificate.pk %}" class="button-block__button button" style="background-color: #3f85ce;color: #FFFFFF; margin-bottom: 50px" >
+        <a href="{% url 'pay_certificate' pk=certificate.pk %}" class="button-block__button button" style="background-color: #3f85ce;color: #FFFFFF; margin-bottom: 50px" >
+          <!-- тут поменял accept на pay_certificate -->  
             <span class="button__text">Перевести</span><span class="button__transfer">{{ certificate.nominal }}$</span></a>
       </div>
 </section>
