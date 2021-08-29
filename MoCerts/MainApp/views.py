@@ -344,7 +344,7 @@ def pay_certificate(request, pk):
         else:
             messages.add_message(
                 request, messages.ERROR, 'Недостаточно средств, пожалуйста, пополните баланс')
-        return HttpResponseRedirect(reverse('profile'))
+        return HttpResponseRedirect(reverse('userbalance'))
 
 
 @login_required

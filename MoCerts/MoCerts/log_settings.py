@@ -23,7 +23,7 @@ class DjangoColorsFormatter(logging.Formatter):
 
     def format(self, record):
         message = logging.Formatter.format(self, record)
-        if sys.version_info[0] < 3:
+        if sys.version_info[0] <= 3:
             if isinstance(message, str):
                 message = message.encode('utf-8')
         colorizer = getattr(self.style, record.levelname, self.style.HTTP_SUCCESS)

@@ -52,7 +52,8 @@
 {% if need_pay and need_accept and made_by %}
 <section class="third-section" style="height: auto;!important;">
     <div class="certs-wrapper">
-      <p class = "section__title"><span>{% trans 'Скопируйте ссылку для отправки или поделитесь в соц сетях' %}</span></p>
+      <p class = "section__title"><span>{% trans 'Скопируйте ссылку для отправки или поделитесь в соц сетях' %}</span></p><br>
+      <p><strong>https://{{ certificate.url }}&nbsp;&nbsp;</strong><strong title="СКОПИРОВАТЬ ССЫЛКУ">📝</strong></p><br>
 <div class="ya-share2" data-curtain data-shape="round"
     data-services="vkontakte,facebook,odnoklassniki,telegram,twitter,viber,whatsapp,moimir,linkedin">
 </div>

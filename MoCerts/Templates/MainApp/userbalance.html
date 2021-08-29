@@ -19,12 +19,11 @@
 
 <section class="third-section" style="height: auto;!important;"><!-- background-image: url('{% static 'img/fon.svg' %}'); visibility: visible; -->
     <div class="funds">
-        <div>Ваш IP адрес: {{ get_client_ip }}</div>
       <p class = "section__title__withdrow">
 
   <span>{% trans 'Пополнить счет' %}</span></p><br>
 
-      <div class="deposit__text" style="padding: 0px; color: #FFFFFF">Сумма пополнения - - - - - - - - - - Валюта платежа</div>
+      <div class="deposit__text" style="padding: 0px; color: #FFFFFF">Сумма пополнения &emsp;&emsp; Валюта платежа</div>
       
             <form class="withdrawal_form" action="" name="deposit_form" method="POST">
                 <div class="deposit_form" style="border-radius:10px">{% comment %}  style="box-shadow:0 0 15px 4px rgba(0,0,0,0.06);" {% endcomment %}
@@ -59,7 +58,7 @@
             <form class="withdrawal_form" action="{% url 'userbalance' %}" name="deposit_form" method="GET">
                 <div class="deposit_form">
                 {% csrf_token %}
-                <div class="deposit__text" style="padding: 0px; color: #FFFFFF">Сумма вывода - - - - - - - - - -  Номер кошелька QIWI</div>
+                <div class="deposit__text" style="padding: 0px; color: #FFFFFF">Сумма вывода &emsp;&emsp;&emsp;Номер кошелька QIWI</div>
                    
         {{ WithdrawalForm.withdrawal_amount }}
                    
@@ -106,7 +105,7 @@
             </table><br>
     </div>
 </section>
-<div class="video-block" style="visibility: hidden;position: absolute;top: -9999px;!important;">
+<div class="video-block" style="visibility: hidden">
     <video>
           <source src="https://video.wixstatic.com/video/1694f8_029fe95547cf466b9e8433baa0fa7eda/1080p/mp4/file.mp4" type="video/mp4">
     </video>
