@@ -5,7 +5,7 @@ from .prod_settings import *
 
 
 MONEY_ADMIN = {'username':'money', 'first_name':'MONEY_ADMIN', 'last_name':'money',
-                'email':'money@gmail.com', 'password':'MONEY_ADMIN!'}
+                'email':'mocerts.com@gmail.com', 'password':'Ya552026'}
 
 
 
@@ -30,7 +30,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    'allauth.socialaccount.providers.facebook',
+    #'allauth.socialaccount.providers.facebook',
     # 'allauth.socialaccount.providers.instagram',
 
 
@@ -44,6 +44,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'middleware.filter_ip_middleware.FilterIPMiddleware'
 ]
 
 ROOT_URLCONF = 'MoCerts.urls'

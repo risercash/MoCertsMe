@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect, HttpRequest
 from django.urls import reverse, reverse_lazy
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.conf import settings
 from pyqiwip2p import QiwiP2P
 
@@ -18,6 +18,15 @@ from .certificates.certificate_generator import generate_certificate
 from .forms import MyLoginForm, MySignupForm, UserForm, DepositForm, WithdrawalForm
 from .models import CustomUser, Certificate, ManualPosts, MainPagePost, QiwiSecretKey, Deposit, Withdrawal
 from .tasks import check_payment_status, post_withdrawal_alert  # импорт задачи celery
+
+
+def get_client_ip(request):
+    ip = request.META.get('REMOTE_ADDR')
+    return render(request, 'userbalance.html', {'ip_address': ip})
+
+
+
+
 
 
 logger = logging.getLogger(__name__)
@@ -253,7 +262,7 @@ class ErrorView(TemplateView):
 
 @login_required
 def create_certificate(request, nominal):
-    '''Создать сертификат'''
+    ''' ==== Создать сертификат ===== '''
     if request.method == 'GET':
         if Certificate.objects.filter(nominal=nominal, owner=request.user, is_accept=True):
             return HttpResponseRedirect(reverse('certificate',
