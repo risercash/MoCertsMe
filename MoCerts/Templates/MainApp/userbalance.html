@@ -16,8 +16,10 @@
 
 {% block content %}
 
+
 <section class="third-section" style="height: auto;!important;"><!-- background-image: url('{% static 'img/fon.svg' %}'); visibility: visible; -->
     <div class="funds">
+        <div>Ваш IP адрес: {{ get_client_ip }}</div>
       <p class = "section__title__withdrow">
 
   <span>{% trans 'Пополнить счет' %}</span></p><br>
