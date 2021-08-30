@@ -1395,3 +1395,8 @@ svg.intro.go .text-stroke:nth-child(6) {
   text-shadow: 0 13.36px 8.896px #c4b59d,0 -2px 1px #fff;  letter-spacing: -4px;
 }
 
+.cert-flex-container {
+  /*генерирует flex-контейнер уровня строки*/
+   display: -webkit-inline-flex;
+   display: inline-flex; 
+  }

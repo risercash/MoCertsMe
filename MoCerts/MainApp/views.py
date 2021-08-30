@@ -264,7 +264,9 @@ class ErrorView(TemplateView):
 def create_certificate(request, nominal):
     ''' ==== Создать сертификат ===== '''
     if request.method == 'GET':
+        user = request.user
         if Certificate.objects.filter(nominal=nominal, owner=request.user, is_accept=True):
+            #print(f'{nominal=} ; {request.user=}',)
             return HttpResponseRedirect(reverse('certificate',
                                                 kwargs={'number': request.user.certificate.number}))
 
