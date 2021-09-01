@@ -23,7 +23,7 @@
       <div class = "section__t"><img src = "{% static 'img/icons/decor.svg' %}" alt=""></div>
         <p class="wrapper__text">Вы получили новый сертификат. Теперь, что бы активировать его и получить пять своих сертификатов 
          с Вашим именем на третьей строчке нажмите на клавишу перевести. После чего сумма в <b>{{ certificate.nominal }}$</b> будет переведена пользователю с именем 
-          <b>{{ certificate.user1.first_name }}-{{ certificate.user1.last_name }}</b>, так как это имя расположено на первой строчке. Убедитесь, что на Вашем балансе достаточно средств!</p>
+          <b>{{ certificate.user1.first_name }}&nbsp;{{ certificate.user1.last_name }}</b>, так как это имя расположено на первой строчке. Убедитесь, что на Вашем балансе достаточно средств!</p>
     <div class="one-cert">
           <img src="{{ certificate.certificate_image.url }}" alt="", style="width: 70%; ">
     </div><br>
@@ -31,7 +31,7 @@
          title="Перевести {{ certificate.nominal }}$ пользователю по имени {{ certificate.user1.first_name }} {{ certificate.user1.last_name }}"
         class="button-block__button button" style="background-color: #3f85ce;color: #FFFFFF; margin-bottom: 50px" >
           <!-- тут поменял accept на pay_certificate -->  
-            <span class="button__text">Перевести</span><span class="button__transfer">{{ certificate.nominal }}$</span></a>
+          <span class="button__text">Перевести</span><span class="button__transfer">{{ certificate.nominal }}$</span></a>
       </div>
 </section>
 {% endif %}

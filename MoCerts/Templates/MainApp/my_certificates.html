@@ -16,16 +16,16 @@
 
 {% block content %}
 
-<section class="third-section" style="height: auto;!important;">
+<section class="third-section" style="height: auto;!important;background-color: #EBE7E0!important;">
     <div class="certs-wrapper">
-      <p class = "section__title"><span>Мои сертификаты</span></p>
+      <p class = "section__title__withdrow"><span>Мои сертификаты</span></p>
         <div class="section__decor"><img src="/static/img/icons/decor.svg" alt=""></div>
             {% if queryset %}
         {% trans '<p class="wrapper__text">Для отправки сертификатов скопируйте ссылку и нажмите на самолетик, выбрав социальную сеть. После того как человек получит и активирует его, статус меняется на получен, после оплаты на оплачен</p>' %}
             {% else %}
-        {% trans '<p class="wrapper__text">Сейчас у вас нет сертификатов, вы можете получить новый сертификат. Для этого выберите его на вкладке "Select Certificate"</p>' %}
+        <p class="wrapper__text">Сейчас у вас нет сертификатов, вы можете получить новый сертификат. Для этого выберите его на вкладке &emsp;&emsp;
         
-        <img src = "{% static 'img/icons/s-cert.svg' %}">
+        <img src = "{% static 'img/icons/s-cert.svg' %}">"Select Certificate"</p>
         <img src = "{% static 'img/404-1.gif' %}"alt = "" style="position:absolute; bottom: 78px; left: 200px; height: 30%">
         {% comment %} <img src = "{% static 'img/404.gif' %}" alt = "" style="position:absolute; bottom: 78px;"> {% endcomment %}
             {% endif %}
@@ -33,9 +33,9 @@
 
         <br>
 
-      <div class="instruction-block" style="height: auto;!important;background-color: #ffffff;">
+      <div class="cert-block" style="height: auto;!important;">
         {% for my_certs_list in queryset %}
-        <div class="instruction-block__content content" style="weight: 200px">
+        <div class="instruction-block__content content block-items" style="height: 200px">
              <div class="content__main">
                 <div class="stack_imgs">
                     {% for cert in my_certs_list %}
@@ -48,7 +48,7 @@
                  <p class = "content__right__border"></p>
 
                  <p class = "content__right__text">{% for cert in my_certs_list %}<a href="{% url 'certificate' number=cert.number %}" style="color: #3f85ce;!important;font-weight: bold;">№ {{ cert.number }}</a>   {% if cert.is_paid %}
-                    <span style="color: black;!important;">{% trans ' - Оплачен' %}</span>
+                    <span style="color: black;!important;">{% trans ' - Оплачен' %}</span><br>
                     {% else %}
                     {% if cert.is_accept %}
                     <span style="color: black;!important;">{% trans ' - Подтвержден' %}</span>
@@ -64,15 +64,6 @@
                      {% endfor %}</p>
 
              </div>
-             <div class = "content__button-block">
-                 <p class = "content__right__text">{% for cert in my_certs_list %}{% if cert.is_paid %}{{cert.paid_by_user.first_name}} {{cert.paid_by_user.last_name}}{% else %}
-                     <a href="https://t.me/share?url={{ cert.get_url_for_messengers }}" target="_blank"><img style="max-height: 22px;!important;" src="/static/img/telegram_icon.webp"></a>
-                     <a href="whatsapp://send?text={{ cert.get_url_for_messengers }}" target="_blank"><img style="max-height: 22px;!important;" src="/static/img/whatsup_icon.webp"></a>
-                     <a href="https://www.facebook.com/sharer/sharer.php?u={{ cert.get_url_for_messengers }}" target="_blank"><img style="max-height: 22px;!important;" src="/static/img/fb.webp"></a>
-                     <a href="https://vk.com/share.php?url={{ cert.get_url_for_messengers }}&title=MoCerts&description=Заработай с нами&image={{ cert.certificate_image.url }}&noparse=true" target="_blank"><img style="max-height: 22px;!important;" src="/static/img/vk.png"></a>
-                     <a href="http://connect.mail.ru/share?share_url={{ cert.get_url_for_messengers }}" target="_blank"><img style="max-height: 22px;!important;" src="/static/img/mail_icon.webp"></a>
-                     {% endif %}<br>{% endfor %}</p>
-              </div>
         </div>
          {% endfor %}
     </div>
