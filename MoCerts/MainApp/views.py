@@ -25,10 +25,6 @@ def get_client_ip(request):
     return render(request, 'userbalance.html', {'ip_address': ip})
 
 
-
-
-
-
 logger = logging.getLogger(__name__)
 
 
@@ -64,7 +60,7 @@ class UserProfile(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy('profile')
     login_url = '/accounts/login/'
 
-    def get_object(self,):
+    def get_object(self, **kwargs):
         obj = CustomUser.objects.get(email=self.request.user.email)
         print(obj.photo)
         return obj
@@ -363,4 +359,5 @@ def accept(request, pk):
 
 
 def generate(request, val):
+    """ ===== Генератор ===== """
     return (request, val)
