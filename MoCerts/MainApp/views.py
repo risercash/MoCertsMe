@@ -358,6 +358,8 @@ def accept(request, pk):
                                         kwargs={'number': certificate.number}))
 
 
-def generate(request, val):
+def generate(request, pk):
     """ ===== Генератор ===== """
-    return (request, val)
+    users = UserProfile
+    return HttpResponseRedirect(reverse('certificate',
+                                        kwargs={'number': users}))

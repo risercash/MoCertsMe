@@ -10,11 +10,11 @@
 
 <body>
   
-<div>Ваш IP адрес: {{ip_address}}
+
 </div>
         <div class="select_menux" style="padding-left: 200 auto; padding-top:50px">
             <input type="text" text="Сколько">
-            <select name="Номинал">
+            <select name="nominal">
                 <option selected value="1">1 </option>
                 <option value="5">5 </option>
                 <option value="10">10 </option>
@@ -26,14 +26,12 @@
             </select>
             <label for="horns" style="color: black">Именные?</label>
             <input type="checkbox" class="custom-checkbox" id="horns" name="horns" value="yes">
-            <a href="{% url 'generate' val=1 %}" class="button-block__button button" style="background-color: #3f85ce;color: #FFFFFF; margin-top 5px;" >
-              <span class="button__text">GENERATE</span><span class="button__transfer">{{ certificate.nominal }}$</span></a>
+            <a href="{% url 'generate' <int:pk> %}" class="button-block__button button" style="background-color: #3f85ce;color: #FFFFFF; margin-top 5px;" >
             
-      
-         
+                <span class="button__text">GENERATE</span><span class="button__transfer"></span></a>      
         </div >
 
-
+<!--  -->
 </body>
 
 </html>
