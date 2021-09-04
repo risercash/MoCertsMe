@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 from secret.config import *
-
+from secret.secret_develop import *
 HOST = '127.0.0.1'
 
 BASE_DIR = Path(__file__).resolve().parent.parent
