@@ -1,6 +1,8 @@
 import logging
 import requests
 from datetime import datetime
+from allauth.socialaccount.models import SocialAccount
+
 from colorama import Fore, Style
 
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, FormView, TemplateView
@@ -254,17 +256,19 @@ class UserBalance(LoginRequiredMixin, FormView):
 class ErrorView(TemplateView):
     '''сервис не доступен'''
     template_name = 'MainApp/service_error.html'
-
+#
+def create_user():
+    pass
 
 @login_required
 def create_certificate(request, nominal):
     ''' ==== Создать сертификат ===== '''
     if request.method == 'GET':
         user = request.user
-        if Certificate.objects.filter(nominal=nominal, owner=request.user, is_accept=True):
-            #print(f'{nominal=} ; {request.user=}',)
+        Certificate.objects.filter(owner=user, nominal=nominal)
+        if Certificate.objects.filter(owner=user, nominal=nominal, is_accept=True, is_paid=False):
             return HttpResponseRedirect(reverse('certificate',
-                                                kwargs={'number': request.user.certificate.number}))
+                                        kwargs={'number': Certificate.objects.get(owner=user, nominal=nominal, is_paid=False)}))
 
         number = datetime.today().strftime("%d%m%y%H%M%f")
         url = '{}/certificate/{}'.format(settings.HOST, number)
@@ -290,9 +294,8 @@ def create_certificate(request, nominal):
         certificate = Certificate(number=number, url=url, nominal=nominal, user1=user1, user2=user2, user3=user3,
                                   certificate_image=image_certificate, owner=request.user,)
         certificate.save()
-        cert_owner = request.user
-        cert_owner.certificate = certificate
-        cert_owner.save()
+        user.certificate = certificate
+        user.save()
         return HttpResponseRedirect(reverse('certificate',
                                             kwargs={'number': request.user.certificate.number}))
 

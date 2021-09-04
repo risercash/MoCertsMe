@@ -142,3 +142,4 @@ dmypy.json
 .pyre/
 
 /MoCerts/secret/secret_develop.py
+/MoCerts/MainApp/migrations/

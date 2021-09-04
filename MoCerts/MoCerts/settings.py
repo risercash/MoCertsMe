@@ -20,6 +20,8 @@ INSTALLED_APPS = [
     
     'MainApp',
 
+    'django_telegram_login',
+
     'easy_thumbnails',
     'modeltranslation',
     'embed_video',
@@ -31,7 +33,9 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.facebook',
-    # 'allauth.socialaccount.providers.instagram',
+    'allauth.socialaccount.providers.instagram',
+    'allauth.socialaccount.providers.telegram',
+
 
 
 ]
@@ -135,6 +139,8 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
+SOCIAL_AUTH_TELEGRAM_BOT_TOKEN = '1978440363:AAF-FOftfttv5MmM6VrIRDPOfSS75Bf7NqI'
+
 SITE_ID = 1
 
 
@@ -168,6 +174,11 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 
 
+SOCIALACCOUNT_PROVIDERS = {
+    'telegram': {
+        'TOKEN': '1978440363:AAF-FOftfttv5MmM6VrIRDPOfSS75Bf7NqI'
+    }
+}
 
 # Логирование
 LOGGING = log_settings

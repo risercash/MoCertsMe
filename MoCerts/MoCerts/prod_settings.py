@@ -1,7 +1,8 @@
 import os
 from pathlib import Path
 from secret.config import *
-from secret.secret_develop import *
+from os import environ
+
 HOST = '127.0.0.1'
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,11 +23,15 @@ ALLOWED_HOSTS = ['mocerts.com', 'localhost', '127.0.0.1', '*']
 # Настройки для базы данных 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': environ.get('POSTGRES_ENGINE', 'django.db.backends.sqlite3'),
+        'NAME': environ.get('POSTGRES_DB', os.path.join(BASE_DIR, 'db.sqlite3')),
+        'USER': environ.get('POSTGRES_USER', 'user'),
+        'PASSWORD': environ.get('POSTGRES_PASSWORD', 'password'),
+        'HOST': environ.get('POSTGRES_HOST', 'localhost'),
+        'PORT': environ.get('POSTGRES_PORT', '5432'),
     }
 }
-
+SOCIAL_AUTH_TELEGRAM_BOT_TOKEN = environ.get('SOCIAL_AUTH_TELEGRAM_BOT_TOKEN')
 
 #STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]

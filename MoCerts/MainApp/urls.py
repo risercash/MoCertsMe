@@ -1,6 +1,6 @@
+from allauth.account.views import login, logout
 from django.urls import path
-from .views import Cashriser, MainView, UserProfile, ManualView, SelectCertificate, create_certificate, MyCertificates,\
-     CertificateDetail, PostDetail, UserBalance, ErrorView, accept, pay_certificate, generate
+from .views import *
 
 
 urlpatterns = [
@@ -18,5 +18,8 @@ urlpatterns = [
     path('create_certificate/<int:nominal>/', create_certificate, name='create_certificate'),
     path('pay_certificate/<int:pk>', pay_certificate, name='pay_certificate'),
     path('cashriser/', Cashriser.as_view(), name='cashriser'),
-    path('generate/<int:pk>', generate, name='generate')# Эту я делал под кнопку GENERATE на странице cashriser
+    path('generate/<int:pk>', generate, name='generate'),# Эту я делал под кнопку GENERATE на странице cashriser
+
+    path('login/', login, name='login'),
+    path('logout/', logout, name='logout'),
 ]
