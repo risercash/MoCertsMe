@@ -16,9 +16,9 @@ except FileNotFoundError:
     print(Style.RESET_ALL)
     SECRET_KEY = 'sefesfsefsefsfesff' """
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['mocerts.com', 'localhost', '127.0.0.1', '*']
+ALLOWED_HOSTS = ['*']
 
 # Настройки для базы данных 
 DATABASES = {
