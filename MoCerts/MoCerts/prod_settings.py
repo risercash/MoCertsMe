@@ -31,6 +31,12 @@ DATABASES = {
         'PORT': environ.get('POSTGRES_PORT', '5432'),
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 SOCIAL_AUTH_TELEGRAM_BOT_TOKEN = environ.get('SOCIAL_AUTH_TELEGRAM_BOT_TOKEN')
 
 #STATIC_ROOT = os.path.join(BASE_DIR, 'static')
