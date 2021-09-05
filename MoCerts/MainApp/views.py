@@ -1,4 +1,6 @@
 import logging
+import os
+
 import requests
 from datetime import datetime
 from allauth.socialaccount.models import SocialAccount
