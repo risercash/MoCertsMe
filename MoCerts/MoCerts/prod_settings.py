@@ -16,7 +16,7 @@ except FileNotFoundError:
     print(Style.RESET_ALL)
     SECRET_KEY = 'sefesfsefsefsfesff' """
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -40,5 +40,5 @@ DATABASES = {
 SOCIAL_AUTH_TELEGRAM_BOT_TOKEN = environ.get('SOCIAL_AUTH_TELEGRAM_BOT_TOKEN')
 
 #STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 STATIC_URL = '/static/'
