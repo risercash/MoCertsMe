@@ -269,8 +269,7 @@ def create_certificate(request, nominal):
     ''' ==== Создать сертификат ===== '''
     if request.method == 'GET':
         user = request.user
-        # Certificate.objects.filter(owner=user, nominal=nominal)
-        if Certificate.objects.filter(owner=user, nominal=nominal, is_accept=True, is_paid=False):
+        if Certificate.objects.filter(owner=user, nominal=nominal, is_accept=True, is_paid=False).exists():
             return HttpResponseRedirect(reverse('certificate',
                                         kwargs={'number': Certificate.objects.get(owner=user, nominal=nominal, is_paid=False)}))
 

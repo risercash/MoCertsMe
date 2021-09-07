@@ -19,7 +19,7 @@ def generate_certificate(nominal, number, user1, user2, user3):
     draw_text.text((24, 180), first_user, font=font)
     draw_text.text((41, 214), second_user, font=font)
     draw_text.text((62, 248), third_user, font=font)
-    font_number = ImageFont.truetype(font_path_number, size=18)
+    font_number = ImageFont.truetype(font_path, size=18)
     draw_text.text((260, 367), number_text, font=font_number, fill='black', stroke_width=1)
     file_name_result = f'{number}.png'
     file_name_result_path = os.path.join(settings.MEDIA_DIR, file_name_result)
