@@ -55,11 +55,23 @@
 <section class="third-section" style="height: auto;!important;">
     <div class="certs-wrapper">
       <p class = "section__title"><span>{% trans 'Скопируйте ссылку для отправки или поделитесь в соц сетях' %}</span></p><br>
-      <p><strong>https://{{ certificate.url }}&nbsp;&nbsp;</strong><strong title="СКОПИРОВАТЬ ССЫЛКУ">📝</strong></p><br>
+
+      <p class="text1" id="text1"><strong>https://{{ certificate.url }}&nbsp;&nbsp;</strong>
+            <button title="СКОПИРОВАТЬ ССЫЛКУ" onclick="copytext('#text1')">📝 СКОПИРОВАТЬ ССЫЛКУ</button></p><br>
+            <script>
+                  function copytext(el) {
+    var $tmp = $("text1");
+    $("body").append($tmp);
+    $tmp.val($(el).text()).select();
+    document.execCommand("copy");
+    $tmp.remove();
+} 
+            </script>
+
 <div class="ya-share2" data-curtain data-shape="round"
     data-services="vkontakte,facebook,odnoklassniki,telegram,twitter,viber,whatsapp,moimir,linkedin">
-</div>
-    <div class="certificates">
+</div><br>
+    <div class="cert-one">
           <img src="{{ certificate.certificate_image.url }}" alt="">
     </div>
       </div>
