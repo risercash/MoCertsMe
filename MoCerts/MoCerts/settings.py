@@ -2,6 +2,7 @@ import os
 from MoCerts.log_settings import log_settings
 from secret.config import *
 from .prod_settings import *
+from django.urls import reverse_lazy
 
 
 MONEY_ADMIN = {'username':'money', 'first_name':'MONEY_ADMIN', 'last_name':'money',
@@ -167,7 +168,7 @@ CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 
-
+LOGIN_REDIRECT_URL = reverse_lazy('profile')
 
 # Логирование
 LOGGING = log_settings
