@@ -9,7 +9,7 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('', include('MainApp.urls')),
-    # path('auth/', include('social_django.urls', namespace='social')),
+    path('auth/', include('social_django.urls', namespace='social')),
 ]
 
 if settings.DEBUG:
