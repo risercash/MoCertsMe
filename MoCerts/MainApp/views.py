@@ -139,17 +139,19 @@ class MyCertificates(LoginRequiredMixin, ListView):
     template_name = 'MainApp/my_certificates.html'
 
     def get_queryset(self):
-        '''отсортировать queryset по номиналам в списке'''
+        ''' ===== отсортировать queryset по номиналам в списке 
+        а надо по 5шт отсортировать ===== '''
         certificates = Certificate.objects.filter(
             made_by=self.request.user,)
-        nominals = [1, 5, 10, 20, 50, 100, 200, 500, ]
         queryset = []
-        for i in nominals:
-            queryset.append([])
-            for cert in certificates:
-                if cert.nominal == i:
-                    queryset[nominals.index(i)].append(cert)
-        queryset = [x for x in queryset if x]
+        one_group = []
+        for ind, cert in enumerate(certificates):
+            if ind%5 == 0 and ind !=0:
+                queryset.append(one_group)
+                one_group = []
+            one_group.append(cert)
+        queryset.append(one_group)
+
         return queryset
 
 
