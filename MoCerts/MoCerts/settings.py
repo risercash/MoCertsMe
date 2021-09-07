@@ -20,8 +20,6 @@ INSTALLED_APPS = [
     
     'MainApp',
 
-    'django_telegram_login',
-
     'easy_thumbnails',
     'modeltranslation',
     'embed_video',
@@ -33,9 +31,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.facebook',
-    'allauth.socialaccount.providers.instagram',
-    'allauth.socialaccount.providers.telegram',
-
+    # 'allauth.socialaccount.providers.instagram',
 
 
 ]
@@ -106,29 +102,16 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-#static
-
-STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, "static/")
-
-STATICFILES_DIRS = [
-  os.path.join(BASE_DIR, 'static'),
-]
-STATIC_DIRS = [os.path.join(BASE_DIR, "static")]
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-
-MEDIA_URL = '/media/'
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-#STATIC_URL = '/static/'
+STATIC_URL = '/static/'
 
-#MEDIA_URL = '/media/'
-#MEDIA_DIR = os.path.join(BASE_DIR, 'media/')
-#MEDIA_ROOT = MEDIA_DIR
+MEDIA_URL = '/media/'
+MEDIA_DIR = os.path.join(BASE_DIR, 'media/')
+MEDIA_ROOT = MEDIA_DIR
 
 
 # Default primary key field type
@@ -151,8 +134,6 @@ AUTHENTICATION_BACKENDS = [
     # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
-
-SOCIAL_AUTH_TELEGRAM_BOT_TOKEN = '1978440363:AAF-FOftfttv5MmM6VrIRDPOfSS75Bf7NqI'
 
 SITE_ID = 1
 
@@ -187,11 +168,6 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 
 
-SOCIALACCOUNT_PROVIDERS = {
-    'telegram': {
-        'TOKEN': '1978440363:AAF-FOftfttv5MmM6VrIRDPOfSS75Bf7NqI'
-    }
-}
 
 # Логирование
 LOGGING = log_settings
