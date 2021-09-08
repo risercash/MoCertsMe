@@ -6,10 +6,8 @@ from django.urls import reverse_lazy
 
 SOCIAL_AUTH_TELEGRAM_BOT_TOKEN = '1955074707:AAG_Mjv7wERAu5l8Ye17nL2WL5SXgIMNygc'
 
-MONEY_ADMIN = {'username':'money', 'first_name':'MONEY_ADMIN', 'last_name':'money',
-                'email':'mocerts.com@gmail.com', 'password':'Ya552026'}
-
-
+MONEY_ADMIN = {'username': 'money', 'first_name': 'MONEY_ADMIN', 'last_name': 'money',
+               'email': 'mocerts.com@gmail.com', 'password': 'Ya552026'}
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -19,7 +17,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.sites',
     'django.contrib.staticfiles',
-    
+
     'MainApp',
 
     'easy_thumbnails',
@@ -33,9 +31,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.facebook',
-
+    'social_django',
     # 'allauth.socialaccount.providers.instagram',
-
 
 ]
 
@@ -55,8 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'social_django.middleware.SocialAuthExceptionMiddleware',
-    #'middleware.filter_ip_middleware.FilterIPMiddleware'
+    # 'middleware.filter_ip_middleware.FilterIPMiddleware'
 ]
 
 ROOT_URLCONF = 'MoCerts.urls'
@@ -64,7 +60,7 @@ ROOT_URLCONF = 'MoCerts.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'Templates', BASE_DIR / 'Templates' / 'allauth',],
+        'DIRS': [BASE_DIR / 'Templates', BASE_DIR / 'Templates' / 'allauth', ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -72,7 +68,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -102,7 +99,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -116,7 +112,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
@@ -125,7 +120,6 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_DIR = os.path.join(BASE_DIR, 'media/')
 MEDIA_ROOT = MEDIA_DIR
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -151,7 +145,6 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 SITE_ID = 1
-
 
 AUTH_USER_MODEL = 'MainApp.CustomUser'
 ACCOUNT_ADAPTER = 'MainApp.adapter.MyAccountAdapter'
@@ -182,7 +175,7 @@ CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 
-
+LOGIN_REDIRECT_URL = reverse_lazy('main_page')
 
 # Логирование
 LOGGING = log_settings
@@ -191,52 +184,52 @@ LOGGING = log_settings
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 CKEDITOR_UPLOAD_PATH = "uploads/"
 # CKEDITOR_IMAGE_MAX_WIDTH = 200
-CKEDITOR_CONFIGS={
-  'default': {
-    'width': '100%',
-    'height': 400,
-    'toolbar': 'Custom',
-    'extraPlugins': ','.join([
-      'codesnippet',
-      'youtube'
-    ]),
-    'toolbar_Custom': [
-      [
-        'Bold',
-        'Italic',
-        'Underline'
-      ],
-      [
-        'Font',
-        'FontSize',
-        'TextColor',
-        'BGColor'
-      ],
-      [
-        'NumberedList',
-        'BulletedList',
-        '-',
-        'Outdent',
-        'Indent',
-        '-',
-        'JustifyLeft',
-        'JustifyCenter',
-        'JustifyRight',
-        'JustifyBlock'
-      ],
-      [
-        'Link',
-        'Unlink'
-      ],
-      [
-        'Image',
-        'Youtube',
-        'RemoveFormat',
-        'CodeSnippet',
-        'Source',
-      ]
-    ],
-    
-  },
-  
+CKEDITOR_CONFIGS = {
+    'default': {
+        'width': '100%',
+        'height': 400,
+        'toolbar': 'Custom',
+        'extraPlugins': ','.join([
+            'codesnippet',
+            'youtube'
+        ]),
+        'toolbar_Custom': [
+            [
+                'Bold',
+                'Italic',
+                'Underline'
+            ],
+            [
+                'Font',
+                'FontSize',
+                'TextColor',
+                'BGColor'
+            ],
+            [
+                'NumberedList',
+                'BulletedList',
+                '-',
+                'Outdent',
+                'Indent',
+                '-',
+                'JustifyLeft',
+                'JustifyCenter',
+                'JustifyRight',
+                'JustifyBlock'
+            ],
+            [
+                'Link',
+                'Unlink'
+            ],
+            [
+                'Image',
+                'Youtube',
+                'RemoveFormat',
+                'CodeSnippet',
+                'Source',
+            ]
+        ],
+
+    },
+
 }
