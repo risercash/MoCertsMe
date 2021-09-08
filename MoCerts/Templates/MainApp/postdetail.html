@@ -15,15 +15,8 @@
 {% block content %}
 <div class="post_main">
     <div class="post_block">
-        <h2>{{ post.headline }}</h2>
+        <h1>{{ post.headline }}</h1>
     </div>
-    <h3>{{ post.subtitle}}</h3>
-    <h2>{{post.photo}}</h2>
-    <div class="video-block">
-       
-      </div>
-    <img src="{{ post.photo }}" alt="" style="position:absolute; bottom: 12px; height: 30%">
-
     <div>{{ post.content|safe }}</div>
 </div>
 <div class="video-block" style="visibility: hidden;position: absolute;top: -9999px;!important;">

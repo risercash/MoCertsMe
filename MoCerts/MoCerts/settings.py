@@ -4,6 +4,7 @@ from secret.config import *
 from .prod_settings import *
 from django.urls import reverse_lazy
 
+SOCIAL_AUTH_TELEGRAM_BOT_TOKEN = '1955074707:AAG_Mjv7wERAu5l8Ye17nL2WL5SXgIMNygc'
 
 MONEY_ADMIN = {'username':'money', 'first_name':'MONEY_ADMIN', 'last_name':'money',
                 'email':'mocerts.com@gmail.com', 'password':'Ya552026'}
@@ -32,10 +33,19 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.facebook',
+    'social_django',
     # 'allauth.socialaccount.providers.instagram',
 
 
 ]
+
+ROOT_URLCONF = 'django_telegram_auth_example.urls'
+
+WSGI_APPLICATION = 'django_telegram_auth_example.wsgi.application'
+
+AUTHENTICATION_BACKENDS = (
+
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -61,6 +71,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -129,8 +141,10 @@ THUMBNAIL_ALIASES = {
 }
 
 AUTHENTICATION_BACKENDS = [
-    # Needed to login by username in Django admin, regardless of `allauth`
+    'social_core.backends.telegram.TelegramAuth',
     'django.contrib.auth.backends.ModelBackend',
+    # Needed to login by username in Django admin, regardless of `allauth`
+    # 'django.contrib.auth.backends.ModelBackend',
 
     # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
@@ -168,7 +182,7 @@ CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 
-LOGIN_REDIRECT_URL = reverse_lazy('profile')
+LOGIN_REDIRECT_URL = reverse_lazy('create_certificate')
 
 # Логирование
 LOGGING = log_settings
