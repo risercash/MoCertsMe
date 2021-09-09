@@ -142,11 +142,11 @@ class MyCertificates(LoginRequiredMixin, ListView):
         ''' ===== отсортировать queryset по номиналам в списке 
         а надо по 5шт отсортировать ===== '''
         certificates = Certificate.objects.filter(
-            made_by=self.request.user,)
+            made_by=self.request.user, )
         queryset = []
         one_group = []
         for ind, cert in enumerate(certificates):
-            if ind%5 == 0 and ind !=0:
+            if ind % 5 == 0 and ind != 0:
                 queryset.append(one_group)
                 one_group = []
             one_group.append(cert)
@@ -208,12 +208,12 @@ class UserBalance(LoginRequiredMixin, FormView):
         # Внешний цикл, количество проходов N-1
         for i in range(length):
             # Внутренний цикл, N-i-1 проходов
-            for j in range(0, length-i-1):
+            for j in range(0, length - i - 1):
                 # Меняем элементы местами
-                if array[j.time] > array[j.time+1]:
+                if array[j.time] > array[j.time + 1]:
                     temp = array[j]
-                    array[j.time] = array[j.time+1]
-                    array[j+1] = temp
+                    array[j.time] = array[j.time + 1]
+                    array[j + 1] = temp
         return array
 
     def get_context_data(self, **kwargs):
@@ -242,7 +242,7 @@ class UserBalance(LoginRequiredMixin, FormView):
                 qiwi_wallet = request.GET.get('qiwi_wallet')
                 bill_id = datetime.today().strftime("%d%m%y%H%M%f")
                 transaction = Withdrawal.objects.create(bill_id=bill_id, user=user,
-                                                        amount=withdrawal_amount, qiwi_wallet=qiwi_wallet, status=1,)
+                                                        amount=withdrawal_amount, qiwi_wallet=qiwi_wallet, status=1, )
                 link = transaction.get_absolute_url()
                 user.balance = user.balance - int(withdrawal_amount)
                 user.save()
@@ -260,9 +260,12 @@ class UserBalance(LoginRequiredMixin, FormView):
 class ErrorView(TemplateView):
     '''сервис не доступен'''
     template_name = 'MainApp/service_error.html'
+
+
 #
 def create_user():
     pass
+
 
 @login_required
 def create_certificate(request, nominal):
@@ -271,7 +274,8 @@ def create_certificate(request, nominal):
         user = request.user
         if Certificate.objects.filter(owner=user, nominal=nominal, is_accept=True, is_paid=False).exists():
             return HttpResponseRedirect(reverse('certificate',
-                                        kwargs={'number': Certificate.objects.get(owner=user, nominal=nominal, is_paid=False)}))
+                                                kwargs={'number': Certificate.objects.get(owner=user, nominal=nominal,
+                                                                                          is_paid=False)}))
 
         number = datetime.today().strftime("%d%m%y%H%M%f")
         url = '{}/certificate/{}'.format(settings.HOST, number)
@@ -283,19 +287,19 @@ def create_certificate(request, nominal):
         user1 = CustomUser.objects.create(username=user1_fullname[0] + user2_fullname[1], first_name=user1_fullname[0],
                                           last_name=user1_fullname[1],
                                           email=f'fakeuser1{number}@gmail.com',
-                                          password=user2_fullname, real_account=False,)
+                                          password=user2_fullname, real_account=False, )
         user2 = CustomUser.objects.create(username=user2_fullname[0] + user3_fullname[1], first_name=user2_fullname[0],
                                           last_name=user2_fullname[1],
                                           email=f'fakeuser2{number}@gmail.com',
-                                          password=user3_fullname, real_account=False,)
+                                          password=user3_fullname, real_account=False, )
         user3 = CustomUser.objects.create(username=user1_fullname[0] + user3_fullname[1], first_name=user3_fullname[0],
                                           last_name=user3_fullname[1],
                                           email=f'fakeuser3{number}@gmail.com',
-                                          password=user1_fullname, real_account=False,)
+                                          password=user1_fullname, real_account=False, )
         image_certificate = generate_certificate(
             nominal, number, user1, user2, user3)
         certificate = Certificate(number=number, url=url, nominal=nominal, user1=user1, user2=user2, user3=user3,
-                                  certificate_image=image_certificate, owner=request.user,)
+                                  certificate_image=image_certificate, owner=request.user, )
         certificate.save()
         user.certificate = certificate
         user.save()
@@ -326,9 +330,11 @@ def pay_certificate(request, pk):
                     money_admin = CustomUser.objects.get(
                         email=settings.MONEY_ADMIN['email'])
                 else:
-                    money_admin = CustomUser.objects.create(username=settings.MONEY_ADMIN['username'], first_name=settings.MONEY_ADMIN['first_name'],
-                                                            last_name=settings.MONEY_ADMIN['last_name'], email=settings.MONEY_ADMIN['email'],
-                                                            password=settings.MONEY_ADMIN['password'],)
+                    money_admin = CustomUser.objects.create(username=settings.MONEY_ADMIN['username'],
+                                                            first_name=settings.MONEY_ADMIN['first_name'],
+                                                            last_name=settings.MONEY_ADMIN['last_name'],
+                                                            email=settings.MONEY_ADMIN['email'],
+                                                            password=settings.MONEY_ADMIN['password'], )
                 money_admin.balance += certificate.nominal
                 money_admin.save()
 
@@ -341,7 +347,7 @@ def pay_certificate(request, pk):
 
                 new_certificate = Certificate(number=number, url=url, nominal=certificate.nominal, user1=user1,
                                               user2=user2, user3=user3, certificate_image=image_certificate,
-                                              made_by=request.user, is_accept=False, owner=request.user,)
+                                              made_by=request.user, is_accept=False, owner=request.user, )
                 new_certificate.save()
 
             return HttpResponseRedirect(reverse('my_certificates'))
@@ -369,3 +375,9 @@ def generate(request, pk):
     users = UserProfile
     return HttpResponseRedirect(reverse('certificate',
                                         kwargs={'number': users}))
+
+
+def terms(request):
+    """ ===== Генератор ===== """
+    users = UserProfile
+    return HttpResponseRedirect('terms')
