@@ -17,23 +17,89 @@
 {% block content %}
 
 
-<section class="third-section" style="height: auto;!important;"><!-- background-image: url('{% static 'img/fon.svg' %}'); visibility: visible; -->
+<section class="third-section" style="height: auto;!important;">
+    <!-- background-image: url('{% static 'img/fon.svg' %}'); visibility: visible; -->
     <div class="funds">
-      <p class = "section__title__withdrow">
+        <p class="section__title__withdrow">
 
-  <span>{% trans 'Пополнить счет' %}</span></p><br>
+            <span>{% trans 'Пополнить счет' %}</span>
+        </p><br>
 
-      <div class="deposit__text" style="padding: 0px; color: #FFFFFF">Сумма пополнения &emsp;&emsp; Валюта платежа</div>
-      
-            <form class="withdrawal_form" action="" name="deposit_form" method="POST">
-                <div class="deposit_form" style="border-radius:10px">{% comment %}  style="box-shadow:0 0 15px 4px rgba(0,0,0,0.06);" {% endcomment %}
+        <div class="deposit__text" style="padding: 0px; color: #FFFFFF">Сумма пополнения &emsp;&emsp; Валюта платежа
+        </div>
+
+        <form class="withdrawal_form" action="" name="deposit_form" method="POST">
+            <div class="deposit_form" style="border-radius:10px">{% comment %} style="box-shadow:0 0 15px 4px
+                rgba(0,0,0,0.06);" {% endcomment %}
                 {% csrf_token %}
-        {{ form.amount }} {{ form.valute}}<br><br>
-                </div>
-        <button type="submit" class="deposit_button">Оплатить QIWI</button>
-        <button type="submit" class="deposit_button">Оплатить Картой</button>
-        <button type="submit" class="deposit_button">Оплатить PayPal</button>
-            </form>
+                {{ form.amount }} {{ form.valute}}<br><br>
+            </div>
+            <button type="submit" class="deposit_button">Оплатить QIWI</button>
+            <button type="submit" class="deposit_button">Оплатить Картой</button>
+            <button type="submit" class="deposit_button">Оплатить Payeer</button>
+            <br>
+
+            <div class="css-modal-details">Пополняя баланс, вы соглашаетесь с нашими 👉
+
+                <details>
+                    <summary>УСЛОВИЯМИ</summary>
+                    <div class="cmc">
+                        <div class="cmt">
+                            <h2>Lorem ipsum dolor sit amet consectetur uam perate distinctio nemo?</h2><br>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum debitis porro dicta
+                                animi dolorem beatae odio maiores blanditiis laborum tenetur quam, aspernatur accusamus
+                                minus eum neque nihil quas? Quasi, labore.</p>
+                            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum debitis porro dicta
+                                animi dolorem beatae odio maiores blanditiis laborum tenetur quam, aspernatur accusamus
+                                minus eum neque nihil quas? Quasi, labore.</p>
+                            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum debitis porro dicta
+                                animi dolorem beatae odio maiores blanditiis laborum tenetur quam, aspernatur accusamus
+                                minus eum neque nihil quas? Quasi, labore.</p>
+                            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum debitis porro dicta
+                                animi dolorem beatae odio maiores blanditiis laborum tenetur quam, aspernatur accusamus
+                                minus eum neque nihil quas? Quasi, labore.</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum debitis porro dicta
+                                animi dolorem beatae odio maiores blanditiis laborum tenetur quam, aspernatur accusamus
+                                minus eum neque nihil quas? Quasi, labore.</p>
+                            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum debitis porro dicta
+                                animi dolorem beatae odio maiores blanditiis laborum tenetur quam, aspernatur accusamus
+                                minus eum neque nihil quas? Quasi, labore.</p>
+                            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum debitis porro dicta
+                                animi dolorem beatae odio maiores blanditiis laborum tenetur quam, aspernatur accusamus
+                                minus eum neque nihil quas? Quasi, labore.</p>
+                            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum debitis porro dicta
+                                animi dolorem beatae odio maiores blanditiis laborum tenetur quam, aspernatur accusamus
+                                minus eum neque nihil quas? Quasi, labore.</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum debitis porro dicta
+                                animi dolorem beatae odio maiores blanditiis laborum tenetur quam, aspernatur accusamus
+                                minus eum neque nihil quas? Quasi, labore.</p>
+                            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum debitis porro dicta
+                                animi dolorem beatae odio maiores blanditiis laborum tenetur quam, aspernatur accusamus
+                                minus eum neque nihil quas? Quasi, labore.</p>
+                            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum debitis porro dicta
+                                animi dolorem beatae odio maiores blanditiis laborum tenetur quam, aspernatur accusamus
+                                minus eum neque nihil quas? Quasi, labore.</p>
+                            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum debitis porro dicta
+                                animi dolorem beatae odio maiores blanditiis laborum tenetur quam, aspernatur accusamus
+                                minus eum neque nihil quas? Quasi, labore.</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum debitis porro dicta
+                                animi dolorem beatae odio maiores blanditiis laborum tenetur quam, aspernatur accusamus
+                                minus eum neque nihil quas? Quasi, labore.</p>
+                            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum debitis porro dicta
+                                animi dolorem beatae odio maiores blanditiis laborum tenetur quam, aspernatur accusamus
+                                minus eum neque nihil quas? Quasi, labore.</p>
+                            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum debitis porro dicta
+                                animi dolorem beatae odio maiores blanditiis laborum tenetur quam, aspernatur accusamus
+                                minus eum neque nihil quas? Quasi, labore.</p>
+                            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum debitis porro dicta
+                                animi dolorem beatae odio maiores blanditiis laborum tenetur quam, aspernatur accusamus
+                                minus eum neque nihil quas? Quasi, labore.</p>
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+        </form>
         {% if form.errors %}
         <ul class="form_errors">
             {% for field in form %}
@@ -52,20 +118,21 @@
     <br><br>
     <br><br>
     <div class="funds">
-              <p class = "section__title__withdrow"><span>{% trans 'Вывод средств' %}</span></p><br>
+        <p class="section__title__withdrow"><span>{% trans 'Вывод средств' %}</span></p><br>
 
 
-            <form class="withdrawal_form" action="{% url 'userbalance' %}" name="deposit_form" method="GET">
-                <div class="deposit_form">
+        <form class="withdrawal_form" action="{% url 'userbalance' %}" name="deposit_form" method="GET">
+            <div class="deposit_form">
                 {% csrf_token %}
-                <div class="deposit__text" style="padding: 0px; color: #FFFFFF">Сумма вывода &emsp;&emsp;&emsp;Номер кошелька QIWI</div>
-                   
-        {{ WithdrawalForm.withdrawal_amount }}
-                   
-        {{ WithdrawalForm.qiwi_wallet }}
-                </div><br>
-        <button type="submit" class="deposit_button">Оставить заявку</button>
-            </form>
+                <div class="deposit__text" style="padding: 0px; color: #FFFFFF">Сумма вывода &emsp;&emsp;&emsp;Номер
+                    кошелька QIWI</div>
+
+                {{ WithdrawalForm.withdrawal_amount }}
+
+                {{ WithdrawalForm.qiwi_wallet }}
+            </div><br>
+            <button type="submit" class="deposit_button">Оставить заявку</button>
+        </form>
         {% if form.errors %}
         <ul class="form_errors">
             {% for field in form %}
@@ -84,30 +151,31 @@
     <br><br>
     <br><br>
     <div class="certs-wrapper">
-      <p class = "section__title__withdrow"><span>{% trans 'История' %}</span></p>
-            <table class="paymen_history">
-                <tr class="history_title">
-                    <td>Дата</td>
-                    <td>Тип транзакции</td>
-                    <td class="payment_id">id номер</td>
-                    <td>Сумма</td>
-                    <td>Статус</td>
-                </tr><br>
-                {% for transaction in  transactions %}
-                <tr class="history_row">
-                    <td>{{transaction.time}}</td>
-                    <td>{{transaction.type}}</td>
-                    <td class="payment_id">{{transaction.bill_id}}</td>
-                    <td>{{transaction.amount}}</td>
-                    <td>{{transaction.get_status_display}}</td>
-                </tr>
-                {% endfor %}
-            </table><br>
+        <p class="section__title__withdrow"><span>{% trans 'История' %}</span></p>
+        <table class="paymen_history">
+            <tr class="history_title">
+                <td>Дата</td>
+                <td>Тип транзакции</td>
+                <td class="payment_id">id номер</td>
+                <td>Сумма</td>
+                <td>Статус</td>
+            </tr><br>
+            {% for transaction in transactions %}
+            <tr class="history_row">
+                <td>{{transaction.time}}</td>
+                <td>{{transaction.type}}</td>
+                <td class="payment_id">{{transaction.bill_id}}</td>
+                <td>{{transaction.amount}}</td>
+                <td>{{transaction.get_status_display}}</td>
+            </tr>
+            {% endfor %}
+        </table><br>
     </div>
 </section>
 <div class="video-block" style="visibility: hidden">
     <video>
-          <source src="https://video.wixstatic.com/video/1694f8_029fe95547cf466b9e8433baa0fa7eda/1080p/mp4/file.mp4" type="video/mp4">
+        <source src="https://video.wixstatic.com/video/1694f8_029fe95547cf466b9e8433baa0fa7eda/1080p/mp4/file.mp4"
+            type="video/mp4">
     </video>
     <i class="material-icons play-btn">play_circle_filled</i>
 </div>
