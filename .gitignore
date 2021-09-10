@@ -11,6 +11,9 @@ local_settings.py
 test.py
 test2.py
 
+EMAIL_HOST_PASSWORD.txt
+EMAIL_HOST_USER.txt
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

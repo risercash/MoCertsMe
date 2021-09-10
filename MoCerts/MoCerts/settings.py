@@ -1,8 +1,16 @@
 import os
+import ast
 from MoCerts.log_settings import log_settings
-from secret.config import *
-from .prod_settings import *
+from colorama import Fore, Style
+# from secret.config import *
+# from .prod_settings import *
 from django.urls import reverse_lazy
+
+try:
+    from .local_settings import *
+except ImportError:
+    from .prod_settings import *
+
 
 SOCIAL_AUTH_TELEGRAM_BOT_TOKEN = '1955074707:AAG_Mjv7wERAu5l8Ye17nL2WL5SXgIMNygc'
 
@@ -165,16 +173,27 @@ ACCOUNT_FORMS = {'signup': 'MainApp.forms.MySignupForm', 'login': 'MainApp.forms
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
 
-
-# адрес сервера почты для всех один и тот же
-# порт smtp сервера тоже одинаковый
-
-# пароль от почты
-EMAIL_USE_TLS = True
-# Написать email администратора, для отправки сообщении при ошибках
-SERVER_EMAIL = EMAIL_HOST_USER
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # Используется для отправки email после регистрации
-EMAIL_SUBJECT_PREFIX = '[MoCerts] '
+try:
+    with open(os.path.join(BASE_DIR, 'secret/EMAIL_HOST.txt'), 'r') as token:
+        smtp = token.read()
+    EMAIL_HOST = smtp  # адрес сервера почты для всех один и тот же
+    EMAIL_PORT = 587  # порт smtp сервера тоже одинаковый
+    with open(os.path.join(BASE_DIR, 'secret/EMAIL_HOST_USER.txt'), 'r') as token:
+        email = token.read()
+    EMAIL_HOST_USER = email  # ваше имя пользователя
+    with open(os.path.join(BASE_DIR, 'secret/EMAIL_HOST_PASSWORD.txt'), 'r') as token:
+        password = token.read()
+    EMAIL_HOST_PASSWORD = password  # пароль от почты
+    EMAIL_USE_TLS = True
+    with open(os.path.join(BASE_DIR, 'secret/ADMINS.txt'), 'r') as token:
+        admins = token.read()
+    ADMINS = [ast.literal_eval(admins),] # Написать email администратора, для отправки сообщении при ошибках
+    SERVER_EMAIL = email
+    DEFAULT_FROM_EMAIL = email  # Используется для отправки email после регистрации
+    EMAIL_SUBJECT_PREFIX = '[Mosert] '
+except FileNotFoundError:
+    print(Fore.RED + 'Не найдены файлы настроек почтового сервера')
+    print(Style.RESET_ALL)
 
 CELERY_BROKER_URL = 'redis://localhost:6379'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379'
