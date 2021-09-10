@@ -377,10 +377,6 @@ def generate(request):
     if request.method == "POST":
         count_certificates = request.POST.get('count_certificate')
         number = int(count_certificates)
-        # first_name = ''
-        # last_name = ''
-        # user_email = ''
-
         user = request.POST.get('choose_user')
         nominal = request.POST.get('nominal')
         if number > 0 and number != '':
@@ -415,6 +411,7 @@ def generate(request):
                     time.sleep(0.1)
 
                 else:
+                    print('fake user')
                     first_name, last_name, user_email = user.split()[0], user.split()[1], user.split()[2]
                     this_user_fake = CustomUser.objects.get(first_name=first_name, last_name=last_name, email=user_email)
                     Certificate.objects.create(number=number_certificate, url=url, nominal=nominal,
@@ -429,7 +426,8 @@ def generate(request):
             'cert': cert,
             'number': number,
         }
-        return render(request, 'example.html', context)
+        return redirect('main_page')
+
     return HttpResponse("STOP")
     # return HttpResponseRedirect(reverse('certificate',
     #                                     kwargs={'number': users}))
