@@ -141,5 +141,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-/MoCerts/secret/secret_develop.py
 /MoCerts/MainApp/migrations/
+/MoCerts/db.sqlite3
+/MoCerts/media
+/MoCerts/media/
