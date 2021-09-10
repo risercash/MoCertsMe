@@ -9,29 +9,41 @@
 
 
 <body>
-  
+    <div>
+        <form style="margin-left:300px;" id="search_name_user" class="form-inline my-2 my-lg-0" action="{% url 'cashriser' %}" >
+          <input class=" show_form_filter_user form-control mr-sm-2" type="search" placeholder="Search user" aria-label="Search" name="search_user" >
+          <button id="search_user" form="search_name_user" class="show_form_filter_user btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>
+        </form>
+        <form id="form_generate_sertificate" action="{% url 'generate' %}" method="POST" style="padding-top: 2%;">
+            {% csrf_token %}
+            <div class="select_menux" style="padding-left: 300px;">
+                <input type="number" placeholder="Укажите кол-во" name="count_certificate" required>
+                <select name="nominal">
+                    <option selected value="1">1</option>
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                    <option value="200">200</option>
+                    <option value="500">500</option>
+                </select>
+                <label for="horns" style="color: black">Генерировать Себе?</label>
+                <input type="checkbox" class="custom-checkbox" id="horns" name="horns" value="yes">
+                <div>
+                    <select class="show_form_filter_user" name="choose_user" multiple aria-label="multiple select example" size="3" style="matgin-top: 100px; width: 400px;">
+                    {% for user in users %}
+                      <option>{{ user.first_name }} {{ user.last_name}} {{ user.email }}</option>
+                    {% endfor %}
+                    </select>
+                </div>
 
-</div>
-        <div class="select_menux" style="padding-left: 200 auto; padding-top:50px">
-            <input type="text" text="Сколько">
-            <select name="nominal">
-                <option selected value="1">1 </option>
-                <option value="5">5 </option>
-                <option value="10">10 </option>
-                <option value="20">20 </option>
-                <option value="50">50 </option>
-                <option value="100">100</option>
-                <option value="200">200</option>
-                <option value="500">500</option>
-            </select>
-            <label for="horns" style="color: black">Именные?</label>
-            <input type="checkbox" class="custom-checkbox" id="horns" name="horns" value="yes">
-            <a href="{% url 'generate' <int:pk> %}" class="button-block__button button" style="background-color: #3f85ce;color: #FFFFFF; margin-top 5px;" >
-            
-                <span class="button__text">GENERATE</span><span class="button__transfer"></span></a>      
-        </div >
+                <button form="form_generate_sertificate" class="button-block__button button__text button" type="submit">GENERATE</button>
+            </div >
+        </form>
 
-<!--  -->
+    </div>
+
 </body>
 
 </html>

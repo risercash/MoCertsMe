@@ -2,13 +2,16 @@ const slides = document.querySelectorAll('.image-slider__image')
 const videoPlayer = document.querySelector('.video-block video')
 const playBtn = document.querySelector('.play-btn')
 const houseIcon = document.querySelector('#home-icon');
-
 const sideBar = document.querySelector('.sidebar')
+
+
 
 const sideBarMini = sideBar.cloneNode(true)
 
 playBtn.addEventListener('click', playVideo)
 videoPlayer.addEventListener('ended', restartVideo)
+
+ // show form filter user for generate sertificate
 
 let i = 0
 startSlider();
@@ -129,3 +132,15 @@ function topFunction() {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
 }
+
+
+
+
+//const sideBarMini = sideBar.cloneNode(true)
+//
+//playBtn.addEventListener('click', playVideo)
+//videoPlayer.addEventListener('ended', restartVideo)
+//
+//  show form filter user for generate sertificate
+
+
