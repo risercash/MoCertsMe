@@ -10,6 +10,7 @@ favicon.ico:Zone.Identifier
 local_settings.py
 test.py
 test2.py
+begetVPS.txt
 
 EMAIL_HOST_PASSWORD.txt
 EMAIL_HOST_USER.txt
