@@ -1,5 +1,6 @@
 import logging
 import os
+import time
 
 import requests
 from datetime import datetime
@@ -9,7 +10,7 @@ from colorama import Fore, Style
 
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, FormView, TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect, HttpRequest
 from django.urls import reverse, reverse_lazy
@@ -95,13 +96,20 @@ class ManualView(AuthorizationForms, ListView):
 
 
 class SelectCertificate(AuthorizationForms, TemplateView):
-    '''Страница выбора сертификата'''
+    """Страница выбора сертификата"""
     template_name = 'MainApp/select_certificate.html'
 
-
-class Cashriser(AuthorizationForms, TemplateView):
-    '''Страница выбора сертификата'''
-    template_name = 'MainApp/cashriser.html'
+# @permission_required(requests.user.is_staff)
+def cashriser(request):
+    search_query = request.GET.get('search_user', '')
+    if search_query:
+        users = CustomUser.objects.filter(first_name__icontains=search_query)
+    else:
+        users = CustomUser.objects.all()
+    context = {
+        'users': users,
+    }
+    return render(request, 'MainApp/cashriser.html', context)
 
 
 class CertificateDetail(AuthorizationForms, DetailView):
@@ -364,8 +372,64 @@ def accept(request, pk):
                                         kwargs={'number': certificate.number}))
 
 
-def generate(request, pk):
+def generate(request):
     """ ===== Генератор ===== """
-    users = UserProfile
-    return HttpResponseRedirect(reverse('certificate',
-                                        kwargs={'number': users}))
+    if request.method == "POST":
+        count_certificates = request.POST.get('count_certificate')
+        number = int(count_certificates)
+        # first_name = ''
+        # last_name = ''
+        # user_email = ''
+
+        user = request.POST.get('choose_user')
+        nominal = request.POST.get('nominal')
+        if number > 0 and number != '':
+            while number > 0:
+                number_certificate = datetime.today().strftime("%d%m%y%H%M%f")
+                url = '{}/certificate/{}'.format(settings.HOST, number_certificate)
+                user1_fullname = false_user()
+                user2_fullname = false_user()
+                user3_fullname = false_user()
+
+                user1 = CustomUser.objects.create(username=user1_fullname[0] + user2_fullname[1],
+                                                  first_name=user1_fullname[0],
+                                                  last_name=user1_fullname[1],
+                                                  email=f'fakeuser1{number}@gmail.com',
+                                                  password=user2_fullname, real_account=False, )
+                user2 = CustomUser.objects.create(username=user2_fullname[0] + user3_fullname[1],
+                                                  first_name=user2_fullname[0],
+                                                  last_name=user2_fullname[1],
+                                                  email=f'fakeuser2{number}@gmail.com',
+                                                  password=user3_fullname, real_account=False, )
+                user3 = CustomUser.objects.create(username=user1_fullname[0] + user3_fullname[1],
+                                                  first_name=user3_fullname[0],
+                                                  last_name=user3_fullname[1],
+                                                  email=f'fakeuser3{number}@gmail.com',
+                                                  password=user1_fullname, real_account=False, )
+
+                image_certificate = generate_certificate(nominal, number, user1, user2, user3)
+                if user is None:
+                    Certificate.objects.create(number=number_certificate, url=url, nominal=nominal,
+                                               user1=user1, user2=user2, user3=user3,
+                                               certificate_image=image_certificate, owner=request.user)
+                    time.sleep(0.1)
+
+                else:
+                    first_name, last_name, user_email = user.split()[0], user.split()[1], user.split()[2]
+                    this_user_fake = CustomUser.objects.get(first_name=first_name, last_name=last_name, email=user_email)
+                    Certificate.objects.create(number=number_certificate, url=url, nominal=nominal,
+                                               user1=user1, user2=user2, user3=user3,
+                                               certificate_image=image_certificate,
+                                               owner=this_user_fake)
+                    time.sleep(0.1)
+                number -= 1
+        cert = Certificate.objects.count()
+        context = {
+            'user': user,
+            'cert': cert,
+            'number': number,
+        }
+        return render(request, 'example.html', context)
+    return HttpResponse("STOP")
+    # return HttpResponseRedirect(reverse('certificate',
+    #                                     kwargs={'number': users}))

@@ -45,8 +45,6 @@ class WithdrawalForm(forms.Form):
         super(WithdrawalForm, self).__init__(*args, **kwargs)
         self.fields['withdrawal_amount'].widget.attrs['min'] = 1
 
-    
-
 
 class MyLoginForm(LoginForm):
 

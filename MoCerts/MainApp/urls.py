@@ -17,9 +17,8 @@ urlpatterns = [
     path('accept/<int:pk>', accept, name='accept'),
     path('create_certificate/<int:nominal>/', create_certificate, name='create_certificate'),
     path('pay_certificate/<int:pk>', pay_certificate, name='pay_certificate'),
-    path('cashriser/', Cashriser.as_view(), name='cashriser'),
-    path('generate/<int:pk>', generate, name='generate'),# Эту я делал под кнопку GENERATE на странице cashriser
+    path('cashriser/', cashriser, name='cashriser'),
+    # path('cashriser/', Cashriser.as_view(), name='cashriser'),cashriser
+    path('generate', generate, name='generate'),
 
-    path('login/', login, name='login'),
-    path('logout/', logout, name='logout'),
 ]

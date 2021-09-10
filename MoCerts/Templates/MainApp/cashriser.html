@@ -9,29 +9,41 @@
 
 
 <body>
-  
 
-</div>
-        <div class="select_menux" style="padding-left: 200 auto; padding-top:50px">
-            <input type="text" text="Сколько">
+    <form style="display: flex; justify-content: center;" class="form-inline my-2 my-lg-0" action="{% url 'cashriser' %}">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search user" aria-label="Search" name="search_user">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>
+    </form>
+    <form action="{% url 'generate' %}" method="POST">
+        {% csrf_token %}
+        <div class="select_menux" style="padding-left: 300px;">
+            <input type="number" placeholder="Укажите кол-во" name="count_certificate" required>
             <select name="nominal">
-                <option selected value="1">1 </option>
-                <option value="5">5 </option>
-                <option value="10">10 </option>
-                <option value="20">20 </option>
-                <option value="50">50 </option>
+                <option selected value="1">1</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
                 <option value="100">100</option>
                 <option value="200">200</option>
                 <option value="500">500</option>
             </select>
             <label for="horns" style="color: black">Именные?</label>
             <input type="checkbox" class="custom-checkbox" id="horns" name="horns" value="yes">
-            <a href="{% url 'generate' <int:pk> %}" class="button-block__button button" style="background-color: #3f85ce;color: #FFFFFF; margin-top 5px;" >
-            
-                <span class="button__text">GENERATE</span><span class="button__transfer"></span></a>      
+            <div>
+                <select name="choose_user" class="form-select form-select-lg mb-3" multiple aria-label="multiple select example" size="3" style="matgin-top: 100px; width: 400px;">
+                {% for user in users %}
+                  <option>{{ user.first_name }} {{ user.last_name}} {{ user.email }}</option>
+                {% endfor %}
+                </select>
+            </div>
+            <button class="button-block__button button__text button" type="submit">GENERATE</button>
+<!--            <a href="{% url 'generate'  %}" class="button-block__button button" style="background-color: #3f85ce;color: #FFFFFF; margin-top 5px;" >-->
+<!--                <span class="button__text">GENERATE</span><span class="button__transfer"></span>-->
+<!--            </a>-->
         </div >
+    </form>
 
-<!--  -->
 </body>
 
 </html>
