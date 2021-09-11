@@ -436,16 +436,3 @@ def generate(request):
         return redirect('main_page')
 
     return HttpResponse("STOP")
-    # return HttpResponseRedirect(reverse('certificate',
-    #                                     kwargs={'number': users}))
-
-    users = UserProfile
-    return HttpResponseRedirect(reverse('certificate',
-                                        kwargs={'number': users}))
-
-
-def terms(request):
-    """ ===== Генератор ===== """
-    users = UserProfile
-    return HttpResponseRedirect('terms')
-
