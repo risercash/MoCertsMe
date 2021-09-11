@@ -18,7 +18,7 @@ from django.shortcuts import redirect, render
 from django.conf import settings
 from pyqiwip2p import QiwiP2P
 
-from .names.names_generator import false_user
+from .names.names_generator import false_user, parse_name
 from .certificates.certificate_generator import generate_certificate
 from .forms import MyLoginForm, MySignupForm, UserForm, DepositForm, WithdrawalForm
 from .models import CustomUser, Certificate, ManualPosts, MainPagePost, QiwiSecretKey, Deposit, Withdrawal
@@ -99,13 +99,9 @@ class SelectCertificate(AuthorizationForms, TemplateView):
     """Страница выбора сертификата"""
     template_name = 'MainApp/select_certificate.html'
 
-# @permission_required(requests.user.is_staff)
+
 def cashriser(request):
-    search_query = request.GET.get('search_user', '')
-    if search_query:
-        users = CustomUser.objects.filter(first_name__icontains=search_query)
-    else:
-        users = CustomUser.objects.all()
+    users = CustomUser.objects.filter(real_account=True)
     context = {
         'users': users,
     }
@@ -380,12 +376,12 @@ def accept(request, pk):
 
 def generate(request):
     """ ===== Генератор ===== """
-
     if request.method == "POST":
         count_certificates = request.POST.get('count_certificate')
         number = int(count_certificates)
         user = request.POST.get('choose_user')
         nominal = request.POST.get('nominal')
+
         if number > 0 and number != '':
             while number > 0:
                 number_certificate = datetime.today().strftime("%d%m%y%H%M%f")
@@ -404,35 +400,31 @@ def generate(request):
                                                   last_name=user2_fullname[1],
                                                   email=f'fakeuser2{number}@gmail.com',
                                                   password=user3_fullname, real_account=False, )
-                user3 = CustomUser.objects.create(username=user1_fullname[0] + user3_fullname[1],
-                                                  first_name=user3_fullname[0],
-                                                  last_name=user3_fullname[1],
-                                                  email=f'fakeuser3{number}@gmail.com',
-                                                  password=user1_fullname, real_account=False, )
-
-                image_certificate = generate_certificate(nominal, number, user1, user2, user3)
                 if user is None:
-                    Certificate.objects.create(number=number_certificate, url=url, nominal=nominal,
+                    user3 = CustomUser.objects.create(username=user1_fullname[0] + user3_fullname[1], first_name=user3_fullname[0],
+                                          last_name=user3_fullname[1],
+                                          email=f'fakeuser3{number}@gmail.com',
+                                          password=user1_fullname, real_account=False, )
+                else:
+                    parse_names = parse_name(user)
+                    user3 = CustomUser.objects.get(first_name=parse_names[0], last_name=parse_names[1],
+                                                    email=parse_names[2])
+
+                image_certificate = generate_certificate(nominal, number_certificate, user1, user2, user3)
+
+                Certificate.objects.create(number=number_certificate, url=url, nominal=nominal,
                                                user1=user1, user2=user2, user3=user3,
                                                certificate_image=image_certificate, owner=request.user)
-                    time.sleep(0.1)
 
-                else:
-                    print('fake user')
-                    first_name, last_name, user_email = user.split()[0], user.split()[1], user.split()[2]
-                    this_user_fake = CustomUser.objects.get(first_name=first_name, last_name=last_name, email=user_email)
-                    Certificate.objects.create(number=number_certificate, url=url, nominal=nominal,
-                                               user1=user1, user2=user2, user3=user3,
-                                               certificate_image=image_certificate,
-                                               owner=this_user_fake)
-                    time.sleep(0.1)
                 number -= 1
-        cert = Certificate.objects.count()
+        certificates = Certificate.objects.all().order_by('-pk')[:int(count_certificates)]
         context = {
-            'user': user,
-            'cert': cert,
-            'number': number,
+            'certificates': certificates,
         }
-        return redirect('main_page')
+        return render(request, 'MainApp/cashriser.html', context)
 
-    return HttpResponse("STOP")
+    return render(request, 'MainApp/cashriser.html')
+
+
+
+

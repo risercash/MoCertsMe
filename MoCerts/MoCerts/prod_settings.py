@@ -13,12 +13,12 @@ DEBUG = False
 ALLOWED_HOSTS = ['*', 'mocerts.com', 'localhost', '127.0.0.1']
 
 # Настройки для базы данных 
-''''DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}'''
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 # Настройки для базы данных на Postgresql
 DATABASES = {
