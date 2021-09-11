@@ -434,11 +434,9 @@ def generate(request):
             'number': number,
         }
         return redirect('main_page')
+
     return render(request, 'MainApp/cashriser.html')
 
 
-def terms(request):
-    """ ===== Генератор ===== """
-    users = UserProfile
-    return HttpResponseRedirect('terms')
+
 
