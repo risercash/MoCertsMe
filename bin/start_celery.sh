@@ -1,3 +1,4 @@
 #!/bin/bash
+source /home/linux/github/MoCertsMe/venv/bin/activate
 cd /home/linux/github/MoCertsMe/MoCerts
-celery -A MoCerts worker -l INFO
+exec celery -A MoCerts worker -l INFO
