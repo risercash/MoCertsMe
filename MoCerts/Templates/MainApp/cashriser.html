@@ -10,10 +10,10 @@
 
 <body>
     <div>
-        <form style="margin-left:300px;" id="search_name_user" class="form-inline my-2 my-lg-0" action="{% url 'cashriser' %}" >
-          <input class=" show_form_filter_user form-control mr-sm-2" type="search" placeholder="Search user" aria-label="Search" name="search_user" >
-          <button id="search_user" form="search_name_user" class="show_form_filter_user btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>
-        </form>
+<!--        <form style="margin-left:300px;" id="search_name_user" class="form-inline my-2 my-lg-0" action="{% url 'cashriser' %}" >-->
+<!--          <input class=" show_form_filter_user form-control mr-sm-2" type="search" placeholder="Search user" aria-label="Search" name="search_user" >-->
+<!--          <button id="search_user" form="search_name_user" class="show_form_filter_user btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>-->
+<!--        </form>-->
         <form id="form_generate_sertificate" action="{% url 'generate' %}" method="POST" style="padding-top: 2%;">
             {% csrf_token %}
             <div class="select_menux" style="padding-left: 300px;">
@@ -28,10 +28,10 @@
                     <option value="200">200</option>
                     <option value="500">500</option>
                 </select>
-                <label for="horns" style="color: black">Генерировать Себе?</label>
-                <input type="checkbox" class="custom-checkbox" id="horns" name="horns" value="yes">
-                <div>
-                    <select class="show_form_filter_user" name="choose_user" multiple aria-label="multiple select example" size="3" style="matgin-top: 100px; width: 400px;">
+                <label for="horns" style="color: black">Именные?</label>
+                <input type="checkbox" class="custom-checkbox" id="horns" name="horns" value="no">
+                <div class="show_form_filter_user">
+                    <select name="choose_user" multiple aria-label="multiple select example" size="5" style="matgin-top: 100px; width: 400px;">
                     {% for user in users %}
                       <option>{{ user.first_name }} {{ user.last_name}} {{ user.email }}</option>
                     {% endfor %}
@@ -43,8 +43,8 @@
         </form>
 
     </div>
-    {% for i in cer %}
-        <p>{{ i }}</p>
+    {% for certificate in certificates %}
+        <p style="margin-left: 300px;">{{ forloop.counter }}) {{ certificate.url }}</p>
     {% endfor %}
 
 </body>

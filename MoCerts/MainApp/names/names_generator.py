@@ -16,3 +16,7 @@ def false_user():
         if surname[-1] == 'в' or surname[-1] == 'н':
             surname += 'а'
     return name, surname
+
+def parse_name(name):
+    first_name, last_name, user_email = name.split()[0], name.split()[1], name.split()[2]
+    return first_name, last_name, user_email
