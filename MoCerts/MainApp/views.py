@@ -99,7 +99,7 @@ class SelectCertificate(AuthorizationForms, TemplateView):
     """Страница выбора сертификата"""
     template_name = 'MainApp/select_certificate.html'
 
-# @permission_required(requests.user.is_staff)
+@permission_required(requests.user.is_staff)
 def cashriser(request):
     search_query = request.GET.get('search_user', '')
     if search_query:
@@ -434,14 +434,7 @@ def generate(request):
             'number': number,
         }
         return redirect('main_page')
-
-    return HttpResponse("STOP")
-    # return HttpResponseRedirect(reverse('certificate',
-    #                                     kwargs={'number': users}))
-
-    users = UserProfile
-    return HttpResponseRedirect(reverse('certificate',
-                                        kwargs={'number': users}))
+    return render(request, 'MainApp/cashriser.html')
 
 
 def terms(request):
