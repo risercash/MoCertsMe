@@ -191,6 +191,7 @@ SOCIALACCOUNT_PROVIDERS = \
         'VERSION': 'v2.4'}
     }
 
+
 # Настройки почтового сервера
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
