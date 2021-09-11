@@ -410,7 +410,7 @@ def generate(request):
                     user3 = CustomUser.objects.get(first_name=parse_names[0], last_name=parse_names[1],
                                                     email=parse_names[2])
 
-                image_certificate = generate_certificate(nominal, number, user1, user2, user3)
+                image_certificate = generate_certificate(nominal, number_certificate, user1, user2, user3)
 
                 Certificate.objects.create(number=number_certificate, url=url, nominal=nominal,
                                                user1=user1, user2=user2, user3=user3,
