@@ -20,7 +20,7 @@ urlpatterns = [
     path('cashriser/', cashriser, name='cashriser'),
     path('generate', generate, name='generate'),
     path('generate/<int:pk>', generate, name='generate'),# Эту я делал под кнопку GENERATE на странице cashriser
-    path('terms/', terms, name='terms'),
+  
     # path('cashriser/', Cashriser.as_view(), name='cashriser'),cashriser
 
 ]
