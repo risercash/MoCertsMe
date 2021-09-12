@@ -15,6 +15,7 @@ def delete_certificate_picture(sender, instance, **kwargs):
     logger.info('Certificate was deleted ' + str(instance))
     try:
         crop_picture_path = os.path.join(settings.MEDIA_DIR, str(instance.certificate_image) + '.182x129_q85_crop-smart.png')
+        print(crop_picture_path)
         os.remove(crop_picture_path)
         picture_path = os.path.join(settings.MEDIA_DIR, str(instance.certificate_image))
         os.remove(picture_path)
