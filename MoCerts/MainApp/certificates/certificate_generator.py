@@ -11,8 +11,8 @@ def generate_certificate(nominal, number, user1, user2, user3):
     number_text = str(number)
     init_image_name = f'cert_big_{nominal}.png'
     image_path = os.path.join(settings.MEDIA_DIR, init_image_name)
-    font_path = os.path.join(settings.MEDIA_DIR, 'font.ttf')
-    font_path_number = os.path.join(settings.MEDIA_DIR, 'georgia.ttf')
+    font_path = os.path.join(settings.MEDIA_DIR + 'fonts/', 'font.ttf')
+    font_path_number = os.path.join(settings.MEDIA_DIR + 'fonts/', 'georgia.ttf')
     img = Image.open(image_path)
     font = ImageFont.truetype(font_path, size=26)
     draw_text = ImageDraw.Draw(img)
