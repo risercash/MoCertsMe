@@ -133,7 +133,6 @@ venv.bak/
 
 # Rope project settings
 .ropeproject
-/MoCerts/media
 # mkdocs documentation
 /site
 
