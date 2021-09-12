@@ -1596,3 +1596,9 @@ svg.intro.go .text-stroke:nth-child(6) {
       background: rgba(51, 122, 183, 0.7);
   }
 }
+
+.copy_url {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2%;
+}

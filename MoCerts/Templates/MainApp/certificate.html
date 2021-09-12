@@ -18,107 +18,121 @@
 
 {% if need_pay and not need_accept and owner_is_here %}
 <section class="third-section" style="height: auto;!important;">
-    <div class="certs-wrapper">
-      <p class = "section__title__withdrow">Поздравляем <b>{{ user.first_name }} !</b></p>
-      <div class = "section__t"><img src = "{% static 'img/icons/decor.svg' %}" alt=""></div>
-        <p class="wrapper__text">Вы получили новый сертификат. Теперь, что бы активировать его и получить пять своих сертификатов 
-         с Вашим именем на третьей строчке нажмите на клавишу перевести. После чего сумма в <b>{{ certificate.nominal }}$</b> будет переведена пользователю с именем 
-          <b>{{ certificate.user1.first_name }}&nbsp;{{ certificate.user1.last_name }}</b>, так как это имя расположено на первой строчке. Убедитесь, что на Вашем балансе достаточно средств!</p>
-    <div class="one-cert">
-          <img src="{{ certificate.certificate_image.url }}" alt="", style="width: 70%; ">
-    </div><br>
-        <a href="{% url 'pay_certificate' pk=certificate.pk %}"
-         title="Перевести {{ certificate.nominal }}$ пользователю по имени {{ certificate.user1.first_name }} {{ certificate.user1.last_name }}"
-        class="button-block__button button" style="background-color: #3f85ce;color: #FFFFFF; margin-bottom: 50px" >
-          <!-- тут поменял accept на pay_certificate -->  
-          <span class="button__text">Перевести</span><span class="button__transfer">{{ certificate.nominal }}$</span></a>
+      <div class="certs-wrapper">
+            <p class="section__title__withdrow">Поздравляем <b>{{ user.first_name }} !</b></p>
+            <div class="section__t"><img src="{% static 'img/icons/decor.svg' %}" alt=""></div>
+            <p class="wrapper__text">Вы получили новый сертификат. Теперь, что бы активировать его и получить пять своих
+                  сертификатов
+                  с Вашим именем на третьей строчке нажмите на клавишу перевести. После чего сумма в <b>
+                        {{ certificate.nominal }}$</b> будет переведена пользователю с именем
+                  <b>{{ certificate.user1.first_name }}&nbsp;{{ certificate.user1.last_name }}</b>, так как это имя
+                  расположено на первой строчке. Убедитесь, что на Вашем балансе достаточно средств!
+            </p>
+            <div class="one-cert">
+                  <img src="{{ certificate.certificate_image.url }}" alt="" style="width: 70%; ">
+            </div><br>
+            <a href="{% url 'pay_certificate' pk=certificate.pk %}"
+                  title="Перевести {{ certificate.nominal }}$ пользователю по имени {{ certificate.user1.first_name }} {{ certificate.user1.last_name }}"
+                  class="button-block__button button"
+                  style="background-color: #3f85ce;color: #FFFFFF; margin-bottom: 50px">
+                  <!-- тут поменял accept на pay_certificate -->
+                  <span class="button__text">Перевести</span><span class="button__transfer">
+                        {{ certificate.nominal }}$</span>
+            </a>
       </div>
 </section>
 {% endif %}
 
 
-{% if need_pay and need_accept and not owner_is_here %}
+<!-- {% if need_pay and need_accept and not owner_is_here %}
 <section class="third-section" style="height: auto;!important;">
-    <div class="certs-wrapper">
-      <p class = "section__title"><span>{% trans 'Пожалуйста, подтвердите сертификат' %}</span></p>
-    <div class="certificates">
-          <img src="{{ certificate.certificate_image.url }}" alt="">
-    </div>
-        <a href="{% url 'accept' pk=certificate.pk %}" class="button-block__button button" style="background-color: #3f85ce;color: #FFFFFF; margin-bottom: 50px">
-            <span class="button__text">Подтвердить</span><span class="button__span" style="background-color: #3f85ce;color: #FFFFFF">+</span></a>
+      <div class="certs-wrapper">
+            <p class="section__title"><span>{% trans 'Пожалуйста, подтвердите сертификат' %}</span></p>
+            <div class="certificates">
+                  <img src="{{ certificate.certificate_image.url }}" alt="">
+            </div>
+            <a href="{% url 'accept' pk=certificate.pk %}" class="button-block__button button"
+                  style="background-color: #3f85ce;color: #FFFFFF; margin-bottom: 50px">
+                  <span class="button__text">Подтвердить</span><span class="button__span"
+                        style="background-color: #3f85ce;color: #FFFFFF">+</span></a>
       </div>
 </section>
-{% endif %}
+{% endif %} -->
+
 
 <div class="share2_mobil">
-{% if need_pay and need_accept and made_by %}
-<section class="third-section" style="height: auto;!important;">
-    <div class="certs-wrapper">
-      <p class = "section__title"><span>{% trans 'Скопируйте ссылку для отправки или поделитесь в соц сетях' %}</span></p><br>
+      {% if need_pay and need_accept and made_by %}
+      <section class="third-section" style="height: auto;!important;">
+            <div class="certs-wrapper">
+                  <p class="section__title"><span>{% trans 'Скопируйте ссылку для отправки или поделитесь в соц сетях' %}
+                  </span></p><br>
+                  <div class="copy_url">
+                        <p id="certificate_url"><strong>{{ certificate.url }}&nbsp;&nbsp;</strong></p>
+                        <button title="СКОПИРОВАТЬ ССЫЛКУ" onclick="copyToClipboard('#certificate_url')">📝 СКОПИРОВАТЬ
+                              ССЫЛКУ</button>
+                  </div>
+                  <script>
+                        function copyToClipboard(element) {
+                              var $temp = $("<input>");
+                              $("body").append($temp);
+                              $temp.val($(element).text()).select();
+                              document.execCommand("copy");
+                              $temp.remove();
+                        }
+                  </script>
+                  <div class="ya-share2" data-curtain data-shape="round"
+                        data-services="vkontakte,facebook,odnoklassniki,telegram,twitter,viber,whatsapp,moimir,linkedin">
+                  </div><br>
+                  <div class="cert-one">
+                        <img src="{{ certificate.certificate_image.url }}" alt="">
+                  </div>
+            </div>
+      </section>
+      {% endif %}
 
-      <p class="text1" id="text1"><strong>https://{{ certificate.url }}&nbsp;&nbsp;</strong>
-            <button title="СКОПИРОВАТЬ ССЫЛКУ" onclick="copytext('#text1')">📝 СКОПИРОВАТЬ ССЫЛКУ</button></p><br>
-            <script>
-                  function copytext(el) {
-    var $tmp = $("text1");
-    $("body").append($tmp);
-    $tmp.val($(el).text()).select();
-    document.execCommand("copy");
-    $tmp.remove();
-} 
-            </script>
-
-<div class="ya-share2" data-curtain data-shape="round"
-    data-services="vkontakte,facebook,odnoklassniki,telegram,twitter,viber,whatsapp,moimir,linkedin">
-</div><br>
-    <div class="cert-one">
-          <img src="{{ certificate.certificate_image.url }}" alt="">
-    </div>
-      </div>
-</section>
-{% endif %}
-
-{% if not need_pay %}
-<section class="third-section" style="height: auto;!important;">
-    <div class="certs-wrapper">
-      <p class = "section__title"><span>{% trans 'Сертификат оплачен' %}</span></p>
-    <div class="certificates">
-          <img src="{{ certificate.certificate_image.url }}" alt="">
-    </div>
-      </div>
-</section>
-{% endif %}
+      {% if not need_pay %}
+      <section class="third-section" style="height: auto;!important;">
+            <div class="certs-wrapper">
+                  <p class="section__title"><span>{% trans 'Сертификат оплачен' %}</span></p>
+                  <div class="certificates">
+                        <img src="{{ certificate.certificate_image.url }}" alt="">
+                  </div>
+            </div>
+      </section>
+      {% endif %}
 </div>
 
 {% if need_pay and not need_accept and made_by and not owner_is_here%}
 <section class="third-section" style="height: auto;!important;">
-    <div class="certs-wrapper">
-      <p class = "section__title"><span>{% trans 'Пользователь принял ваш сертификат' %}</span></p>
-    <div class="certificates">
-          <img src="{{ certificate.certificate_image.url }}" alt="">
-    </div>
+      <div class="certs-wrapper">
+            <p class="section__title"><span>{% trans 'Пользователь принял ваш сертификат' %}</span></p>
+            <div class="certificates">
+                  <img src="{{ certificate.certificate_image.url }}" alt="">
+            </div>
       </div>
 </section>
 {% endif %}
 
 {% if need_pay and not need_accept and not made_by and not owner_is_here%}
 <section class="third-section" style="height: auto;!important;">
-    <div class="certs-wrapper">
-      <p class = "section__title"><span>{% trans 'Сертификат был подтвержден другим пользователем' %}</span></p>
-    <div class="certificates">
-          <img src="{{ certificate.certificate_image.url }}" alt="">
-    </div>
+      <div class="certs-wrapper">
+            <p class="section__title"><span>{% trans 'Сертификат был подтвержден другим пользователем' %}</span></p>
+            <div class="certificates">
+                  <img src="{{ certificate.certificate_image.url }}" alt="">
+            </div>
       </div>
 </section>
 {% endif %}
 <div class="video-block" style="visibility: hidden;position: absolute;top: -9999px;!important;">
-    <video>
-          <source src="https://video.wixstatic.com/video/1694f8_029fe95547cf466b9e8433baa0fa7eda/1080p/mp4/file.mp4" type="video/mp4">
-    </video>
-    <i class="material-icons play-btn">play_circle_filled</i>
+      <video>
+            <source src="https://video.wixstatic.com/video/1694f8_029fe95547cf466b9e8433baa0fa7eda/1080p/mp4/file.mp4"
+                  type="video/mp4">
+      </video>
+      <i class="material-icons play-btn">play_circle_filled</i>
 </div>
 {% endblock %}
 
 {% block script %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://yastatic.net/share2/share.js"></script>
 {% endblock script %}
