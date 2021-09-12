@@ -23,5 +23,10 @@ def generate_certificate(nominal, number, user1, user2, user3):
     draw_text.text((260, 367), number_text, font=font_number, fill='black', stroke_width=1)
     file_name_result = f'certificates/{number}.png'
     file_name_result_path = os.path.join(settings.MEDIA_DIR, file_name_result)
-    img.save(file_name_result_path)
+    try:
+        img.save(file_name_result_path)
+    except FileNotFoundError:
+        directory_path = os.path.join(settings.MEDIA_DIR, 'certificates')
+        os.makedirs(directory_path,exist_ok=True)
+        img.save(file_name_result_path)
     return file_name_result
