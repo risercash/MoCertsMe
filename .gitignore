@@ -12,8 +12,8 @@ test.py
 test2.py
 begetVPS.txt
 
-EMAIL_HOST_PASSWORD.txt
-EMAIL_HOST_USER.txt
+/MoCerts/MainApp/migrations/
+/MoCerts/db.sqlite3
 
 
 # Byte-compiled / optimized / DLL files
@@ -144,8 +144,3 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-
-/MoCerts/MainApp/migrations/
-/MoCerts/db.sqlite3
-/MoCerts/media
-/MoCerts/media/
