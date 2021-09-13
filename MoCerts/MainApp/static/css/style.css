@@ -732,6 +732,7 @@ main {
   display: flex;
   margin-left: 90px;
   justify-content: center;
+  border: 100px;
   align-items: center;
 }
 
@@ -1442,10 +1443,9 @@ svg.intro.go .text-stroke:nth-child(6) {
 .cert-item a img {
     width: 206px!important;
     height: 145px!important;
-    border-width: 2px;
-    border: rgb(48,48,48) solid;
+
     border-radius: 3px;
-    box-shadow: 0 0 3px rgb(0 0 0 / 50%);
+    box-shadow: 5px 0 10px rgb(0 0 0 / 50%);
 }
 
 
