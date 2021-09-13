@@ -635,8 +635,7 @@ main {
   margin: 0 auto;
   display: flex;
   align-items: center;
-  border-radius: 15px;
-  margin-bottom: 20px;
+
 }
 
 .cert-block {
