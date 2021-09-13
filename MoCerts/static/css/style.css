@@ -1294,17 +1294,17 @@ svg.intro.go .text-stroke:nth-child(6) {
     padding: 15px;
   }
 
-  .video-block video {
+  /* .video-block video {
     width: 90%;
-  }
-  .video-block {
+  } */
+  /* .video-block {
     width: 800px;
     margin: 0 auto;
     margin-bottom: 800px;
   
     max-width: 90%;
     width: 100%;
-  }
+  } */
 
   .certificates img {
     padding-bottom: 30px;
