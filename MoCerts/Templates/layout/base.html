@@ -61,7 +61,7 @@
       <li class="user">
         <div class="logo" style="background-image: url('{% static 'img/logo.webp' %}');"></div>
         <div class="avatar"><img width="80" height="80" src = "{{ user.photo.url }}"></div>  <!-- avatar.png -->
-        {% comment %} <a href="{% url 'profile' %}"> {% endcomment %}
+
         <div class="name">{{ user.last_name }} {{ user.first_name }}</div>
       </li>
         {% else %}
@@ -167,9 +167,10 @@
   </nav>
 
   <main>
-    {% block content %}
 
+    {% block content %}
     {% endblock content%}
+    
     <footer>
       <div class="footer__content">
         <div class="copyright">© 2021 СЧАСТЬЕ ЕСТЬ. и оно уже БЛИЗКО!!! MoCerts.com</div>
@@ -198,7 +199,7 @@
         </video>
         <i class="material-icons play-btn">play_circle_filled</i>
         <!-- конец вертякогого блока -->
-    </div>
+      </div>
     <script src="{% static 'js/my_certificates.js' %}"></script>
     </footer>
   </main>

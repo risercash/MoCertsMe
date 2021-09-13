@@ -676,17 +676,25 @@ main {
 
 .content__right {
   display: flex;
-  align-items: center;
-  color: #fff!important;
-  border-radius: 10px;
 }
 
 .content__right__text {
+  color: #42413a;
   font-weight: 300;
   font-size: 22px;
+  text-align: start;
 }
 
+.content__right__text a {
+  display: block;
+  color: #3f85ce;
+  font-weight: bold;
+  text-decoration: none;
+}
 
+.content__right__text a span{
+  color: #42413a;
+}
 
 .menu-documents a {
     color: #000000;

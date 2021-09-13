@@ -128,12 +128,10 @@ class CertificateDetail(AuthorizationForms, DetailView):
         context['host'] = settings.HOST
         if self.object.is_paid == False:
             context['need_pay'] = True
-        if self.object.is_accept == False:
-            context['need_accept'] = True
         if self.object.owner == self.request.user:
             context['owner_is_here'] = True
-        if self.object.made_by == self.request.user:
-            context['made_by'] = True
+        if self.object.creator == self.request.user:
+            context['creator_is_here'] = True
         return context
 
 
@@ -146,7 +144,7 @@ class MyCertificates(LoginRequiredMixin, ListView):
         ''' ===== отсортировать queryset по номиналам в списке 
         а надо по 5шт отсортировать ===== '''
         certificates = Certificate.objects.filter(
-            made_by=self.request.user, )
+            creator=self.request.user, )
         queryset = []
         one_group = []
         for ind, cert in enumerate(certificates):
@@ -276,7 +274,7 @@ def create_certificate(request, nominal):
     ''' ==== Создать сертификат ===== '''
     if request.method == 'GET':
         user = request.user
-        if Certificate.objects.filter(owner=user, nominal=nominal, is_accept=True, is_paid=False).exists():
+        if Certificate.objects.filter(owner=user, nominal=nominal, is_paid=False).exists():
             return HttpResponseRedirect(reverse('certificate',
                                                 kwargs={'number': Certificate.objects.get(owner=user, nominal=nominal,
                                                                                           is_paid=False)}))
@@ -315,57 +313,55 @@ def create_certificate(request, nominal):
 def pay_certificate(request, pk):
     '''оплата сертификата'''
     certificate = Certificate.objects.get(id=pk)
-    if certificate.owner == request.user:
-        if request.user.balance >= certificate.nominal:
-            certificate.owner = None
-            certificate.is_paid = True
-            certificate.paid_by_user = request.user
-            certificate.save()
+    if request.user.balance >= certificate.nominal:
+        certificate.owner = request.user
+        certificate.is_paid = True
+        certificate.paid_by_user = request.user
+        certificate.save()
 
-            request.user.balance -= certificate.nominal
-            request.user.save()
+        request.user.balance -= certificate.nominal
+        request.user.save()
 
-            user1 = certificate.user1
-            if user1.real_account:
-                user1.balance += certificate.nominal
-                user1.save()
-            else:
-                if CustomUser.objects.filter(email=settings.MONEY_ADMIN['email']).exists():
-                    money_admin = CustomUser.objects.get(
-                        email=settings.MONEY_ADMIN['email'])
-                else:
-                    money_admin = CustomUser.objects.create(username=settings.MONEY_ADMIN['username'],
-                                                            first_name=settings.MONEY_ADMIN['first_name'],
-                                                            last_name=settings.MONEY_ADMIN['last_name'],
-                                                            email=settings.MONEY_ADMIN['email'],
-                                                            password=settings.MONEY_ADMIN['password'], )
-                money_admin.balance += certificate.nominal
-                money_admin.save()
-
-            for i in range(0, 5):
-                user1, user2, user3 = certificate.user2, certificate.user3, request.user
-                number = datetime.today().strftime("%d%m%y%H%M%f")
-                image_certificate = generate_certificate(
-                    certificate.nominal, number, user1, user2, user3)
-                url = '{}/certificate/{}'.format(settings.HOST, number)
-
-                new_certificate = Certificate(number=number, url=url, nominal=certificate.nominal, user1=user1,
-                                              user2=user2, user3=user3, certificate_image=image_certificate,
-                                              made_by=request.user, is_accept=False, owner=request.user, )
-                new_certificate.save()
-
-            return HttpResponseRedirect(reverse('my_certificates'))
+        user1 = certificate.user1
+        if user1.real_account:
+            user1.balance += certificate.nominal
+            user1.save()
         else:
-            messages.add_message(
-                request, messages.ERROR, 'Недостаточно средств, пожалуйста, пополните баланс')
-        return HttpResponseRedirect(reverse('userbalance'))
+            if CustomUser.objects.filter(email=settings.MONEY_ADMIN['email']).exists():
+                money_admin = CustomUser.objects.get(
+                    email=settings.MONEY_ADMIN['email'])
+            else:
+                money_admin = CustomUser.objects.create(username=settings.MONEY_ADMIN['username'],
+                                                        first_name=settings.MONEY_ADMIN['first_name'],
+                                                        last_name=settings.MONEY_ADMIN['last_name'],
+                                                        email=settings.MONEY_ADMIN['email'],
+                                                        password=settings.MONEY_ADMIN['password'], )
+            money_admin.balance += certificate.nominal
+            money_admin.save()
+
+        for i in range(0, 5):
+            user1, user2, user3 = certificate.user2, certificate.user3, request.user
+            number = datetime.today().strftime("%d%m%y%H%M%f")
+            image_certificate = generate_certificate(
+                certificate.nominal, number, user1, user2, user3)
+            url = '{}/certificate/{}'.format(settings.HOST, number)
+
+            new_certificate = Certificate(number=number, url=url, nominal=certificate.nominal, user1=user1,
+                                          user2=user2, user3=user3, certificate_image=image_certificate,
+                                          creator=request.user, owner=request.user, )
+            new_certificate.save()
+
+        return HttpResponseRedirect(reverse('my_certificates'))
+    else:
+        messages.add_message(
+            request, messages.ERROR, 'Недостаточно средств, пожалуйста, пополните баланс')
+    return HttpResponseRedirect(reverse('userbalance'))
 
 
 @login_required
 def accept(request, pk):
     '''Подтвердить сертификат'''
     certificate = Certificate.objects.get(pk=pk)
-    certificate.is_accept = True
     certificate.owner = request.user
     certificate.save()
     request.user.certificate = certificate
