@@ -4,11 +4,11 @@ from .models import CustomUser, Certificate, PreviewSettings, ManualPosts, MainP
 
 
 class CertAdmin(admin.ModelAdmin):
-    list_display = ('number', 'nominal', 'made_by', 'is_paid', 'owner',)
+    list_display = ('number', 'nominal', 'creator', 'owner', 'is_paid', )
     list_display_links = ('number', 'nominal',)
     ordering = ['-published_date']
-    list_filter = ('nominal', 'made_by', 'is_paid', 'owner',)
-    search_fields = ('number', 'nominal', 'made_by', 'is_paid', 'owner',)
+    list_filter = ('nominal', 'creator', 'owner', 'is_paid',)
+    search_fields = ('number', 'nominal', 'creator', 'owner', 'is_paid', )
 
 
 class UserAdmin(admin.ModelAdmin):

@@ -12,7 +12,8 @@ from MoCerts.settings import HOST
 
 class CustomUser(AbstractUser):
     ''''расширение модели пользователя'''
-    photo = models.FileField(upload_to='avatars', blank=True, verbose_name='Аватарка', default='def/default-user-image.png')
+    photo = models.FileField(upload_to='avatars', blank=True,
+                             verbose_name='Аватарка', default='def/default-user-image.png')
     certificate = models.ForeignKey(
         'Certificate', on_delete=models.SET_NULL, null=True, blank=True)
     telegram_id = models.BigIntegerField(
@@ -48,15 +49,13 @@ class Certificate(models.Model):
         auto_now_add=True, db_index=True, verbose_name='Опубликовано')
     certificate_image = models.ImageField(
         upload_to='certificates/image/%Y/%m/%d', blank=True, verbose_name='Рисунок')
-    made_by = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, default=None, null=True, blank=True,
+    creator = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, default=None, null=True, blank=True,
                                 related_name='made_by_user')
-    #is_prepaid = models.BooleanField(default=False)
-    is_paid = models.BooleanField(default=False)
-    is_prepaid = models.BooleanField(default=False)
-    is_accept = models.BooleanField(default=True)
-    is_received = models.BooleanField(default=False)
     owner = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, default=None, null=True, blank=True,
                               related_name='owner')
+    is_paid = models.BooleanField(default=False)
+    is_prepaid = models.BooleanField(default=False)
+    is_received = models.BooleanField(default=False)
     paid_by_user = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, default=None, null=True, blank=True,
                                      related_name='paid_by_user')
 
@@ -126,13 +125,15 @@ class ManualPosts(models.Model):
 
 class MainPagePost(models.Model):
     headline = models.CharField(max_length=90, null=False, verbose_name=pgettext_lazy('Заголовок', 'Заголовок'),
-                            help_text='максимум 50 символов')
+                                help_text='максимум 50 символов')
     subtitle = models.CharField(max_length=150, null=False,
                                 verbose_name=pgettext_lazy('Подзаголовок', 'Подзаголовок'))
     date_create = models.DateTimeField(auto_now_add=True, verbose_name=pgettext_lazy(
         'Дата публикации', 'Дата публикации'))
-    content =  RichTextUploadingField(blank=True, null=True, verbose_name=pgettext_lazy('Содержание', 'Содержание'))
-    photo = models.FileField(upload_to='posts', blank=True, verbose_name='PostPhoto', default='def/default-user-image.png')
+    content = RichTextUploadingField(
+        blank=True, null=True, verbose_name=pgettext_lazy('Содержание', 'Содержание'))
+    photo = models.FileField(upload_to='posts', blank=True,
+                             verbose_name='PostPhoto', default='def/default-user-image.png')
 
     class Meta:
         verbose_name = 'Статья'
@@ -149,14 +150,16 @@ class MainPagePost(models.Model):
 
 class QiwiSecretKey(models.Model):
     '''модель QiwiToken'''
-    secret_key = models.CharField(max_length=255, default='Token', verbose_name=pgettext_lazy('secret_key', 'secret_key'))
+    secret_key = models.CharField(
+        max_length=255, default='Token', verbose_name=pgettext_lazy('secret_key', 'secret_key'))
 
     def save(self, *args, **kwargs):
         '''модель может быть только в единственном экземпляре'''
         if not self.pk and QiwiSecretKey.objects.exists():
-            raise ValidationError('There is can be only one QiwiSecretKey instance')
+            raise ValidationError(
+                'There is can be only one QiwiSecretKey instance')
         return super(QiwiSecretKey, self).save(*args, **kwargs)
-    
+
     class Meta:
         verbose_name = 'Токен qiwi'
         verbose_name_plural = 'Токен qiwi'
@@ -175,15 +178,19 @@ class Deposit(models.Model):
         EXPIRED = 3, _('Истекший')
         REJECT = 4, _('Отклонено')
 
-    bill_id = models.PositiveBigIntegerField(unique=True ,verbose_name=pgettext_lazy('id транзакции', 'id транзакции'),)
-    amount = models.PositiveIntegerField(verbose_name=pgettext_lazy('сумма, руб', 'сумма, руб'),)
-    status = models.PositiveIntegerField(choices=StatusList.choices, default=StatusList.WAIT)
+    bill_id = models.PositiveBigIntegerField(
+        unique=True, verbose_name=pgettext_lazy('id транзакции', 'id транзакции'),)
+    amount = models.PositiveIntegerField(
+        verbose_name=pgettext_lazy('сумма, руб', 'сумма, руб'),)
+    status = models.PositiveIntegerField(
+        choices=StatusList.choices, default=StatusList.WAIT)
     user = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, default=None, null=True, blank=True,
-                                     related_name='deposit_by_user')
+                             related_name='deposit_by_user')
     time = models.DateField(auto_now_add=True, verbose_name='время создания',)
-    type = models.CharField(max_length=255, default='Пополнение', verbose_name=pgettext_lazy('тип транзакции', 'тип транзакции'),)
-    lifetime = models.PositiveIntegerField(verbose_name=pgettext_lazy('время жизни счета, мин', 'время жизни счета, мин'),)
-
+    type = models.CharField(max_length=255, default='Пополнение',
+                            verbose_name=pgettext_lazy('тип транзакции', 'тип транзакции'),)
+    lifetime = models.PositiveIntegerField(verbose_name=pgettext_lazy(
+        'время жизни счета, мин', 'время жизни счета, мин'),)
 
     class Meta:
         verbose_name = 'Пополнение'
@@ -206,14 +213,19 @@ class Withdrawal(models.Model):
         PAID = 2, _('Исполнено')
         REJECT = 3, _('Отклонено')
 
-    bill_id = models.CharField(unique=True, max_length=255, verbose_name=pgettext_lazy('id транзакции', 'id транзакции'),)
-    amount = models.PositiveIntegerField(verbose_name=pgettext_lazy('сумма', 'сумма'),)
-    status = models.PositiveIntegerField(choices=StatusList.choices, default=StatusList.WAIT)
+    bill_id = models.CharField(unique=True, max_length=255, verbose_name=pgettext_lazy(
+        'id транзакции', 'id транзакции'),)
+    amount = models.PositiveIntegerField(
+        verbose_name=pgettext_lazy('сумма', 'сумма'),)
+    status = models.PositiveIntegerField(
+        choices=StatusList.choices, default=StatusList.WAIT)
     user = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, default=None, null=True, blank=True,
-                                     related_name='withdrawal_by_user')
+                             related_name='withdrawal_by_user')
     time = models.DateField(auto_now_add=True, verbose_name='время создания',)
-    type = models.CharField(max_length=255, default='Вывод средств', verbose_name=pgettext_lazy('тип транзакции', 'тип транзакции'),)
-    qiwi_wallet = models.CharField(max_length=255, verbose_name=pgettext_lazy('номер кошелька', 'номер кошелька'),)
+    type = models.CharField(max_length=255, default='Вывод средств',
+                            verbose_name=pgettext_lazy('тип транзакции', 'тип транзакции'),)
+    qiwi_wallet = models.CharField(max_length=255, verbose_name=pgettext_lazy(
+        'номер кошелька', 'номер кошелька'),)
 
     class Meta:
         verbose_name = 'Вывод средств'
