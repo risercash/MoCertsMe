@@ -237,4 +237,4 @@ class Withdrawal(models.Model):
 
     def get_absolute_url(self):
         """получить ссылку на объект"""
-        return HOST + '/admin/MainApp/withdrawal/'
+        return HOST + '/nimda/MainApp/withdrawal/'

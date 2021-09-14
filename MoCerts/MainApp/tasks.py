@@ -65,7 +65,7 @@ def post_withdrawal_alert(username, amount, link):
                                     {'username': username, 'link': link, 'amount': amount})
     # Собрать тело сообщения
     msg = EmailMultiAlternatives(
-        subject=f'Уведомление о выводе средств',
+        subject=f'Уведомление о выводе средств из сайта Mocerts.com',
         from_email=settings.DEFAULT_FROM_EMAIL,
         to=[settings.EMAIL_HOST_USER, ]
     )
