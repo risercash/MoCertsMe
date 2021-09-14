@@ -48,6 +48,16 @@ class WithdrawalAdmin(admin.ModelAdmin):
     list_filter = ('status', 'user',)
     search_fields = ('amount', 'status', 'user', 'time', 'bill_id')
 
+    def save_model(self, request, obj, form, change):
+        update_fields = []
+
+        # True if something changed in model
+        # Note that change is False at the very first time
+        if change: 
+            if form.initial['status'] != form.cleaned_data['status']:
+                update_fields.append('status')
+        obj.save(update_fields=update_fields)
+
 
 admin.site.register(CustomUser, UserAdmin)
 admin.site.register(Certificate, CertAdmin)

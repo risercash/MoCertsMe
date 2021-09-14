@@ -206,7 +206,7 @@ EMAIL_USE_TLS = False
 
 SERVER_EMAIL = EMAIL_HOST_USER
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # Используется для отправки email после регистрации
-NOTIFICATION_EMAIL='risercash@gmail.com'
+NOTIFICATION_EMAIL='risercash@gmail.com' # Почта админа для получения уведомлении
 ADMINS=os.getenv("ADMINS")
 EMAIL_SUBJECT_PREFIX = '[MoCerts] '
 
