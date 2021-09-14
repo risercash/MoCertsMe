@@ -67,8 +67,8 @@ def post_withdrawal_alert(username, amount, link):
     msg = EmailMultiAlternatives(
         subject=f'Уведомление о выводе средств из сайта Mocerts.com',
         from_email=settings.DEFAULT_FROM_EMAIL,
-        to=[settings.EMAIL_HOST_USER, ]
+        to=[settings.NOTIFICATION_EMAIL, ]
     )
     msg.attach_alternative(html_content, "text/html")  # добавляем html
     msg.send()  # отсылаем
-    logger.info(f'Письмо отправлено {settings.EMAIL_HOST_USER}')
+    logger.info(f'Уведомление о выводе средств отправлено {settings.NOTIFICATION_EMAIL}')
