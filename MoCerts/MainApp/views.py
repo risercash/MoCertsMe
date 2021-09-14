@@ -67,7 +67,7 @@ class UserProfile(LoginRequiredMixin, UpdateView):
 
     def get_object(self, **kwargs):
         obj = CustomUser.objects.get(email=self.request.user.email)
-        print(obj.photo)
+        # logger.warning('check')
         return obj
 
     def get_context_data(self, **kwargs):
