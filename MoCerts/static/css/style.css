@@ -647,10 +647,10 @@ main {
   display: flex;
   align-items: center;
   padding: 30px;
-  box-shadow: 1px 1px 10px rgb(0 0 0 / 30%);
+/*   box-shadow: 1px 1px 10px rgb(0 0 0 / 30%); */
   border-radius: 15px;
   margin-bottom: 20px;
-  background-color: #FFFFFF;
+/*   background-color: #FFFFFF; */
 }
 
 .content__main__title {
@@ -694,7 +694,7 @@ main {
 }
 
 .menu-documents a {
-    color: #000000;
+    color: #971515;
 }
 
 .documents-title {
@@ -1345,7 +1345,7 @@ svg.intro.go .text-stroke:nth-child(6) {
   
   .cert__one-row {
       margin-top: 20px!important;
-      margin-bottom: 20px!important;
+      margin-bottom: 0px!important;
   }
   
   .cert-item {
@@ -1355,12 +1355,12 @@ svg.intro.go .text-stroke:nth-child(6) {
 }
 .cert-item {
   transform: scale(1);
-  box-shadow: 0 0 5px 5px rgba(34, 60, 80, 0.2);
+  box-shadow: 4px 4px 16px -1px rgba(34, 60, 80, 0.2);
   transition: box-shadow 0.5s, transform 0.5s;
 }
 .cert-item:hover {
   transform: scale(1.2);
-  box-shadow: 0 0 15px 7px rgba(34, 60, 80, 0.2);
+  box-shadow: 4px 4px 16px -1px rgba(34, 60, 80, 0.2);
   transition: box-shadow 0.5s, transform 0.5s;
 }
 @media (max-width: 500px) {
@@ -1383,7 +1383,9 @@ svg.intro.go .text-stroke:nth-child(6) {
 
 .funds {
 
-  background-color: #5a68b1;
+  background-color: #3b51c2;
+
+  border-radius: 5px;
   padding: 0px, 20px;
   height: 280px;
   width: 500px;
@@ -1455,10 +1457,7 @@ svg.intro.go .text-stroke:nth-child(6) {
 .cert-item a img {
     width: 206px!important;
     height: 145px!important;
-    border-width: 2px;
-    border: rgb(48,48,48) solid;
     border-radius: 3px;
-    box-shadow: 0 0 3px rgb(0 0 0 / 50%);
 }
 
 
