@@ -1,7 +1,9 @@
 from django.db.models.signals import pre_delete
+from allauth.account.signals import user_signed_up
 from django.dispatch import receiver
 from .models import Certificate
 from django.conf import settings
+from .tasks import welcome_email
 import logging
 import os
 
@@ -22,3 +24,10 @@ def delete_certificate_picture(sender, instance, **kwargs):
     except FileNotFoundError:
         picture_path = os.path.join(settings.MEDIA_DIR, str(instance.certificate_image))
         os.remove(picture_path)
+
+
+@receiver(user_signed_up, dispatch_uid="some.unique.string.id.for.allauth.user_signed_up")
+def user_signed_up_(request, user, **kwargs):
+    '''Отправить приветстенное письмо, после регистрации'''
+    print('User sign up2!', (user))
+    welcome_email.delay(user.username, user.email)

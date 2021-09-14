@@ -72,3 +72,19 @@ def post_withdrawal_alert(username, amount, link):
     msg.attach_alternative(html_content, "text/html")  # добавляем html
     msg.send()  # отсылаем
     logger.info(f'Уведомление о выводе средств отправлено {settings.NOTIFICATION_EMAIL}')
+
+
+@shared_task
+def welcome_email(username, email):
+    """отправить приветственное письмо новому пользователю"""
+    html_content = render_to_string('MainApp/welcome_email.html',
+                                    {'username': username.capitalize(),})
+    # Собрать тело сообщения
+    msg = EmailMultiAlternatives(
+        subject=f'Добро пожаловать на наш сайт Mocerts.com',
+        from_email=settings.DEFAULT_FROM_EMAIL,
+        to=[email,]
+    )
+    msg.attach_alternative(html_content, "text/html")  # добавляем html
+    msg.send()  # отсылаем
+    logger.warning(f'New user SignUp ' + username)

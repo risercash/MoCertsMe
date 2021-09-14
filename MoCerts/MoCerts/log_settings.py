@@ -95,7 +95,7 @@ log_settings = {
         },
 
         'common_file_log': {
-            'level': 'INFO',
+            'level': 'WARNING',
             'class': 'logging.handlers.TimedRotatingFileHandler',
             'filename': os.path.join(BASE_DIR, 'log/common_log.log'),
             'when': 'W0',
