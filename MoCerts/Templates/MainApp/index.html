@@ -14,212 +14,221 @@
 {% endblock %}
 
 {% block content %}
-    <section class="first" id = "first-section">
-      <div class="image-slider">
-        <div class="image-slider__image" id="image-1"
-          style="background-image: url('{% static 'img/first.jpg' %}'); visibility: visible; transform: scale(1.2);"></div>
-        <div class="image-slider__image" id="image-2"
-          style="background-image: url('{% static 'img/second.jpg' %}'); visibility: hidden; transform: scale(1.2);"></div>
-        <div class="image-slider__image" id="image-3"
-          style="background-image: url('{% static 'img/third.jpg' %}'); visibility: hidden; transform: scale(1.2);"></div>
+<section class="first" id="first-section">
+  <div class="image-slider">
+    <div class="image-slider__image" id="image-1"
+      style="background-image: url('{% static 'img/first.jpg' %}'); visibility: visible; transform: scale(1.2);"></div>
+    <div class="image-slider__image" id="image-2"
+      style="background-image: url('{% static 'img/second.jpg' %}'); visibility: hidden; transform: scale(1.2);"></div>
+    <div class="image-slider__image" id="image-3"
+      style="background-image: url('{% static 'img/third.jpg' %}'); visibility: hidden; transform: scale(1.2);"></div>
+  </div>
+
+  <svg class="intro" viewbox="0 0 200 86">
+    <text text-anchor="start" x="0" y="40" class="text text-stroke" clip-path="url(#text1)">MONEY</text>
+    <text text-anchor="start" x="35" y="65" class="text text-stroke" clip-path="url(#text2)">CERTIFICATES</text>
+    <text text-anchor="start" x="0" y="40" class="text text-stroke text-stroke-2" clip-path="url(#text1)">MONEY</text>
+    <text text-anchor="start" x="35" y="65" class="text text-stroke text-stroke-2"
+      clip-path="url(#text2)">CERTIFICATES</text>
+    <defs>
+      <clipPath id="text1">
+        <text text-anchor="start" x="0" y="40" class="text">MONEY</text>
+      </clipPath>
+      <clipPath id="text2">
+        <text text-anchor="start" x="35" y="65" class="text">CERTIFICATES</text>
+      </clipPath>
+    </defs>
+  </svg>
+  <img src="{% static 'img\4Snn.gif' %}" alt="" style="position:absolute; bottom: 12px; height: 30%">
+
+</section>
+
+<div class="border-block"></div>
+
+<section class="second-section">
+  <p class="section__title__withdrow">О нашем проекте</span></p>
+
+  <div class="section__decor"><img src="{% static 'img/icons/decor.svg' %}" alt=""></div>
+
+  <p class="wrapper__text">Если Вы впервые на нашем ресурсе, пожалуйста посмотрите вступительное видео!
+    В нем мы постарались максимально подробно рассказать обо всем.
+    Если после просмотра у Вас появятся вопросы, о том, как создавать и передавать
+    сертификаты, у нас на сайте есть более подробные инструкции.</p>
+  <div class="video-block-main">
+    <iframe src="https://video.wixstatic.com/video/1694f8_029fe95547cf466b9e8433baa0fa7eda/1080p/mp4/file.mp4"></iframe>
+
+  </div>
+
+
+  <div class="instruction-block">
+    <div class="instruction-block__content content">
+      <div class="content__main">
+        <img src="{% static 'img/icons/video-icon.svg' %}" alt="">
+        <p class="content__main__title">Видео <span>Пособие</span></p>
+        <img src="{% static 'img/line.svg' %}" alt="" style="margin-left: 50px;">
       </div>
-
-      <svg class="intro" viewbox="0 0 200 86">
-        <text text-anchor="start" x="0" y="40" class="text text-stroke" clip-path="url(#text1)">MONEY</text>
-        <text text-anchor="start" x="35" y="65" class="text text-stroke" clip-path="url(#text2)">CERTIFICATES</text>
-        <text text-anchor="start" x="0" y="40" class="text text-stroke text-stroke-2"
-          clip-path="url(#text1)">MONEY</text>
-        <text text-anchor="start" x="35" y="65" class="text text-stroke text-stroke-2"
-          clip-path="url(#text2)">CERTIFICATES</text>
-        <defs>
-          <clipPath id="text1">
-            <text text-anchor="start" x="0" y="40" class="text">MONEY</text>
-          </clipPath>
-          <clipPath id="text2">
-            <text text-anchor="start" x="35" y="65" class="text">CERTIFICATES</text>
-          </clipPath>
-        </defs>
-      </svg>
-      <img src = "{% static 'img\4Snn.gif' %}"alt = "" style="position:absolute; bottom: 12px; height: 30%">
-
-    </section>
-
-    <div class = "border-block"></div>
-
-    <section class="second-section">
-      <p class = "section__title__withdrow">О нашем проекте</span></p>
-
-      <div class = "section__decor"><img src = "{% static 'img/icons/decor.svg' %}" alt=""></div>
-
-      <p class="wrapper__text">Если Вы впервые на нашем ресурсе, пожалуйста посмотрите вступительное видео!
-        В нем мы постарались максимально подробно рассказать обо всем.
-        Если после просмотра у Вас появятся вопросы, о том, как создавать и передавать
-        сертификаты, у нас на сайте есть более подробные инструкции.</p>
-        <div class="video-block" style="margin: 0 auto; box-shadow: 9px 6px 8px 0px rgba(34, 60, 80, 0.2); margin-top: 100px; margin-bottom: 100px;">
-        <iframe src="https://video.wixstatic.com/video/1694f8_029fe95547cf466b9e8433baa0fa7eda/1080p/mp4/file.mp4"></iframe>
-
-        </div>
-
-
-      <div class = "instruction-block">
-          <div class = "instruction-block__content content">
-               <div class = "content__main">
-                  <img src = "{% static 'img/icons/video-icon.svg' %}" alt = "">
-                  <p class = "content__main__title">Видео <span>Пособие</span></p>
-                  <img src = "{% static 'img/line.svg' %}" alt = "" style="margin-left: 50px;">
-               </div>
-               <div class = "content__right">
-                   <p class = "content__right__border"></p>
-                   <p class = "content__right__text">Посмотрите подробные инструкции</p>
-               </div>
-               <div class = "content__button-block">
-                  <a href="{% url 'manual' %}" class = "button-block__button button">
-                    <span class = "button__text">Take a tour</span>
-                    <span class = "button__span">
-                      <img class = "button__span-img" width = "14" height = "16" src = "{% static 'img/icons/play-button.svg' %}" alt = "">
-                    </span>
-                  </a>
-                </div>
-          </div>
+      <div class="content__right">
+        <p class="content__right__border"></p>
+        <p class="content__right__text">Посмотрите подробные инструкции</p>
       </div>
-    </section>
-
-    <section class="third-section">
-      <div class="certs-wrapper">
-        <p class = "section__title__withdrow">Денежные сертификаты</p>
-        <div class = "section__decor"><img src = "{% static 'img/icons/decor.svg' %}" alt=""></div>
-        <p class = "wrapper__text">Что же такой денежный сертификат? По сути сертификат это всего лишь условность. Деньги
-          переводятся только между пользователями. А сертификаты введены, только для Вашего
-          удобства. Они не имеют цены. И по этому не дорожают и не дешевеют.</p><br><br>
-        <div class="certificates">
-          <img src="{% static 'img/cert.png' %}" alt="">
-        </div>
-      </div>
-
-      <div class = "instruction-block">
-        <div class = "instruction-block__content content">
-             <div class = "content__main">
-                <img src = "{% static 'img/icons/cert-icon.svg' %}" alt = "">
-                <p class = "content__main__title">Бесплатные <span>Сертификаты</span></p>
-              <div>
-                <p class = "content__right__border"></p>
-                <img src = "{% static 'img/line.svg' %}" alt = "" style="margin-left: 50px;">
-              </div>
-                
-
-             </div>
-             <div class = "content__right">
-                 <p class = "content__right__border"></p>
-                 <p class = "content__right__text">Мы в социальных сетях</p>
-             </div>
-             <div class = "content__button-block">
-                 <a href = "https://t.me/mocertsbot" title="Телеграмм бот" target="_blank" style="margin: 5px; height: 50; width: 50px;"><img src = "{% static 'img/icons/bot.svg' %}"></a>
-                 <a href = "https://t.me/mocerts" title="Наша группа в телеграмм" target="_blank" style="margin: 5px"><img src = "{% static 'img/icons/popugay.svg' %}"></a>
-                 <a href = "https://t.me/amocerts" title= "Администратор сайта в телеграмм" target="_blank" style="margin: 5px"><img src = "{% static 'img/icons/admin.svg' %}"></a>
-                 <a href = "https://facebook.com/mocerts" title="Мы в FaceBook" target="_blank" style="margin: 5px"><img src = "{% static 'img/icons/fb.svg' %}" alt = ""></a>
-                 <a href = "https://instagram.com/mocerts" title="Мы в Instagram" target="_blank" style="margin: 5px"><img src = "{% static 'img/icons/insta.svg' %}" alt = ""></a>
-              </div>
-        </div>
-    </div>
-
-    </section>
-
-    <section class="blog-section">
-      <p class = "section__title__withdrow">Интересные статьи</p>
-
-      <div class = "section__decor"><img src = "{% static 'img/icons/decor.svg' %}" alt=""></div>
-      <p class = "wrapper__text">В этой части сайта мы будем собирать для Вас интересные статьи о заработке в интернете, работе на дому. На что стоит тратить свое время, а на что нет. О видах мошенничества и аферах в интернете. Как не попасться на уловки мошенников. И многое другое...</p>
-
- <div class = "slider-block">
-      <div class="swiper-container mySwiper">
-        <div class="swiper-wrapper">
-            {% for post in posts %}
-                <div class="swiper-slide">
-            <div class="blog-card">
-              <div class="card-image" style="background-image: url({{ post.photo.url }}); background-size: cover;"></div>
-              <div class="card-info">
-                <div class = "card-info__items">
-                  <div class = "card-info__item">
-                    <img width="22" height="16" src = "{% static 'img/icons/user.svg' %}" alt = "">
-                    <p>By Support</p>
-                  </div>
-                  <div class = "card-info__item">
-                    <img width="22" height="16" src = "{% static 'img/icons/calendar.svg' %}" alt = "">
-                    <p>{{ post.date_create }}</p>
-                  </div>
-                </div>
-                <div class = "card-info__content card-content">
-                   <p class = "card-content__title">{{ post.headline }}</p>
-                   <p class = "card-content__description">{{ post.subtitle }} ...</p>
-                   <a href = "{% url 'postdetail' post.pk %}" class = "card-content__link"><strong>Read more</strong></a>
-                </div>
-              </div>
-            </div>
-          </div>
-            {% endfor %}
-        </div>
-        <br>
-        <div class="swiper-pagination"></div>
-      </div>
+      <div class="content__button-block">
+        <a href="{% url 'manual' %}" class="button-block__button button">
+          <span class="button__text">Take a tour</span>
+          <span class="button__span">
+            <img class="button__span-img" width="14" height="16" src="{% static 'img/icons/play-button.svg' %}" alt="">
+          </span>
+        </a>
       </div>
     </div>
-    </section>
+  </div>
+</section>
 
-    <section class = "contacts-section" style="background-image: url({% static 'img/contacts.jpeg' %});">
-        <div class = "contacts-section__content content">
+<section class="third-section">
+  <div class="certs-wrapper">
+    <p class="section__title__withdrow">Денежные сертификаты</p>
+    <div class="section__decor"><img src="{% static 'img/icons/decor.svg' %}" alt=""></div>
+    <p class="wrapper__text">Что же такой денежный сертификат? По сути сертификат это всего лишь условность. Деньги
+      переводятся только между пользователями. А сертификаты введены, только для Вашего
+      удобства. Они не имеют цены. И по этому не дорожают и не дешевеют.</p><br><br>
+    <div class="certificates">
+      <img src="{% static 'img/cert.png' %}" alt="">
+    </div>
+  </div>
 
-            <div class = "content__left">
-                 <p class = "content__left__title">Наши контакты по всем вопросам</p>
-                 <div class = "content__left__border"></div>
-                 <p class = "content__left__text">По всем интересующим Вас вопросам, Вы всегда можете связаться с нашими менеджерами, по контактам, расположенным ниже, или обратиться к нам в офис</p>
-                  <div class = "content__items">
-                      <div class = "content__item">
-                          <img width="14" height="17" src = "{% static 'img/icons/phone-call.svg' %}" alt = "">
-                          <p>Call us +8 800 500 32 32</p>
-                      </div>
-                      <div class = "content__item">
-                        <img width="17" height="17" src = "{% static 'img/icons/email.svg' %}" alt = "">
-                        <p>admin@mocerts.com</p>
-                      </div>
-                      <div class = "content__item">
-                        <img width="17" height="17" src = "{% static 'img/icons/email.svg' %}" alt = "">
-                        <p>meneger@mocerts.com</p>
-                      </div>
-                    <div class = "content__item">
-                      <img width="14" height="17" src = "{% static 'img/icons/time.svg' %}" alt = "">
-                      <p>Open House on the 24th, – 12 mid day to 5 pm.</p>
-                    </div>
-                  </div>
-
-                 <div class = "contacts__button-block">
-                    <button class = "contacts-block__button button">
-                      <span class = "contacts__text">Посетить офис</span>
-                      <span class = "contacts__span">
-                        <img class = "contacts__span-img" width = "16" height = "16" src = "{% static 'img/icons/edit.svg' %}" alt = "">
-                      </span>
-                    </button>
-                  </div>
-            </div>
-
-            <div class = "content__contact-right">
-              <div class = "place-block">
-                 <div class = "place-block__content place">
-                    <p class="place__title">Адрес офиса</p>
-                    <p>г. Новосибирск, 630007
-                      Железнодорожный район,
-                      ​Советская, 5​1 офис 506</p>
-                 </div>
-              </div>
-              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d70110.71557601451!2d82.91260432980114!3d54.98565786832646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1629281008533!5m2!1sen!2s" width="570" height="500" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-
+  <div class="instruction-block">
+    <div class="instruction-block__content content">
+      <div class="content__main">
+        <img src="{% static 'img/icons/cert-icon.svg' %}" alt="">
+        <p class="content__main__title">Бесплатные <span>Сертификаты</span></p>
+        <div>
+          <p class="content__right__border"></p>
+          <img src="{% static 'img/line.svg' %}" alt="" style="margin-left: 50px;">
         </div>
-    </section>
+
+
+      </div>
+      <div class="content__right">
+        <p class="content__right__border"></p>
+        <p class="content__right__text">Мы в социальных сетях</p>
+      </div>
+      <div class="content__button-block">
+        <a href="https://t.me/mocertsbot" title="Телеграмм бот" target="_blank"
+          style="margin: 5px; height: 50; width: 50px;"><img src="{% static 'img/icons/bot.svg' %}"></a>
+        <a href="https://t.me/mocerts" title="Наша группа в телеграмм" target="_blank" style="margin: 5px"><img
+            src="{% static 'img/icons/popugay.svg' %}"></a>
+        <a href="https://t.me/amocerts" title="Администратор сайта в телеграмм" target="_blank" style="margin: 5px"><img
+            src="{% static 'img/icons/admin.svg' %}"></a>
+        <a href="https://facebook.com/mocerts" title="Мы в FaceBook" target="_blank" style="margin: 5px"><img
+            src="{% static 'img/icons/fb.svg' %}" alt=""></a>
+        <a href="https://instagram.com/mocerts" title="Мы в Instagram" target="_blank" style="margin: 5px"><img
+            src="{% static 'img/icons/insta.svg' %}" alt=""></a>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section class="blog-section">
+  <p class="section__title__withdrow">Интересные статьи</p>
+
+  <div class="section__decor"><img src="{% static 'img/icons/decor.svg' %}" alt=""></div>
+  <p class="wrapper__text">В этой части сайта мы будем собирать для Вас интересные статьи о заработке в интернете,
+    работе на дому. На что стоит тратить свое время, а на что нет. О видах мошенничества и аферах в интернете. Как не
+    попасться на уловки мошенников. И многое другое...</p>
+
+  <div class="slider-block">
+    <div class="swiper-container mySwiper">
+      <div class="swiper-wrapper">
+        {% for post in posts %}
+        <div class="swiper-slide">
+          <div class="blog-card">
+            <div class="card-image" style="background-image: url({{ post.photo.url }}); background-size: cover;"></div>
+            <div class="card-info">
+              <div class="card-info__items">
+                <div class="card-info__item">
+                  <img width="22" height="16" src="{% static 'img/icons/user.svg' %}" alt="">
+                  <p>By Support</p>
+                </div>
+                <div class="card-info__item">
+                  <img width="22" height="16" src="{% static 'img/icons/calendar.svg' %}" alt="">
+                  <p>{{ post.date_create }}</p>
+                </div>
+              </div>
+              <div class="card-info__content card-content">
+                <p class="card-content__title">{{ post.headline }}</p>
+                <p class="card-content__description">{{ post.subtitle }} ...</p>
+                <a href="{% url 'postdetail' post.pk %}" class="card-content__link"><strong>Read more</strong></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <br>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<section class="contacts-section" style="background-image: url({% static 'img/contacts.jpeg' %});">
+  <div class="contacts-section__content content">
+
+    <div class="content__left">
+      <p class="content__left__title">Наши контакты по всем вопросам</p>
+      <div class="content__left__border"></div>
+      <p class="content__left__text">По всем интересующим Вас вопросам, Вы всегда можете связаться с нашими менеджерами,
+        по контактам, расположенным ниже, или обратиться к нам в офис</p>
+      <div class="content__items">
+        <div class="content__item">
+          <img width="14" height="17" src="{% static 'img/icons/phone-call.svg' %}" alt="">
+          <p>Call us +8 800 500 32 32</p>
+        </div>
+        <div class="content__item">
+          <img width="17" height="17" src="{% static 'img/icons/email.svg' %}" alt="">
+          <p>admin@mocerts.com</p>
+        </div>
+        <div class="content__item">
+          <img width="17" height="17" src="{% static 'img/icons/email.svg' %}" alt="">
+          <p>meneger@mocerts.com</p>
+        </div>
+        <div class="content__item">
+          <img width="14" height="17" src="{% static 'img/icons/time.svg' %}" alt="">
+          <p>Open House on the 24th, – 12 mid day to 5 pm.</p>
+        </div>
+      </div>
+
+      <div class="contacts__button-block">
+        <button class="contacts-block__button button">
+          <span class="contacts__text">Посетить офис</span>
+          <span class="contacts__span">
+            <img class="contacts__span-img" width="16" height="16" src="{% static 'img/icons/edit.svg' %}" alt="">
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <div class="content__contact-right">
+      <div class="place-block">
+        <div class="place-block__content place">
+          <p class="place__title">Адрес офиса</p>
+          <p>г. Новосибирск, 630007
+            Железнодорожный район,
+            ​Советская, 5​1 офис 506</p>
+        </div>
+      </div>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d70110.71557601451!2d82.91260432980114!3d54.98565786832646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1629281008533!5m2!1sen!2s"
+        width="570" height="500" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
+  </div>
+</section>
 <div class="video-block" style="visibility: hidden;position: absolute;top: -9999px;!important;">
-    <video>
-          <source src="https://video.wixstatic.com/video/1694f8_029fe95547cf466b9e8433baa0fa7eda/1080p/mp4/file.mp4" type="video/mp4">
-    </video>
-    <i class="material-icons play-btn">play_circle_filled</i>
+  <video>
+    <source src="https://video.wixstatic.com/video/1694f8_029fe95547cf466b9e8433baa0fa7eda/1080p/mp4/file.mp4"
+      type="video/mp4">
+  </video>
+  <i class="material-icons play-btn">play_circle_filled</i>
 </div>
 {% endblock %}
-
