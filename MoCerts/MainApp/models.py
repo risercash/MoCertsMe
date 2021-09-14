@@ -233,7 +233,7 @@ class Withdrawal(models.Model):
 
     def __str__(self):
         '''Строковое отображение'''
-        return f'{self.time}'
+        return f'{self.user} - {self.bill_id}'
 
     def get_absolute_url(self):
         """получить ссылку на объект"""
