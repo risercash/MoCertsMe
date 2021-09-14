@@ -20,6 +20,8 @@
     <meta property="og:image" content="{{ 'image'|property }}">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+    {% block property %}
+    {% endblock property%}
     
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -36,9 +38,7 @@
     <link rel="manifest" href="{% static 'img/site.webmanifest' %}">
     <title>Money Certificate</title>
 
-    {% block property %}
-    {% endblock property%}
-
+    <meta name="yandex-verification" content="d602bbd945261416" />
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript" >
       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -54,7 +54,7 @@
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/85169608" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
-    
+
 </head>
 
 <body>
