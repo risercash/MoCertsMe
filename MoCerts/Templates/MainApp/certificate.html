@@ -4,10 +4,9 @@
 {% load custom_filters %}
 
 
-
 {% block property %}
-<meta property="og:url" content="{{ 'url'|property }}">
-<meta property="og:image" content="{{ 'image'|property }}">
+<meta property="og:url" content="{{ host }}{{ certificate.certificate_image.url }}">
+<meta property="og:image" content="{{ host }}{{ certificate.certificate_image.url }}">
 {% endblock property%}
 
 {% block title %}

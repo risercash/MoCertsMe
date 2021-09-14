@@ -92,7 +92,7 @@ class PreviewSettings(models.Model):
         max_length=255, default='@MonteCarlo', verbose_name='twitter_creator',)
     url = models.URLField(max_length=255, default=HOST, verbose_name='Ссылка на сайт',
                           help_text='Данное поле для всех страниц. Для сертификатов подставляется свой url')
-    image = models.URLField(max_length=255, default=HOST + '/media/2607211245970578.png', verbose_name='Ссылка на картинку',
+    image = models.URLField(max_length=255, default=HOST + '/media/preview_cert.png', verbose_name='Ссылка на картинку',
                             help_text='Данное поле для всех страниц. Для сертификатов подставляется своя картинка',)
 
     class Meta:
