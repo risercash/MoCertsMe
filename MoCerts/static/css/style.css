@@ -147,10 +147,18 @@ h2::after {
 /* Меню */
 
 nav {
-  position: fixed;
-  z-index: 100;
+  /* display: none; */
+  width: 110px;
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  background-color: #111; /* Black */
+  overflow-y: hidden; /* Disable horizontal scroll */
+
 }
 
+nav.navopen {
+  width: 300px;
+}
 .sidebar {
   width: 250px;
   height: 200vh;

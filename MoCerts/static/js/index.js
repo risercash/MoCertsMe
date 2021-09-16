@@ -3,7 +3,8 @@ const videoPlayer = document.querySelector('.video-block video')
 const playBtn = document.querySelector('.play-btn')
 const houseIcon = document.querySelector('#home-icon');
 const sideBar = document.querySelector('.sidebar')
-
+const nav = document.querySelector('nav')
+console.log(nav)
 
 
 const sideBarMini = sideBar.cloneNode(true)
@@ -62,6 +63,7 @@ function mouseOut() {
 
 function toggleSideBar() {
   sideBar.classList.toggle('open')
+  nav.classList.toggle('navopen')
   sideBarMini.classList.toggle('down')
 }
 

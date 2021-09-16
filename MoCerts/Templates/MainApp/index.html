@@ -5,17 +5,19 @@
 {% load custom_filters %}
 
 
-
 {% block property %}
 <meta property="og:url" content="{{ 'url'|property }}">
 <meta property="og:image" content="{{ 'image'|property }}">
 {% endblock property%}
 
+
 {% block title %}
 Заработок в интернете | Mocerts
 {% endblock %}
 
+
 {% block content %}
+
 <section class="first" id="first-section">
   <div class="image-slider">
     <div class="image-slider__image" id="image-1"
@@ -42,7 +44,6 @@
     </defs>
   </svg>
   <img src="{% static 'img\4Snn.gif' %}" alt="" style="position:absolute; bottom: 12px; height: 30%">
-
 </section>
 
 <div class="border-block"></div>
@@ -57,10 +58,8 @@
     Если после просмотра у Вас появятся вопросы, о том, как создавать и передавать
     сертификаты, у нас на сайте есть более подробные инструкции.</p>
   <div class="video-block-main">
-    <iframe src="https://video.wixstatic.com/video/1694f8_029fe95547cf466b9e8433baa0fa7eda/1080p/mp4/file.mp4"></iframe>
-
+    <!-- <iframe src="https://video.wixstatic.com/video/1694f8_029fe95547cf466b9e8433baa0fa7eda/1080p/mp4/file.mp4"></iframe> -->
   </div>
-
 
   <div class="instruction-block">
     <div class="instruction-block__content content">
