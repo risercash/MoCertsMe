@@ -8,179 +8,198 @@
 
 
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta property="og:type" content="{{ 'type'|property }}">
-    <meta property="og:site_name" content="{{ 'site_name'|property }}">
-    <meta property="og:title" content="{{ 'title'|property }}">
-    <meta property="og:description" content="{{ 'description'|property }}">
-    <meta property="og:locale" content="{{ 'locale'|property }}">
-    <meta name="twitter:creator" content="{{ 'twitter_creator'|property}} ">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    
-    {% block property %}
-    {% endblock property%}
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'swiper/swiper-bundle.min.css' %}" />
-    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'img/apple-touch-icon.png' %}">
-    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}"/>
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon-32x32.png' %}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-16x16.png' %}">
-    <link rel="manifest" href="{% static 'img/site.webmanifest' %}">
-    <title>Money Certificate</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta property="og:type" content="{{ 'type'|property }}">
+  <meta property="og:site_name" content="{{ 'site_name'|property }}">
+  <meta property="og:title" content="{{ 'title'|property }}">
+  <meta property="og:description" content="{{ 'description'|property }}">
+  <meta property="og:locale" content="{{ 'locale'|property }}">
+  <meta name="twitter:creator" content="{{ 'twitter_creator'|property}} ">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  {% block property %}
+  {% endblock property%}
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'swiper/swiper-bundle.min.css' %}" />
+  <link rel="apple-touch-icon" sizes="76x76" href="{% static 'img/apple-touch-icon.png' %}">
+  <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}" />
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon-32x32.png' %}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-16x16.png' %}">
+  <link rel="manifest" href="{% static 'img/site.webmanifest' %}">
+  <title>Money Certificates</title>
 
 
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript" >
-      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-      m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function (m, e, t, r, i, k, a) {
+      m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+      m[i].l = 1 * new Date(); k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+    })
       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-      ym(85169608, "init", {
-          clickmap:true,
-          trackLinks:true,
-          accurateTrackBounce:true,
-          webvisor:true
-      });
-    </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/85169608" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-    <!-- /Yandex.Metrika counter -->
+    ym(85169608, "init", {
+      clickmap: true,
+      trackLinks: true,
+      accurateTrackBounce: true,
+      webvisor: true
+    });
+  </script>
+  <noscript>
+    <div><img src="https://mc.yandex.ru/watch/85169608" style="position:absolute; left:-9999px;" alt="" /></div>
+  </noscript>
+  <!-- /Yandex.Metrika counter -->
 
 </head>
 
 <body>
-  <style>
-    .cross { cursor: crosshair; }
-    .help { cursor: help; }
-   </style>
 
-  <button onclick="topFunction()" id="scrollBtn" title="Go to top"><img width="50" height="50" src = "{% static 'img/icons/arrow-top.png' %}" alt = ""></button>
+  <button onclick="topFunction()" id="scrollBtn" title="Go to top"><img width="50" height="50"
+      src="{% static 'img/icons/arrow-top.png' %}" alt=""></button>
 
-        {% if user.is_authenticated %}
-  <div class = "balance-block">
-     <p><span>$</span>{{ user.balance }}</p>
+  <div class="balance-block">
+    {% if user.is_authenticated %}
+    <p><span>$</span>{{ user.balance }}</p>
+    {% else %}
+    <p><span>$</span>авторизируйтесь</p>
+    {% endif %}
   </div>
-        {% endif %}
+
   <nav>
     <ul class="sidebar">
       <div class="nav-controller">
-        <div class="burger" onclick="toggleSideBar()"><img src = "{% static 'img/icons/toggle.svg' %}" alt=""></div>
+        <div class="burger" onclick="toggleSideBar()"><img src="{% static 'img/icons/toggle.svg' %}" alt=""></div>
         <div class="flag">🇺🇸</div>
       </div>
 
 
-        {% if user.is_authenticated %}
+      {% if user.is_authenticated %}
       <li class="user">
         <div class="logo" style="background-image: url('{% static 'img/logo.webp' %}');"></div>
-        <div class="avatar"><img width="80" height="80" src = "{{ user.photo.url }}"></div>  <!-- avatar.png -->
+        <div class="avatar"><img width="80" height="80" src="{{ user.photo.url }}"></div> <!-- avatar.png -->
 
         <div class="name">{{ user.last_name }} {{ user.first_name }}</div>
       </li>
-        {% else %}
+      {% else %}
       <li class="user">
         <div class="logo" style="background-image: url('{% static 'img/logo.webp' %}');"></div>
-        <div class="avatar"></div>  <!-- avatar.png -->
+        <div class="avatar"></div> <!-- avatar.png -->
         <div class="name">Вы не авторизованы</div>
       </li>
-        {% endif %}
+      {% endif %}
 
       <li>
         <a href="{% url 'main_page' %}">
           <div class="icon-back">
-            <div class="icon" style="background-image: url('{% static 'img/icons/home.svg' %}');background-size: 28px 26px;"> <!-- home.svg -->
+            <div class="icon"
+              style="background-image: url('{% static 'img/icons/home.svg' %}');background-size: 28px 26px;">
+              <!-- home.svg -->
             </div>
           </div>
-          <span class = "icon-span">Home</span>
+          <span class="icon-span">Home</span>
         </a>
       </li>
 
-        {% if user.is_authenticated %}
+      {% if user.is_authenticated %}
       <li>
         <a href="{% url 'profile' %}">
           <div class="icon-back">
-            <div class="icon" style="background-image: url('{% static 'img/icons/user.svg' %}');background-size: 29px 29px;"></div>
+            <div class="icon"
+              style="background-image: url('{% static 'img/icons/user.svg' %}');background-size: 29px 29px;"></div>
           </div>
-          <span class = "icon-span">My Profile</span>
+          <span class="icon-span">My Profile</span>
         </a>
       </li>
       <li>
         <a href="{% url 'select_certificate' %}">
           <div class="icon-back">
-            <div class="icon" style="background-image: url('{% static 'img/icons/s-cert.svg' %}');background-size: 29px 29px;"></div> <!-- cert.svg -->
+            <div class="icon"
+              style="background-image: url('{% static 'img/icons/s-cert.svg' %}');background-size: 29px 29px;"></div>
+            <!-- cert.svg -->
           </div>
-          <span class = "icon-span">Select Certificate</span>
+          <span class="icon-span">Select Certificate</span>
         </a>
       </li>
 
       <li>
-        <a href="{% url 'my_certificates' %}" class = "menu-link">
+        <a href="{% url 'my_certificates' %}" class="menu-link">
           <div class="icon-back menu-link">
-            <div class="icon" style="background-image: url('{% static 'img/icons/m-cert.svg' %}');background-size: 29px 29px;"></div> <!-- certs.svg -->
+            <div class="icon"
+              style="background-image: url('{% static 'img/icons/m-cert.svg' %}');background-size: 29px 29px;"></div>
+            <!-- certs.svg -->
           </div>
-          <span class = "icon-span">My Certificates</span>
+          <span class="icon-span">My Certificates</span>
         </a>
       </li>
 
       <li>
         <a href="{% url 'manual' %}">
           <div class="icon-back">
-            <div class="icon" style="background-image: url('{% static 'img/icons/instruction.svg' %}');background-size: 29px 29px;"><!-- instruction.svg --></div>
-          </div>
-          <span class = "icon-span">Instructions</span>
-        </a>
-      </li>
-
-      <li>
-        <a href="{% url 'userbalance' %}" class = "menu-link">
-          <div class="icon-back menu-link">
-            <div class="icon" style="background-image: url('{% static 'img/icons/m-balance.svg' %}');background-size: 29px 29px;">
+            <div class="icon"
+              style="background-image: url('{% static 'img/icons/instruction.svg' %}');background-size: 29px 29px;">
+              <!-- instruction.svg -->
             </div>
           </div>
-          <span class = "icon-span">My Balance</span>
+          <span class="icon-span">Instructions</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="{% url 'userbalance' %}" class="menu-link">
+          <div class="icon-back menu-link">
+            <div class="icon"
+              style="background-image: url('{% static 'img/icons/m-balance.svg' %}');background-size: 29px 29px;">
+            </div>
+          </div>
+          <span class="icon-span">My Balance</span>
         </a>
       </li>
 
       <li>
         <a href="{% url 'manual' %}">
           <div class="icon-back">
-            <div class="icon" style="background-image: url('{% static 'img/icons/v-icon.svg' %}');background-size: 29px 29px;"></div>
+            <div class="icon"
+              style="background-image: url('{% static 'img/icons/v-icon.svg' %}');background-size: 29px 29px;"></div>
           </div>
-          <span class = "icon-span">More Instructions</span>
+          <span class="icon-span">More Instructions</span>
         </a>
       </li>
 
-        {% else %}
+      {% else %}
 
       <li>
         <a href="{% url 'account_login' %}">
           <div class="icon-back">
-            <div class="icon" style="background-image: url('{% static 'img/icons/user.svg' %}');background-size: 29px 29px;"></div>
+            <div class="icon"
+              style="background-image: url('{% static 'img/icons/user.svg' %}');background-size: 29px 29px;"></div>
           </div>
-          <span class = "icon-span">Войти</span>
+          <span class="icon-span">Войти</span>
         </a>
       </li>
 
       <li>
         <a href="{% url 'account_signup' %}">
           <div class="icon-back">
-            <div class="icon" style="background-image: url('{% static 'img/icons/user.svg' %}');background-size: 29px 29px;"></div>
+            <div class="icon"
+              style="background-image: url('{% static 'img/icons/user.svg' %}');background-size: 29px 29px;"></div>
           </div>
-          <span class = "icon-span">Регистрация</span>
+          <span class="icon-span">Регистрация</span>
         </a>
       </li>
-        {% endif %}
+      {% endif %}
 
-      <li class = "mask-block">
-         <div class = "mask-block__border"></div>
+      <li class="mask-block">
+        <div class="mask-block__border"></div>
       </li>
 
 
@@ -191,46 +210,46 @@
 
     {% block content %}
     {% endblock content%}
-    
+
     <footer>
       <div class="footer__content">
         <div class="copyright">© 2021 СЧАСТЬЕ ЕСТЬ. и оно уже БЛИЗКО!!! MoCerts.com</div>
-          <ul class="footer__links-block">
-            <li>
-              <a href="#">Home</a>
-              <span class = "block__border">|</span>
-            </li>
-            <li>
-              <a href="#">Select Certificate</a>
-              <span class = "block__border">|</span>
-            </li>
-            <li>
-              <a href="#">My Certificates</a>
-              <span class = "block__border">|</span>
-            </li>
-            <li>
-              <a href="#">Balance</a>
-            </li>
-          </ul>
+        <ul class="footer__links-block">
+          <li>
+            <a href="#">Home</a>
+            <span class="block__border">|</span>
+          </li>
+          <li>
+            <a href="{% url 'select_certificate' %}">Select Certificate</a>
+            <span class="block__border">|</span>
+          </li>
+          <li>
+            <a href="{% url 'my_certificates' %}">My Certificates</a>
+            <span class="block__border">|</span>
+          </li>
+          <li>
+            <a href="{% url 'userbalance' %}">Balance</a>
+          </li>
+        </ul>
       </div>
       <!-- Не знаю почему! Но, без этого блока не показывает иконки на кнопках -->
       <div class="video-block" style="visibility: hidden;position: absolute;top: -9px;!important;">
         <video>
-              <source src="https://video.wixstatic.com/video/1694f8_029fe95547cf466b9e8433baa0fa7eda/1080p/mp4/file.mp4" type="video/mp4">
+          <source src="https://video.wixstatic.com/video/1694f8_029fe95547cf466b9e8433baa0fa7eda/1080p/mp4/file.mp4"
+            type="video/mp4">
         </video>
         <i class="material-icons play-btn">play_circle_filled</i>
         <!-- конец вертякогого блока -->
       </div>
-    <script src="{% static 'js/my_certificates.js' %}"></script>
+      <script src="{% static 'js/my_certificates.js' %}"></script>
     </footer>
   </main>
-    <script src="{% static 'swiper/swiper-bundle.min.js' %}"></script>
-    <script src="{% static 'js/index.js' %}"></script>
-    <script src="{% static 'js/index_form.js' %}"></script>
-    {% block script %}
+  <script src="{% static 'swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'js/index.js' %}"></script>
+  <script src="{% static 'js/index_form.js' %}"></script>
+  {% block script %}
 
-    {% endblock script %}
+  {% endblock script %}
 </body>
 
 </html>
-

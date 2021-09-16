@@ -30,6 +30,13 @@ def get_client_ip(request):
     return render(request, 'userbalance.html', {'ip_address': ip})
 
 
+def sending(first_name, last_name, user_email, summ):
+    ''' ===== Эта функция отправляет мне сообщение в телеграм 
+    надо сделать, что бы при поступлении и выводе средств она вызывалась ===== '''
+    text = f'{first_name} {last_name}({user_email}): {summ}$'
+    requests.get(f'https://api.telegram.org/bot1554753984:AAEBxoRD2KWy9HWMPRFcvBVwhTzfD7FoaJ0/sendMessage?chat_id=1434266116&text={text}')
+
+
 logger = logging.getLogger(__name__)
 
 
