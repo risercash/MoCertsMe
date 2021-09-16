@@ -151,7 +151,7 @@ nav {
   width: 110px;
   position: fixed; /* Fixed Sidebar (stay in place on scroll) */
   z-index: 1; /* Stay on top */
-  /* background-color: #111; */
+  background-color: #111;
   overflow-y: hidden;
 
 }
@@ -287,6 +287,7 @@ nav.navopen {
   background-color: black;
   color: white;
   top: 50px;
+  /* display: none; */
 }
 
 .burger {
