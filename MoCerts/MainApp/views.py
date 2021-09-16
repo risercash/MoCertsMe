@@ -371,7 +371,7 @@ def accept(request, pk):
 
 
 def generate(request):
-    """ ===== Генератор ===== """
+    """ ===== Генератор этот надо обьединить с оплатой сертификата ===== """
     if request.method == "POST":
         count_certificates = request.POST.get('count_certificate')
         number = int(count_certificates)
