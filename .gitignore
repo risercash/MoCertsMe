@@ -1,6 +1,6 @@
 # My temp files
 /venv/
-
+/temp/
 **/.idea/
 **/__pycache__/
 dump.rdb

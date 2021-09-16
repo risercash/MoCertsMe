@@ -18,6 +18,10 @@ class CustomUser(AbstractUser):
         'Certificate', on_delete=models.SET_NULL, null=True, blank=True)
     telegram_id = models.BigIntegerField(
         verbose_name='telegram id', blank=True, default=0)
+    phone = models.CharField(max_length=12,
+        verbose_name='phone number', blank=True, default=0)
+    address = models.CharField(max_length=255,
+        verbose_name='address', blank=True, default=0)
     balance = models.PositiveIntegerField(verbose_name='balance', default=0)
     real_account = models.BooleanField(default=True)
 
