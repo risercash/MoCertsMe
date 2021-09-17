@@ -1370,7 +1370,7 @@ svg.intro.go .text-stroke:nth-child(6) {
   max-width: 600px;
   max-height: 70%;
   transition: 0.5s;
-  border: 6px solid #BFE2FF;
+  border: 6px solid #4e89b9;
   border-radius: 12px;
   background: #FFF;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2), 0 16px 20px rgba(0,0,0,0.2);
@@ -1388,7 +1388,7 @@ svg.intro.go .text-stroke:nth-child(6) {
   content: "";
   width: 50px;
   height: 50px;
-  border: 6px solid #BFE2FF;
+  border: 6px solid #4e89b9;
   border-radius: 12px;
   position: absolute;
   z-index: 10;
@@ -1420,10 +1420,10 @@ svg.intro.go .text-stroke:nth-child(6) {
 }
 @keyframes bg {
   0% {
-      background: rgba(51, 122, 183, 0);
+      background: rgba(209, 85, 126, 0);
   }
   100% {
-      background: rgba(51, 122, 183, 0.7);
+      background: rgba(21, 140, 245, 0.7);
   }
 }
 
@@ -1433,3 +1433,10 @@ svg.intro.go .text-stroke:nth-child(6) {
   margin-bottom: 2%;
 }
 
+.cross {
+  cursor: crosshair;
+}
+
+.help {
+  cursor: help;
+}
