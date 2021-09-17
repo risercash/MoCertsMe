@@ -33,7 +33,7 @@ INSTALLED_APPS = [
     'embed_video',
     'ckeditor',
     'ckeditor_uploader',
-    'djcelery_email',
+    # 'djcelery_email',
 
     'allauth',
     'allauth.account',
@@ -184,8 +184,8 @@ SOCIALACCOUNT_PROVIDERS = \
 
 
 # Настройки почтового сервера
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 EMAIL_HOST=os.getenv("EMAIL_HOST")
