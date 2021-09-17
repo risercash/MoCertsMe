@@ -11,9 +11,9 @@
 {% block content %}
 
 <section class="third-section" style="height: auto;!important;">
-    <div class="certs-wrapper">
-      <p class = "section__title"><span>{% trans 'Регистрация' %}</span></p>
-      <p class="wrapper__text">Введите данные для регистрации.</p>
+  <div class="certs-wrapper">
+    <p class="section__title"><span>{% trans 'Регистрация' %}</span></p>
+    <p class="wrapper__text">Введите данные для регистрации.</p>
     <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
       {% csrf_token %}
       {% include "account/errors.html" %}
@@ -39,8 +39,8 @@
       <a href="{% provider_login_url 'google' %}">
         <img width="310px" src="{% static 'img/fb_long.png' %}" alt="fb_long">
       </a>
-      <script async src="https://telegram.org/js/telegram-widget.js?15" data-telegram-login="mocertsbot" data-size="large" data-auth-url="https://mocerts.com/auth/complete/telegram/" data-request-access="write"></script>    </div>
     </div>
+  </div>
 </section>
 
 

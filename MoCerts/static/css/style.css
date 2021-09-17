@@ -294,7 +294,7 @@ h2::after {
   }
 
   .balance-block.open {
-    max-width: 246px;
+    max-width: 250px;
     transition: all 0.5s;
     border: none;
   }

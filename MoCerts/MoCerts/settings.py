@@ -40,19 +40,13 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.facebook',
-    'social_django',
+    # 'social_django',
     # 'allauth.socialaccount.providers.instagram',
-
-
 ]
 
-ROOT_URLCONF = 'django_telegram_auth_example.urls'
+ROOT_URLCONF = 'MoCerts.urls'
 
-WSGI_APPLICATION = 'django_telegram_auth_example.wsgi.application'
-
-AUTHENTICATION_BACKENDS = (
-
-)
+WSGI_APPLICATION = 'MoCerts.wsgi.application'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -78,8 +72,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'social_django.context_processors.backends',
-                'social_django.context_processors.login_redirect',
+                # 'social_django.context_processors.backends',
+                # 'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -147,12 +141,8 @@ THUMBNAIL_ALIASES = {
 }
 
 AUTHENTICATION_BACKENDS = [
-    'social_core.backends.telegram.TelegramAuth',
+    # 'social_core.backends.telegram.TelegramAuth',
     'django.contrib.auth.backends.ModelBackend',
-    # Needed to login by username in Django admin, regardless of `allauth`
-    # 'django.contrib.auth.backends.ModelBackend',
-
-    # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
