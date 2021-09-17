@@ -4,9 +4,8 @@ const crown = document.querySelector('.crown')
 const icons = document.querySelector('.icons')
 const iconSpans = document.querySelectorAll('.icons span')
 const balanceBlock = document.querySelector('.balance-block')
-console.log(asideController)
 
-
+//раскрытие сайдбара
 function toggleSideBar() {
     iconSpans.forEach(iconSpan => {
         if (iconSpan.classList.contains('icon_zIndex')) {
@@ -26,3 +25,21 @@ function toggleSideBar() {
     }, 100)
 
 }
+
+// изменение цвета надписей сайдбара при наведении
+const menuItemsLi = icons.querySelectorAll('li')
+const iconsItem = icons.querySelectorAll('.icons__item')
+
+for (let i = 0; i < menuItemsLi.length; i++) {
+    menuItemsLi[i].addEventListener('mouseover', () => {
+        iconsItem[i].classList.add('hover')
+        const icon__span = menuItemsLi[i].querySelector('.icon__span')
+        icon__span.style.zIndex = 1
+    })
+    menuItemsLi[i].addEventListener('mouseout', () => {
+        iconsItem[i].classList.remove('hover')
+        const icon__span = menuItemsLi[i].querySelector('.icon__span')
+        icon__span.style.zIndex = -1
+    })
+}
+

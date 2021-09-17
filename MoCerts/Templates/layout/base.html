@@ -73,7 +73,7 @@
   {% endif %}
 
   <aside>
-    <div class="aside__nav">
+    <nav class="aside__nav">
       <div class="aside__content">
 
         {% if user.is_authenticated %}
@@ -165,7 +165,7 @@
         </ul>
 
       </div>
-    </div>
+    </nav>
   </aside>
   <div class="aside__controller">
     <div class="burger" onclick="toggleSideBar()"><img src="{% static 'img/icons/toggle.svg' %}" alt=""></div>
@@ -205,7 +205,7 @@
   <script src="{% static 'swiper/swiper-bundle.min.js' %}"></script>
   <script src="{% static 'js/index.js' %}"></script>
   <script src="{% static 'js/aside.js' %}"></script>
-  <script src="{% static 'js/index_form.js' %}"></script>
+  <!-- <script src="{% static 'js/index_form.js' %}"></script> -->
   
   {% block script %}
   {% endblock script %}

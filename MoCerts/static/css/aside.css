@@ -106,7 +106,6 @@
 
 .icon__span {
     text-transform: uppercase;
-    color: rgb(243, 240, 234);
     cursor: pointer;
     background-color: #2C2C2C;
     border-bottom: 1px black solid;
@@ -117,7 +116,22 @@
     align-items: center;
     transform: translateX(-252px);
     transition: all 0.9s;
-    z-index: -1;
+    z-index: -1 ;
+}
+
+
+.icons__item:hover {
+    background-color: #5093d3 !important;
+}
+.icons__item.hover {
+    background-color: #5093d3 !important;
+}
+.icon__span:hover {
+    background-color: #3F85CE  !important;
+}
+
+.icon_zIndex {
+    z-index: 1 !important;
 }
 
 .icon__span span {
@@ -128,19 +142,16 @@
 
 .icons.open .icon__span {
     transform: translateY(0px);
-    transition: all 0.5s;
+    transition: translateY 0.5s;
 }
 
-.icon_zIndex {
-    z-index: 1 !important;
-}
+
 
 .icons__item {
     width: 60px;
     height: 60px;
     background-repeat: no-repeat;
     background-size: 30px 30px;
-    ;
     background-position: center, center;
     background-color: #2C2C2C;
     border-bottom: 1px black solid;
@@ -199,18 +210,6 @@
 .aside__controller.open {
     top: 100px;
     left: 249px;
-}
-
-.sidenav a {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-}
-
-.sidenav a:hover {
-    color: #f1f1f1;
 }
 
 @media screen and (max-width: 812px) {
