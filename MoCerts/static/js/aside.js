@@ -4,7 +4,7 @@ const crown = document.querySelector('.crown')
 const icons = document.querySelector('.icons')
 const iconSpans = document.querySelectorAll('.icons span')
 const balanceBlock = document.querySelector('.balance-block')
-console.log(balanceBlock)
+console.log(asideController)
 
 
 function toggleSideBar() {
@@ -19,10 +19,10 @@ function toggleSideBar() {
     })
     setTimeout(() => {
         aside__nav.classList.toggle('open')
+        asideController.classList.toggle('open')
         icons.classList.toggle('open')
         crown.classList.toggle('open')
         balanceBlock.classList.toggle('open')
-        asideController.classList.toggle('open')
     }, 100)
 
 }
