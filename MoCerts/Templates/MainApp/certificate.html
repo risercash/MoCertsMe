@@ -18,10 +18,16 @@
 {% if not need_pay %}
 <section class="third-section" style="height: auto;!important;">
       <div class="certs-wrapper">
-            <p class="section__title"><span>{% trans 'Сертификат оплачен' %}</span></p>
+            <p class="section__title"><span>{% trans 'Поздравляем! Вы получили предоплаченный сертификат. Впм остается только принять его.' %}</span></p>
             <div class="certificates">
                   <img src="{{ certificate.certificate_image.url }}" alt="">
             </div>
+            <a href="{% url 'pay_certificate' pk=certificate.pk %}"
+                  title="Перевести {{ certificate.nominal }}$ пользователю по имени {{ certificate.user1.first_name }} {{ certificate.user1.last_name }}"
+                  class="button-block__button button"
+                  style="background-color: #3f85ce;color: #FFFFFF; margin-bottom: 50px">
+                  <span class="button__text">Принять</span><span class="button__transfer">🎁</span>
+            </a>
       </div>
 </section>
 
@@ -72,7 +78,6 @@
                   title="Перевести {{ certificate.nominal }}$ пользователю по имени {{ certificate.user1.first_name }} {{ certificate.user1.last_name }}"
                   class="button-block__button button"
                   style="background-color: #3f85ce;color: #FFFFFF; margin-bottom: 50px">
-                  <!-- тут поменял accept на pay_certificate -->
                   <span class="button__text">Перевести</span><span class="button__transfer">
                         {{ certificate.nominal }}$</span>
             </a>

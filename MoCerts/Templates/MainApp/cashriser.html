@@ -8,7 +8,7 @@
 
 
 
-<body>
+
     <div>
 <!--        <form style="margin-left:300px;" id="search_name_user" class="form-inline my-2 my-lg-0" action="{% url 'cashriser' %}" >-->
 <!--          <input class=" show_form_filter_user form-control mr-sm-2" type="search" placeholder="Search user" aria-label="Search" name="search_user" >-->
@@ -31,7 +31,7 @@
                 <label for="horns" style="color: black">Именные?</label>
                 <input type="checkbox" class="custom-checkbox" id="horns" name="horns" value="no">
                 <div class="show_form_filter_user">
-                    <select name="choose_user" multiple aria-label="multiple select example" size="5" style="matgin-top: 100px; width: 400px;">
+                    <select name="choose_user" aria-label="multiple select example" size="5" style="matgin-top: 100px; width: 400px;">
                     {% for user in users %}
                       <option>{{ user.first_name }} {{ user.last_name}} {{ user.email }}</option>
                     {% endfor %}
@@ -47,7 +47,6 @@
         <p style="margin-left: 300px;">{{ certificate.url }}</p>
     {% endfor %}
 
-</body>
 
-</html>
+
 {% endblock %}
