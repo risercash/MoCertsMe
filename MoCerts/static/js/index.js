@@ -2,9 +2,9 @@ const slides = document.querySelectorAll('.image-slider__image')
 const videoPlayer = document.querySelector('.video-block video')
 const playBtn = document.querySelector('.play-btn')
 const houseIcon = document.querySelector('#home-icon');
-const sideBar = document.querySelector('.sidebar')
-const nav = document.querySelector('nav')
-console.log(nav)
+// const sideBar = document.querySelector('.sidebar')
+// const nav = document.querySelector('nav')
+// console.log(nav)
 
 
 const sideBarMini = sideBar.cloneNode(true)
@@ -61,11 +61,11 @@ function mouseOut() {
   sideBar.querySelectorAll('a').forEach(menuItem => menuItem.style.color = '#f3f0ea')
 }
 
-function toggleSideBar() {
-  sideBar.classList.toggle('open')
-  nav.classList.toggle('navopen')
-  sideBarMini.classList.toggle('down')
-}
+// function toggleSideBar() {
+//   sideBar.classList.toggle('open')
+//   nav.classList.toggle('navopen')
+//   sideBarMini.classList.toggle('down')
+// }
 
 function playVideo() {
   playBtn.style.display = 'none'

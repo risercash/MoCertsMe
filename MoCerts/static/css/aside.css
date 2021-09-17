@@ -1,0 +1,224 @@
+.aside__nav {
+    height: 100%;
+    width: 60px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    overflow-y: hidden;
+    padding-top: 20px;
+    transition: all 0.5s ease-out;
+}
+
+.aside__nav.open {
+    width: 250px;
+}
+
+.aside__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.crown {
+    width: 62px;
+    height: 100px;
+    background-color: black;
+    background-image: url('/static/img/corona.png');
+    background-repeat: no-repeat;
+    background-size: 42px;
+    background-position: 11px 12px;
+    transition: all 0.5s;
+}
+
+.crown__logo {
+    opacity: 0;
+}
+
+.crown__avatar {
+    opacity: 0;
+}
+
+.crown__name {
+    opacity: 0;
+}
+
+.crown.open {
+    background-image: none;
+    width: 250px;
+    height: 180px;
+    transition: all 0.5s;
+}
+
+.crown.open .crown__logo {
+    opacity: 1;
+    background-image: url('/static/img/logo.webp');
+    grid-area: logo;
+    width: 100%;
+    height: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-bottom: 13px;
+    transition: all 0.5s ease-in-out;
+}
+
+.crown.open .crown__avatar {
+    opacity: 1;
+    grid-area: avatar;
+    width: 80px;
+    height: 80px;
+    margin-left: 80px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left;
+    border: 2px solid royalblue;
+    transition: all 0.5s ease-in-out;
+}
+
+.crown.open .crown__name {
+    opacity: 1;
+    font: 1em sans-serif;
+    font-size: larger;
+    color: white;
+    text-align: center;
+    margin-top: 5px;
+    transition: all 0.5s ease-in-out;
+}
+
+.icons {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.icons li {
+    display: flex;
+}
+
+.icons a {
+    display: flex;
+    text-decoration: none;
+}
+
+.icon__span {
+    text-transform: uppercase;
+    color: rgb(243, 240, 234);
+    cursor: pointer;
+    background-color: #2C2C2C;
+    border-bottom: 1px black solid;
+    border-left: 1px black solid;
+    width: 190px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    transform: translateX(-252px);
+    transition: all 0.9s;
+    z-index: -1;
+}
+
+.icon__span span {
+    text-transform: uppercase;
+    color: rgb(243, 240, 234);
+    padding-left: 4%;
+}
+
+.icons.open .icon__span {
+    transform: translateY(0px);
+    transition: all 0.5s;
+}
+
+.icon_zIndex {
+    z-index: 1 !important;
+}
+
+.icons__item {
+    width: 60px;
+    height: 60px;
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+    ;
+    background-position: center, center;
+    background-color: #2C2C2C;
+    border-bottom: 1px black solid;
+    cursor: pointer;
+}
+
+.home_icon {
+    background-image: url('/static/img/icons/home.svg');
+}
+
+.profile_icon {
+    background-image: url('/static/img/icons/user.svg');
+}
+
+.cert_select_icon {
+    background-image: url('/static/img/icons/s-cert.svg');
+}
+
+.my_cert_icon {
+    background-image: url('/static/img/icons/m-cert.svg');
+}
+
+.instruction_icon {
+    background-image: url('/static/img/icons/instruction.svg');
+}
+
+.balance_icon {
+    background-image: url('/static/img/icons/m-balance.svg');
+}
+
+.manual_video_icon {
+    background-image: url('/static/img/icons/v-icon.svg');
+}
+
+.login_icon {
+    background-image: url('/static/img/icons/user.svg');
+}
+
+.signup_icon {
+    background-image: url('/static/img/icons/user.svg');
+}
+
+.long {
+    height: 60vh !important;
+    filter: brightness(1.2);
+}
+
+.aside__controller {
+    position: fixed;
+    top: 30px;
+    left: 59px;
+    z-index: 2;
+    transition: all 0.5s ease-out;
+}
+
+.aside__controller.open {
+    top: 100px;
+    left: 249px;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+@media screen and (max-width: 812px) {
+    .aside__nav {
+        width: 0;
+    }
+    .aside__controller {
+        left: 0;
+    }
+    
+}
