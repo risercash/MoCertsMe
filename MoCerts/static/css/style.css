@@ -1446,3 +1446,12 @@ svg.intro.go .text-stroke:nth-child(6) {
   overflow: hidden;
   box-shadow: -5px 20px 32px 3px rgba(0,0,0,0.6);
 }
+
+@media screen and (max-width: 812px) {
+  .video__block_content {
+    width: 95%;
+    /* height: 30%; */
+    height: 400px;
+  }  
+  
+}
