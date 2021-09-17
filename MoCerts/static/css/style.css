@@ -1468,8 +1468,7 @@ svg.intro.go .text-stroke:nth-child(6) {
     width: 100%;
     height: 140px;
     margin-top: 15px;
-  }
-  .content__contact-right iframe {
     margin-bottom: 90px;
+    border-radius: 1%;
   }
 }
