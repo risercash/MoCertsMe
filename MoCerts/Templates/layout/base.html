@@ -163,7 +163,6 @@
             </a>
           </li>
         </ul>
-
       </div>
     </nav>
   </aside>
@@ -173,34 +172,33 @@
   </div>
 
   <main>
-
     {% block content %}
     {% endblock content%}
-
-    <footer>
-      <div class="footer__content">
-        <div class="copyright">© 2021 СЧАСТЬЕ ЕСТЬ. и оно уже БЛИЗКО!!! MoCerts.com</div>
-        <ul class="footer__links-block">
-          <li>
-            <a href="#">Home</a>
-            <span class="block__border">|</span>
-          </li>
-          <li>
-            <a href="#">Select Certificate</a>
-            <span class="block__border">|</span>
-          </li>
-          <li>
-            <a href="#">My Certificates</a>
-            <span class="block__border">|</span>
-          </li>
-          <li>
-            <a href="#">Balance</a>
-          </li>
-        </ul>
-      </div>
-      <script src="{% static 'js/my_certificates.js' %}"></script>
-    </footer>
   </main>
+
+  <footer>
+    <div class="footer__content">
+      <div class="copyright">© 2021 СЧАСТЬЕ ЕСТЬ. и оно уже БЛИЗКО!!! MoCerts.com</div>
+      <ul class="footer__links-block">
+        <li>
+          <a href="{% url 'main_page' %}">Home</a>
+          <span class="block__border">|</span>
+        </li>
+        <li>
+          <a href="{% url 'select_certificate' %}">Select Certificate</a>
+          <span class="block__border">|</span>
+        </li>
+        <li>
+          <a href="{% url 'my_certificates' %}">My Certificates</a>
+          <span class="block__border">|</span>
+        </li>
+        <li>
+          <a href="{% url 'userbalance' %}">Balance</a>
+        </li>
+      </ul>
+    </div>
+    <script src="{% static 'js/my_certificates.js' %}"></script>
+  </footer>
 
   <script src="{% static 'swiper/swiper-bundle.min.js' %}"></script>
   <script src="{% static 'js/index.js' %}"></script>
