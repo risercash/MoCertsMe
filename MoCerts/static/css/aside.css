@@ -8,7 +8,7 @@
     background-color: #000;
     overflow-y: hidden;
     padding-top: 20px;
-    transition: all 0.5s ease-out;
+    transition: all 0.3s ease-out;
 }
 
 .aside__nav.open {
@@ -30,7 +30,7 @@
     background-repeat: no-repeat;
     background-size: 42px;
     background-position: 11px 12px;
-    transition: all 0.5s;
+    transition: all 0.3s;
 }
 
 .crown__logo {
@@ -49,7 +49,7 @@
     background-image: none;
     width: 250px;
     height: 180px;
-    transition: all 0.5s;
+    transition: all 0.3s;
 }
 
 .crown.open .crown__logo {
@@ -62,7 +62,7 @@
     background-repeat: no-repeat;
     background-position: center;
     margin-bottom: 13px;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 .crown.open .crown__avatar {
@@ -75,7 +75,7 @@
     background-repeat: no-repeat;
     background-position: left;
     border: 2px solid royalblue;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 .crown.open .crown__name {
@@ -85,7 +85,7 @@
     color: white;
     text-align: center;
     margin-top: 5px;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 .icons {
@@ -115,7 +115,7 @@
     justify-content: flex-start;
     align-items: center;
     transform: translateX(-252px);
-    transition: all 0.9s;
+    transition: all 0.6s;
     z-index: -1 ;
 }
 
@@ -142,7 +142,7 @@
 
 .icons.open .icon__span {
     transform: translateY(0px);
-    transition: translateY 0.5s;
+    transition: translateY 0.3s;
 }
 
 
@@ -204,7 +204,7 @@
     top: 30px;
     left: 59px;
     z-index: 2;
-    transition: all 0.5s ease-out;
+    transition: all 0.3s ease-out;
 }
 
 .aside__controller.open {
