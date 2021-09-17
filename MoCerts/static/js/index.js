@@ -1,8 +1,6 @@
 const slides = document.querySelectorAll('.image-slider__image')
-const houseIcon = document.querySelector('#home-icon');
-
-// show form filter user for generate sertificate
-
+// const houseIcon = document.querySelector('#home-icon');
+console.log(slides)
 let i = 0
 startSlider();
 
