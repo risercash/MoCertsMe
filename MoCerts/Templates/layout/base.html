@@ -60,7 +60,6 @@
     <div><img src="https://mc.yandex.ru/watch/85169608" style="position:absolute; left:-9999px;" alt="" /></div>
   </noscript>
   <!-- /Yandex.Metrika counter -->
-
 </head>
 
 <body>
@@ -86,58 +85,95 @@
   <aside>
     <div class="aside__nav">
       <div class="aside__content">
-        <div class="crown"></div>
+
+        {% if user.is_authenticated %}
+        <div class="crown">
+          <div class="crown__logo"></div>
+          <div class="crown__avatar"><img width="80" height="80" src="{{ user.photo.url }}"></div>
+          <div class="crown__name">{{ user.last_name }} {{ user.first_name }}</div>
+        </div>
+        {% else %}
+        <div class="crown">
+          <div class="crown__logo"></div>
+          <div class="crown__avatar"></div>
+          <div class="crown__name">Вы не авторизованы</div>
+        </div>
+        {% endif %}
+
         <ul class="icons">
           <li>
             <a href="{% url 'main_page' %}">
                 <div class="icons__item home_icon"></div>
+                <div class="icon__span"><span>Home</span></div>
             </a>
-            <span>Home</span>
           </li>
 
+          {% if user.is_authenticated %}
           <li>
             <a href="{% url 'profile' %}">
                 <div class="icons__item profile_icon"></div>
+                <div class="icon__span"><span>My Profile</span></div>
             </a>
-            <span>My Profile</span>
           </li>
+
           <li>
             <a href="{% url 'select_certificate' %}">
                 <div class="icons__item cert_select_icon"></div>
+                <div class="icon__span"><span>Select Certificate</span></div>
             </a>
-            <span>Select Certificate</span>
           </li>
 
           <li>
             <a href="{% url 'my_certificates' %}">
-                <div class="icons__item my_cert_icon "></div>
+                <div class="icons__item my_cert_icon"></div>
+                <div class="icon__span"><span>My Certificates</span></div>
             </a>
-            <span>My Certificates</span>
           </li>
 
           <li>
             <a href="{% url 'manual' %}">
-                <div class="icons__item instruction_icon "></div>
+                <div class="icons__item instruction_icon"></div>
+                <div class="icon__span"><span>Instructions</span></div>
             </a>
-            <span>Instructions</span>
           </li>
 
           <li>
             <a href="{% url 'userbalance' %}">
-                <div class="icons__item balance_icon "></div>
+                <div class="icons__item balance_icon"></div>
+                <div class="icon__span"><span>My Balance</span></div>
             </a>
-            <span>My Balance</span>
           </li>
 
           <li>
             <a href="{% url 'manual' %}">
-                <div class="icons__item manual_video_icon "></div>
+                <div class="icons__item manual_video_icon"></div>
+                <div class="icon__span"><span>More Instructions</span></div>
             </a>
-            <span>More Instructions</span>
           </li>
-          
+          {% else %}
+          <li>
+            <a href="{% url 'account_login' %}">
+                <div class="icons__item login_icon"></div>
+                <div class="icon__span"><span>Войти</span></div>
+            </a>
+          </li>
 
+          <li>
+            <a href="{% url 'account_signup' %}">
+                <div class="icons__item signup_icon"></div>
+                <div class="icon__span"><span>Регистрация</span></div>
+            </a>
+          </li>
+          {% endif %}
+
+          <li>
+            <a href="">
+                <div class="icons__item long"></div>
+                <div class="icon__span"><span></span></div>
+            </a>
+          </li>
         </ul>
+
       </div>
     </div>
   </aside>
@@ -172,25 +208,16 @@
           </li>
         </ul>
       </div>
-      <!-- Не знаю почему! Но, без этого блока не показывает иконки на кнопках -->
-      <!-- <div class="video-block" style="visibility: hidden;position: absolute;top: -9px;!important;">
-        <video>
-          <source src="https://video.wixstatic.com/video/1694f8_029fe95547cf466b9e8433baa0fa7eda/1080p/mp4/file.mp4"
-            type="video/mp4">
-        </video>
-        <i class="material-icons play-btn">play_circle_filled</i>
-      </div> -->
-      <!-- конец вертякогого блока -->
-
       <script src="{% static 'js/my_certificates.js' %}"></script>
     </footer>
   </main>
+
   <script src="{% static 'swiper/swiper-bundle.min.js' %}"></script>
   <script src="{% static 'js/index.js' %}"></script>
   <script src="{% static 'js/aside.js' %}"></script>
   <script src="{% static 'js/index_form.js' %}"></script>
+  
   {% block script %}
-
   {% endblock script %}
 </body>
 
