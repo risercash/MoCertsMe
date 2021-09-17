@@ -21,26 +21,26 @@ ALLOWED_HOSTS = ['*', 'mocerts.com', 'localhost', '127.0.0.1']
 # }
 
 # Настройки для базы данных на Postgresql
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'mocerts_new_db',
-#         'USER': 'mocert',
-#         'PASSWORD': 'mocert',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     },
-# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mocerts_db',
-        'USER': 'mocerts_db',
-        'PASSWORD': 'mocerts_db',
+        'NAME': 'mocerts_new_db',
+        'USER': 'mocert',
+        'PASSWORD': 'mocert',
         'HOST': 'localhost',
         'PORT': '5432',
     },
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'mocerts_db',
+#         'USER': 'mocerts_db',
+#         'PASSWORD': 'mocerts_db',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     },
+# }
 
 # DROP DATABASE mocerts_db
 
