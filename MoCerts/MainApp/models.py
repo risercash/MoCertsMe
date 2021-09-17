@@ -24,6 +24,7 @@ class CustomUser(AbstractUser):
         verbose_name='address', blank=True, default=0)
     balance = models.PositiveIntegerField(verbose_name='balance', default=0)
     real_account = models.BooleanField(default=True)
+    test = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = 'Пользователь'
