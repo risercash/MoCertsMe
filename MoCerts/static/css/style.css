@@ -1607,4 +1607,8 @@ svg.intro.go .text-stroke:nth-child(6) {
     height: 30%;
     left: 0px;
   }
+
+  .one-cert_pay {
+    width: 100%;
+  }
 }
