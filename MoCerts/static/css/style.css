@@ -1470,6 +1470,12 @@ svg.intro.go .text-stroke:nth-child(6) {
   transition: all 0.3s;
 }
 
+.money_man {
+  position:absolute;
+  bottom: 12px;
+  height: 30%;
+  left: 60px;
+}
 @media screen and (max-width: 1024px) {
   .cert-box {
     width: 70%;
@@ -1478,6 +1484,10 @@ svg.intro.go .text-stroke:nth-child(6) {
     margin-bottom: 10%;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(4, 1fr);
+  }
+  
+  .money_man {
+    left: 0px;
   }
 }
 
@@ -1581,5 +1591,9 @@ svg.intro.go .text-stroke:nth-child(6) {
   .certificates img {
     width: 100%;
     margin: 6% auto;
+  }
+
+  .money_man {
+    left: 0px;
   }
 }
