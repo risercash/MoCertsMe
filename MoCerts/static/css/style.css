@@ -403,7 +403,7 @@ section.third {
 
 .certificates {
   display: flex;
-  width: 100%;
+  width: 60%;
   justify-content: center;
   align-items: center;
 }
