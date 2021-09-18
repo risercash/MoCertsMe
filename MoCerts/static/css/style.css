@@ -423,6 +423,10 @@ section.third {
   margin-bottom: 3%;
   width: 100%;
 }
+.cert_pay {
+  margin-top: 3%;
+  width: 100%;
+}
 
 main {
   min-height: 100vh;

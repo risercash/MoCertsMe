@@ -65,7 +65,7 @@
                   <b>{{ certificate.user1.first_name }}&nbsp;{{ certificate.user1.last_name }}</b>, так как это имя
                   расположено на первой строчке. Убедитесь, что на Вашем балансе достаточно средств!
             </p>
-            <div class="one-cert">
+            <div class="one-cert_pay">
                   <img src="{{ certificate.certificate_image.url }}" alt="certificate">
             </div><br>
             <a href="{% url 'pay_certificate' pk=certificate.pk %}"
