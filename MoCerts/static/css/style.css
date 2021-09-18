@@ -1600,6 +1600,9 @@ svg.intro.go .text-stroke:nth-child(6) {
   }
 
   .money_man {
+    position:absolute;
+    bottom: 12px;
+    height: 30%;
     left: 0px;
   }
 }
