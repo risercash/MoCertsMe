@@ -1460,7 +1460,7 @@ svg.intro.go .text-stroke:nth-child(6) {
   margin-bottom: 2%;
   background-color: #14d2eb;
   transform: scale(1.2);
-  transition: all 0.1s;
+  transition: all 0.3s;
 }
 
 @media screen and (max-width: 1024px) {
