@@ -424,7 +424,10 @@ section.third {
   width: 100%;
 }
 .one-cert_pay {
-  margin-top: 3%;
+  margin-top: 5%;
+  width: 100%;
+}
+.one-cert_pay img{
   width: 100%;
 }
 
@@ -1452,6 +1455,13 @@ svg.intro.go .text-stroke:nth-child(6) {
   width: 250px;
   margin-bottom: 2%;
 }
+.cert_url_btn:active {
+  width: 250px;
+  margin-bottom: 2%;
+  background-color: #14d2eb;
+  transform: scale(1.2);
+  transition: all 0.1s;
+}
 
 @media screen and (max-width: 1024px) {
   .cert-box {
@@ -1544,7 +1554,7 @@ svg.intro.go .text-stroke:nth-child(6) {
     font-size: 20px;
     font-weight: 800;
     text-align: center;
-    /* word-wrap: break-word; */
+    word-wrap: break-word;
   }
   .certs-wrapper {
     width: 95%;
