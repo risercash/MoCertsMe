@@ -1458,6 +1458,18 @@ svg.intro.go .text-stroke:nth-child(6) {
     border-radius: 1.5%;
   }  
   
+  .contacts-section__content {
+    padding: 0px;
+    width: 92%;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5%;
+    margin-bottom: 15%;
+  }
+
   .content__left {
     width: 100%;
   }
@@ -1465,8 +1477,12 @@ svg.intro.go .text-stroke:nth-child(6) {
   .content__contact-right {
     position: relative;
     width: 100%;
+    margin-top: 5%;
   }
 
+  .content__left__text {
+    width: 100%;
+  }
   .contacts__map {
     width: 100%;
     min-height: 100%;
