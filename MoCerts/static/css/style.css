@@ -893,7 +893,7 @@ footer a {
 /* Текстовый блок */
 
 .wrapper__text {
-  width: 97%;
+  width: 85%;
   margin: 0 auto;
   color: #22263a;
   line-height: 26px;
@@ -1485,7 +1485,7 @@ svg.intro.go .text-stroke:nth-child(6) {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(4, 1fr);
   }
-
+  
   .money_man {
     left: 0px;
   }
@@ -1550,7 +1550,7 @@ svg.intro.go .text-stroke:nth-child(6) {
     width: 90%;
   }
   .wrapper__text {
-    width: 85%;
+    width: 97%;
   }
   .one-cert img{
     width: 98%;
