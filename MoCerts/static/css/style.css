@@ -425,7 +425,7 @@ section.third {
 }
 .one-cert_pay {
   margin-top: 5%;
-  width: 100%;
+  width: 70%;
 }
 .one-cert_pay img{
   width: 100%;
@@ -893,7 +893,7 @@ footer a {
 /* Текстовый блок */
 
 .wrapper__text {
-  width: 800px;
+  width: 97%;
   margin: 0 auto;
   color: #22263a;
   line-height: 26px;
@@ -1425,6 +1425,13 @@ svg.intro.go .text-stroke:nth-child(6) {
 
 .certs-wrapper {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.wrapper__certs {
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
