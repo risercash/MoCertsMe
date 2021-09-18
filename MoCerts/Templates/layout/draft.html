@@ -135,3 +135,65 @@ data-size="large" data-auth-url="https://mocerts.com/auth/complete/telegram/" da
     </ul>
   </div>
 </nav>
+
+<section class="third_section">
+
+    <div class="section__wrapper">
+        <p class="section__title__withdrow">Select <span>Сertificate</span></p>
+        <div class="section__decor"><img src="/static/img/icons/decor.svg" alt=""></div>
+       <p class="wrapper__text" style="color: black; width: 95%;">Нажмите на сертификат для его получения.
+        На сертификате указанна сумма, которую Вам будет необходимо перевести
+           пользователю, чье имя расположено на первой строчке. Чем больше сумма перевода, тем больше Ваша дальнейшая
+           прибыль. Но и сложнее будет привлечь следующих получателей сертификатов. И помните! Прежде чем брать
+           сертификат, сначала, найдите пятерых надежных получателей. От этого напрямую зависит Ваша прибыль</p>
+    </div>
+
+    <div class="cert-box">
+       <div class = "cert__one-row">
+            <div class="cert-item">
+                <a href="{% url 'create_certificate' nominal=1 %}">
+                    <img src="{% static 'img/sert-1.png' %}" width="{{ thumb.width }}" height="{{ thumb.height }}" alt="">
+                </a>
+            </div>
+            <div class="cert-item">
+                <a href="{% url 'create_certificate' nominal=5 %}">
+                    <img src="{% static 'img/sert-2.png' %}" alt="">
+                </a>
+            </div>
+            <div class="cert-item">
+                <a href="{% url 'create_certificate' nominal=10 %}">
+                    <img src="{% static 'img/sert-3.png' %}" alt="">
+                </a>
+            </div>
+            <div class="cert-item">
+                <a href="{% url 'create_certificate' nominal=20 %}">
+                    <img src="{% static 'img/sert-4.png' %}" alt="">
+                </a>
+            </div>
+        </div>
+        
+        <div class = "cert__two-row">
+            <div class="cert-item">
+                <a href="{% url 'create_certificate' nominal=50 %}">
+                    <img src="{% static 'img/sert-5.png' %}" alt="">
+                </a>
+            </div>
+            <div class="cert-item">
+                <a href="{% url 'create_certificate' nominal=100 %}">
+                    <img src="{% static 'img/sert-6.png' %}" alt="">
+                </a>
+            </div>
+            <div class="cert-item">
+                <a href="{% url 'create_certificate' nominal=200 %}">
+                    <img src="{% static 'img/sert-7.png' %}" alt="">
+                </a>
+            </div>
+            <div class="cert-item">
+                <a href="{% url 'create_certificate' nominal=500 %}">
+                    <img src="{% static 'img/sert-8.png' %}" alt="">
+                </a>
+            </div>
+        </div>
+    </div>
+
+</section>
