@@ -420,7 +420,8 @@ section.third {
 }
 
 .one-cert {
-  margin-bottom: 3%;
+  margin-top: 2%;
+  margin-bottom: 1%;
   width: 100%;
 }
 
@@ -1097,7 +1098,7 @@ svg.intro.go .text-stroke:nth-child(6) {
 
 .cert-item:hover {
   transform: scale(1.2);
-  box-shadow: 4px 4px 54px 37px rgba(251, 255, 3, 0.2);
+  box-shadow: 4px 4px 54px 37px rgba(3, 184, 255, 0.2);
   transition: all 0.5s, transform 0.5s;
   z-index: 1;
 }
