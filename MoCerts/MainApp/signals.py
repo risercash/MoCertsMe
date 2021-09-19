@@ -1,5 +1,6 @@
-from django.db.models.signals import pre_delete, pre_save, post_save
+from django.db.models.signals import post_delete, pre_delete, post_save
 from allauth.account.signals import user_signed_up
+from django.db.models import ProtectedError
 from django.dispatch import receiver
 from .models import Certificate, Withdrawal, CustomUser
 from django.conf import settings
@@ -11,11 +12,11 @@ import os
 logger = logging.getLogger(__name__)
 
 
-@receiver(pre_delete, sender=Certificate)
+@receiver(post_delete, sender=Certificate)
 def delete_certificate_picture(sender, instance, **kwargs):
     '''При удалении сертификата, так же удалить его картинку'''
-    logger.info('Certificate was deleted ' + str(instance))
-    try:
+    logger.warning('Certificate was deleted ' + str(instance))
+    try:  # удаление картинку
         crop_picture_path = os.path.join(settings.MEDIA_DIR, str(
             instance.certificate_image) + '.182x129_q85_crop-smart.png')
         print(crop_picture_path)
@@ -28,6 +29,25 @@ def delete_certificate_picture(sender, instance, **kwargs):
             settings.MEDIA_DIR, str(instance.certificate_image))
         os.remove(picture_path)
 
+
+@receiver(post_delete, sender=Certificate)
+def delete_fake_user(sender, instance, **kwargs):
+    '''При удалении сертификата, так же удалить его фейк юзеров.'''
+    try:
+        def delete_fake_user(user):
+            if not user.real_account:
+                if Certificate.objects.filter(user1=user).count() <= 0 \
+                        and Certificate.objects.filter(user2=user).count() <= 0 \
+                            and Certificate.objects.filter(user2=user).count() <= 0:
+                    print(CustomUser.objects.get(id=user.id))
+                    CustomUser.objects.get(id=user.id).delete()
+
+        delete_fake_user(instance.user1)
+        delete_fake_user(instance.user2)
+        delete_fake_user(instance.user3)
+    except:
+        pass
+       
 
 @receiver(post_save, sender=Withdrawal)
 def my_handler(sender, instance, **kwargs):
