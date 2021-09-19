@@ -15,21 +15,26 @@
 {% endblock %}
 
 {% block content %}
-<section class="second-section" style="height: auto;!important;">
-      <p class = "section__title__withdrow"><span>Instructions</span></p>
-      <div class = "section__decor"><img src = "{% static 'img/icons/decor.svg' %}" alt=""></div>
-    </section>
-        {% for post in manuals %}
-    <section class="second-section">
-      <p class = "section__title">{{post.title}}</p>
-      <div class="wrapper__text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi tempore magnam doloremque excepturi architecto necessitatibus placeat quas adipisci. Ullam ipsam aperiam ad tempora consectetur placeat sint molestias, non quis culpa.</div>
-      <div class="video-block">
-        {% video post.video as my_video %}
-        {% video my_video '470x260' %}
-        {% endvideo %}
-      </div>
+<section class="manual_section" style="height: auto;!important;">
+  <p class="section__title__withdrow"><span>Instructions</span></p>
+  <div class="section__decor"><img src="{% static 'img/icons/decor.svg' %}" alt=""></div>
+</section>
+{% for post in manuals %}
+<section class="second-section">
+  <p class="section__title">{{post.title}}</p>
+  <div class="manual__text">
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi tempore magnam doloremque
+      excepturi architecto necessitatibus placeat quas adipisci. Ullam ipsam aperiam ad tempora consectetur placeat sint
+      molestias, non quis culpa.
+    </p>
+  </div>
+  <div class="video-block">
+    {% video post.video as my_video %}
+    {% video my_video '470x260' %}
+    {% endvideo %}
+  </div>
 
-    </section>
-        {% endfor %}
+</section>
+{% endfor %}
 
 {% endblock %}

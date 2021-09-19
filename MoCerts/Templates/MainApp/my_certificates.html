@@ -21,7 +21,9 @@
         <p class="section__title__withdrow"><span>Мои сертификаты</span></p>
         <div class="section__decor"><img src="/static/img/icons/decor.svg" alt=""></div>
         {% if queryset %}
-        {% trans '<p class="wrapper__text">Для отправки сертификатов скопируйте ссылку и нажмите на самолетик, выбрав социальную сеть. После того как человек получит и активирует его, статус меняется на получен, после оплаты на оплачен</p>' %}
+        <p class="wrapper__text">Для отправки сертификатов скопируйте ссылку и нажмите на самолетик, выбрав социальную
+            сеть. После того как человек получит и активирует его, статус меняется на получен, после оплаты на оплачен
+        </p>
         {% else %}
         <p class="wrapper__text">Сейчас у вас нет сертификатов, вы можете получить новый сертификат. Для этого выберите
             его на вкладке &emsp;&emsp;
@@ -30,7 +32,6 @@
         </p>
         <img src="{% static 'img/404-1.gif' %}" alt=""
             style="position:absolute; bottom: 78px; left: 200px; height: 30%">
-        {% comment %} <img src="{% static 'img/404.gif' %}" alt="" style="position:absolute; bottom: 78px;"> {% endcomment %}
         {% endif %}
     </div>
 
@@ -52,7 +53,7 @@
                     {% for cert in my_certs_list %}
                     <a href="{% url 'certificate' number=cert.number %}">№ {{ cert.number }}
                         {% if cert.is_paid %}
-                        <span>{% trans ' - Оплачен' %}</span> 
+                        <span>{% trans ' - Оплачен' %}</span>
                         {% elif cert.is_received %}
                         <span>{% trans ' - Отправлен' %}</span>
                         {% else %}
@@ -64,12 +65,6 @@
             </div>
         </div>
         {% endfor %}
-    </div>
-    <div class="video-block" style="visibility: hidden;position: absolute;top: -9999px;!important;">
-        <video>
-              <source src="https://video.wixstatic.com/video/1694f8_029fe95547cf466b9e8433baa0fa7eda/1080p/mp4/file.mp4" type="video/mp4">
-        </video>
-        <i class="material-icons play-btn">play_circle_filled</i>
     </div>
 </section>
 

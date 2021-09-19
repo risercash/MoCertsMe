@@ -12,30 +12,30 @@
 <section class="third-section" style="height: auto;!important;">
     <div class="certs-wrapper">
         <p class="section__title"><span>{% trans 'Вход' %}</span></p>
-        <p class="wrapper__text">Введите данные для авторизации</p>
+        <p class="exit__text">Введите данные для авторизации:</p>
         <form class="login_form" method="POST" action="{% url 'account_login' %}">
             {% csrf_token %}
             {% include "account/errors.html" %}
-            <p>{{ form.login }}</p>
-            <p>{{ form.password }}</p>
+            <p class="login__input">{{ form.login }}</p>
+            <p class="login__input">{{ form.password }}</p>
             <br>
             {% if redirect_field_value %}
             <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
             {% endif %}
             <div class="login_social">
                 <a href="{% provider_login_url 'google' %}">
-                    <img width="260px" src="{% static 'img/google_long.png' %}" alt="google_long">
+                    <img src="{% static 'img/google_long.png' %}" style="margin-top: 5%;" alt="google_login">
                 </a>
                 <br>
                 <a href="{% provider_login_url 'facebook' %}">
-                    <img width="260px" src="{% static 'img/fb_long.png' %}" alt="fb_long">
+                    <img width="260px" src="{% static 'img/fb_long.png' %}" alt="fb_login">
                 </a>
             </div>
-            <button class="btn" type="submit">
+            <button class="profile_btn" type="submit">
                 {%trans "Войти" %}
             </button>
             <br>
-            <a class="button secondaryAction" href="{% url 'account_reset_password' %}">
+            <a class="reset_password" href="{% url 'account_reset_password' %}">
                 {% trans "Забыли пароль?" %}
             </a>
             <br>
