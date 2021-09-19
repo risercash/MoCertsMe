@@ -840,11 +840,6 @@ input {
   border: 2px solid #3f85ce;
 }
 
-.history_row {
-  border: 1px solid #2d2e2a;
-  font-size: 16px;
-}
-
 .share2_mobil {
   display: flex;
   flex-direction: column;
@@ -855,13 +850,14 @@ input {
   margin-bottom: 1%;
 }
 
-.paymen_history {
+.paymen_history__table {
   text-align: center;
   width: 100%;
-  min-height: 80%;
-  border: 1px solid #3f85ce;
-  padding: 1%;
-  /* color: #e2d9cf; */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  border-bottom: #3b51c2 12px solid;
+  border-radius: 2%;
 }
 
 .payment_id {
@@ -1145,7 +1141,7 @@ svg.intro.go .text-stroke:nth-child(6) {
 
 .funds {
   background-color: #3b51c2;
-  border-radius: 5px;
+  border-radius: 5px; 
   padding: 0px, 20px;
   height: 280px;
   width: 500px;
@@ -1613,6 +1609,64 @@ button[type=submit]:hover {
 .paid_cert {
   margin: 10% 0 3%;
 }
+
+.paymen_history {
+  background-color: #3b51c2;
+  border-radius: 5px;
+  margin: 0 0 15% 0;
+  width: 500px;
+}
+
+.paymen_history__table tbody {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center;   */
+  justify-content: space-between;
+  width: 100%;
+}
+
+.history_title {
+  width: 100%;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3%;
+}
+.history_title td{
+  width: 80px;
+  text-align: center;
+  padding: 0;
+  color: white;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: 19px;
+}
+
+.history_row {
+  width: 100%;
+  font-size: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #EBE7E0;
+}
+.history_row td{
+  width: 80px;
+  text-align: center;
+}
+
+.balance_section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 115px;
+  text-align: center;
+  width: 100%;
+}
+
+
 @media screen and (max-width: 1024px) {
   .cert-box {
     width: 70%;
@@ -1749,4 +1803,12 @@ button[type=submit]:hover {
   .paid_cert {
     margin: 35% 0 3%;
   }
+
+  .funds {
+    width: 100%;
+  }
+  .paymen_history {
+    width: 100%;
+    margin: 15% 0 15% 0;
+}
 }
