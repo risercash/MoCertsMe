@@ -1561,6 +1561,54 @@ button[type=submit]:hover {
   margin-bottom: 5%;
 }
 
+.password_reset {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.password_reset__block {
+  margin: 10%;
+}
+.password_reset__block p{
+  margin: 1% auto;
+  font-size: 20px;
+}
+.password_reset__form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.password_reset__form label{
+  display: none;
+}
+.password_reset__form input{
+  width: 200px;
+}
+.reset_btn {
+  font-size: 19px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #3f85ce;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.signup_form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.register_btn. {
+  margin-top: 1%;
+}
 @media screen and (max-width: 1024px) {
   .cert-box {
     width: 70%;
@@ -1689,5 +1737,8 @@ button[type=submit]:hover {
 
   .one-cert_pay {
     width: 100%;
+  }
+  .password_reset {
+    margin-top: 20%;
   }
 }

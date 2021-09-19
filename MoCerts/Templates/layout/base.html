@@ -38,8 +38,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon-32x32.png' %}">
   <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-16x16.png' %}">
   <link rel="manifest" href="{% static 'img/site.webmanifest' %}">
-  <title>Money Certificate</title>
-
+  <title>{% block title %}Money Certificate{% endblock title%}</title>
 
   <!-- Yandex.Metrika counter -->
   <script type="text/javascript">

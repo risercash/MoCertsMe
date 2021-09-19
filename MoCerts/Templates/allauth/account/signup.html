@@ -14,7 +14,7 @@
   <div class="certs-wrapper">
     <p class="section__title"><span>{% trans 'Регистрация' %}</span></p>
     <p class="wrapper__text">Введите данные для регистрации.</p>
-    <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+    <form class="signup_form" id="signup_form" method="post" action="{% url 'account_signup' %}">
       {% csrf_token %}
       {% include "account/errors.html" %}
       <p>{{ form.first_name }}</p>
@@ -27,7 +27,7 @@
       <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
       {% endif %}
       <div class="main__nav--item">
-        <button class="btn" type="submit">
+        <button class="profile_btn register_btn" style="margin: 0 0 8% 0;" type="submit">
           {% trans "Sign Up" %}
         </button>
       </div>
