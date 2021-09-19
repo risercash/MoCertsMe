@@ -34,7 +34,8 @@ def sending(first_name, last_name, user_email, summ):
     ''' ===== Эта функция отправляет мне сообщение в телеграм 
     надо сделать, что бы при поступлении и выводе средств она вызывалась ===== '''
     text = f'{first_name} {last_name}({user_email}): {summ}$'
-    requests.get(f'https://api.telegram.org/bot1554753984:AAEBxoRD2KWy9HWMPRFcvBVwhTzfD7FoaJ0/sendMessage?chat_id=1434266116&text={text}')
+    requests.get(
+        f'https://api.telegram.org/bot1554753984:AAEBxoRD2KWy9HWMPRFcvBVwhTzfD7FoaJ0/sendMessage?chat_id=1434266116&text={text}')
 
 
 logger = logging.getLogger(__name__)
@@ -281,10 +282,9 @@ def create_certificate(request, nominal):
     ''' ==== Создать сертификат ===== '''
     if request.method == 'GET':
         user = request.user
-        if Certificate.objects.filter(owner=user, nominal=nominal, is_paid=False).exists():
+        if Certificate.objects.filter(owner=user, creator=None, nominal=nominal, is_paid=False).exists():
             return HttpResponseRedirect(reverse('certificate',
-                                                kwargs={'number': Certificate.objects.get(owner=user, nominal=nominal,
-                                                                                          is_paid=False)}))
+                    kwargs={'number': Certificate.objects.get(owner=user, creator=None, nominal=nominal, is_paid=False)}))
 
         number = datetime.today().strftime("%d%m%y%H%M%f")
         url = '{}/certificate/{}'.format(settings.HOST, number)
@@ -388,7 +388,8 @@ def generate(request):
         if number > 0 and number != '':
             while number > 0:
                 number_certificate = datetime.today().strftime("%d%m%y%H%M%f")
-                url = '{}/certificate/{}'.format(settings.HOST, number_certificate)
+                url = '{}/certificate/{}'.format(settings.HOST,
+                                                 number_certificate)
                 user1_fullname = false_user()
                 user2_fullname = false_user()
                 user3_fullname = false_user()
@@ -405,29 +406,27 @@ def generate(request):
                                                   password=user3_fullname, real_account=False, )
                 if user is None:
                     user3 = CustomUser.objects.create(username=user1_fullname[0] + user3_fullname[1], first_name=user3_fullname[0],
-                                          last_name=user3_fullname[1],
-                                          email=f'fakeuser3{number}@gmail.com',
-                                          password=user1_fullname, real_account=False, )
+                                                      last_name=user3_fullname[1],
+                                                      email=f'fakeuser3{number}@gmail.com',
+                                                      password=user1_fullname, real_account=False, )
                 else:
                     parse_names = parse_name(user)
                     user3 = CustomUser.objects.get(first_name=parse_names[0], last_name=parse_names[1],
-                                                    email=parse_names[2])
+                                                   email=parse_names[2])
 
-                image_certificate = generate_certificate(nominal, number_certificate, user1, user2, user3)
+                image_certificate = generate_certificate(
+                    nominal, number_certificate, user1, user2, user3)
 
                 Certificate.objects.create(number=number_certificate, url=url, nominal=nominal,
-                                               user1=user1, user2=user2, user3=user3,
-                                               certificate_image=image_certificate, owner=request.user)
+                                           user1=user1, user2=user2, user3=user3,
+                                           certificate_image=image_certificate, owner=request.user)
 
                 number -= 1
-        certificates = Certificate.objects.all().order_by('-pk')[:int(count_certificates)]
+        certificates = Certificate.objects.all().order_by(
+            '-pk')[:int(count_certificates)]
         context = {
             'certificates': certificates,
         }
         return render(request, 'MainApp/cashriser.html', context)
 
     return render(request, 'MainApp/cashriser.html')
-
-
-
-
