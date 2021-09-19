@@ -438,7 +438,7 @@ section.third {
 }
 .one-cert_pay {
   margin-top: 5%;
-  width: 70%;
+  width: 50%;
 }
 .one-cert_pay img{
   width: 100%;
@@ -1610,6 +1610,9 @@ button[type=submit]:hover {
 .register_btn. {
   margin-top: 1%;
 }
+.paid_cert {
+  margin: 10% 0 3%;
+}
 @media screen and (max-width: 1024px) {
   .cert-box {
     width: 70%;
@@ -1712,6 +1715,7 @@ button[type=submit]:hover {
   }
   .certs__wrapper_url {
     width: 95%;
+    margin-top: 25%;
   }
   .certs__wrapper_url .section__title {
     font-size: 30px;
@@ -1741,5 +1745,8 @@ button[type=submit]:hover {
   }
   .password_reset {
     margin-top: 20%;
+  }
+  .paid_cert {
+    margin: 35% 0 3%;
   }
 }
