@@ -12,6 +12,7 @@ test.py
 test2.py
 begetVPS.txt
 *.log
+secret.env
 
 /MoCerts/MainApp/migrations/
 /MoCerts/db.sqlite3
