@@ -836,11 +836,11 @@ footer ul {
   padding: 0;
 }
 
-input {
+/* input {
   padding: 12px 20px;
   margin: 8px 0;
   border: 2px solid #3f85ce;
-}
+} */
 
 .share2_mobil {
   display: flex;
@@ -1197,7 +1197,7 @@ svg.intro.go .text-stroke:nth-child(6) {
   align-items: center;
   justify-content: center;
   width: 70%;
-  margin: 5% 0 3% 5%;
+  margin: 5% 0 3% 10%;
 }
 
 .prof_table {
@@ -1213,19 +1213,19 @@ svg.intro.go .text-stroke:nth-child(6) {
   color: #202020;
 }
 .prof_table td{
-  /* width: 50%; */
+  width: 50%;
   font-size: 20px;
   font-family: 'Roboto Condensed', Тahoma, sans-serif;
   font-weight: 550;
   text-align: start;
   color: whitesmoke;
 }
-.prof_table td:nth-of-type(1) {
+/* .prof_table td:nth-of-type(1) {
   width: 40%;
 }
 .prof_table td:nth-of-type(2) {
   width: 60%;
-}
+} */
 
 .prof_table input{
   width: 100%;
