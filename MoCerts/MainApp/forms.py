@@ -81,26 +81,26 @@ class UserForm(ModelForm):
                     'last_name': 'Фамилия', 'email': 'Email', 'photo': 'Аватар', }
 
         widgets = {
-            'photo': FileInput(attrs={
-                'class': 'form-control',
-                'style': 'width:30ch; border: none; font-size: 16px;',
-            }),
-            'first_name': TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Введите текст...',
-                'style': 'width:15ch; background-color: transparent; border: none; font-size: 22px; font-color: white',
-            }),
-            'last_name': TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Введите текст...',
-                'style': 'width:15ch; background-color: transparent; border: none; font-size: 22px;',
-            }),
+            # 'photo': FileInput(attrs={
+                # 'class': 'form-control',
+                # 'style': 'width:30ch; border: none; font-size: 16px;',
+            # }),
+            # 'first_name': TextInput(attrs={
+            #     'class': 'form-control',
+            #     'placeholder': 'Введите текст...',
+            #     'style': 'width:15ch; background-color: transparent; border: none; font-size: 22px; font-color: white',
+            # }),
+            # 'last_name': TextInput(attrs={
+            #     'class': 'form-control',
+            #     'placeholder': 'Введите текст...',
+            #     'style': 'width:15ch; background-color: transparent; border: none; font-size: 22px;',
+            # }),
             'email': EmailInput(attrs={
-                'multiple class': 'form-control',
-                'style': 'width:20ch; background-color: transparent; border: none; font-size: 22px;',
+                # 'multiple class': 'form-control',
+                # 'style': 'width:20ch; background-color: transparent; border: none; font-size: 22px;',
             }),
-            'phone': TextInput(attrs={
-                'multiple class': 'form-control',
-                'style': 'width:20ch; background-color: transparent; border: none; font-size: 22px;',
-            }),
+            # 'phone': TextInput(attrs={
+            #     'multiple class': 'form-control',
+            #     'style': 'width:20ch; background-color: transparent; border: none; font-size: 22px;',
+            # }),
         }

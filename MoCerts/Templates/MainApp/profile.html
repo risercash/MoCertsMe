@@ -4,56 +4,63 @@
 {% load custom_filters %}
 
 
-
-{% block property %}
-<meta property="og:url" content="{{ 'url'|property }}">
-<meta property="og:image" content="{{ 'image'|property }}">
-{% endblock property%}
-
 {% block title %}
 {% trans 'Личный кабинет' %} | Mocerts
 {% endblock %}
 
 {% block content %}
-
 <div class="profile_main">
-<section class="third-section" style="height: auto;!important; box-shadow: 0 4px 16px #ccc;">
-    <div class="certs-wrapper">
-      <p class = "section__title">My <b>Profile</b></p>
-      <div class = "section__decor"><img src = "{% static 'img/icons/decor.svg' %}" alt=""></div>
-    <div class="profile_block" style="background-color: #5a68b1;  padding: 0px, 20px;  height: 600px;  width: 500px; border-radius:10px; box-shadow:10px 500px 15px 4px rgba(10,5,0,0.06);">
-        <form method="POST" enctype="multipart/form-data" action="">
-            {% csrf_token %}
-            <div class="profile_form">
+    <section class="third-section" style="box-shadow: 0 4px 16px #ccc;">
+        <div class="wrapper__profile">
+            <p class="section__title">My <b>Profile</b></p>
+            <div class="section__decor"><img src="{% static 'img/icons/decor.svg' %}" alt=""></div>
+            <div class="profile_block">
+                <form method="POST" enctype="multipart/form-data" action="">
+                    {% csrf_token %}
+                    <div class="profile_form">
+                        <div class="form_separate">
+                            {% if user.photo %}
+                            <img src="{{ user.photo.url }}" alt="ava">
+                            {% else %}
+                            <img src="{% static 'img/profile.png' %}" alt="ava">
+                            {% endif %}
+                        </div>
+                        <div class="input__picture">
+                            <input type="file" name="photo" id="upload-photo" class="input input__file">
+                            <label for="upload-photo" class="input__file-button">
+                                <span class="input__file-icon-wrapper"><img class="input__file-icon"
+                                        src="{% static 'img/icons/attach.svg' %}" alt="Выбрать файл"
+                                        width="25"></span>
+                                <span class="input__file-button-text">Выберите фото</span>
+                            </label>
+                        </div>
+                        <div class="input__data">
+                            <p class="input__row">
+                                <span>Имя:</span><span>{{ form.first_name }}</span>
+                            </p>
+                            <p class="input__row">
+                                <span>Фамилия:</span><span>{{ form.last_name }}</span>
+                            </p>
+                            <p class="input__row">
+                                <span>Email:</span><span>{{ form.email }}</span>
+                            </p>
+                            <p class="input__row">
+                                <span>Баланс:</span>
+                                <span>{{user.balance}}$</span>
+                            </p>
 
-                <div class="form_separate">
-                    {% if user.photo %}
-                    <img src="{{ user.photo.url }}" alt="ava" style="box-shadow: 0 4px 16px #ccc; width: 200px; margin-left: -100px; margin-top: 30px">
-                    {% else %}
-                    <img src="{% static 'img/profile.png' %}" alt="ava">
-                    {% endif %}
-                    <!-- <p class="browse">{{ form.photo }}</p> -->
-                </div>
+                            <button type="submit" class="main__nav--item profile_btn">Сохранить</button>
+                            <a class="" href="{% url 'account_logout' %}">Выйти</a>
+                        </div>
+                    </div><br><br>
+                </form>
 
-                <div class="form_separate">
-                {{form.as_p}}
-{% comment %}                     <p><span>Имя : {{ form.first_name }} </span></p>
-                    <p>Фамилия: {{ form.last_name }}</p>
-                    <p><span>Email:</span><span>{{ form.email }}</span></p> {% endcomment %}
-                    {% comment %} <p class="not_form"><span>Баланс:</span><span class="form_span">{{ user.balance }}$</span></p><br>  {% endcomment %}
-
-                    <button type="submit" class="main__nav--item profile_btn">Сохранить</button>
-
-                    <a class="" 
-                    href="{% url 'account_logout' %}">Выйти</a>
-                </div>
-            </div><br><br>
-        </form>
-
-    </div>
+            </div>
+        </div>
+    </section>
 </div>
-{% endblock %}
+{% endblock content %}
 
 {% block script %}
-<script src="https://yastatic.net/share2/share.js"></script>
+<!-- <script src="https://yastatic.net/share2/share.js"></script> -->
 {% endblock script %}
