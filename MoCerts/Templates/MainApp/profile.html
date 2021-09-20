@@ -35,24 +35,30 @@
                             </label>
                         </div>
                         <div class="input__data">
-                            <p class="input__row">
-                                <span>Имя:</span><span>{{ form.first_name }}</span>
-                            </p>
-                            <p class="input__row">
-                                <span>Фамилия:</span><span>{{ form.last_name }}</span>
-                            </p>
-                            <p class="input__row">
-                                <span>Email:</span><span>{{ form.email }}</span>
-                            </p>
-                            <p class="input__row">
-                                <span>Баланс:</span>
-                                <span>{{user.balance}}$</span>
-                            </p>
-
-                            <button type="submit" class="main__nav--item profile_btn">Сохранить</button>
-                            <a class="" href="{% url 'account_logout' %}">Выйти</a>
+                            <table class="prof_table">
+                                <tr>
+                                    <td>Имя:</td>
+                                    <td>{{ form.first_name }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Фамилия:</td>
+                                    <td>{{ form.last_name }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Email:</td>
+                                    <td>{{ form.email }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Баланс:</td>
+                                    <td><input type="text" value="{{ user.balance }}" readonly disabled></td>
+                                </tr>
+                            </table>
                         </div>
-                    </div><br><br>
+                        <div class="prof__buttons">
+                            <button type="submit" class="prof_btn">Сохранить</button>
+                            <a href="{% url 'account_logout' %}"><button type="button" class="prof_btn">Выйти</button></a>
+                        </div>
+                    </div>
                 </form>
 
             </div>
