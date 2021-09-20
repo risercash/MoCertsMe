@@ -1171,6 +1171,7 @@ svg.intro.go .text-stroke:nth-child(6) {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 4% 0;
 }
 
 
@@ -1220,7 +1221,7 @@ svg.intro.go .text-stroke:nth-child(6) {
   font-family: 'Roboto Condensed', Тahoma, sans-serif;
   font-weight: 550;
   text-align: start;
-  color: wheat;
+  color: whitesmoke;
 }
 .prof_table input{
   width: 100%;
@@ -1230,7 +1231,7 @@ svg.intro.go .text-stroke:nth-child(6) {
   font-size: 20px;
   font-family: 'Roboto Condensed', Тahoma, sans-serif;
   font-weight: 550;
-  color: wheat;
+  color: whitesmoke;
 }
 
 .input__picture {
@@ -1239,7 +1240,8 @@ svg.intro.go .text-stroke:nth-child(6) {
   margin: 3% 0;
   text-align: center;
 }
-.input__file {
+
+.upload-photo {
   opacity: 0;
   visibility: hidden;
   position: absolute;
@@ -1300,7 +1302,7 @@ svg.intro.go .text-stroke:nth-child(6) {
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin: 0% 0 8%;
+  margin: 4% 0 6%;
 }
 .prof__buttons a {
   text-decoration: none;
@@ -1311,7 +1313,9 @@ svg.intro.go .text-stroke:nth-child(6) {
 }
 .prof_btn {
   font-size: 19px;
-  margin-top: 5%;
+  font-weight: 550;
+  font-family: 'Roboto Condensed', Тahoma, sans-serif;
+  margin-bottom: 2%;
   display: flex;
   justify-content: center;
   align-items: center;

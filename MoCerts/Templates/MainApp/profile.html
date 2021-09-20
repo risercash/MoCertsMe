@@ -26,7 +26,7 @@
                             {% endif %}
                         </div>
                         <div class="input__picture">
-                            <input type="file" name="photo" id="upload-photo" class="input input__file">
+                            <input type="file" name="photo" id="upload-photo" class="upload-photo">
                             <label for="upload-photo" class="input__file-button">
                                 <span class="input__file-icon-wrapper"><img class="input__file-icon"
                                         src="{% static 'img/icons/attach.svg' %}" alt="Выбрать файл"
@@ -68,5 +68,5 @@
 {% endblock content %}
 
 {% block script %}
-<!-- <script src="https://yastatic.net/share2/share.js"></script> -->
+<script src="{% static 'js/profile.js' %}"></script>
 {% endblock script %}
