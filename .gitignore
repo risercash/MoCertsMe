@@ -5,7 +5,7 @@
 **/__pycache__/
 dump.rdb
 db.sqlite3
-favicon.ico:Zone.Identifier
+*/*_Zone.Identifier
 **/.vscode/
 local_settings.py
 test.py
