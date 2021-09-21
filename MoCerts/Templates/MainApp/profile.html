@@ -11,7 +11,7 @@
 {% block content %}
 <div class="profile_main">
     <section class="third-section" style="box-shadow: 0 4px 16px #ccc;">
-        <section class="wrapper__profile">
+        <div class="wrapper__profile">
             <p class="section__title">My <b>Profile</b></p>
             <div class="section__decor"><img src="{% static 'img/icons/decor.svg' %}" alt=""></div>
             <div class="profile_block">
@@ -29,8 +29,7 @@
                             <input type="file" name="photo" id="upload-photo" class="upload-photo">
                             <label for="upload-photo" class="input__file-button">
                                 <span class="input__file-icon-wrapper"><img class="input__file-icon"
-                                        src="{% static 'img/icons/attach.svg' %}" alt="Выбрать файл"
-                                        width="25"></span>
+                                        src="{% static 'img/icons/attach.svg' %}" alt="Выбрать файл" width="25"></span>
                                 <span class="input__file-button-text">Выберите фото</span>
                             </label>
                         </div>
@@ -56,11 +55,11 @@
                         </div>
                         <div class="prof__buttons">
                             <button type="submit" class="prof_btn">Сохранить</button>
-                            <a href="{% url 'account_logout' %}"><button type="button" class="prof_btn">Выйти</button></a>
+                            <a href="{% url 'account_logout' %}"><button type="button"
+                                    class="prof_btn">Выйти</button></a>
                         </div>
                     </div>
                 </form>
-
             </div>
         </div>
     </section>
