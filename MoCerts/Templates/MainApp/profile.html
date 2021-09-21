@@ -36,19 +36,19 @@
                         <div class="input__data">
                             <table class="prof_table">
                                 <tr>
-                                    <td>Имя:</td>
+                                    <td><input type="text" value="Имя:" readonly disabled></td>
                                     <td>{{ form.first_name }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Фамилия:</td>
+                                    <td><input type="text" value="Фамилия:" readonly disabled></td>
                                     <td>{{ form.last_name }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Email:</td>
+                                    <td><input type="text" value="Email:" readonly disabled></td>
                                     <td>{{ form.email }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Баланс:</td>
+                                    <td><input type="text" value="Баланс:" readonly disabled></td>
                                     <td><input type="text" value="{{ user.balance }}$" readonly disabled></td>
                                 </tr>
                             </table>
