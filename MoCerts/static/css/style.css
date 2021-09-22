@@ -1148,11 +1148,11 @@ svg.intro.go .text-stroke:nth-child(6) {
 }
 
 .profile_block {
-  background-color: #5a68b1;
+  background-color: #3b51c2;
   margin: 0 auto;
   /* padding: 0 20px; */
   height: 100%;
-  /* width: 600px; */
+  width: 500px; 
   box-shadow: 10px 10px 30px rgb(0 0 0 / 30%);
   border: 1px #2b314e solid;
   border-radius:10px;
