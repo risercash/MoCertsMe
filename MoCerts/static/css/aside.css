@@ -7,7 +7,7 @@
     left: 0;
     background-color: #1f233e;
     overflow-y: hidden;
-    padding-top: 20px;
+    padding-top: 30px;
     transition: all 0.3s ease-out;
 }
 
@@ -110,7 +110,7 @@
 .icon__span {
     text-transform: uppercase;
     cursor: pointer;
-    background-color: #2C2C2C;
+    background-color: #962c2c;
     border-bottom: 1px black solid;
     border-left: 1px black solid;
     width: 190px;
@@ -152,7 +152,7 @@
 
 .icons__item {
     width: 60px;
-    height: 60px;
+    height: 54px;
     background-repeat: no-repeat;
     background-size: 30px 30px;
     background-position: center, center;
