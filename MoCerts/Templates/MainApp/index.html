@@ -150,7 +150,7 @@
             <div class="card-info">
               <div class="card-info__items">
                 <div class="card-info__item">
-                  <img width="22" height="16" src="{% static 'img/icons/user.svg' %}" alt="">
+                  <img width="22" height="16" src="{% static 'img/icons/user-blog.svg' %}" alt="">
                   <p>By Support</p>
                 </div>
                 <div class="card-info__item">
@@ -159,9 +159,9 @@
                 </div>
               </div>
               <div class="card-info__content card-content">
-                <p class="card-content__title">{{ post.headline }}</p>
+                <a href="{% url 'postdetail' post.pk %}" class="card-content__link">
+                <p class="card-content__title">{{ post.headline }}</p></a>
                 <p class="card-content__description">{{ post.subtitle }} ...</p>
-                <a href="{% url 'postdetail' post.pk %}" class="card-content__link"><strong>Read more</strong></a>
               </div>
             </div>
           </div>
