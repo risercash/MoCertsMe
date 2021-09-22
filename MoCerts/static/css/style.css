@@ -1642,7 +1642,7 @@ svg.intro.go .text-stroke:nth-child(6) {
 .cert_url_btn:active {
   width: 250px;
   margin-bottom: 2%;
-  background-color: #14d2eb;
+  background-color: #9ca1a1;
   transform: scale(1.2);
   transition: all 0.3s;
 }
