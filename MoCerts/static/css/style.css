@@ -905,6 +905,9 @@ footer a {
   text-align: center;
 }
 
+.main__title {
+  color: #ecfcfe
+}
 .exit__text {
   margin: 1%;
   color: #22263a;
