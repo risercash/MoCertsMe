@@ -66,18 +66,6 @@ class PostDetail(AuthorizationForms, DetailView):
     template_name = 'MainApp/postdetail.html'
 
 
-class BlogView(AuthorizationForms, TemplateView):
-    """Страница выбора сертификата"""
-    model = MainPagePost
-    context_object_name = 'posts'
-    ordering = ('-date_create')
-    template_name = 'MainApp/blog.html'
-
-
-def blog(request):
-    blogs = MainPagePost.objects.all()
-    return render(request, 'MainApp/blog.html', {'blogs': blogs})
-
 
 
 
@@ -445,3 +433,31 @@ def generate(request):
         return render(request, 'MainApp/cashriser.html', context)
 
     return render(request, 'MainApp/cashriser.html')
+
+class BlogView(AuthorizationForms, TemplateView):
+    """Страница Чтения блога"""
+    model = MainPagePost
+    context_object_name = 'posts'
+    ordering = ('-date_create')
+    template_name = 'MainApp/blog.html'
+
+
+def blog(request):
+    posts = MainPagePost.objects.filter()
+    return render(request, 'MainApp/blog.html', {'blogs': posts})
+
+
+class SendUs(LoginRequiredMixin, UpdateView):
+    """кабинет пользователя"""
+    template_name = 'MainApp/profile.html'
+    form_class = UserForm
+    success_url = reverse_lazy('profile')
+    login_url = '/accounts/login/'
+
+    def get_object(self, **kwargs):
+        obj = CustomUser.objects.get(email=self.request.user.email)
+        # logger.warning('check')
+        return obj
+def send_us(request):
+    #user = UserForm.objects.filter()
+    return render(request, 'MainApp/send_us.html', {'user': 'user'})
