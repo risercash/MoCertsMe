@@ -75,10 +75,10 @@ class UserForm(ModelForm):
     class Meta:
         model = CustomUser
 
-        fields = ['photo', 'first_name', 'last_name', 'email',]
+        fields = ['photo', 'first_name', 'last_name', 'email', 'phone']
 
         labels = {'first_name': 'Имя',
-                    'last_name': 'Фамилия', 'email': 'Email', 'photo': 'Аватар', }
+                    'last_name': 'Фамилия', 'email': 'Email', 'photo': 'Аватар', 'phone': '87003002010'}
 
         widgets = {
             # 'photo': FileInput(attrs={
