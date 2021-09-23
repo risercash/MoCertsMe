@@ -8,6 +8,7 @@ urlpatterns = [
     path('<int:pk>', PostDetail.as_view(), name='postdetail'),
     path('profile/', UserProfile.as_view(), name='profile'),
     path('manual/', ManualView.as_view(), name='manual'),
+    path('blog/', blog, name='blog'),
     path('userbalance/', UserBalance.as_view(), name='userbalance'),
     path('errorview/', ErrorView.as_view(), name='errorview'),
 

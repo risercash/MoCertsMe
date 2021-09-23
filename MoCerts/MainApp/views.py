@@ -66,6 +66,21 @@ class PostDetail(AuthorizationForms, DetailView):
     template_name = 'MainApp/postdetail.html'
 
 
+class BlogView(AuthorizationForms, TemplateView):
+    """Страница выбора сертификата"""
+    model = MainPagePost
+    context_object_name = 'posts'
+    ordering = ('-date_create')
+    template_name = 'MainApp/blog.html'
+
+
+def blog(request):
+    blogs = MainPagePost.objects.all()
+    return render(request, 'MainApp/blog.html', {'blogs': blogs})
+
+
+
+
 class UserProfile(LoginRequiredMixin, UpdateView):
     """кабинет пользователя"""
     template_name = 'MainApp/profile.html'
@@ -284,7 +299,7 @@ def create_certificate(request, nominal):
         user = request.user
         if Certificate.objects.filter(owner=user, creator=None, nominal=nominal, is_paid=False).exists():
             return HttpResponseRedirect(reverse('certificate',
-                    kwargs={'number': Certificate.objects.get(owner=user, creator=None, nominal=nominal, is_paid=False)}))
+                                                kwargs={'number': Certificate.objects.get(owner=user, creator=None, nominal=nominal, is_paid=False)}))
 
         number = datetime.today().strftime("%d%m%y%H%M%f")
         url = '{}/certificate/{}'.format(settings.HOST, number)

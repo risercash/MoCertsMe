@@ -140,7 +140,7 @@ class MainPagePost(models.Model):
     photo = models.FileField(upload_to='posts', blank=True,
                              verbose_name='PostPhoto', default='def/default-user-image.png')
 
-    class Meta:
+    class Meta: 
         verbose_name = 'Статья'
         verbose_name_plural = 'Статьи'
 

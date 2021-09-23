@@ -1,0 +1,26 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+
+{% block property %}
+<meta property="og:url" content="{{ 'url'|property }}">
+<meta property="og:image" content="{{ 'image'|property }}">
+{% endblock property%}
+
+{% block title %}
+Recent Blog | Money Certificates
+{% endblock %}
+
+{% block content %}
+{% for post in posts %}
+<div class="post_main">
+    <div class="post_block">
+        <h1>Recent Blog</h1>
+        <h2>{{ post.headline }}</h2>
+    </div>
+    <div>{{ post.content|safe }}</div>
+</div>
+{% endfor %}
+
+{% endblock %}
