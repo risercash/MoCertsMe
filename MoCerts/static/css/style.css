@@ -896,6 +896,7 @@ footer a {
 
 .wrapper__text {
   width: 85%;
+  max-width: 1100px;
   margin: 0 auto;
   color: #22263a;
   line-height: 26px;

@@ -63,7 +63,7 @@
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen></iframe>
     </div>
-  </div>
+  </div>  <br><br>
   <div class="instruction-block">
     <div class="instruction-block__content content">
       <div class="content__main">
@@ -85,6 +85,7 @@
       </div>
     </div>
   </div>
+
 </section>
 
 <section class="third-section">
@@ -97,7 +98,7 @@
     <div class="certificates">
       <img src="{% static 'img/cert.png' %}" alt="">
     </div>
-  </div>
+  </div><br>
 
   <div class="instruction-block">
     <div class="instruction-block__content content">
@@ -182,7 +183,7 @@
       <p class="content__left__title">Наши контакты по всем вопросам</p>
       <div class="content__left__border"></div>
       <p class="content__left__text">По всем интересующим Вас вопросам, Вы всегда можете связаться с нашими менеджерами,
-        по контактам, расположенным ниже, или обратиться к нам в офис</p>
+        по контактам, расположенным ниже, или обратиться к нашим специалистам</p>
       <div class="content__items">
         <div class="content__item">
           <img width="14" height="17" src="{% static 'img/icons/phone-call.svg' %}" alt="">
@@ -204,7 +205,9 @@
 
       <div class="contacts__button-block">
         <button class="contacts-block__button button">
-          <span class="contacts__text">Посетить офис</span>
+          <a href="{% url 'send-us' %}">
+          <span class="contacts__text">Написать нам</span>
+        </a>
           <span class="contacts__span">
             <img class="contacts__span-img" width="16" height="16" src="{% static 'img/icons/edit.svg' %}" alt="">
           </span>
