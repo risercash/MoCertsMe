@@ -196,7 +196,7 @@ class UserBalance(LoginRequiredMixin, FormView):
                 bill_id=bill_id, amount=convert_amount, lifetime=lifetime)
             self.success_url = new_bill.pay_url
 
-            # передать данные для провереи платежа
+            # передать данные для проверки платежа
             check_payment_status.delay(
                 QIWI_PRIV_KEY, bill_id, lifetime, email, amount)
             return redirect(self.get_redirect_url())

@@ -37,8 +37,8 @@ def delete_fake_user(sender, instance, **kwargs):
         def delete_fake_user(user):
             if not user.real_account:
                 if Certificate.objects.filter(user1=user).count() <= 0 \
-                        and Certificate.objects.filter(user2=user).count() <= 0 \
-                            and Certificate.objects.filter(user2=user).count() <= 0:
+                    and Certificate.objects.filter(user2=user).count() <= 0 \
+                        and Certificate.objects.filter(user2=user).count() <= 0:
                     print(CustomUser.objects.get(id=user.id))
                     CustomUser.objects.get(id=user.id).delete()
 
@@ -47,7 +47,7 @@ def delete_fake_user(sender, instance, **kwargs):
         delete_fake_user(instance.user3)
     except:
         pass
-       
+
 
 @receiver(post_save, sender=Withdrawal)
 def my_handler(sender, instance, **kwargs):
