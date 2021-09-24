@@ -13,8 +13,39 @@
 {% endblock %}
 
 {% block content %}
+<style>
+    .header-h1 {
+      position: relative;
+      text-align: center;
+      margin-bottom: .5rem;
+    }
+    .header-h1 h1 {
+      display: inline-block;
+      background: #fff;
+      margin-bottom: 0;
+      padding: 0.25rem .875rem;
+      border-left: .125rem solid #e0e0e0;
+      border-right: .125rem solid #e0e0e0;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      color: royalblue;
+    }
+    .header-h1::after {
+      content: "";
+      position: absolute;
+      background: #e0e0e0;
+      height: .125rem;
+      left: 0;
+      top: 50%;
+      width: 100%;
+      transform: translateY(-50%);
+      z-index: -999;
+    }
+
+   
+  </style>
 <div class="post_main">
-    <div class="post_block">
+    <div class="header-h1">
         <h1>{{ post.headline }}</h1>
     </div>
     <div>{{ post.content|safe }}</div>

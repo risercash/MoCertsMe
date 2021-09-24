@@ -1,0 +1,42 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+
+{% block property %}
+<meta property="og:url" content="{{ 'url'|property }}">
+<meta property="og:image" content="{{ 'image'|property }}">
+{% endblock property%}
+
+{% block title %}
+Написать нам | Money Certificates
+{% endblock %}
+
+{% block content %}
+<section class="third-section">
+    <div class="certs-wrapper">
+      <p class="section__title__withdrow">Написать нам</p>
+
+      <div class="cover">
+        <form id="contactform"> 
+            <p class="contact"><label for="name">Имя</label></p> 
+            <input id="name" name="name" placeholder="Ваше имя" required="" tabindex="1" type="text"> 
+     
+            <p class="contact"><label for="email">Email</label></p> 
+            <input id="email" name="email" placeholder="example@sitehere.ru" required="" tabindex="2" type="text"> 
+     
+            <p class="contact"><label for="Subject">Тема</label></p> 
+            <input id="subject" name="subject" placeholder="Тема сообщения" required="" tabindex="2" type="text"> 
+     
+            <p class="contact"><label for="comment">Сообщение</label></p> 
+            <textarea name="comment" id="comment" tabindex="4" style="width:300px; height:150px;"></textarea> <br>
+            <div class="prof__buttons">
+                <button type="submit" class="prof_btn">Отправить в Ад!</button> 
+        </form> 
+    </div>
+      </div>
+    </div>
+        
+</section>
+
+{% endblock %}

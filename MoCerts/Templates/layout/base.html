@@ -121,7 +121,7 @@
 
           <li>
             <a href="{% url 'manual' %}">
-                <div class="icons__item instruction_icon"></div>
+                <div class="icons__item manual_video_icon"></div>
                 <div class="icon__span"><span>Instructions</span></div>
             </a>
           </li>
@@ -134,11 +134,19 @@
           </li>
 
           <li>
-            <a href="{% url 'manual' %}">
-                <div class="icons__item manual_video_icon"></div>
-                <div class="icon__span"><span>More Instructions</span></div>
+            <a href="{% url 'blog' %}">
+                <div class="icons__item instruction_icon"></div>
+                <div class="icon__span"><span>Recent Blog</span></div>
             </a>
           </li>
+          {% if user.is_administrator %}
+          <li>
+            <a href="{% url 'nimda' %}">
+                <div class="icons__item admin_icon"></div>
+                <div class="icon__span"><span>Admin God</span></div>
+            </a>
+          </li>
+          {% endif %}
           {% else %}
           <li>
             <a href="{% url 'account_login' %}">

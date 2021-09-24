@@ -112,6 +112,7 @@ class ManualPosts(models.Model):
     index_number = models.PositiveIntegerField(
         verbose_name='порядковый номер на странице',)
     title = models.CharField(max_length=255, verbose_name='Заголовок',)
+    description = models.CharField(max_length=255, verbose_name='Описание')
     video = EmbedVideoField(blank=True, verbose_name='Ссылка на видео')
 
     class Meta:
@@ -139,7 +140,7 @@ class MainPagePost(models.Model):
     photo = models.FileField(upload_to='posts', blank=True,
                              verbose_name='PostPhoto', default='def/default-user-image.png')
 
-    class Meta:
+    class Meta: 
         verbose_name = 'Статья'
         verbose_name_plural = 'Статьи'
 

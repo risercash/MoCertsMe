@@ -181,6 +181,10 @@
     background-image: url('/static/img/icons/instruction.svg');
 }
 
+.admin_icon {
+    background-image: url('/static/img/icons/admin-only.svg');
+}
+
 .balance_icon {
     background-image: url('/static/img/icons/m-balance.svg');
 }

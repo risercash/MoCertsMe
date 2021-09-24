@@ -10,7 +10,6 @@ urlpatterns = [
     path('manual/', ManualView.as_view(), name='manual'),
     path('userbalance/', UserBalance.as_view(), name='userbalance'),
     path('errorview/', ErrorView.as_view(), name='errorview'),
-
     path('certificates/', SelectCertificate.as_view(), name='select_certificate'),
     path('my_certificates', MyCertificates.as_view(), name='my_certificates'),
     path('certificate/<int:number>/', CertificateDetail.as_view(), name='certificate'),
@@ -21,6 +20,8 @@ urlpatterns = [
     path('generate', generate, name='generate'),
     path('generate/<int:pk>', generate, name='generate'),# Эту я делал под кнопку GENERATE на странице cashriser
   
+    path('blog/', blog, name='blog'),
+    path('send-us/', send_us, name='send-us'),
     # path('cashriser/', Cashriser.as_view(), name='cashriser'),cashriser
 
 ]
