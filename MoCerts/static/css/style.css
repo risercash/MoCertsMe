@@ -1148,6 +1148,7 @@ svg.intro.go .text-stroke:nth-child(6) {
   padding: 0px, 20px;
   height: 280px;
   width: 38%;
+  max-width: 500px;
   margin: auto;
 }
 
