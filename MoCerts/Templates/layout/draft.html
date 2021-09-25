@@ -23,7 +23,7 @@ data-size="large" data-auth-url="https://mocerts.com/auth/complete/telegram/" da
       </li>
       {% else %}
       <li class="user">
-        <div class="logo" style="background-image: url('{% static 'img/logo.webp' %}');"></div>
+        <div class="logo" style="background-image: url('{% static 'img/logo.png' %}');"></div>
         <div class="avatar"></div> <!-- avatar.png -->
         <div class="name">Вы не авторизованы</div>
       </li>
@@ -109,10 +109,19 @@ data-size="large" data-auth-url="https://mocerts.com/auth/complete/telegram/" da
       {% else %}
 
       <li>
+        <a href="{% url 'manual' %}">
+          <div class="icon-back">
+            <div class="icon"
+              style="background-image: url('{% static 'img/icons/v-icon.svg' %}');background-size: 29px 29px;"></div>
+          </div>
+          <span class="icon-span">More Instructions</span>
+        </a>
+      </li>
+      <li>
         <a href="{% url 'account_login' %}">
           <div class="icon-back">
             <div class="icon"
-              style="background-image: url('{% static 'img/icons/user.svg' %}');background-size: 29px 29px;"></div>
+              style="background-image: url('{% static 'img/icons/user-inter.svg' %}');background-size: 29px 29px;"></div>
           </div>
           <span class="icon-span">Войти</span>
         </a>

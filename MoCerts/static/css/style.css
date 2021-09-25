@@ -664,7 +664,7 @@ main {
 }
 
 .card-image {
-  width: 580px;
+  width: 500px;
   height: 320px;
   margin: 0 auto;
 }
@@ -673,7 +673,7 @@ main {
   background-color: #3f85ce;
   z-index: 99;
   padding: 20px 30px;
-  width: 520px;
+  width: 460px;
   height: 270px;
   margin: auto;
   margin-top: -50px;

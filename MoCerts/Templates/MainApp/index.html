@@ -27,7 +27,14 @@
       style="background-image: url('{% static 'img/second.jpg' %}'); visibility: hidden; transform: scale(1.2);"></div>
     <div class="image-slider__image" id="image-3"
       style="background-image: url('{% static 'img/third.jpg' %}'); visibility: hidden; transform: scale(1.2);">
-      <h1 class="main__title">Заработок в интернете, Работа на дому онлайн, Вакансии онлайн, Дополнительный доход, Где взять деньги</h1></div>
+      <h1 class="main__title">
+        <p>Заработок в интернете,</p>
+        <p>Работа на дому онлайн,</p>
+        <p>Вакансии онлайн,
+        <p>Дополнительный доход,</p>
+        <p>Где взять деньги</p>
+      </h1>
+    </div>
   </div>
 
   <svg class="intro" viewbox="0 0 200 86">
@@ -65,7 +72,7 @@
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen></iframe>
     </div>
-  </div>  <br><br>
+  </div> <br><br>
   <div class="instruction-block">
     <div class="instruction-block__content content">
       <div class="content__main">
@@ -163,7 +170,8 @@
               </div>
               <div class="card-info__content card-content">
                 <a href="{% url 'postdetail' post.pk %}" class="card-content__link">
-                <p class="card-content__title">{{ post.headline }}</p></a>
+                  <p class="card-content__title">{{ post.headline }}</p>
+                </a>
                 <p class="card-content__description">{{ post.subtitle }} ...</p>
               </div>
             </div>
@@ -208,8 +216,8 @@
       <div class="contacts__button-block">
         <button class="contacts-block__button button">
           <a href="{% url 'send-us' %}">
-          <span class="contacts__text">Написать нам</span>
-        </a>
+            <span class="contacts__text">Написать нам</span>
+          </a>
           <span class="contacts__span">
             <img class="contacts__span-img" width="16" height="16" src="{% static 'img/icons/edit.svg' %}" alt="">
           </span>
@@ -236,5 +244,5 @@
 {% endblock %}
 
 {% block script %}
-  <script src="{% static 'js/index.js' %}"></script>
+<script src="{% static 'js/index.js' %}"></script>
 {% endblock script %}
