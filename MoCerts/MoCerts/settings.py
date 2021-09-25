@@ -30,7 +30,7 @@ INSTALLED_APPS = [
 
     'easy_thumbnails',
     'modeltranslation',
-    # 'embed_video',
+    'embed_video',
     'ckeditor',
     'ckeditor_uploader',
     # 'djcelery_email',
