@@ -1911,6 +1911,24 @@ button[type=submit]:hover, button[type=button]:hover {
   background-blend-mode: lighten;
 }
 
+.watermark_castle{
+  background: rgba(235, 231, 224, 0.9);
+  background-image: url('/static/img/watermark_castle.jpg');
+  background-repeat:space;
+  background-size:auto 100%;
+  background-position:center;
+  background-blend-mode: lighten;
+}
+
+.watermark_temple{
+  background: rgba(235, 231, 224, 0.8);
+  background-image: url('/static/img/watermark_temple.jpg');
+  background-repeat:space;
+  background-size:auto 100%;
+  background-position:center;
+  background-blend-mode: lighten;
+}
+
 
 @media screen and (max-width: 1024px) {
   .cert-box {

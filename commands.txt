@@ -11,14 +11,6 @@ python3 manage.py runserver
 
 celery -A MoCerts worker -l INFO
 
-sudo fuser -k 8001/tcp
 sudo fuser -k 8000/tcp
-admin@mail.ru
-acer1234
 
-ssh localhost -p222
-
-https://www.youtube.com/watch?v=8QnMxrNT0-8
-
-
-Not Found: /favicon.ico - django.reqhhhht'
+site:mocerts.com
