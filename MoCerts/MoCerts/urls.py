@@ -11,7 +11,7 @@ urlpatterns = [
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('', include('MainApp.urls')),
     path('robots.txt/', TemplateView.as_view(template_name="robots.txt", content_type='text/plain')),
-    # path('google2f64469d3bb2d616.html', TemplateView.as_view(template_name="google2f64469d3bb2d616.html",)),
+    path('google2f64469d3bb2d616.html', TemplateView.as_view(template_name="google2f64469d3bb2d616.html",)),
     # path('auth/', include('social_django.urls', namespace='social')),
 ]
 
