@@ -66,9 +66,6 @@ class PostDetail(AuthorizationForms, DetailView):
     template_name = 'MainApp/postdetail.html'
 
 
-
-
-
 class UserProfile(LoginRequiredMixin, UpdateView):
     """кабинет пользователя"""
     template_name = 'MainApp/profile.html'
