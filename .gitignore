@@ -10,6 +10,8 @@ db.sqlite3
 local_settings.py
 test.py
 test2.py
+server_update.py
+server_update.exe
 begetVPS.txt
 *.log
 secret.env
@@ -17,7 +19,6 @@ secret.env
 /MoCerts/MainApp/migrations/
 /MoCerts/db.sqlite3
 /MoCerts/media/certificates/
-
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

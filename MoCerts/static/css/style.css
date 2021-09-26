@@ -85,7 +85,9 @@ body {
   font-family: 'Lato', sans-serif;
   line-height: 20px;
   font-weight: 400;
-  background: #EBE7E0;
+  background: #dad7d2;
+  /* background: #EBE7E0; */
+
 }
 
 .material-icons {
@@ -1344,14 +1346,12 @@ svg.intro.go .text-stroke:nth-child(6) {
 
 .section__title__withdrow {
   font-family: 'Paytone One';
-  color: #202020;
   letter-spacing: -2px;
   display: block;
   margin: 11px 0 17px 0;
   font-size: 60px;
   line-height: 80px;
   color: black;
-  background-color: #EBE7E0;
   text-shadow: 0 13.36px 8.896px #c4b59d, 0 -2px 1px #fff;
   letter-spacing: -4px;
 }
@@ -1856,6 +1856,62 @@ button[type=submit]:hover, button[type=button]:hover {
   margin-bottom: 8%;
 }
 
+
+.ham {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 2000ms;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.hamRotate.active {
+  transform: rotate(45deg);
+}
+.hamRotate180.active {
+  transform: rotate(180deg);
+}
+.line {
+  fill:none;
+  transition: stroke-dasharray 1000ms, stroke-dashoffset 1000ms;
+  stroke:royalblue;
+  stroke-width:5.5;
+  stroke-linecap:round;
+}
+.ham6 .top {
+  stroke-dasharray: 40 172;
+}
+.ham6 .middle {
+  stroke-dasharray: 40 111;
+}
+.ham6 .bottom {
+  stroke-dasharray: 40 172;
+}
+.ham6.active .top {
+  stroke-dashoffset: -132px;
+}
+.ham6.active .middle {
+  stroke-dashoffset: -71px;
+}
+.ham6.active .bottom {
+  stroke-dashoffset: -132px;
+}
+
+.watermark {
+  position:fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+  background: rgba(235, 231, 224, 0.9);
+  background-image: url('/static/img/watermark.jpg');
+  background-repeat:space;
+  background-size:auto 100%;
+  background-position:center;
+  background-blend-mode: lighten;
+}
+
+
 @media screen and (max-width: 1024px) {
   .cert-box {
     width: 70%;
@@ -2051,45 +2107,4 @@ button[type=submit]:hover, button[type=button]:hover {
     width: 100%;
     font-size: 22px;
   }
-}
-
-.ham {
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-  transition: transform 2000ms;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-.hamRotate.active {
-  transform: rotate(45deg);
-}
-.hamRotate180.active {
-  transform: rotate(180deg);
-}
-.line {
-  fill:none;
-  transition: stroke-dasharray 2000ms, stroke-dashoffset 2000ms;
-  stroke:royalblue;
-  stroke-width:5.5;
-  stroke-linecap:round;
-}
-.ham6 .top {
-  stroke-dasharray: 40 172;
-}
-.ham6 .middle {
-  stroke-dasharray: 40 111;
-}
-.ham6 .bottom {
-  stroke-dasharray: 40 172;
-}
-.ham6.active .top {
-  stroke-dashoffset: -132px;
-}
-.ham6.active .middle {
-  stroke-dashoffset: -71px;
-}
-.ham6.active .bottom {
-  stroke-dashoffset: -132px;
 }

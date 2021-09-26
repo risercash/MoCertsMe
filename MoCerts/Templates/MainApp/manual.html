@@ -15,8 +15,10 @@
 {% endblock %}
 
 {% block content %}
+<div class="watermark"></div>
+
 <section class="manual_section" style="height: auto;!important;">
-  <p class="section__title__withdrow"><span>Подробные инструкции</span></p>
+  <p class="section__title__withdrow">Подробные инструкции</p>
   <div class="section__decor"><img src="{% static 'img/icons/decor.svg' %}" alt=""></div>
 </section>
 {% for post in manuals %}
