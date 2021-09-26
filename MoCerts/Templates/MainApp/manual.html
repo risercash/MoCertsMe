@@ -21,12 +21,9 @@
 </section>
 {% for post in manuals %}
 <section class="second-section">
-  <p class="section__title">{{post.title}}</p>
+  <h2 class="section__title">{{post.title}}</h2>
   <div class="manual__text">
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi tempore magnam doloremque
-      excepturi architecto necessitatibus placeat quas adipisci. Ullam ipsam aperiam ad tempora consectetur placeat sint
-      molestias, non quis culpa.
-    </p>
+    <h3>{{post.description}}</h3>
   </div>
   <div class="video-block">
     {% video post.video as my_video %}
