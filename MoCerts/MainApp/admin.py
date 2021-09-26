@@ -49,12 +49,35 @@ class WithdrawalAdmin(admin.ModelAdmin):
     search_fields = ('amount', 'status', 'user', 'time', 'bill_id')
 
 
+class PreviewAdmin(admin.ModelAdmin):
+    def has_delete_permission(self, request, obj=PreviewSettings):
+        return False
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_change_permission(self, request, obj=PreviewSettings):
+        return True
+
+class QiwiAdmin(admin.ModelAdmin):
+
+    def has_add_permission(self, request):
+        base_add_permission = super(QiwiAdmin, self).has_add_permission(request)
+        if base_add_permission:
+            # if there's already an entry, do not allow adding
+            count = QiwiSecretKey.objects.all().count()
+            if count == 0:
+                return True
+        return False
+
+
+
 admin.site.register(CustomUser, UserAdmin)
 admin.site.register(Certificate, CertAdmin)
-admin.site.register(PreviewSettings)
+admin.site.register(PreviewSettings, PreviewAdmin)
 admin.site.register(ManualPosts, ManualAdmin)
 admin.site.register(MainPagePost, MainPagePostAdmin)
-admin.site.register(QiwiSecretKey)
+admin.site.register(QiwiSecretKey, QiwiAdmin)
 admin.site.register(Deposit, DepositAdmin)
 admin.site.register(Withdrawal, WithdrawalAdmin)
 

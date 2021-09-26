@@ -112,11 +112,11 @@ class ManualPosts(models.Model):
     index_number = models.PositiveIntegerField(
         verbose_name='порядковый номер на странице',)
     title = models.CharField(max_length=255, blank=True, verbose_name='Заголовок',)
-    # description = models.CharField(max_length=255, blank=True, verbose_name='Описание')
+    description = models.CharField(max_length=255, blank=True, verbose_name='Описание')
     video = EmbedVideoField(blank=True, verbose_name='Ссылка на видео')
 
     class Meta:
-        verbose_name = 'Инструкцию'
+        verbose_name = 'Инструкция'
         verbose_name_plural = 'Инструкции'
 
     def __str__(self):
