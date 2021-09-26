@@ -64,7 +64,7 @@ ROOT_URLCONF = 'MoCerts.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'Templates', BASE_DIR / 'Templates' / 'allauth',],
+        'DIRS': [BASE_DIR / 'Templates', BASE_DIR / 'Templates' / 'allauth', BASE_DIR / 'static',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
