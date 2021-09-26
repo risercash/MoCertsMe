@@ -24,10 +24,7 @@ from .forms import MyLoginForm, MySignupForm, UserForm, DepositForm, WithdrawalF
 from .models import CustomUser, Certificate, ManualPosts, MainPagePost, QiwiSecretKey, Deposit, Withdrawal
 from .tasks import check_payment_status, post_withdrawal_alert  # импорт задачи celery
 
-
-def get_client_ip(request):
-    ip = request.META.get('REMOTE_ADDR')
-    return render(request, 'userbalance.html', {'ip_address': ip})
+logger = logging.getLogger(__name__)
 
 
 def sending(first_name, last_name, user_email, summ):
@@ -36,9 +33,6 @@ def sending(first_name, last_name, user_email, summ):
     text = f'{first_name} {last_name}({user_email}): {summ}$'
     requests.get(
         f'https://api.telegram.org/bot1554753984:AAEBxoRD2KWy9HWMPRFcvBVwhTzfD7FoaJ0/sendMessage?chat_id=1434266116&text={text}')
-
-
-logger = logging.getLogger(__name__)
 
 
 class AuthorizationForms(FormView):
