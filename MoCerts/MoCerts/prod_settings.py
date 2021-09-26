@@ -15,7 +15,7 @@ ALLOWED_HOSTS = ['*', 'mocerts.com', 'localhost', '127.0.0.1']
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'new_db',
+        'NAME': 'mocerts_new_db',
         'USER': 'mocert',
         'PASSWORD': 'mocert',
         'HOST': 'localhost',
