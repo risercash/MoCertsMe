@@ -15,6 +15,7 @@ server_update.exe
 begetVPS.txt
 *.log
 secret.env
+nginx.txt
 
 /MoCerts/MainApp/migrations/
 /MoCerts/db.sqlite3
