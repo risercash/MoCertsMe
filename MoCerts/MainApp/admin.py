@@ -10,6 +10,14 @@ class CertAdmin(admin.ModelAdmin):
     list_filter = ('nominal', 'creator', 'owner', 'is_paid',)
     search_fields = ('number', 'nominal', 'creator', 'owner', 'is_paid', )
 
+    def has_delete_permission(self, request, obj=Certificate):
+        return True
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_change_permission(self, request, obj=Certificate):
+        return False
 
 class UserAdmin(admin.ModelAdmin):
     list_display = ('first_name', 'email', 'real_account',

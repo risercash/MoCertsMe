@@ -53,9 +53,9 @@ class Certificate(models.Model):
         auto_now_add=True, db_index=True, verbose_name='Опубликовано')
     certificate_image = models.ImageField(
         upload_to='certificates/image/%Y/%m/%d', blank=True, verbose_name='Рисунок')
-    creator = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, default=None, null=True, blank=True,
+    creator = models.ForeignKey(CustomUser, on_delete=models.PROTECT, default=None, null=True, blank=True,
                                 related_name='made_by_user')
-    owner = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, default=None, null=True, blank=True,
+    owner = models.ForeignKey(CustomUser, on_delete=models.PROTECT, default=None, null=True, blank=True,
                               related_name='owner')
     is_paid = models.BooleanField(default=False)
     is_prepaid = models.BooleanField(default=False)
