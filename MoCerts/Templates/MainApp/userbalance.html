@@ -22,12 +22,10 @@
             <span>{% trans 'Пополнить счет' %}</span>
         </p><br>
 
-        <div class="deposit__text" style="padding: 0px; color: #FFFFFF">Сумма пополнения &emsp;&emsp; Валюта платежа
-        </div>
+        <div class="deposit__text" style="padding: 0px; color: #FFFFFF">Сумма пополнения &emsp;&emsp; Валюта</div>
 
         <form class="withdrawal_form" action="" name="deposit_form" method="POST">
-            <div class="deposit_form" style="border-radius:10px">{% comment %} style="box-shadow:0 0 15px 4px
-                rgba(0,0,0,0.06);" {% endcomment %}
+            <div class="deposit_form">
                 {% csrf_token %}
                 {{ form.amount }} {{ form.valute}}<br><br>
             </div>

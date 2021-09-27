@@ -87,7 +87,6 @@ body {
   font-weight: 400;
   background: #dad7d2;
   /* background: #EBE7E0; */
-
 }
 
 .material-icons {
@@ -362,9 +361,14 @@ h2::after {
 
 /* Секция вторая – видео */
 
-.second-section, .third-section, .blog-section {
+.second-section, .blog-section {
   padding-top: 80px;
   text-align: center;
+}
+
+.about_project {
+  text-align: center;
+  margin-top: 3%;
 }
 
 .manual_section {
@@ -377,6 +381,17 @@ h2::after {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding-top: 80px;
+  text-align: center;
+}
+
+.money_cert {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: 4%;
 }
 
 .section__title {
@@ -414,6 +429,7 @@ section.third {
   width: 60%;
   justify-content: center;
   align-items: center;
+  margin-bottom: 4%;
 }
 
 .certificates img {
@@ -910,6 +926,7 @@ footer a {
 .main__title {
   color: #ecfcfe
 }
+
 .exit__text {
   margin: 1%;
   color: #22263a;
@@ -1022,7 +1039,7 @@ svg.intro.go .text-stroke:nth-child(6) {
   }
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 767px) {
   .instruction-block {
     height: auto;
     padding-top: 50px;
@@ -1050,9 +1067,6 @@ svg.intro.go .text-stroke:nth-child(6) {
   .content__main__title {
     text-align: left!important;
     line-height: 37px!important;
-  }
-  .content__right__text, .content__button-block {
-    margin-left: 0px;
   }
   .footer__content {
     width: auto;
@@ -1150,7 +1164,7 @@ svg.intro.go .text-stroke:nth-child(6) {
   padding: 0px, 20px;
   height: 280px;
   width: 38%;
-  max-width: 500px;
+  max-width: 800px;
   margin: auto;
 }
 
@@ -1159,10 +1173,10 @@ svg.intro.go .text-stroke:nth-child(6) {
   margin: 0 auto;
   /* padding: 0 20px; */
   height: 100%;
-  width: 500px; 
+  width: 500px;
   box-shadow: 10px 10px 30px rgb(0 0 0 / 30%);
   border: 1px #2b314e solid;
-  border-radius:10px;
+  border-radius: 10px;
 }
 
 .form-control {
@@ -1177,7 +1191,6 @@ svg.intro.go .text-stroke:nth-child(6) {
   justify-content: center;
   padding: 4% 0;
 }
-
 
 .form_separate p {
   display: flex;
@@ -1198,7 +1211,7 @@ svg.intro.go .text-stroke:nth-child(6) {
   min-width: 50%;
 }
 
-.input__data  {
+.input__data {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1212,8 +1225,9 @@ svg.intro.go .text-stroke:nth-child(6) {
   width: 100%;
   margin-left: 110px;
 }
-.prof_table tbody{
-}
+
+.prof_table tbody {}
+
 .prof_table tr {
   width: 600px;
   height: 55px;
@@ -1221,7 +1235,8 @@ svg.intro.go .text-stroke:nth-child(6) {
   justify-content: center;
   align-items: center;
 }
-.prof_table td{
+
+.prof_table td {
   /* max-width: 50%; */
   font-size: 20px;
   font-family: 'Roboto Condensed', Тahoma, sans-serif;
@@ -1229,10 +1244,12 @@ svg.intro.go .text-stroke:nth-child(6) {
   text-align: start;
   color: whitesmoke;
 }
+
 .prof_table td:nth-of-type(1) {
   max-width: 30%;
 }
-.prof_table td:nth-of-type(1) input{
+
+.prof_table td:nth-of-type(1) input {
   max-width: 100%;
   text-align: start;
 }
@@ -1241,12 +1258,12 @@ svg.intro.go .text-stroke:nth-child(6) {
   max-width: 100%;
 }
 
-.prof_table td:nth-of-type(2) input{
+.prof_table td:nth-of-type(2) input {
   max-width: 100%;
   text-align: start;
-} 
+}
 
-.prof_table input{
+.prof_table input {
   background-color: transparent;
   border: none;
   font-size: 24px;
@@ -1267,6 +1284,7 @@ svg.intro.go .text-stroke:nth-child(6) {
   visibility: hidden;
   position: absolute;
 }
+
 .input__file-icon-wrapper {
   height: 45px;
   width: 60px;
@@ -1274,21 +1292,24 @@ svg.intro.go .text-stroke:nth-child(6) {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   border-right: 1px solid #fff;
 }
+
 .input__file-icon path {
   fill: white;
 }
+
 .input__file-button-text {
   line-height: 1;
   margin-top: 1px;
   text-align: center;
 }
+
 .input__file-button {
   width: 100%;
   max-width: 200px;
@@ -1301,15 +1322,16 @@ svg.intro.go .text-stroke:nth-child(6) {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
   border-radius: 3px;
   cursor: pointer;
   margin: 0 auto;
 }
+
 .custom_file_upload {
   border: 1px solid #ccc;
   display: inline-block;
@@ -1325,13 +1347,16 @@ svg.intro.go .text-stroke:nth-child(6) {
   width: 100%;
   margin: 4% 0 6%;
 }
+
 .prof__buttons a {
   text-decoration: none;
   color: #202020;
 }
-.prof__buttons a button{
+
+.prof__buttons a button {
   color: #202020;
 }
+
 .prof_btn {
   font-size: 19px;
   font-weight: 550;
@@ -1542,12 +1567,12 @@ svg.intro.go .text-stroke:nth-child(6) {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin: 3% 0 3% 0;
+  margin: 3% 0 6%;
 }
 
 .video__block_content {
-  width: 700px;
-  height: 400px;
+  width: 850px;
+  height: 550px;
   border-radius: 1.5%;
   overflow: hidden;
   box-shadow: -5px 20px 32px 3px rgba(0, 0, 0, 0.6);
@@ -1795,6 +1820,8 @@ button[type=submit]:hover, button[type=button]:hover {
   border-radius: 5px;
   margin: 0 0 15% 0;
   width: 38%;
+  max-width: 800px;
+
 }
 
 .paymen_history__table tbody {
@@ -1808,7 +1835,7 @@ button[type=submit]:hover, button[type=button]:hover {
   width: 100%;
   font-size: 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   margin-bottom: 3%;
 }
@@ -1825,9 +1852,9 @@ button[type=submit]:hover, button[type=button]:hover {
 
 .history_row {
   width: 100%;
-  font-size: 15px;
+  font-size: 14px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   background-color: #EBE7E0;
 }
@@ -1856,7 +1883,6 @@ button[type=submit]:hover, button[type=button]:hover {
   margin-bottom: 8%;
 }
 
-
 .ham {
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
@@ -1866,69 +1892,96 @@ button[type=submit]:hover, button[type=button]:hover {
   -ms-user-select: none;
   user-select: none;
 }
+
 .hamRotate.active {
   transform: rotate(45deg);
 }
+
 .hamRotate180.active {
   transform: rotate(180deg);
 }
+
 .line {
-  fill:none;
+  fill: none;
   transition: stroke-dasharray 1000ms, stroke-dashoffset 1000ms;
-  stroke:royalblue;
-  stroke-width:5.5;
-  stroke-linecap:round;
+  stroke: royalblue;
+  stroke-width: 5.5;
+  stroke-linecap: round;
 }
+
 .ham6 .top {
   stroke-dasharray: 40 172;
 }
+
 .ham6 .middle {
   stroke-dasharray: 40 111;
 }
+
 .ham6 .bottom {
   stroke-dasharray: 40 172;
 }
+
 .ham6.active .top {
   stroke-dashoffset: -132px;
 }
+
 .ham6.active .middle {
   stroke-dashoffset: -71px;
 }
+
 .ham6.active .bottom {
   stroke-dashoffset: -132px;
 }
 
 .watermark_kremlin {
-  position:fixed;
+  position: fixed;
   width: 100%;
   height: 100%;
   z-index: -10;
   background: rgba(235, 231, 224, 0.9);
   background-image: url('/static/img/watermark.jpg');
-  background-repeat:space;
-  background-size:auto 100%;
-  background-position:center;
+  background-repeat: space;
+  background-size: auto 100%;
+  background-position: center;
   background-blend-mode: lighten;
 }
 
-.watermark_castle{
+.watermark_castle {
   background: rgba(235, 231, 224, 0.9);
   background-image: url('/static/img/watermark_castle.jpg');
-  background-repeat:space;
-  background-size:auto 100%;
-  background-position:center;
+  background-repeat: space;
+  background-size: auto 100%;
+  background-position: center;
   background-blend-mode: lighten;
 }
 
-.watermark_temple{
+.watermark_temple {
   background: rgba(235, 231, 224, 0.8);
   background-image: url('/static/img/watermark_temple.jpg');
-  background-repeat:space;
-  background-size:auto 100%;
-  background-position:center;
+  background-repeat: space;
+  background-size: auto 100%;
+  background-position: center;
   background-blend-mode: lighten;
 }
 
+.about_project__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.about_project__text p{
+  text-align: center;
+}
+
+.deposit_form select {
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 2px solid #3f85ce;
+}
+.deposit_form select option{
+  font-size: 18px;
+}
 
 @media screen and (max-width: 1024px) {
   .cert-box {
@@ -1952,6 +2005,9 @@ button[type=submit]:hover, button[type=button]:hover {
     margin-bottom: 15%;
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(1, 1fr);
+  }
+  .video__block {
+    margin: 3% 0 15%;
   }
   .video__block_content {
     width: 95%;
@@ -2041,6 +2097,7 @@ button[type=submit]:hover, button[type=button]:hover {
   }
   .certificates {
     width: 95%;
+    margin-bottom: 11%;
   }
   .certificates img {
     width: 100%;
@@ -2068,19 +2125,17 @@ button[type=submit]:hover, button[type=button]:hover {
     width: 100%;
     margin: 15% 0 15% 0;
   }
-
   .profile_block {
     width: 100%;
     padding: 0;
     margin-bottom: 10%;
     border: none;
-    border-radius:none;
-
+    border-radius: none;
   }
   .wrapper__profile {
     width: 100%;
   }
-  .input__data  {
+  .input__data {
     width: 98%;
     margin: 5% 0 3% 0;
     display: flex;
@@ -2088,15 +2143,13 @@ button[type=submit]:hover, button[type=button]:hover {
     justify-content: center;
     align-items: center;
   }
-
-  .prof_table tr{
+  .prof_table tr {
     width: 100%;
     height: 100%;
     flex-direction: column;
     margin-bottom: 8%;
   }
-
-  .prof_table td{
+  .prof_table td {
     height: 40px;
     display: block;
     font-size: 20px;
@@ -2108,21 +2161,29 @@ button[type=submit]:hover, button[type=button]:hover {
   .prof_table td:nth-of-type(1) {
     max-width: 100%;
   }
-  .prof_table td:nth-of-type(1) input{
+  .prof_table td:nth-of-type(1) input {
     max-width: 100%;
     color: #202020;
   }
-  
   .prof_table td:nth-of-type(2) {
     max-width: 100%;
   }
-  
-  .prof_table td:nth-of-type(2) input{
+  .prof_table td:nth-of-type(2) input {
     max-width: 100%;
     text-align: start;
-  } 
-  .prof_table input{
+  }
+  .prof_table input {
     width: 100%;
     font-size: 22px;
+  }
+  .about_project {
+    margin-top: 10%;
+  }
+  .content__button-block {
+    margin-left: 0px;
+  }
+  
+  .money_cert {
+    padding-top: 10%;
   }
 }
