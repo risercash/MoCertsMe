@@ -1,11 +1,8 @@
 import logging
-import os
-import time
 
 import requests
 from datetime import datetime
 from allauth.socialaccount.models import SocialAccount
-
 from colorama import Fore, Style
 
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, FormView, TemplateView
@@ -26,21 +23,6 @@ from .tasks import check_payment_status, post_withdrawal_alert
 
 
 logger = logging.getLogger(__name__)
-
-
-from django.http import HttpResponse
-from django.views.decorators.http import require_GET
-from django.contrib.sites.models import Site
-
-@require_GET
-def robots_txt(request):
-    lines = [
-        "User-Agent: *",
-        "Disallow: /private/",
-        "Disallow: /junk/",
-    ]
-    return HttpResponse("\n".join(lines), content_type="text/plain")
-
 
 
 def sending(first_name, last_name, user_email, summ):

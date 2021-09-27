@@ -1,5 +1,4 @@
 User-agent: *
-Disallow: /nimda
 Disallow: /accounts
 Disallow: /ckeditor
 Disallow: /userbalance
@@ -7,4 +6,6 @@ Disallow: /errorview
 Disallow: /my_certificates
 Disallow: /create_certificate
 Disallow: /pay_certificate
-Disallow: /cashriser2
+Disallow: /cashriser
+
+Host: https://mocerts.com
