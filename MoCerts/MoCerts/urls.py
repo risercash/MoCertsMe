@@ -12,7 +12,6 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('', include('MainApp.urls')),
-    path('robots.txt', lambda r: HttpResponse("User-agent: *\nDisallow: /admin", content_type="text/plain; charset=utf-8")),
     path('google2f64469d3bb2d616.html/', TemplateView.as_view(template_name="google2f64469d3bb2d616.html",)),
     # path('auth/', include('social_django.urls', namespace='social')),
 ]
