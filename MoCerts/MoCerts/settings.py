@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     # 'allauth.socialaccount.providers.instagram',
 ]
 
-APPEND_SLASH = False
 
 ROOT_URLCONF = 'MoCerts.urls'
 
@@ -143,7 +142,6 @@ THUMBNAIL_ALIASES = {
 }
 
 AUTHENTICATION_BACKENDS = [
-    # 'social_core.backends.telegram.TelegramAuth',
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 ]

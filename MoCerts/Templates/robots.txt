@@ -7,4 +7,4 @@ Disallow: /errorview
 Disallow: /my_certificates
 Disallow: /create_certificate
 Disallow: /pay_certificate
-Disallow: /cashriser1
+Disallow: /cashriser2
