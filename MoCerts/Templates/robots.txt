@@ -1,7 +1,7 @@
 User-agent: *
 Disallow: /accounts/login/?next=/userbalance/
 Disallow: /login?next=/my_certificates
-Disallow: https://mocerts.com/login?next=/my_certificates
+Disallow: /accounts/login/
 Disallow: /accounts
 Disallow: /ckeditor
 Disallow: /userbalance
