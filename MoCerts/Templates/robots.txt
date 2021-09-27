@@ -2,6 +2,8 @@ User-agent: *
 Disallow: /accounts/login/?next=/userbalance/
 Disallow: /login?next=/my_certificates
 Disallow: /accounts/login/
+Disallow: /fr
+Disallow: /pt
 Disallow: /accounts
 Disallow: /ckeditor
 Disallow: /userbalance
