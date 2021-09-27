@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     # 'allauth.socialaccount.providers.instagram',
 ]
 
+APPEND_SLASH = False
+
 ROOT_URLCONF = 'MoCerts.urls'
 
 WSGI_APPLICATION = 'MoCerts.wsgi.application'
@@ -79,9 +81,9 @@ TEMPLATES = [
     },
 ]
 
-# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-# USE_X_FORWARDED_HOST = True
-# USE_X_FORWARDED_PORT = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+USE_X_FORWARDED_HOST = True
+USE_X_FORWARDED_PORT = True
 
 WSGI_APPLICATION = 'MoCerts.wsgi.application'
 

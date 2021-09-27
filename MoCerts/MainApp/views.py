@@ -22,9 +22,25 @@ from .names.names_generator import false_user, parse_name
 from .certificates.certificate_generator import generate_certificate
 from .forms import MyLoginForm, MySignupForm, UserForm, DepositForm, WithdrawalForm
 from .models import CustomUser, Certificate, ManualPosts, MainPagePost, QiwiSecretKey, Deposit, Withdrawal
-from .tasks import check_payment_status, post_withdrawal_alert  # импорт задачи celery
+from .tasks import check_payment_status, post_withdrawal_alert 
+
 
 logger = logging.getLogger(__name__)
+
+
+from django.http import HttpResponse
+from django.views.decorators.http import require_GET
+from django.contrib.sites.models import Site
+
+@require_GET
+def robots_txt(request):
+    lines = [
+        "User-Agent: *",
+        "Disallow: /private/",
+        "Disallow: /junk/",
+    ]
+    return HttpResponse("\n".join(lines), content_type="text/plain")
+
 
 
 def sending(first_name, last_name, user_email, summ):

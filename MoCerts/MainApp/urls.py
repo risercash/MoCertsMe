@@ -20,10 +20,9 @@ urlpatterns = [
     path('generate', generate, name='generate'),
     path('generate/<int:pk>', generate, name='generate'),# Эту я делал под кнопку GENERATE на странице cashriser
   
-    path('blog/', blog, name='blog'),
+    path('blog', blog, name='blog'),
     path('send-us/', send_us, name='send-us'),
-    # path('cashriser/', Cashriser.as_view(), name='cashriser'),cashriser
-    path("robots.txt/",TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),
+    # path("robots.txt", TemplateView.as_view(template_name="robots.txt", content_type="text/plain"),),
 
 
 ]
