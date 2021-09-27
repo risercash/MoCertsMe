@@ -111,9 +111,13 @@ class PreviewSettings(models.Model):
 class ManualPosts(models.Model):
     index_number = models.PositiveIntegerField(
         verbose_name='порядковый номер на странице',)
-    title = models.CharField(max_length=255, blank=True, verbose_name='Заголовок',)
-    description = models.CharField(max_length=255, blank=True, verbose_name='Описание')
-    video = EmbedVideoField(blank=True, verbose_name='Ссылка на видео')
+    title = models.CharField(max_length=255, blank=True,
+                             verbose_name='Заголовок',)
+    description = models.CharField(
+        max_length=255, blank=True, verbose_name='Описание')
+    # video = EmbedVideoField(blank=True, verbose_name='Ссылка на видео')
+    video = models.TextField(blank=True, verbose_name='Iframe код видео',
+                             help_text='Вставьте только iframe код видео файла, обычная ссылка не допустима')
 
     class Meta:
         verbose_name = 'Инструкция'
@@ -126,6 +130,16 @@ class ManualPosts(models.Model):
     def get_absolute_url(self):
         """получить ссылку на объект"""
         return reverse('manual',)
+
+    def clean(self):
+        iframe = self.video
+        if iframe.find('iframe') == -1:
+            raise ValidationError(
+                {'video': "Вставьте только iframe код видео файла, обычная ссылка не допустима"})
+        index = self.index_number
+        if ManualPosts.objects.filter(index_number=index).exists():
+            raise ValidationError(
+                {'index_number': "Порядковый номер с таким значением уже существует, выберите другой"})
 
 
 class MainPagePost(models.Model):
@@ -140,7 +154,7 @@ class MainPagePost(models.Model):
     photo = models.FileField(upload_to='posts', blank=True,
                              verbose_name='PostPhoto', default='def/default-user-image.png')
 
-    class Meta: 
+    class Meta:
         verbose_name = 'Статья'
         verbose_name_plural = 'Статьи'
 

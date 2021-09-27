@@ -2,7 +2,6 @@
 {% load static %}
 {% load custom_filters %}
 {% load i18n %}
-{% load embed_video_tags %}
 
 
 {% block property %}
@@ -17,7 +16,7 @@
 {% block content %}
 <div class="watermark_kremlin"></div>
 
-<section class="manual_section" style="height: auto;!important;">
+<section class="manual_section">
   <p class="section__title__withdrow">Подробные инструкции</p>
   <div class="section__decor"><img src="{% static 'img/icons/decor.svg' %}" alt=""></div>
 </section>
@@ -28,9 +27,9 @@
     <h3>{{post.description}}</h3>
   </div>
   <div class="video-block">
-    {% video post.video as my_video %}
-    {% video my_video '470x260' %}
-    {% endvideo %}
+    {% autoescape off %}
+    {{post.video}}
+    {% endautoescape %}
   </div>
 
 </section>
