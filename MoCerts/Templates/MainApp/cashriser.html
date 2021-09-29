@@ -3,50 +3,30 @@
 {% load i18n %}
 {% load custom_filters %}
 
+{% block title %}
+{% trans 'Предоплаченные сертификаты' %} | Money Certificates
+{% endblock %}
 
 {% block content %}
-
-
-
-
-    <div>
-<!--        <form style="margin-left:300px;" id="search_name_user" class="form-inline my-2 my-lg-0" action="{% url 'cashriser' %}" >-->
-<!--          <input class=" show_form_filter_user form-control mr-sm-2" type="search" placeholder="Search user" aria-label="Search" name="search_user" >-->
-<!--          <button id="search_user" form="search_name_user" class="show_form_filter_user btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>-->
-<!--        </form>-->
-        <form id="form_generate_sertificate" action="{% url 'generate' %}" method="POST" style="padding-top: 2%;">
-            {% csrf_token %}
-            <div class="select_menux" style="padding-left: 300px;">
-                <input type="number" placeholder="Укажите кол-во" name="count_certificate" required>
-                <select name="nominal">
-                    <option selected value="1">1</option>
-                    <option value="5">5</option>
-                    <option value="10">10</option>
-                    <option value="20">20</option>
-                    <option value="50">50</option>
-                    <option value="100">100</option>
-                    <option value="200">200</option>
-                    <option value="500">500</option>
-                </select>
-                <label for="horns" style="color: black">Именные?</label>
-                <input type="checkbox" class="custom-checkbox" id="horns" name="horns" value="no">
-                <div class="show_form_filter_user">
-                    <select name="choose_user" aria-label="multiple select example" size="5" style="matgin-top: 100px; width: 400px;">
-                    {% for user in users %}
-                      <option>{{ user.first_name }} {{ user.last_name}} {{ user.email }}</option>
-                    {% endfor %}
-                    </select>
-                </div>
-
-                <button form="form_generate_sertificate" class="button-block__button button__text button" type="submit">GENERATE</button>
-            </div >
-        </form>
+<div class="watermark_kremlin"></div>
+<div class="prepaid">
+    <div class="prepaid__content">
+        <p class="prepaid__title">Предоплаченные сертификаты</p>
+        <div class="prepaid__form">
+            <div class="form__title">
+                <p>Сертификат</p>
+                <p>Количество</p>
+                <p>Пользователь</p>
+            </div>
+            <form class="form__content" id="prepaid_cert" method="POST" enctype="multipart/form-data" action="">
+                {% csrf_token %}
+                {{ form.type }}
+                {{ form.amount }}
+                {{ form.user }}
+            </form>
+            <button form="prepaid_cert" type="submit" class="prof_btn">Сгенерировать</button>
+        </div>
 
     </div>
-    {% for certificate in certificates %}
-        <p style="margin-left: 300px;">{{ certificate.url }}</p>
-    {% endfor %}
-
-
-
+</div>
 {% endblock %}

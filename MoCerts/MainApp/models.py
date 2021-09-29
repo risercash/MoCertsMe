@@ -58,10 +58,12 @@ class Certificate(models.Model):
     owner = models.ForeignKey(CustomUser, on_delete=models.PROTECT, default=None, null=True, blank=True,
                               related_name='owner')
     is_paid = models.BooleanField(default=False)
-    is_prepaid = models.BooleanField(default=False)
     is_received = models.BooleanField(default=False)
     paid_by_user = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, default=None, null=True, blank=True,
                                      related_name='paid_by_user')
+    is_prepaid = models.BooleanField(default=False)
+    is_accept = models.BooleanField(default=False)
+    
 
     def get_url_for_messengers(self):
         """получить ссылку на объект"""

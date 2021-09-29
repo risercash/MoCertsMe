@@ -109,6 +109,7 @@
 
 .icon__span {
     text-transform: uppercase;
+    font-weight: 550;
     cursor: pointer;
     background-color: #962c2c;
     border-bottom: 1px black solid;

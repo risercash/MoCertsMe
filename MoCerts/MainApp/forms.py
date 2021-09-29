@@ -1,6 +1,6 @@
 import re
 from allauth.account.forms import LoginForm, SignupForm
-from django.forms import ModelForm, TextInput, CharField, EmailInput, FileInput, IntegerField, NumberInput
+from django.forms import ModelForm, TextInput, CharField, EmailInput, IntegerField, NumberInput, FileInput, Select
 from django.core.exceptions import ValidationError
 from django import forms
 from django.forms.fields import ChoiceField
@@ -9,27 +9,33 @@ from django.core.validators import MinValueValidator
 from django.core.exceptions import ValidationError
 
 
-class myForm(forms.Form):
-    val_list = ['USD', 'EUR', 'RUB', 'KZT']
-    valute = forms.ChoiceField(choices=val_list)
+class PrepaidCerts(forms.Form):
+    """Форма предоплаченный сертификатов."""
+
+    CERT_TYPE = (
+    ("regular", 'Обычный'),
+    ("custom", 'Предоплаченный'),
+    )
+
+    type = ChoiceField(choices=CERT_TYPE, initial="regular", widget=Select(attrs={'placeholder': 'Тип сертификата'}))
+    amount = IntegerField(label='Количество', widget=NumberInput(attrs={'placeholder': 'Количество'}),
+                          validators=[MinValueValidator(1), ], required=True)
+    user = CharField(max_length=50, required=False, widget=TextInput(attrs={'placeholder': 'email'}))
 
 
-VAL_CHOICES = (
+class DepositForm(forms.Form):
+    '''форма пополнения.'''
+
+    VAL_CHOICES = (
     ("USD", 'USD Доллар'),
     ("EUR", 'EUR Евро'),
     ("RUB", 'RUB Рубль'),
     ("KZT", 'KZT Тенге'),
-)
+    )
 
-VAL = ['USD', 'EUR', 'RUB', 'KZT']
-
-
-class DepositForm(forms.Form):
-    '''форма пополнения'''
     amount = IntegerField(label='Сумма пополнения', widget=NumberInput(attrs={'placeholder': 'сумма'}),
                           validators=[MinValueValidator(1), ])
-    """ Не могу комбокса сделать на валюты """
-    valute = ChoiceField(label='Валюта', choices=VAL_CHOICES)
+    valute = ChoiceField(label='Валюта', choices=VAL_CHOICES, initial="USD")
 
     def __init__(self, *args, **kwargs):
         super(DepositForm, self).__init__(*args, **kwargs)

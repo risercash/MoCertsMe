@@ -15,9 +15,9 @@ from django.shortcuts import redirect, render
 from django.conf import settings
 from pyqiwip2p import QiwiP2P
 
-from .names.names_generator import false_user, parse_name
+from .names.names_generator import false_user
 from .certificates.certificate_generator import generate_certificate
-from .forms import MyLoginForm, MySignupForm, UserForm, DepositForm, WithdrawalForm
+from .forms import UserForm, DepositForm, WithdrawalForm, PrepaidCerts
 from .models import CustomUser, Certificate, ManualPosts, MainPagePost, QiwiSecretKey, Deposit, Withdrawal
 from .tasks import check_payment_status, post_withdrawal_alert 
 
@@ -33,13 +33,11 @@ def sending(first_name, last_name, user_email, summ):
         f'https://api.telegram.org/bot1554753984:AAEBxoRD2KWy9HWMPRFcvBVwhTzfD7FoaJ0/sendMessage?chat_id=1434266116&text={text}')
 
 
-class AuthorizationForms(FormView):
-    """формы для авторизации и регистрации через header"""
-    form_class = MyLoginForm
+class AuthorizationForms():
+    """Common"""
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['SignupForm'] = MySignupForm
         return context
 
 
@@ -98,14 +96,6 @@ class ManualView(AuthorizationForms, ListView):
 class SelectCertificate(AuthorizationForms, TemplateView):
     """Страница выбора сертификата"""
     template_name = 'MainApp/select_certificate.html'
-
-
-def cashriser(request):
-    users = CustomUser.objects.filter(real_account=True)
-    context = {
-        'users': users,
-    }
-    return render(request, 'MainApp/cashriser.html', context)
 
 
 class CertificateDetail(AuthorizationForms, DetailView):
@@ -264,9 +254,12 @@ class ErrorView(TemplateView):
     template_name = 'MainApp/service_error.html'
 
 
-#
-def create_user():
-    pass
+class Cashriser(LoginRequiredMixin,  FormView):
+    """Страница генерации предоплаченных сертификатов"""
+    form_class = PrepaidCerts
+    template_name = 'MainApp/cashriser.html'
+    success_url = reverse_lazy('cashriser')
+    login_url = '/accounts/login/'
 
 
 @login_required
@@ -369,66 +362,10 @@ def accept(request, pk):
                                         kwargs={'number': certificate.number}))
 
 
-def generate(request):
-    """ ===== Генератор этот надо обьединить с оплатой сертификата ===== """
-    if request.method == "POST":
-        count_certificates = request.POST.get('count_certificate')
-        number = int(count_certificates)
-        user = request.POST.get('choose_user')
-        nominal = request.POST.get('nominal')
-
-        if number > 0 and number != '':
-            while number > 0:
-                number_certificate = datetime.today().strftime("%d%m%y%H%M%f")
-                url = '{}/certificate/{}'.format(settings.HOST,
-                                                 number_certificate)
-                user1_fullname = false_user()
-                user2_fullname = false_user()
-                user3_fullname = false_user()
-
-                user1 = CustomUser.objects.create(username=user1_fullname[0] + user2_fullname[1],
-                                                  first_name=user1_fullname[0],
-                                                  last_name=user1_fullname[1],
-                                                  email=f'fakeuser1{number}@gmail.com',
-                                                  password=user2_fullname, real_account=False, )
-                user2 = CustomUser.objects.create(username=user2_fullname[0] + user3_fullname[1],
-                                                  first_name=user2_fullname[0],
-                                                  last_name=user2_fullname[1],
-                                                  email=f'fakeuser2{number}@gmail.com',
-                                                  password=user3_fullname, real_account=False, )
-                if user is None:
-                    user3 = CustomUser.objects.create(username=user1_fullname[0] + user3_fullname[1], first_name=user3_fullname[0],
-                                                      last_name=user3_fullname[1],
-                                                      email=f'fakeuser3{number}@gmail.com',
-                                                      password=user1_fullname, real_account=False, )
-                else:
-                    parse_names = parse_name(user)
-                    user3 = CustomUser.objects.get(first_name=parse_names[0], last_name=parse_names[1],
-                                                   email=parse_names[2])
-
-                image_certificate = generate_certificate(
-                    nominal, number_certificate, user1, user2, user3)
-
-                Certificate.objects.create(number=number_certificate, url=url, nominal=nominal,
-                                           user1=user1, user2=user2, user3=user3,
-                                           certificate_image=image_certificate, owner=request.user)
-
-                number -= 1
-        certificates = Certificate.objects.all().order_by(
-            '-pk')[:int(count_certificates)]
-        context = {
-            'certificates': certificates,
-        }
-        return render(request, 'MainApp/cashriser.html', context)
-
-    return render(request, 'MainApp/cashriser.html')
 
 class BlogView(AuthorizationForms, TemplateView):
     """Страница Чтения блога"""
-    model = MainPagePost
-    context_object_name = 'posts'
-    ordering = ('-date_create')
-    template_name = 'MainApp/blog.html'
+    pass
 
 
 def blog(request):
