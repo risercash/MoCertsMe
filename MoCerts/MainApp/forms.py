@@ -9,41 +9,14 @@ from django.core.validators import MinValueValidator
 from django.core.exceptions import ValidationError
 
 
-class PrepaidCerts(forms.Form):
-    """Форма предоплаченный сертификатов."""
-
-    CERT_TYPE = (
-    ("regular", 'Обычный'),
-    ("custom", 'Именной'),
-    )
-    NOMINALS = (
-    ("1", '1'),
-    ("5", '5'),
-    ("10", '10'),
-    ("20", '20'),
-    ("50", '50'),
-    ("100", '100'),
-    ("200", '200'),
-    ("300", '300'),
-    )
-
-    type = ChoiceField(choices=CERT_TYPE, initial="regular", widget=Select(attrs={'placeholder': 'Тип сертификата'}))
-    nominal = ChoiceField(choices=NOMINALS, initial="regular", widget=Select(attrs={'placeholder': 'Тип сертификата'}))
-    amount = IntegerField(label='Количество', widget=NumberInput(attrs={'placeholder': 'Количество'}),
-                          validators=[MinValueValidator(1), ], required=True)
-    user = CharField(max_length=50, required=False, widget=TextInput(attrs={'placeholder': 'email'}))
-
-
 class DepositForm(forms.Form):
     '''форма пополнения.'''
-
     VAL_CHOICES = (
-    ("USD", 'USD Доллар'),
-    ("EUR", 'EUR Евро'),
-    ("RUB", 'RUB Рубль'),
-    ("KZT", 'KZT Тенге'),
+        ("USD", 'USD Доллар'),
+        ("EUR", 'EUR Евро'),
+        ("RUB", 'RUB Рубль'),
+        ("KZT", 'KZT Тенге'),
     )
-
     amount = IntegerField(label='Сумма пополнения', widget=NumberInput(attrs={'placeholder': 'сумма'}),
                           validators=[MinValueValidator(1), ])
     valute = ChoiceField(label='Валюта', choices=VAL_CHOICES, initial="USD")
@@ -64,6 +37,29 @@ class WithdrawalForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(WithdrawalForm, self).__init__(*args, **kwargs)
         self.fields['withdrawal_amount'].widget.attrs['min'] = 1
+
+
+class PrepaidCerts(forms.Form):
+    """Форма предоплаченных сертификатов."""
+    CERT_TYPE = (
+        ("regular", 'Обычный'),
+        ("custom", 'Именной'),
+    )
+    NOMINALS = (("1", '1'), ("5", '5'), ("10", '10'), ("20", '20'),
+                ("50", '50'), ("100", '100'), ("200", '200'), ("300", '300'),)
+
+    type = ChoiceField(choices=CERT_TYPE, initial="regular",
+                       widget=Select(attrs={'placeholder': 'Тип сертификата'}))
+    nominal = ChoiceField(choices=NOMINALS, initial="regular", widget=Select(
+        attrs={'placeholder': 'Тип сертификата'}))
+    amount = IntegerField(label='Количество', widget=NumberInput(attrs={'placeholder': 'Количество'}),
+                          validators=[MinValueValidator(1), ], required=True, initial=1)
+    user = CharField(max_length=50, required=False,
+                     widget=TextInput(attrs={'placeholder': 'email'}))
+
+    def __init__(self, *args, **kwargs):
+        super(PrepaidCerts, self).__init__(*args, **kwargs)
+        self.fields['amount'].widget.attrs['min'] = 1
 
 
 class MyLoginForm(LoginForm):
@@ -100,27 +96,4 @@ class UserForm(ModelForm):
         labels = {'first_name': 'Имя',
                   'last_name': 'Фамилия', 'email': 'Email', 'photo': 'Аватар', 'phone': '87003002010'}
 
-        widgets = {
-            # 'photo': FileInput(attrs={
-            # 'class': 'form-control',
-            # 'style': 'width:30ch; border: none; font-size: 16px;',
-            # }),
-            # 'first_name': TextInput(attrs={
-            #     'class': 'form-control',
-            #     'placeholder': 'Введите текст...',
-            #     'style': 'width:15ch; background-color: transparent; border: none; font-size: 22px; font-color: white',
-            # }),
-            # 'last_name': TextInput(attrs={
-            #     'class': 'form-control',
-            #     'placeholder': 'Введите текст...',
-            #     'style': 'width:15ch; background-color: transparent; border: none; font-size: 22px;',
-            # }),
-            'email': EmailInput(attrs={
-                # 'multiple class': 'form-control',
-                # 'style': 'width:20ch; background-color: transparent; border: none; font-size: 22px;',
-            }),
-            # 'phone': TextInput(attrs={
-            #     'multiple class': 'form-control',
-            #     'style': 'width:20ch; background-color: transparent; border: none; font-size: 22px;',
-            # }),
-        }
+        widgets = {'email': EmailInput(), }

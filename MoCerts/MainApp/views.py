@@ -19,7 +19,7 @@ from .names.names_generator import false_user
 from .certificates.certificate_generator import generate_certificate
 from .forms import UserForm, DepositForm, WithdrawalForm, PrepaidCerts
 from .models import CustomUser, Certificate, ManualPosts, MainPagePost, QiwiSecretKey, Deposit, Withdrawal
-from .tasks import check_payment_status, post_withdrawal_alert 
+from .tasks import check_payment_status, post_withdrawal_alert
 
 
 logger = logging.getLogger(__name__)
@@ -251,18 +251,23 @@ class UserBalance(LoginRequiredMixin, FormView):
         return super().get(request, *args, **kwargs)
 
 
-
 class ErrorView(TemplateView):
     '''сервис не доступен'''
     template_name = 'MainApp/service_error.html'
 
 
-class Cashriser(LoginRequiredMixin,  FormView):
+class Cashriser(LoginRequiredMixin,  FormView, ListView):
     """Страница генерации предоплаченных сертификатов"""
     form_class = PrepaidCerts
     success_url = reverse_lazy('cashriser')
     login_url = '/accounts/login/'
     template_name = 'MainApp/cashriser.html'
+    context_object_name = 'certs'
+
+
+    def get_queryset(self):
+        queryset = Certificate.objects.filter(is_prepaid=True).order_by('-published_date')
+        return queryset
 
     def post(self, request: HttpRequest, *args: str, **kwargs) -> HttpResponse:
         form = PrepaidCerts(request.POST)
@@ -271,30 +276,37 @@ class Cashriser(LoginRequiredMixin,  FormView):
             nominal = form.cleaned_data['nominal']
             amount = form.cleaned_data['amount']
             form_user = form.cleaned_data['user']
+            count = 0
             if type == 'regular':
-                nominal = nominal
-                print(amount)
                 while amount > 0:
-                    create_certificate(request, nominal)
+                    create_certificate(request, nominal, False)
                     amount -= 1
-                    print(amount)
+                    count += 1
+                messages.add_message(
+                    self.request, messages.INFO, f'Создано сертификатов {count}')
 
-
-
-
-        messages.add_message(self.request, messages.INFO, 'Изменения сохранены')
+            if type == 'custom':
+                if CustomUser.objects.filter(email=form_user).exists():
+                    while amount > 0:
+                        create_certificate(request, nominal, form_user)
+                        amount -= 1
+                        count += 1
+                    messages.add_message(
+                        self.request, messages.INFO, f'Создано сертификатов {count, form_user}')
+                else:
+                    messages.add_message(
+                        self.request, messages.INFO, f'Пользователь с таким email не существует')
         return super().post(request, *args, **kwargs)
 
 
 @login_required
-def create_certificate(request, nominal):
+def create_certificate(request, nominal, *args,):
     ''' ==== Создать сертификат ===== '''
-    print('Создать сертификат')
     # if request.method == 'GET':
     user = request.user
     if Certificate.objects.filter(owner=user, creator=None, nominal=nominal, is_paid=False, is_prepaid=False).exists():
         return HttpResponseRedirect(reverse('certificate',
-            kwargs={'number': Certificate.objects.get(owner=user, creator=None, nominal=nominal, is_paid=False, is_prepaid=False)}))
+                                            kwargs={'number': Certificate.objects.get(owner=user, creator=None, nominal=nominal, is_paid=False, is_prepaid=False)}))
     number = datetime.today().strftime("%d%m%y%H%M%f")
     url = '{}/certificate/{}'.format(settings.HOST, number)
     user1_fullname = false_user()
@@ -312,17 +324,22 @@ def create_certificate(request, nominal):
                                       last_name=user3_fullname[1],
                                       email=f'fakeuser3{number}@gmail.com',
                                       password=user1_fullname, real_account=False, )
-    image_certificate = generate_certificate(
-        nominal, number, user1, user2, user3)
+    is_prepaid = False
+    if request.method == 'GET': # Обычные сертификаты
+        image_certificate = generate_certificate(nominal, number, user1, user2, user3)
+    if request.method == 'POST': # Именные сертификаты
+        is_prepaid = True
+        if args[0]:
+            user3 = CustomUser.objects.get(email=args[0])
+        image_certificate = generate_certificate(nominal, number, user1, user2, user3)
+
     certificate = Certificate(number=number, url=url, nominal=nominal, user1=user1, user2=user2, user3=user3,
-                              certificate_image=image_certificate, owner=request.user, )
-    if request.method == 'POST':
-        certificate.is_prepaid = True
+                              certificate_image=image_certificate, owner=request.user, is_prepaid=is_prepaid,)
     certificate.save()
     user.certificate = certificate
     user.save()
     return HttpResponseRedirect(reverse('certificate',
-                                            kwargs={'number': request.user.certificate.number}))
+                                        kwargs={'number': request.user.certificate.number}))
 
 
 @login_required
@@ -386,7 +403,6 @@ def accept(request, pk):
                                         kwargs={'number': certificate.number}))
 
 
-
 class BlogView(AuthorizationForms, TemplateView):
     """Страница Чтения блога"""
     pass
@@ -408,6 +424,8 @@ class SendUs(LoginRequiredMixin, UpdateView):
         obj = CustomUser.objects.get(email=self.request.user.email)
         # logger.warning('check')
         return obj
+
+
 def send_us(request):
     #user = UserForm.objects.filter()
     return render(request, 'MainApp/send_us.html', {'user': 'user'})
