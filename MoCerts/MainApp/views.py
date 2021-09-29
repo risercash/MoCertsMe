@@ -273,6 +273,7 @@ class Cashriser(LoginRequiredMixin,  FormView):
             form_user = form.cleaned_data['user']
             if type == 'regular':
                 nominal = nominal
+                print(amount)
                 while amount > 0:
                     create_certificate(request, nominal)
                     amount -= 1
@@ -288,6 +289,7 @@ class Cashriser(LoginRequiredMixin,  FormView):
 @login_required
 def create_certificate(request, nominal):
     ''' ==== Создать сертификат ===== '''
+    print('Создать сертификат')
     # if request.method == 'GET':
     user = request.user
     if Certificate.objects.filter(owner=user, creator=None, nominal=nominal, is_paid=False, is_prepaid=False).exists():
