@@ -4,7 +4,7 @@ from .models import CustomUser, Certificate, PreviewSettings, ManualPosts, MainP
 
 
 class CertAdmin(admin.ModelAdmin):
-    list_display = ('number', 'nominal', 'creator', 'owner', 'is_paid', )
+    list_display = ('number', 'nominal', 'creator', 'owner', 'is_paid', 'is_prepaid',)
     list_display_links = ('number', 'nominal',)
     ordering = ['-published_date']
     list_filter = ('nominal', 'creator', 'owner', 'is_paid',)

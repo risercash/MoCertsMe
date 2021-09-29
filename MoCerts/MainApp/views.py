@@ -262,46 +262,45 @@ class Cashriser(LoginRequiredMixin,  FormView):
     template_name = 'MainApp/cashriser.html'
 
     def post(self, request: HttpRequest, *args: str, **kwargs) -> HttpResponse:
-        create_certificate(request, 1)
+        create_certificate(request, 100)
         return super().post(request, *args, **kwargs)
 
 
 @login_required
 def create_certificate(request, nominal):
     ''' ==== Создать сертификат ===== '''
-    if request.method == 'GET':
-        user = request.user
-        if Certificate.objects.filter(owner=user, creator=None, nominal=nominal, is_paid=False).exists():
-            return HttpResponseRedirect(reverse('certificate',
-                                                kwargs={'number': Certificate.objects.get(owner=user, creator=None, nominal=nominal, is_paid=False)}))
-
-        number = datetime.today().strftime("%d%m%y%H%M%f")
-        url = '{}/certificate/{}'.format(settings.HOST, number)
-
-        user1_fullname = false_user()
-        user2_fullname = false_user()
-        user3_fullname = false_user()
-
-        user1 = CustomUser.objects.create(username=user1_fullname[0] + user2_fullname[1], first_name=user1_fullname[0],
-                                          last_name=user1_fullname[1],
-                                          email=f'fakeuser1{number}@gmail.com',
-                                          password=user2_fullname, real_account=False, )
-        user2 = CustomUser.objects.create(username=user2_fullname[0] + user3_fullname[1], first_name=user2_fullname[0],
-                                          last_name=user2_fullname[1],
-                                          email=f'fakeuser2{number}@gmail.com',
-                                          password=user3_fullname, real_account=False, )
-        user3 = CustomUser.objects.create(username=user1_fullname[0] + user3_fullname[1], first_name=user3_fullname[0],
-                                          last_name=user3_fullname[1],
-                                          email=f'fakeuser3{number}@gmail.com',
-                                          password=user1_fullname, real_account=False, )
-        image_certificate = generate_certificate(
-            nominal, number, user1, user2, user3)
-        certificate = Certificate(number=number, url=url, nominal=nominal, user1=user1, user2=user2, user3=user3,
-                                  certificate_image=image_certificate, owner=request.user, )
-        certificate.save()
-        user.certificate = certificate
-        user.save()
+    # if request.method == 'GET':
+    user = request.user
+    if Certificate.objects.filter(owner=user, creator=None, nominal=nominal, is_paid=False, is_prepaid=False).exists():
         return HttpResponseRedirect(reverse('certificate',
+            kwargs={'number': Certificate.objects.get(owner=user, creator=None, nominal=nominal, is_paid=False, is_prepaid=False)}))
+    number = datetime.today().strftime("%d%m%y%H%M%f")
+    url = '{}/certificate/{}'.format(settings.HOST, number)
+    user1_fullname = false_user()
+    user2_fullname = false_user()
+    user3_fullname = false_user()
+    user1 = CustomUser.objects.create(username=user1_fullname[0] + user2_fullname[1], first_name=user1_fullname[0],
+                                      last_name=user1_fullname[1],
+                                      email=f'fakeuser1{number}@gmail.com',
+                                      password=user2_fullname, real_account=False, )
+    user2 = CustomUser.objects.create(username=user2_fullname[0] + user3_fullname[1], first_name=user2_fullname[0],
+                                      last_name=user2_fullname[1],
+                                      email=f'fakeuser2{number}@gmail.com',
+                                      password=user3_fullname, real_account=False, )
+    user3 = CustomUser.objects.create(username=user1_fullname[0] + user3_fullname[1], first_name=user3_fullname[0],
+                                      last_name=user3_fullname[1],
+                                      email=f'fakeuser3{number}@gmail.com',
+                                      password=user1_fullname, real_account=False, )
+    image_certificate = generate_certificate(
+        nominal, number, user1, user2, user3)
+    certificate = Certificate(number=number, url=url, nominal=nominal, user1=user1, user2=user2, user3=user3,
+                              certificate_image=image_certificate, owner=request.user, )
+    if request.method == 'POST':
+        certificate.is_prepaid = True
+    certificate.save()
+    user.certificate = certificate
+    user.save()
+    return HttpResponseRedirect(reverse('certificate',
                                             kwargs={'number': request.user.certificate.number}))
 
 
