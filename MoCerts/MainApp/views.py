@@ -257,9 +257,13 @@ class ErrorView(TemplateView):
 class Cashriser(LoginRequiredMixin,  FormView):
     """Страница генерации предоплаченных сертификатов"""
     form_class = PrepaidCerts
-    template_name = 'MainApp/cashriser.html'
     success_url = reverse_lazy('cashriser')
     login_url = '/accounts/login/'
+    template_name = 'MainApp/cashriser.html'
+
+    def post(self, request: HttpRequest, *args: str, **kwargs) -> HttpResponse:
+        create_certificate(request, 1)
+        return super().post(request, *args, **kwargs)
 
 
 @login_required

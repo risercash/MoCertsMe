@@ -2237,7 +2237,7 @@ button[type=submit]:hover, button[type=button]:hover {
   justify-content: space-around;
   text-align: center;
   min-width: 100%;
-  margin: 2% 0;
+  margin: 4% 0 2%;
 }
 
 .form__title p {
@@ -2260,6 +2260,7 @@ button[type=submit]:hover, button[type=button]:hover {
 .form__content input{
   text-align: center;
   width: 200px;
+  font-size: 14px;
 }
 
 .form__content select {
