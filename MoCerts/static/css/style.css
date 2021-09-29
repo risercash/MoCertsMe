@@ -2261,6 +2261,8 @@ button[type=submit]:hover, button[type=button]:hover {
   text-align: center;
   width: 200px;
   font-size: 14px;
+  font-weight: 600;
+  color: #303030;
 }
 
 .form__content select {
@@ -2269,7 +2271,10 @@ button[type=submit]:hover, button[type=button]:hover {
   margin: 8px 0;
   border: 2px solid #3f85ce;
   font-size: 14px;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
   text-align: center;
+  font-weight: 800;
+  color: #303030;
 }
 .form__content select option{
   font-size: 18px;  

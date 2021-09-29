@@ -122,6 +122,8 @@ class CertificateDetail(AuthorizationForms, DetailView):
             context['owner_is_here'] = True
         if self.object.creator == self.request.user:
             context['creator_is_here'] = True
+        if self.object.is_prepaid == True:
+            context['is_prepaid'] = True
         return context
 
 
@@ -249,6 +251,7 @@ class UserBalance(LoginRequiredMixin, FormView):
         return super().get(request, *args, **kwargs)
 
 
+
 class ErrorView(TemplateView):
     '''сервис не доступен'''
     template_name = 'MainApp/service_error.html'
@@ -262,7 +265,23 @@ class Cashriser(LoginRequiredMixin,  FormView):
     template_name = 'MainApp/cashriser.html'
 
     def post(self, request: HttpRequest, *args: str, **kwargs) -> HttpResponse:
-        create_certificate(request, 100)
+        form = PrepaidCerts(request.POST)
+        if form.is_valid():
+            type = form.cleaned_data['type']
+            nominal = form.cleaned_data['nominal']
+            amount = form.cleaned_data['amount']
+            form_user = form.cleaned_data['user']
+            if type == 'regular':
+                nominal = nominal
+                while amount > 0:
+                    create_certificate(request, nominal)
+                    amount -= 1
+                    print(amount)
+
+
+
+
+        messages.add_message(self.request, messages.INFO, 'Изменения сохранены')
         return super().post(request, *args, **kwargs)
 
 
@@ -279,15 +298,15 @@ def create_certificate(request, nominal):
     user1_fullname = false_user()
     user2_fullname = false_user()
     user3_fullname = false_user()
-    user1 = CustomUser.objects.create(username=user1_fullname[0] + user2_fullname[1], first_name=user1_fullname[0],
+    user1 = CustomUser.objects.create(username=user1_fullname[0] + user2_fullname[1] + datetime.today().strftime("%d%H%M%S%f"), first_name=user1_fullname[0],
                                       last_name=user1_fullname[1],
                                       email=f'fakeuser1{number}@gmail.com',
                                       password=user2_fullname, real_account=False, )
-    user2 = CustomUser.objects.create(username=user2_fullname[0] + user3_fullname[1], first_name=user2_fullname[0],
+    user2 = CustomUser.objects.create(username=user2_fullname[0] + user3_fullname[1] + datetime.today().strftime("%d%H%M$S%f"), first_name=user2_fullname[0],
                                       last_name=user2_fullname[1],
                                       email=f'fakeuser2{number}@gmail.com',
                                       password=user3_fullname, real_account=False, )
-    user3 = CustomUser.objects.create(username=user1_fullname[0] + user3_fullname[1], first_name=user3_fullname[0],
+    user3 = CustomUser.objects.create(username=user1_fullname[0] + user3_fullname[1] + datetime.today().strftime("%d%H%M$S%f"), first_name=user3_fullname[0],
                                       last_name=user3_fullname[1],
                                       email=f'fakeuser3{number}@gmail.com',
                                       password=user1_fullname, real_account=False, )

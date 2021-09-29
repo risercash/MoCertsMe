@@ -15,12 +15,14 @@
         <div class="prepaid__form">
             <div class="form__title">
                 <p>Сертификат</p>
+                <p>Номинал</p>
                 <p>Количество</p>
                 <p>Пользователь</p>
             </div>
             <form class="form__content" id="prepaid_cert" method="POST" enctype="multipart/form-data" action="">
                 {% csrf_token %}
                 {{ form.type }}
+                {{ form.nominal }}
                 {{ form.amount }}
                 {{ form.user }}
             </form>

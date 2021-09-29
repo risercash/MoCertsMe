@@ -27,7 +27,7 @@
             </div>
       </section>
 
-      {% elif need_pay and owner_is_here and creator_is_here %}
+      {% elif need_pay and owner_is_here and creator_is_here and not is_prepaid %}
       <section class="cert__section">
             <div class="certs__wrapper_url">
                   <p class="section__title"><span>Скопируйте ссылку для отправки или поделитесь в соц сетях</span></p><br>
@@ -55,7 +55,7 @@
             </div>
       </section>
 
-      {% elif need_pay %}
+      {% elif need_pay and not is_prepaid %}
       <section class="third-section">
             <div class="wrapper__certs">
                   <p class="section__title__withdrow">Поздравляем <b>{{ user.first_name }} !</b></p>

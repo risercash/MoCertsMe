@@ -14,10 +14,21 @@ class PrepaidCerts(forms.Form):
 
     CERT_TYPE = (
     ("regular", 'Обычный'),
-    ("custom", 'Предоплаченный'),
+    ("custom", 'Именной'),
+    )
+    NOMINALS = (
+    ("1", '1'),
+    ("5", '5'),
+    ("10", '10'),
+    ("20", '20'),
+    ("50", '50'),
+    ("100", '100'),
+    ("200", '200'),
+    ("300", '300'),
     )
 
     type = ChoiceField(choices=CERT_TYPE, initial="regular", widget=Select(attrs={'placeholder': 'Тип сертификата'}))
+    nominal = ChoiceField(choices=NOMINALS, initial="regular", widget=Select(attrs={'placeholder': 'Тип сертификата'}))
     amount = IntegerField(label='Количество', widget=NumberInput(attrs={'placeholder': 'Количество'}),
                           validators=[MinValueValidator(1), ], required=True)
     user = CharField(max_length=50, required=False, widget=TextInput(attrs={'placeholder': 'email'}))
