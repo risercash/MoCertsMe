@@ -922,6 +922,16 @@ footer a {
   font-weight: 600;
   text-align: center;
 }
+.wrapper__certs-text {
+  width: 85%;
+  max-width: 1100px;
+  margin: 1% 0 0 0;
+  color: #22263a;
+  line-height: 26px;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+}
 
 .main__title {
   color: #ecfcfe
@@ -2217,10 +2227,11 @@ button[type=submit]:hover, button[type=button]:hover {
   line-height: 80px;
   color: black;
   /* background-color: #3b51c2; */
-  margin: 3% auto;
   box-shadow: 10px 10px 30px rgb(0 0 0 / 30%);
   border: 1px #2b314e solid;
   border-radius: 10px;
+  margin: 3% 0 10%;
+
 }
 
 .prepaid__form {
@@ -2282,3 +2293,43 @@ button[type=submit]:hover, button[type=button]:hover {
   text-align: center;
 }
 
+.alerts {
+  position: absolute; 
+  bottom:-55px;
+  left: 0;
+}
+
+.prepaid_list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10%;
+}
+.prepaid__cert {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  min-width: 100%;
+  margin-top: 1%;
+
+}
+.prepaid__cert p {
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  width: 250px;
+}
+.prepaid_list__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+}
+
+.prepaid_url_btn {
+  width: 150px;
+}

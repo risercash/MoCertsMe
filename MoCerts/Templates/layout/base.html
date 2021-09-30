@@ -141,12 +141,14 @@
             </a>
           </li>
 
+          {% if user.is_superuser %}
           <li>
             <a href="{% url 'cashriser' %}">
-              <div class="icons__item instruction_icon"></div>
-              <div class="icon__span"><span>Предоплаченные сертификаты</span></div>
+              <div class="icons__item admin_icon"></div>
+              <div class="icon__span"><span>Генератор</span></div>
             </a>
           </li>
+          {% endif %}
           {% else %}
           
           <li>
@@ -218,7 +220,7 @@
     <script src="{% static 'js/my_certificates.js' %}"></script>
   </footer>
 
-  <script src="{% static 'swiper/swiper-bundle.min.js' %}"></script>
+  <!-- <script src="{% static 'swiper/swiper-bundle.min.js' %}"></script> -->
   <!-- <script src="{% static 'js/index.js' %}"></script> -->
   <script src="{% static 'js/aside.js' %}"></script>
 

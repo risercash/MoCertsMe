@@ -29,9 +29,55 @@
             <button form="prepaid_cert" type="submit" class="prof_btn">Сгенерировать</button>
         </div>
     </div>
+    {% for i in messages %}
+    <div class="alerts">
+        <div class="css-modal-details">
+            <details open>
+                <summary>alerts</summary>
+                <div class="cmc">
+                    <div class="cmt">
+                        <h2>
+                            {% if i.tags == 'error' %}
+                            {{i}}
+                            {% else %}
+                            {{i}}
+                            {% endif %}
+                        </h2>
+                    </div>
+                </div>
+            </details>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<div class="prepaid_list">
+    <div class="prepaid_list__content">
+        <div class="form__title">
+            <p>Сертификат №</p>
+            <p>Номинал</p>
+            <p>Пользователь</p>
+            <p>Ссылка</p>
+        </div>
+        {% for cert in certs %}
+        <div class="prepaid__cert">
+            <p>{{ cert.number }}</p>
+            <p>{{ cert.nominal }}</p>
+            {% if cert.user3.real_account %}
+                <p>{{ cert.user3.email }}</p>
+            {% else %}
+                <p>fake_user</p>
+            {% endif %}
+            <p style="display: none;" id="{{ cert.number }}">{{ cert.url }}</p>
+            <p><button class="prepaid_url_btn" title="СКОПИРОВАТЬ ССЫЛКУ" onclick="copyToClipboard({{ cert.number }})">
+                📝СКОПИРОВАТЬ ССЫЛКУ
+            </button></p>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
 
 {% block script %}
 <script src="{% static 'js/cashriser.js' %}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 {% endblock script %}

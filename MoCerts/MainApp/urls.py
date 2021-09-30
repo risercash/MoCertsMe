@@ -12,12 +12,11 @@ urlpatterns = [
     path('errorview/', ErrorView.as_view(), name='errorview'),
     path('certificates/', SelectCertificate.as_view(), name='select_certificate'),
     path('my_certificates', MyCertificates.as_view(), name='my_certificates'),
+    path('cashriser/', Cashriser.as_view(), name='cashriser'),
     path('certificate/<int:number>/', CertificateDetail.as_view(), name='certificate'),
-    path('accept/<int:pk>', accept, name='accept'),
     path('create_certificate/<int:nominal>/', create_certificate, name='create_certificate'),
     path('pay_certificate/<int:pk>', pay_certificate, name='pay_certificate'),
     path("robots.txt", TemplateView.as_view(template_name="robots.txt", content_type="text/plain"),),
-    path('cashriser/', Cashriser.as_view(), name='cashriser'),
     
     path('blog', blog, name='blog'),
     path('send-us/', send_us, name='send-us'),
