@@ -922,6 +922,16 @@ footer a {
   font-weight: 600;
   text-align: center;
 }
+.wrapper__certs-text {
+  width: 85%;
+  max-width: 1100px;
+  margin: 1% 0 0 0;
+  color: #22263a;
+  line-height: 26px;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+}
 
 .main__title {
   color: #ecfcfe

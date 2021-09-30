@@ -67,8 +67,8 @@
             {% else %}
                 <p>fake_user</p>
             {% endif %}
-            <p style="display: none;" id="certificate_url">{{ cert.url }}</p>
-            <p><button class="prepaid_url_btn" title="СКОПИРОВАТЬ ССЫЛКУ" onclick="copyToClipboard('#certificate_url')">
+            <p style="display: none;" id="{{ cert.number }}">{{ cert.url }}</p>
+            <p><button class="prepaid_url_btn" title="СКОПИРОВАТЬ ССЫЛКУ" onclick="copyToClipboard({{ cert.number }})">
                 📝СКОПИРОВАТЬ ССЫЛКУ
             </button></p>
         </div>

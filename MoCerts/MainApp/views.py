@@ -136,7 +136,7 @@ class MyCertificates(LoginRequiredMixin, ListView):
         ''' ===== отсортировать queryset по номиналам в списке 
         а надо по 5шт отсортировать ===== '''
         certificates = Certificate.objects.filter(
-            creator=self.request.user, )
+            creator=self.request.user, is_prepaid=False)
         queryset = []
         one_group = []
         for ind, cert in enumerate(certificates):
@@ -264,9 +264,9 @@ class Cashriser(LoginRequiredMixin,  FormView, ListView):
     template_name = 'MainApp/cashriser.html'
     context_object_name = 'certs'
 
-
     def get_queryset(self):
-        queryset = Certificate.objects.filter(is_prepaid=True).order_by('-published_date')
+        queryset = Certificate.objects.filter(
+            is_prepaid=True).order_by('-published_date')
         return queryset
 
     def post(self, request: HttpRequest, *args: str, **kwargs) -> HttpResponse:
@@ -284,15 +284,14 @@ class Cashriser(LoginRequiredMixin,  FormView, ListView):
                     count += 1
                 messages.add_message(
                     self.request, messages.INFO, f'Создано сертификатов {count}')
-
             if type == 'custom':
                 if CustomUser.objects.filter(email=form_user).exists():
                     while amount > 0:
                         create_certificate(request, nominal, form_user)
                         amount -= 1
                         count += 1
-                    messages.add_message(
-                        self.request, messages.INFO, f'Создано сертификатов {count, form_user}')
+                    messages.add_message(self.request, messages.INFO, \
+                        f'Создано сертификатов {count} для пользователя {form_user}')
                 else:
                     messages.add_message(
                         self.request, messages.INFO, f'Пользователь с таким email не существует')
@@ -325,16 +324,18 @@ def create_certificate(request, nominal, *args,):
                                       email=f'fakeuser3{number}@gmail.com',
                                       password=user1_fullname, real_account=False, )
     is_prepaid = False
-    if request.method == 'GET': # Обычные сертификаты
+    named_after = False
+    if request.method == 'GET':  # Обычные сертификаты
         image_certificate = generate_certificate(nominal, number, user1, user2, user3)
-    if request.method == 'POST': # Именные сертификаты
+    if request.method == 'POST':  # Именные сертификаты
         is_prepaid = True
+        named_after = True
         if args[0]:
             user3 = CustomUser.objects.get(email=args[0])
         image_certificate = generate_certificate(nominal, number, user1, user2, user3)
 
     certificate = Certificate(number=number, url=url, nominal=nominal, user1=user1, user2=user2, user3=user3,
-                              certificate_image=image_certificate, owner=request.user, is_prepaid=is_prepaid,)
+                    certificate_image=image_certificate, owner=request.user, is_prepaid=is_prepaid, named_after=named_after)
     certificate.save()
     user.certificate = certificate
     user.save()
@@ -346,18 +347,21 @@ def create_certificate(request, nominal, *args,):
 def pay_certificate(request, pk):
     '''оплата сертификата'''
     certificate = Certificate.objects.get(id=pk)
-    if request.user.balance >= certificate.nominal:
+    amount_write_off = certificate.nominal
+    if certificate.is_prepaid: # если серт предоп, то номинал ноль
+            amount_write_off = 0
+    if request.user.balance >= amount_write_off:
         certificate.owner = request.user
         certificate.is_paid = True
         certificate.paid_by_user = request.user
         certificate.save()
 
-        request.user.balance -= certificate.nominal
+        request.user.balance -= amount_write_off
         request.user.save()
 
         user1 = certificate.user1
         if user1.real_account:
-            user1.balance += certificate.nominal
+            user1.balance += amount_write_off
             user1.save()
         else:
             if CustomUser.objects.filter(email=settings.MONEY_ADMIN['email']).exists():
@@ -369,11 +373,13 @@ def pay_certificate(request, pk):
                                                         last_name=settings.MONEY_ADMIN['last_name'],
                                                         email=settings.MONEY_ADMIN['email'],
                                                         password=settings.MONEY_ADMIN['password'], )
-            money_admin.balance += certificate.nominal
+            money_admin.balance += amount_write_off
             money_admin.save()
 
         for i in range(0, 5):
             user1, user2, user3 = certificate.user2, certificate.user3, request.user
+            if certificate.named_after:
+                user1, user2, user3 = certificate.user1, certificate.user2, request.user
             number = datetime.today().strftime("%d%m%y%H%M%f")
             image_certificate = generate_certificate(
                 certificate.nominal, number, user1, user2, user3)
@@ -389,18 +395,6 @@ def pay_certificate(request, pk):
         messages.add_message(
             request, messages.ERROR, 'Недостаточно средств, пожалуйста, пополните баланс')
     return HttpResponseRedirect(reverse('userbalance'))
-
-
-@login_required
-def accept(request, pk):
-    '''Подтвердить сертификат'''
-    certificate = Certificate.objects.get(pk=pk)
-    certificate.owner = request.user
-    certificate.save()
-    request.user.certificate = certificate
-    request.user.save()
-    return HttpResponseRedirect(reverse('certificate',
-                                        kwargs={'number': certificate.number}))
 
 
 class BlogView(AuthorizationForms, TemplateView):

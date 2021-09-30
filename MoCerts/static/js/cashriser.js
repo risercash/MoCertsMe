@@ -1,5 +1,6 @@
 let typeForm = document.querySelector('#id_type')
 let emailForm = document.querySelector('#id_user')
+let amountForm = document.querySelector('#id_amount')
 
 
 function readonlyForm () {
@@ -21,9 +22,10 @@ readonlyForm ()
 
 
 function copyToClipboard(element) {
+    id = '#' + element 
     var $temp = $("<input>");
     $("body").append($temp);
-    $temp.val($(element).text()).select();
+    $temp.val($(id).text()).select();
     document.execCommand("copy");
     $temp.remove();
 }
