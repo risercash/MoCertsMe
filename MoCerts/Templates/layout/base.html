@@ -141,12 +141,14 @@
             </a>
           </li>
 
+          {% if user.is_superuser %}
           <li>
             <a href="{% url 'cashriser' %}">
               <div class="icons__item instruction_icon"></div>
               <div class="icon__span"><span>Предоплаченные сертификаты</span></div>
             </a>
           </li>
+          {% endif %}
           {% else %}
           
           <li>

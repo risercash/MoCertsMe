@@ -1,13 +1,12 @@
 import logging
-
 import requests
 from datetime import datetime
 from allauth.socialaccount.models import SocialAccount
 from colorama import Fore, Style
 
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, FormView, TemplateView
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.decorators import login_required, permission_required
+from django.views.generic import ListView, DetailView, UpdateView, FormView, TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect, HttpRequest
 from django.urls import reverse, reverse_lazy
@@ -256,7 +255,7 @@ class ErrorView(TemplateView):
     template_name = 'MainApp/service_error.html'
 
 
-class Cashriser(LoginRequiredMixin,  FormView, ListView):
+class Cashriser(LoginRequiredMixin,  UserPassesTestMixin, FormView, ListView):
     """Страница генерации предоплаченных сертификатов"""
     form_class = PrepaidCerts
     success_url = reverse_lazy('cashriser')
@@ -265,11 +264,13 @@ class Cashriser(LoginRequiredMixin,  FormView, ListView):
     context_object_name = 'certs'
 
     def get_queryset(self):
+        """Отсортировать список"""
         queryset = Certificate.objects.filter(
             is_prepaid=True).order_by('-published_date')
         return queryset
 
     def post(self, request: HttpRequest, *args: str, **kwargs) -> HttpResponse:
+        """Создать предоплаченный сертификат."""
         form = PrepaidCerts(request.POST)
         if form.is_valid():
             type = form.cleaned_data['type']
@@ -296,6 +297,12 @@ class Cashriser(LoginRequiredMixin,  FormView, ListView):
                     messages.add_message(
                         self.request, messages.INFO, f'Пользователь с таким email не существует')
         return super().post(request, *args, **kwargs)
+
+    def test_func(self):
+        """Ограничение доступа."""
+        if self.request.user.is_superuser:
+            return True
+        return False
 
 
 @login_required
