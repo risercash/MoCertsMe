@@ -46,7 +46,7 @@ class PrepaidCerts(forms.Form):
         ("custom", 'Именной'),
     )
     NOMINALS = (("1", '1'), ("5", '5'), ("10", '10'), ("20", '20'),
-                ("50", '50'), ("100", '100'), ("200", '200'), ("300", '300'),)
+                ("50", '50'), ("100", '100'), ("200", '200'), ("500", '500'),)
 
     type = ChoiceField(choices=CERT_TYPE, initial="regular",
                        widget=Select(attrs={'placeholder': 'Тип сертификата'}))
