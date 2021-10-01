@@ -210,14 +210,14 @@
       </div>
 
       <div class="contacts__button-block">
-        <button class="contacts-block__button button">
-          <a href="{% url 'send-us' %}">
+        <form action="{% url 'send-us' %}">
+          <button class="contacts-block__button button">
             <span class="contacts__text">Написать нам</span>
-          </a>
-          <span class="contacts__span">
+            <span class="contacts__span">
             <img class="contacts__span-img" width="16" height="16" src="{% static 'img/icons/edit.svg' %}" alt="">
-          </span>
-        </button>
+            </span>
+          </button>
+        </form>
       </div>
     </div>
 
