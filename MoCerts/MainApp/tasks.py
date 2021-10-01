@@ -107,7 +107,7 @@ def contact_form(username, email, text):
     msg.send()  # отсылаем
 
     token = settings.BOT_TOKEN
-    text = f'Новый запрос по форме на Mocerts.com: %0A username: {username}%0A email: {email}%0A message: {text}'
+    text = f'Новый запрос по форме на Mocerts.com: %0A Username: {username}%0A Email: {email}%0A Message: %0A {text}'
     requests.get(
         f'https://api.telegram.org/bot{token}/sendMessage?chat_id=-523535813&text={text}')
     # requests.get(
