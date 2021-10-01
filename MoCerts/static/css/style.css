@@ -643,6 +643,17 @@ main {
   text-decoration: none;
 }
 
+.cert__button {
+  background-color: rgb(236, 236, 236);
+  height: 50px;
+  width: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-decoration: none;
+  color: #202020;
+}
+
 .button__span {
   background-color: rgb(236, 236, 236);
   height: 100%;
