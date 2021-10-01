@@ -2268,6 +2268,7 @@ button[type=submit]:hover, button[type=button]:hover {
   transform: scale(1.1);
 }
 .form-inner textarea {
+  text-align: justify;
   resize: none;
   height: 200px;
 }
