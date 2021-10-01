@@ -2270,7 +2270,6 @@ button[type=submit]:hover, button[type=button]:hover {
 .form-inner textarea {
   resize: none;
   height: 200px;
-
 }
 .form-inner h3 {
   text-align: center;

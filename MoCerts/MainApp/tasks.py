@@ -101,16 +101,14 @@ def contact_form(username, email, text):
         subject=f'Новый запрос по форме на Mocerts.com',
         from_email=settings.DEFAULT_FROM_EMAIL,
         to=[settings.POSTADMIN]
-        # to=['doszhan.m@mail.ru',]
     )
-    msg.attach_alternative(html_content, "text/html")  # добавляем html
+    msg.attach_alternative(html_content, "text/html")
     msg.send()  # отсылаем
 
     token = settings.BOT_TOKEN
+    chat_id = settings.CHATID
     text = f'Новый запрос по форме на Mocerts.com: %0A Username: {username}%0A Email: {email}%0A Message: %0A {text}'
     requests.get(
-        f'https://api.telegram.org/bot{token}/sendMessage?chat_id=-523535813&text={text}')
-    # requests.get(
-    #     f'https://api.telegram.org/bot1554753984:AAEBxoRD2KWy9HWMPRFcvBVwhTzfD7FoaJ0/sendMessage?chat_id=1434266116&text={text}')
+        f'https://api.telegram.org/bot{token}/sendMessage?chat_id={chat_id}&text={text}')
 
     logger.warning(f'Новый запрос по форме от ' + username)

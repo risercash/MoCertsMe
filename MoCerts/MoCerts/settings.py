@@ -10,6 +10,7 @@ except ImportError:
 
 
 BOT_TOKEN=os.getenv("BOT_TOKEN")
+CHATID=os.getenv("CHATID")
 SOCIAL_AUTH_TELEGRAM_BOT_TOKEN=os.getenv("SOCIAL_AUTH_TELEGRAM_BOT_TOKEN")
 
 
