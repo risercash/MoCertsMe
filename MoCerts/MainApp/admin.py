@@ -9,6 +9,7 @@ class CertAdmin(admin.ModelAdmin):
     ordering = ['-published_date']
     list_filter = ('nominal', 'creator', 'owner', 'is_paid',)
     search_fields = ('number', 'nominal', 'creator', 'owner', 'is_paid', )
+    save_on_top = True
 
     def has_delete_permission(self, request, obj=Certificate):
         return True
@@ -19,6 +20,7 @@ class CertAdmin(admin.ModelAdmin):
     def has_change_permission(self, request, obj=Certificate):
         return False
 
+
 class UserAdmin(admin.ModelAdmin):
     list_display = ('first_name', 'email', 'real_account',
                     'balance', 'telegram_id',)
@@ -27,6 +29,7 @@ class UserAdmin(admin.ModelAdmin):
     list_filter = ('real_account', 'balance',)
     search_fields = ('first_name', 'email', 'real_account',
                      'balance', 'telegram_id',)
+    save_on_top = True
 
 
 class ManualAdmin(admin.ModelAdmin):
@@ -35,10 +38,13 @@ class ManualAdmin(admin.ModelAdmin):
     ordering = ['index_number']
 
 
+
 class MainPagePostAdmin(admin.ModelAdmin):
     list_display = ('headline', 'id', 'date_create',)
     list_display_links = ('headline',)
     ordering = ['-date_create']
+    save_on_top = True
+
 
 
 class DepositAdmin(admin.ModelAdmin):
@@ -47,6 +53,7 @@ class DepositAdmin(admin.ModelAdmin):
     ordering = ['-time']
     list_filter = ('status', 'user',)
     search_fields = ('bill_id', 'amount', 'status', 'user', 'time',)
+
 
     
 class WithdrawalAdmin(admin.ModelAdmin):
@@ -67,8 +74,8 @@ class PreviewAdmin(admin.ModelAdmin):
     def has_change_permission(self, request, obj=PreviewSettings):
         return True
 
-class QiwiAdmin(admin.ModelAdmin):
 
+class QiwiAdmin(admin.ModelAdmin):
     def has_add_permission(self, request):
         base_add_permission = super(QiwiAdmin, self).has_add_permission(request)
         if base_add_permission:
@@ -78,12 +85,14 @@ class QiwiAdmin(admin.ModelAdmin):
                 return True
         return False
 
+
 class SendUsAdmin(admin.ModelAdmin):
     list_display = ('username', 'email', 'date')
     list_display_links = ('username', 'email',)
     ordering = ['-date']
     list_filter = ('username', 'email',)
     search_fields = ('username', 'email',)
+
 
     def has_delete_permission(self, request, obj=PreviewSettings):
         return True
