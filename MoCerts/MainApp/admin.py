@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import CustomUser, Certificate, PreviewSettings, ManualPosts, MainPagePost, \
-                    QiwiSecretKey, Deposit, Withdrawal
+                    QiwiSecretKey, Deposit, Withdrawal, SendUs
 
 
 class CertAdmin(admin.ModelAdmin):
@@ -78,6 +78,21 @@ class QiwiAdmin(admin.ModelAdmin):
                 return True
         return False
 
+class SendUsAdmin(admin.ModelAdmin):
+    list_display = ('username', 'email', 'date')
+    list_display_links = ('username', 'email',)
+    ordering = ['-date']
+    list_filter = ('username', 'email',)
+    search_fields = ('username', 'email',)
+
+    def has_delete_permission(self, request, obj=PreviewSettings):
+        return True
+
+    def has_add_permission(self, request):
+        return True
+
+    def has_change_permission(self, request, obj=PreviewSettings):
+        return False
 
 
 admin.site.register(CustomUser, UserAdmin)
@@ -88,6 +103,7 @@ admin.site.register(MainPagePost, MainPagePostAdmin)
 admin.site.register(QiwiSecretKey, QiwiAdmin)
 admin.site.register(Deposit, DepositAdmin)
 admin.site.register(Withdrawal, WithdrawalAdmin)
+admin.site.register(SendUs, SendUsAdmin)
 
 
 admin.site.site_title = 'Панель администратора'

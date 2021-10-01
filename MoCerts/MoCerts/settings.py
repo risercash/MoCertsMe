@@ -9,7 +9,7 @@ except ImportError:
     from .prod_settings import *
 
 
-BOT_DOMAIN=os.getenv("BOT_DOMAIN")
+BOT_TOKEN=os.getenv("BOT_TOKEN")
 SOCIAL_AUTH_TELEGRAM_BOT_TOKEN=os.getenv("SOCIAL_AUTH_TELEGRAM_BOT_TOKEN")
 
 
@@ -195,6 +195,7 @@ SERVER_EMAIL = EMAIL_HOST_USER
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # Используется для отправки email после регистрации
 NOTIFICATION_EMAIL='risercash@gmail.com' # Почта админа для получения уведомлении
 ADMINS=os.getenv("ADMINS")
+POSTADMIN=os.getenv("POSTADMIN")
 EMAIL_SUBJECT_PREFIX = '[MoCerts] '
 
 CELERY_BROKER_URL = 'redis://localhost:6379'

@@ -1,4 +1,5 @@
 import logging
+import requests
 import time
 from celery import shared_task
 from pyqiwip2p import QiwiP2P
@@ -88,3 +89,28 @@ def welcome_email(username, email):
     msg.attach_alternative(html_content, "text/html")  # добавляем html
     msg.send()  # отсылаем
     logger.warning(f'New user SignUp ' + username)
+
+
+@shared_task
+def contact_form(username, email, text):
+    """отправить форму по email и в telegram"""
+    html_content = render_to_string('MainApp/contact_email.html',
+                                    {'username': username, 'email': email, 'text': text})
+    # Собрать тело сообщения
+    msg = EmailMultiAlternatives(
+        subject=f'Новый запрос по форме на Mocerts.com',
+        from_email=settings.DEFAULT_FROM_EMAIL,
+        to=[settings.POSTADMIN]
+        # to=['doszhan.m@mail.ru',]
+    )
+    msg.attach_alternative(html_content, "text/html")  # добавляем html
+    msg.send()  # отсылаем
+
+    token = settings.BOT_TOKEN
+    text = f'Новый запрос по форме на Mocerts.com: %0A username: {username}%0A email: {email}%0A message: {text}'
+    requests.get(
+        f'https://api.telegram.org/bot{token}/sendMessage?chat_id=-523535813&text={text}')
+    # requests.get(
+    #     f'https://api.telegram.org/bot1554753984:AAEBxoRD2KWy9HWMPRFcvBVwhTzfD7FoaJ0/sendMessage?chat_id=1434266116&text={text}')
+
+    logger.warning(f'Новый запрос по форме от ' + username)

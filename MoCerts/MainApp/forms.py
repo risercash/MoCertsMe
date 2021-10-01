@@ -1,12 +1,11 @@
-import re
 from allauth.account.forms import LoginForm, SignupForm
-from django.forms import ModelForm, TextInput, CharField, EmailInput, IntegerField, NumberInput, FileInput, Select
-from django.core.exceptions import ValidationError
 from django import forms
+from django.forms import ModelForm, TextInput, CharField, EmailInput, IntegerField, NumberInput, Select
 from django.forms.fields import ChoiceField
-from .models import CustomUser
 from django.core.validators import MinValueValidator
-from django.core.exceptions import ValidationError
+from django.forms.widgets import Textarea
+
+from .models import CustomUser, SendUs
 
 
 class DepositForm(forms.Form):
@@ -62,15 +61,28 @@ class PrepaidCerts(forms.Form):
         self.fields['amount'].widget.attrs['min'] = 1
 
 
-class MyLoginForm(LoginForm):
+class SendUsForm(forms.ModelForm):
+    """Форма обратной связи."""
+    class Meta:
+        model = SendUs
+        fields = ['username', 'email', 'text',]
 
+        widgets = {
+            'username': TextInput(attrs={'placeholder' : 'Имя Фамилия'}), 
+            'email': TextInput(attrs={'placeholder' : 'Email или Telegram'}), 
+            'text': Textarea(attrs={'placeholder' : 'Сообщение...'}), 
+            }
+
+
+class MyLoginForm(LoginForm):
+    """Логин."""
     def save(self, request):
         user = super(MyLoginForm, self).save(request)
         return user
 
 
 class MySignupForm(SignupForm, ModelForm):
-
+    """Форма обратной связи."""
     first_name = CharField(
         label='Имя', widget=TextInput(attrs={'placeholder': 'Имя'}), required=True)
     last_name = CharField(

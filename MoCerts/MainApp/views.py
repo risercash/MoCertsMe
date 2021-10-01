@@ -4,7 +4,7 @@ from datetime import datetime
 from allauth.socialaccount.models import SocialAccount
 from colorama import Fore, Style
 
-from django.views.generic import ListView, DetailView, UpdateView, FormView, TemplateView
+from django.views.generic import ListView, DetailView, UpdateView, FormView, TemplateView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -16,20 +16,12 @@ from pyqiwip2p import QiwiP2P
 
 from .names.names_generator import false_user
 from .certificates.certificate_generator import generate_certificate
-from .forms import UserForm, DepositForm, WithdrawalForm, PrepaidCerts
+from .forms import UserForm, DepositForm, WithdrawalForm, PrepaidCerts, SendUsForm
 from .models import CustomUser, Certificate, ManualPosts, MainPagePost, QiwiSecretKey, Deposit, Withdrawal
-from .tasks import check_payment_status, post_withdrawal_alert
+from .tasks import check_payment_status, post_withdrawal_alert, contact_form
 
 
 logger = logging.getLogger(__name__)
-
-
-def sending(first_name, last_name, user_email, summ):
-    ''' ===== Эта функция отправляет мне сообщение в телеграм 
-    надо сделать, что бы при поступлении и выводе средств она вызывалась ===== '''
-    text = f'{first_name} {last_name}({user_email}): {summ}$'
-    requests.get(
-        f'https://api.telegram.org/bot1554753984:AAEBxoRD2KWy9HWMPRFcvBVwhTzfD7FoaJ0/sendMessage?chat_id=1434266116&text={text}')
 
 
 class AuthorizationForms():
@@ -414,19 +406,16 @@ def blog(request):
     return render(request, 'MainApp/blog.html', {'blogs': posts})
 
 
-class SendUs(LoginRequiredMixin, UpdateView):
-    """кабинет пользователя"""
-    template_name = 'MainApp/profile.html'
-    form_class = UserForm
-    success_url = reverse_lazy('profile')
-    login_url = '/accounts/login/'
+class SendUs(CreateView):
+    """Обратная связь."""
+    template_name = 'MainApp/send_us.html'
+    form_class = SendUsForm
+    success_url = reverse_lazy('send_us')
 
-    def get_object(self, **kwargs):
-        obj = CustomUser.objects.get(email=self.request.user.email)
-        # logger.warning('check')
-        return obj
-
-
-def send_us(request):
-    #user = UserForm.objects.filter()
-    return render(request, 'MainApp/send_us.html', {'user': 'user'})
+    def form_valid(self, form):
+        fields = form.save()
+        username, email, text = fields.username, fields.email, fields.text
+        contact_form.delay(username, email, text)
+        messages.add_message(self.request, messages.INFO,
+                             'Ваш запрос отправлен')
+        return super().form_valid(form)

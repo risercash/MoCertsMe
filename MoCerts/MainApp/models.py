@@ -259,3 +259,23 @@ class Withdrawal(models.Model):
     def get_absolute_url(self):
         """получить ссылку на объект"""
         return HOST + '/nimda/MainApp/withdrawal/'
+
+
+class SendUs(models.Model):
+    '''модель для запросов обратной связи'''
+    username = models.CharField(max_length=255, blank=False)
+    email = models.CharField(max_length=255, blank=False)
+    text = models.TextField(blank=False)
+    date = models.DateField(auto_now_add=True)
+    
+    class Meta:
+        verbose_name = 'Обратная связь'
+        verbose_name_plural = 'Обратная связь'
+
+    def __str__(self):
+        '''Строковое отображение'''
+        return f'{self.username} - {self.email}'
+
+    def get_absolute_url(self):
+        """получить ссылку на объект"""
+        return reverse('send_us')

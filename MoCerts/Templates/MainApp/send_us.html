@@ -18,18 +18,38 @@
 
 <div class="watermark_kremlin"></div>
 <section class="contact_form">
-  <form class="decor">
+  <form class="decor" method="POST">
+    {% csrf_token %}
     <div class="form-left-decoration"></div>
     <div class="form-right-decoration"></div>
     <div class="circle"></div>
     <div class="form-inner">
       <h3>Написать нам</h3>
-      <input type="text" placeholder="Username">
-      <input type="email" placeholder="Email">
-      <textarea placeholder="Сообщение..." rows="3"></textarea>
-      <input type="submit" value="Отправить">
+      {{ form.username }}
+      {{ form.email }}
+      {{ form.text }}
+      <input type="submit" value="Отправить"> 
     </div>
   </form>
 </section>
-
+{% for i in messages %}
+<div class="alerts">
+    <div class="css-modal-details">
+        <details open>
+            <summary>alerts</summary>
+            <div class="cmc">
+                <div class="cmt">
+                    <h2>
+                        {% if i.tags == 'error' %}
+                        {{i}}
+                        {% else %}
+                        {{i}}
+                        {% endif %}
+                    </h2>
+                </div>
+            </div>
+        </details>
+    </div>
+</div>
+{% endfor %}
 {% endblock %}
