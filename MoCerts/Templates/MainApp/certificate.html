@@ -48,7 +48,7 @@
                   </script>
                   <div class="ya-share2" data-curtain data-shape="round"
                         data-services="vkontakte,facebook,odnoklassniki,telegram,twitter,viber,whatsapp,moimir,linkedin">
-                  </div><br>
+                  </div>
                   <div class="one-cert">
                         <img src="{{ certificate.certificate_image.url }}" alt="certificate">
                   </div>
@@ -68,7 +68,7 @@
                   </p>
                   <div class="one-cert_pay">
                         <img src="{{ certificate.certificate_image.url }}" alt="certificate">
-                  </div><br>
+                  </div>
                   <a href="{% url 'pay_certificate' pk=certificate.pk %}"
                         title="Перевести {{ certificate.nominal }}$ пользователю по имени {{ certificate.user1.first_name }} {{ certificate.user1.last_name }}"
                         class="button-block__button button" style="background-color: #3f85ce;color: #FFFFFF; margin-bottom: 50px">
@@ -88,10 +88,10 @@
                   </p>
                   <div class="one-cert_pay">
                         <img src="{{ certificate.certificate_image.url }}" alt="certificate">
-                  </div><br>
-                  <a href="{% url 'pay_certificate' pk=certificate.pk %}"
-                        title="Перевести {{ certificate.nominal }}$ пользователю по имени {{ certificate.user1.first_name }} {{ certificate.user1.last_name }}"
-                        class="button-block__button button" style="background-color: #3f85ce;color: #FFFFFF; margin-bottom: 50px">
+                  </div>
+                  <a href="{% url 'pay_certificate' pk=certificate.pk %}" class="trans__button button"
+                        title="Перевести {{ certificate.nominal }}$ пользователю по имени {{ certificate.user1.first_name }} 
+                        {{ certificate.user1.last_name }}" >
                         <span class="button__text">Принять</span><span class="button__transfer" style="font-size: 22px;">👍</span>
                   </a>
             </div>
@@ -102,5 +102,5 @@
 
 {% block script %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="https://yastatic.net/share2/share.js"></script>
+<!-- <script src="https://yastatic.net/share2/share.js"></script> -->
 {% endblock script %}
