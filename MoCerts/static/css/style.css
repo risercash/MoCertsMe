@@ -102,8 +102,9 @@ body {
   font-family: 'Lato', sans-serif;
   line-height: 20px;
   font-weight: 400;
+  /* background: #dad7d2; */
   background: #dad7d2;
-  /* background: #EBE7E0; */
+  
 }
 
 .material-icons {
@@ -1237,12 +1238,14 @@ svg.intro.go .text-stroke:nth-child(6) {
 }
 
 .profile_block {
-  background-color: #3b51c2;
+  /* background-color: #3b51c2; */
+  background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
+  background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
+  background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
+  background: linear-gradient(-135deg, #0aa6ee, #3b51c2);
   margin: 0 auto;
   height: 100%;
-  /* width: 55%; */
-  box-shadow: 10px 10px 30px rgb(0 0 0 / 30%);
-  border: 1px #2b314e solid;
+  box-shadow: 10px 10px 50px 20px rgba(0,0,0, 0.2);
   border-radius: 10px;
 }
 
@@ -1257,7 +1260,6 @@ svg.intro.go .text-stroke:nth-child(6) {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 4% 0;
 }
 
 .form_separate p {
@@ -1269,7 +1271,7 @@ svg.intro.go .text-stroke:nth-child(6) {
 .form_separate img {
   width: 200px;
   margin-left: 0px;
-  margin-top: 30px;
+  margin-top: 20px;
   box-shadow: 0 4px 16px #ccc;
 }
 
@@ -1294,11 +1296,13 @@ svg.intro.go .text-stroke:nth-child(6) {
 }
 
 .prof_table tr {
-  width: 100%;
+  /* width: 100%; */
   height: 55px;
   display: flex;
   justify-content: center;
   align-items: center;
+  /* background-color: #dad7d2; */
+
 }
 
 .prof_table td {
@@ -1311,17 +1315,15 @@ svg.intro.go .text-stroke:nth-child(6) {
 
 .prof_table td:nth-of-type(1) {
   width: 45%;
-  background-color: #1bbc9b;
 }
 
 .prof_table td:nth-of-type(1) input {
-  max-width: 95%;
+  max-width: 80%;
   text-align: end;
 }
 
 .prof_table td:nth-of-type(2) {
   max-width: 60%;
-  background-color: #1bbc9b;
 }
 
 .prof_table td:nth-of-type(2) input {
@@ -1332,8 +1334,8 @@ svg.intro.go .text-stroke:nth-child(6) {
 .prof_table input {
   background-color: transparent;
   border: none;
-  font-size: 30px;
-  font-family: 'Roboto Condensed', Тahoma, sans-serif;
+  font-size: 26px;
+  font-family: 'Roboto Condensed';
   font-weight: 550;
   color: whitesmoke;
 }
@@ -2184,6 +2186,7 @@ button[type=submit]:hover, button[type=button]:hover {
   position: absolute;
   bottom: -55px;
   left: 0;
+  visibility: hidden;
 }
 
 .prepaid_list {
@@ -2499,18 +2502,18 @@ button[type=submit]:hover, button[type=button]:hover {
   .profile_block {
     width: 100%;
     padding: 0;
-    margin-bottom: 10%;
+    margin: 10% 0 0;
     border: none;
-    border-radius: none;
+    border-radius: 0px;
   }
   .wrapper__profile {
     width: 100%;
+    margin-bottom: 20%;
   }
   .input__data {
     width: 98%;
     margin: 5% 0 3% 0;
     display: flex;
-    /* flex-direction: column; */
     justify-content: center;
     align-items: center;
   }
@@ -2522,29 +2525,32 @@ button[type=submit]:hover, button[type=button]:hover {
   }
   .prof_table td {
     height: 40px;
-    display: block;
     font-size: 20px;
-    font-family: 'Roboto Condensed', Тahoma, sans-serif;
+    font-family: 'Roboto Condensed';
     font-weight: 550;
-    text-align: start;
+    text-align: center;
     color: whitesmoke;
   }
   .prof_table td:nth-of-type(1) {
-    max-width: 100%;
+    min-width: 100%;
   }
   .prof_table td:nth-of-type(1) input {
-    max-width: 100%;
+    min-width: 100%;
+    text-align: center;
     color: #202020;
   }
   .prof_table td:nth-of-type(2) {
-    max-width: 100%;
+    min-width: 100%;
   }
   .prof_table td:nth-of-type(2) input {
-    max-width: 100%;
-    text-align: start;
+    min-width: 100%;
+    text-align: center;
+  }
+  input {
+    padding: 0;
   }
   .prof_table input {
-    width: 100%;
+    /* width: 100%; */
     font-size: 22px;
   }
   .about_project {
