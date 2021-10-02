@@ -2185,8 +2185,7 @@ button[type=submit]:hover, button[type=button]:hover {
 .alerts {
   position: absolute;
   bottom: -55px;
-  left: 0;
-  visibility: hidden;
+  left: -75px;
 }
 
 .prepaid_list {
