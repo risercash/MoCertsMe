@@ -423,15 +423,14 @@ h2::after {
   text-align: center;
 }
 .manual__video {
-  width: 35%;
-  height: 300px;
+  width: 37%;
+  height: 350px;
   margin-bottom: 5%;
 }
 .manual__video iframe {
   height: 100%;
   width: 100%;
 }
-
 
 .third-section {
   display: flex;
@@ -2684,7 +2683,7 @@ button[type=submit]:hover, button[type=button]:hover {
   }
   .manual__video {
     width: 97%;
-    height: 180px;
+    height: 200px;
     margin-bottom: 20%;
   }
 }
