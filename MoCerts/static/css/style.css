@@ -400,6 +400,15 @@ h2::after {
   text-align: center;
 }
 
+.my_certs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 80px;
+  text-align: center;
+}
+
 .money_cert {
   display: flex;
   flex-direction: column;
@@ -505,6 +514,7 @@ main {
   margin: 0 auto;
   display: flex;
   align-items: center;
+  height: 200px;
 }
 
 .cert-block {
@@ -522,6 +532,7 @@ main {
   border-radius: 5px;
   margin-bottom: 20px;
   background-color: #FFFFFF;
+  height: 200px;
 }
 
 .content__main__title {
@@ -2206,7 +2217,6 @@ button[type=submit]:hover, button[type=button]:hover {
 .decor {
   position: relative;
   max-width: 600px;
-
   margin: 50px auto 0;
   background: #962c2c;
   border-radius: 30px;
@@ -2515,7 +2525,7 @@ button[type=submit]:hover, button[type=button]:hover {
 
   .contact_form {
     margin-top: 10%;
-    margin-bottom: 4%;
+    margin-bottom: 25%;
     width: 100%;
   }
   .form-inner {
@@ -2547,5 +2557,9 @@ button[type=submit]:hover, button[type=button]:hover {
 
   .form-inner textarea {
     height: 150px;
+  }
+
+  .decor {
+    border-radius: 0px;
   }
 }
