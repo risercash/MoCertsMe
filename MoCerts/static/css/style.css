@@ -411,10 +411,10 @@ h2::after {
   margin: 3% 0 5%;
 }
 .manual__title {
-  width: 50%;
+  width: 70%;
 }
 .manual__desc {
-  width: 45%;
+  width: 55%;
   margin: 2% auto;
   color: #353535;
   line-height: 26px;
@@ -423,8 +423,8 @@ h2::after {
   text-align: center;
 }
 .manual__video {
-  width: 37%;
-  height: 350px;
+  width: 45%;
+  height: 45vh;
   margin-bottom: 5%;
 }
 .manual__video iframe {
