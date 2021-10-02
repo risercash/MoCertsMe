@@ -6,6 +6,7 @@
 dump.rdb
 db.sqlite3
 */*_Zone.Identifier
+*/*:Zone.Identifier
 **/.vscode/
 local_settings.py
 test.py
