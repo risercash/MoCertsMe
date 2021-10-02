@@ -58,7 +58,7 @@
       {% elif need_pay and not is_prepaid %}
       <section class="third-section">
             <div class="wrapper__certs">
-                  <p class="section__title__withdrow">Поздравляем <b>{{ user.first_name }} !</b></p>
+                  <h1 class="section__title__withdrow">Поздравляем <b>{{ user.first_name }} !</b></h1>
                   <div class="section__t"><img src="{% static 'img/icons/decor.svg' %}" alt=""></div>
                   <p class="wrapper__certs-text">Вы получили новый сертификат. Теперь, что бы активировать его и получить пять
                         своих сертификатов с Вашим именем на третьей строчке нажмите на кнопку перевести. После чего сумма в <b>
@@ -81,7 +81,7 @@
       {% elif need_pay and is_prepaid %}
       <section class="third-section">
             <div class="wrapper__certs">
-                  <p class="section__title__withdrow">Поздравляем <b>{{ user.first_name }} !</b></p>
+                  <h1 class="section__title__withdrow">Поздравляем <b>{{ user.first_name }} !</b></h1>
                   <div class="section__t"><img src="{% static 'img/icons/decor.svg' %}" alt=""></div>
                   <p class="wrapper__certs-text">Вы получили предоплаченный сертификат. Теперь, что бы активировать его и получить пять
                         своих сертификатов с Вашим именем на третьей строчке нажмите на кнопку принять.

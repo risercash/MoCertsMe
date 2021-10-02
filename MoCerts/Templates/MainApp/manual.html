@@ -21,17 +21,17 @@
 <section class="manual_section">
   <h1 class="section__title__withdrow">Подробные инструкции</h1>
   <div class="section__decor"><img src="{% static 'img/icons/decor.svg' %}" alt=""></div>
-{% for post in manuals %}
-  <h2 class="section__title">{{post.title}}</h2>
-  <div class="manual__text">
-    <h3>{{post.description}}</h3>
-  </div>
-  <div class="video-block">
-    {% autoescape off %}
-    {{post.video}}
-    {% endautoescape %}
+  <div class="manual_section__content">
+    {% for post in manuals %}
+    <h2 class="manual__title">{{post.title}}</h2>
+    <h3 class="manual__desc">{{post.description}}</h3>
+    <div class="manual__video">
+      {% autoescape off %}
+      {{post.video}}
+      {% endautoescape %}
+    </div>
+    {% endfor %}
   </div>
 </section>
-{% endfor %}
 
 {% endblock %}
