@@ -25,9 +25,9 @@
 {% for post in manuals %}
 <section class="second-section">
   <h2 class="section__title">{{post.title}}</h2>
-  <div class="manual__text">
+  <description class="manual__text">
     <h3>{{post.description}}</h3>
-  </div>
+  </description>
   <div class="video-block">
     {% autoescape off %}
     {{post.video}}

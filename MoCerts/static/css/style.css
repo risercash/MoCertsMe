@@ -2018,7 +2018,7 @@ button[type=submit]:hover, button[type=button]:hover {
 
 .watermark_temple {
   background: rgba(235, 231, 224, 0.8);
-  background-image: url('/static/img/watermark_temple.jpg');
+  background-image: url('/static/img/cpt.png');
   background-repeat: space;
   background-size: auto 100%;
   background-position: center;
