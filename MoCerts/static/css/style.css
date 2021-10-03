@@ -397,6 +397,39 @@ h2::after {
 .manual_section {
   padding-top: 60px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.manual_section__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 3% 0 5%;
+}
+.manual__title {
+  width: 70%;
+}
+.manual__desc {
+  width: 55%;
+  margin: 2% auto;
+  color: #353535;
+  line-height: 26px;
+  font-size: 18px;
+  font-weight: 550;
+  text-align: center;
+}
+.manual__video {
+  width: 45%;
+  height: 45vh;
+  margin-bottom: 5%;
+}
+.manual__video iframe {
+  height: 100%;
+  width: 100%;
 }
 
 .third-section {
@@ -1443,7 +1476,7 @@ svg.intro.go .text-stroke:nth-child(6) {
 }
 
 .section__title__withdrow {
-  font-family: 'Paytone One';
+  font-family: 'Roboto';
   letter-spacing: -2px;
   display: block;
   margin: 11px 0 17px 0;
@@ -1452,7 +1485,7 @@ svg.intro.go .text-stroke:nth-child(6) {
   color: black;
   text-shadow: 0 13.36px 8.896px #c4b59d, 0 -2px 1px #fff;
   letter-spacing: -4px;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .cert__one-row {
@@ -2634,5 +2667,23 @@ button[type=submit]:hover, button[type=button]:hover {
   .wrapper__certs {
     width: 95%;
     margin-bottom: 13%;
+  }
+
+  .manual_section__content {
+    width: 98%;
+    margin: 8% 0 20%;
+  }
+  .manual__title {
+    width: 98%;
+  }
+  .manual__desc {
+    width: 97%;
+    margin: 7% auto;
+    font-size: 16px;
+  }
+  .manual__video {
+    width: 97%;
+    height: 200px;
+    margin-bottom: 20%;
   }
 }
