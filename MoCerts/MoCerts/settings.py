@@ -9,13 +9,13 @@ except ImportError:
     from .prod_settings import *
 
 
-BOT_TOKEN=os.getenv("BOT_TOKEN")
-CHATID=os.getenv("CHATID")
-SOCIAL_AUTH_TELEGRAM_BOT_TOKEN=os.getenv("SOCIAL_AUTH_TELEGRAM_BOT_TOKEN")
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+CHATID = os.getenv("CHATID")
+SOCIAL_AUTH_TELEGRAM_BOT_TOKEN = os.getenv("SOCIAL_AUTH_TELEGRAM_BOT_TOKEN")
 
 
-MONEY_ADMIN = {'username':'money', 'first_name':'MONEY_ADMIN', 'last_name':'money',
-                'email':'mocerts.com@gmail.com', 'password':os.getenv("MONEY_ADMIN_PASSWORD")}
+MONEY_ADMIN = {'username': 'money', 'first_name': 'MONEY_ADMIN', 'last_name': 'money',
+               'email': 'mocerts.com@gmail.com', 'password': os.getenv("MONEY_ADMIN_PASSWORD")}
 
 
 INSTALLED_APPS = [
@@ -26,7 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.sites',
     'django.contrib.staticfiles',
-    
+
     'MainApp',
 
     'easy_thumbnails',
@@ -57,7 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    #'middleware.filter_ip_middleware.FilterIPMiddleware'
+    # 'middleware.filter_ip_middleware.FilterIPMiddleware'
 ]
 
 ROOT_URLCONF = 'MoCerts.urls'
@@ -65,7 +65,7 @@ ROOT_URLCONF = 'MoCerts.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'Templates', BASE_DIR / 'Templates' / 'allauth',],
+        'DIRS': [BASE_DIR / 'Templates', BASE_DIR / 'Templates' / 'allauth', ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -155,29 +155,30 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 # ACCOUNT_EMAIL_VERIFICATION = 'optional'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
-ACCOUNT_FORMS = {'signup': 'MainApp.forms.MySignupForm', 'login': 'MainApp.forms.MyLoginForm'}
+ACCOUNT_FORMS = {'signup': 'MainApp.forms.MySignupForm',
+                 'login': 'MainApp.forms.MyLoginForm'}
 SOCIALACCOUNT_PROVIDERS = \
     {
-      'facebook':
-       {'METHOD': 'oauth2',
-        'SCOPE': ['email','public_profile', 'user_friends'],
-        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
-        'FIELDS': [
-            'id',
-            'email',
-            'name',
-            'first_name',
-            'last_name',
-            'verified',
-            'locale',
-            'timezone',
-            'link',
-            'gender',
-            'updated_time'],
-        'EXCHANGE_TOKEN': True,
-        'LOCALE_FUNC': lambda request: 'kr_KR',
-        'VERIFIED_EMAIL': False,
-        'VERSION': 'v2.4'}
+        'facebook':
+        {'METHOD': 'oauth2',
+         'SCOPE': ['email', 'public_profile', 'user_friends'],
+         'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+         'FIELDS': [
+             'id',
+             'email',
+             'name',
+             'first_name',
+             'last_name',
+             'verified',
+             'locale',
+             'timezone',
+             'link',
+             'gender',
+             'updated_time'],
+         'EXCHANGE_TOKEN': True,
+         'LOCALE_FUNC': lambda request: 'kr_KR',
+         'VERIFIED_EMAIL': False,
+         'VERSION': 'v2.4'}
     }
 
 
@@ -186,17 +187,19 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-EMAIL_HOST=os.getenv("EMAIL_HOST")
-EMAIL_HOST_USER=os.getenv("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD=os.getenv("EMAIL_HOST_PASSWORD")
-EMAIL_PORT=25
+EMAIL_HOST = os.getenv("EMAIL_HOST")
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+EMAIL_PORT = 25
 EMAIL_USE_TLS = False
 
 SERVER_EMAIL = EMAIL_HOST_USER
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER  # Используется для отправки email после регистрации
-NOTIFICATION_EMAIL='risercash@gmail.com' # Почта админа для получения уведомлении
-ADMINS=os.getenv("ADMINS")
-POSTADMIN=os.getenv("POSTADMIN")
+# Используется для отправки email после регистрации
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+# Почта админа для получения уведомлении
+NOTIFICATION_EMAIL = 'risercash@gmail.com'
+ADMINS = os.getenv("ADMINS")
+POSTADMIN = os.getenv("POSTADMIN")
 EMAIL_SUBJECT_PREFIX = '[MoCerts] '
 
 CELERY_BROKER_URL = 'redis://localhost:6379'
@@ -214,52 +217,31 @@ LOGGING = log_settings
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 CKEDITOR_UPLOAD_PATH = "uploads/"
 # CKEDITOR_IMAGE_MAX_WIDTH = 200
-CKEDITOR_CONFIGS={
-  'default': {
-    'width': '100%',
-    'height': 400,
-    'toolbar': 'Custom',
-    'extraPlugins': ','.join([
-      'codesnippet',
-      'youtube'
-    ]),
-    'toolbar_Custom': [
-      [
-        'Bold',
-        'Italic',
-        'Underline'
-      ],
-      [
-        'Font',
-        'FontSize',
-        'TextColor',
-        'BGColor'
-      ],
-      [
-        'NumberedList',
-        'BulletedList',
-        '-',
-        'Outdent',
-        'Indent',
-        '-',
-        'JustifyLeft',
-        'JustifyCenter',
-        'JustifyRight',
-        'JustifyBlock'
-      ],
-      [
-        'Link',
-        'Unlink'
-      ],
-      [
-        'Image',
-        'Youtube',
-        'RemoveFormat',
-        'CodeSnippet',
-        'Source',
-      ]
-    ],
-    
-  },
-  
+CKEDITOR_CONFIGS = {
+    'default': {
+        'width': 1200,
+        'height': 1000,
+        'toolbar': 'Custom',
+        'extraPlugins': ','.join([
+            'codesnippet',
+            'youtube', 
+        ]),
+        'toolbar_Full': [
+            ['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'Strike',
+             'Subscript', 'Superscript', '-', 'RemoveFormat',],
+            ['Image', 'Flash', 'Table', 'HorizontalRule'],
+            ['TextColor', 'BGColor'],
+            ['Smiley', 'sourcearea', 'SpecialChar'],
+            ['Link', 'Unlink', 'Anchor'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-',
+                'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl', 'Language'],
+            ['Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates'],
+            ['Cut', 'Copy', 'Paste', 'PasteText',
+                'PasteFromWord', '-', 'Undo', 'Redo'],
+            ['Find', 'Replace', '-', 'SelectAll', '-', 'Scayt'],
+            ['Maximize', 'ShowBlocks',]
+        ],
+
+    },
+
 }

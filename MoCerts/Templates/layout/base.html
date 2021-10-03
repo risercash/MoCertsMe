@@ -166,6 +166,13 @@
           </li>
 
           <li>
+            <a href="{% url 'manual' %}">
+              <div class="icons__item manual_video_icon"></div>
+              <div class="icon__span"><span>Инструкции</span></div>
+            </a>
+          </li>
+          
+          <li>
             <a href="{% url 'send_us' %}">
               <div class="icons__item sendus_icon"></div>
               <div class="icon__span"><span>Обратная связь</span></div>
@@ -179,6 +186,7 @@
               <div class="icon__span"><span></span></div>
             </a>
           </li>
+
         </ul>
       </div>
     </nav>
@@ -238,7 +246,28 @@ alt=""/></a><script>(function(d,s){d.getElementById("licnt6D61").src=
 
   </footer>
 
-  <script src="{% static 'js/my_certificates.js' %}"></script>
+{% for i in messages %}
+<div class="alerts">
+    <div class="css-modal-details">
+        <details open>
+            <summary>alerts</summary>
+            <div class="cmc">
+                <div class="cmt">
+                    <h2>
+                        {% if i.tags == 'error' %}
+                        {{i}}
+                        {% else %}
+                        {{i}}
+                        {% endif %}
+                    </h2>
+                </div>
+            </div>
+        </details>
+    </div>
+</div>
+{% endfor %}
+
+  <!-- <script src="{% static 'js/my_certificates.js' %}"></script> -->
   <script src="{% static 'js/aside.js' %}"></script>
 
   {% block script %}

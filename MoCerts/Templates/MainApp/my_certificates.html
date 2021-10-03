@@ -9,7 +9,7 @@
 <meta property="og:url" content="{{ 'url'|property }}">
 <meta property="og:image" content="{{ 'image'|property }}">
 
-<meta name="description" content="Краткое описание страницы"/>
+<meta name="description" content="Краткое описание страницы" />
 {% endblock property%}
 
 {% block title %}
@@ -18,19 +18,18 @@
 
 {% block content %}
 
-<section class="third-section">
+<section class="my_certs">
     <div class="watermark_kremlin"></div>
     <div class="certs-wrapper">
-        <p class="section__title__withdrow"><span>Мои сертификаты</span></p>
+        <h1 class="section__title__withdrow"><span>Мои сертификаты</span></h1>
         <div class="section__decor"><img src="/static/img/icons/decor.svg" alt=""></div>
         {% if queryset %}
-        <p class="wrapper__text">Для отправки сертификатов скопируйте ссылку и нажмите на самолетик, выбрав социальную
-            сеть. После того как человек получит и активирует его, статус меняется на получен, после оплаты на оплачен
+        <p class="wrapper__text">Для отправки сертификатов скопируйте ссылку. После того как человек получит и
+            активирует его, статус меняется на получен, после оплаты на оплачен
         </p>
         {% else %}
         <p class="wrapper__text">Сейчас у вас нет сертификатов, вы можете получить новый сертификат. Для этого выберите
             его на вкладке &emsp;&emsp;
-
             <img src="{% static 'img/icons/s-cert.svg' %}">"Select Certificate"
         </p>
         <img src="{% static 'img/404-1.gif' %}" alt=""
@@ -38,11 +37,9 @@
         {% endif %}
     </div>
 
-    <br>
-
-    <div class="cert-block" style="height: auto;!important;">
+    <div class="cert-block">
         {% for my_certs_list in queryset %}
-        <div class="instruction-block__content content block-items" style="height: 200px">
+        <div class="block-items">
             <div class="content__main">
                 <div class="stack_imgs">
                     {% for cert in my_certs_list %}

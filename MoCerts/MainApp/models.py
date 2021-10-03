@@ -140,8 +140,9 @@ class ManualPosts(models.Model):
                 {'video': "Вставьте только iframe код видео файла, обычная ссылка не допустима"})
         index = self.index_number
         if ManualPosts.objects.filter(index_number=index).exists():
-            raise ValidationError(
-                {'index_number': "Порядковый номер с таким значением уже существует, выберите другой"})
+            if ManualPosts.objects.get(index_number=index).id != self.id:
+                raise ValidationError(
+                    {'index_number': "Порядковый номер с таким значением уже существует, выберите другой"})
 
 
 class MainPagePost(models.Model):

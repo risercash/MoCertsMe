@@ -32,7 +32,7 @@ class AuthorizationForms():
         return context
 
 
-class MainView(AuthorizationForms, ListView):
+class MainView(ListView):
     '''Главная страница'''
     model = MainPagePost
     context_object_name = 'posts'
@@ -40,7 +40,7 @@ class MainView(AuthorizationForms, ListView):
     template_name = 'MainApp/index.html'
 
 
-class PostDetail(AuthorizationForms, DetailView):
+class PostDetail(DetailView):
     '''Страница поста подробнее'''
     model = MainPagePost
     context_object_name = 'post'
@@ -70,7 +70,7 @@ class UserProfile(LoginRequiredMixin, UpdateView):
         return super().post(request, *args, **kwargs)
 
 
-class ManualView(AuthorizationForms, ListView):
+class ManualView(ListView):
     '''Страница инструкции'''
     model = ManualPosts
     context_object_name = 'manuals'
@@ -84,12 +84,12 @@ class ManualView(AuthorizationForms, ListView):
     #     return context
 
 
-class SelectCertificate(AuthorizationForms, TemplateView):
+class SelectCertificate(TemplateView):
     """Страница выбора сертификата"""
     template_name = 'MainApp/select_certificate.html'
 
 
-class CertificateDetail(AuthorizationForms, DetailView):
+class CertificateDetail(DetailView):
     model = Certificate
     slug_field = "number"
     slug_url_kwarg = "number"
@@ -247,6 +247,21 @@ class ErrorView(TemplateView):
     template_name = 'MainApp/service_error.html'
 
 
+class SendUs(CreateView):
+    """Обратная связь."""
+    template_name = 'MainApp/send_us.html'
+    form_class = SendUsForm
+    success_url = reverse_lazy('send_us')
+
+    def form_valid(self, form):
+        fields = form.save()
+        username, email, text = fields.username, fields.email, fields.text
+        contact_form.delay(username, email, text)
+        messages.add_message(self.request, messages.INFO,
+                             'Ваш запрос отправлен')
+        return super().form_valid(form)
+
+        
 class Cashriser(LoginRequiredMixin,  UserPassesTestMixin, FormView, ListView):
     """Страница генерации предоплаченных сертификатов"""
     form_class = PrepaidCerts
@@ -404,18 +419,3 @@ class BlogView(AuthorizationForms, TemplateView):
 def blog(request):
     posts = MainPagePost.objects.filter()
     return render(request, 'MainApp/blog.html', {'blogs': posts})
-
-
-class SendUs(CreateView):
-    """Обратная связь."""
-    template_name = 'MainApp/send_us.html'
-    form_class = SendUsForm
-    success_url = reverse_lazy('send_us')
-
-    def form_valid(self, form):
-        fields = form.save()
-        username, email, text = fields.username, fields.email, fields.text
-        contact_form.delay(username, email, text)
-        messages.add_message(self.request, messages.INFO,
-                             'Ваш запрос отправлен')
-        return super().form_valid(form)

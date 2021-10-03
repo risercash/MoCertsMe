@@ -60,7 +60,7 @@
 
 
 <section class="about_project watermark_castle">
-  <p class="section__title__withdrow">О нашем проекте</p>
+  <h1 class="section__title__withdrow">О нашем проекте</h1>
   <div class="section__decor"><img src="{% static 'img/icons/decor.svg' %}" alt=""></div>
   <h2 class="wrapper__text">Если Вы впервые на нашем ресурсе, пожалуйста посмотрите вступительное видео!
     В нем мы постарались максимально подробно рассказать обо всем.
@@ -98,7 +98,7 @@
 
 <section class="money_cert watermark_temple">
   <div class="certs-wrapper">
-    <p class="section__title__withdrow">Денежные сертификаты</p>
+    <h1 class="section__title__withdrow">Денежные сертификаты</h1>
     <div class="section__decor"><img src="{% static 'img/icons/decor.svg' %}" alt=""></div>
     <p class="wrapper__text">Что же такой денежный сертификат? По сути сертификат это всего лишь условность. Деньги
       переводятся только между пользователями. А сертификаты введены, только для Вашего
@@ -140,7 +140,7 @@
 </section>
 
 <section class="blog-section">
-  <p class="section__title__withdrow">Интересные статьи</p>
+  <h1 class="section__title__withdrow">Интересные статьи</h1>
 
   <div class="section__decor"><img src="{% static 'img/icons/decor.svg' %}" alt=""></div>
   <p class="wrapper__text">В этой части сайта мы будем собирать для Вас интересные статьи о заработке в интернете,
@@ -179,7 +179,6 @@
       <br>
       <div class="swiper-pagination"></div>
     </div>
-  </div>
   </div>
 </section>
 
@@ -241,5 +240,6 @@
 {% endblock %}
 
 {% block script %}
-<script src="{% static 'js/index.js' %}"></script>
+  <script src="{% static 'swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'js/index.js' %}"></script>
 {% endblock script %}

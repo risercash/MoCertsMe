@@ -32,24 +32,4 @@
     </div>
   </form>
 </section>
-{% for i in messages %}
-<div class="alerts">
-    <div class="css-modal-details">
-        <details open>
-            <summary>alerts</summary>
-            <div class="cmc">
-                <div class="cmt">
-                    <h2>
-                        {% if i.tags == 'error' %}
-                        {{i}}
-                        {% else %}
-                        {{i}}
-                        {% endif %}
-                    </h2>
-                </div>
-            </div>
-        </details>
-    </div>
-</div>
-{% endfor %}
 {% endblock %}
