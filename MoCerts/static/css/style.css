@@ -1270,11 +1270,26 @@ svg.intro.go .text-stroke:nth-child(6) {
   border-radius: 5px;
   padding: 0px, 20px;
   height: 280px;
-  width: 38%;
-  max-width: 800px;
-  margin: auto;
+  width: 50%;
+  max-width: 620px;
+  margin: 0;
 }
 
+.withdrawal_form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.modal-details__wrapper {
+  margin: 5px 0 100px;
+}
+
+.deposit__text {
+  padding: 0px;
+  color: #FFFFFF;
+}
 .profile_block {
   /* background-color: #3b51c2; */
   background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
@@ -1926,9 +1941,9 @@ button[type=submit]:hover, button[type=button]:hover {
 .paymen_history {
   background-color: #3b51c2;
   border-radius: 5px;
-  margin: 0 0 15% 0;
-  width: 38%;
-  max-width: 800px;
+  margin: 0 0 10% 0;
+  width: 50%;
+  max-width: 620px;
 }
 
 .paymen_history__table tbody {
@@ -2093,14 +2108,54 @@ button[type=submit]:hover, button[type=button]:hover {
   text-align: center;
 }
 
+.withdrawal_form__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.withdrawal_form__block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.withdrawal_form__block select {
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 2px solid #3f85ce;
+  font-size: 14px;
+}
+
+.withdrawal_form__block input {
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 2px solid #3f85ce;
+  text-align: center;
+  font-size: 14px;
+}
+.deposit_button {
+  margin: 30px 0;
+}
+
 .deposit_form select {
   padding: 12px 20px;
   margin: 8px 0;
   border: 2px solid #3f85ce;
+  text-align: center;
+}
+
+.deposit_form input {
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 2px solid #3f85ce;
+  text-align: center;
+  font-size: 14px;
 }
 
 .deposit_form select option {
   font-size: 18px;
+  text-align: center;
 }
 
 .prepaid {
@@ -2510,10 +2565,14 @@ button[type=submit]:hover, button[type=button]:hover {
   }
   .funds {
     width: 100%;
+    border-radius: 0px;
+    padding: 0px, 20px;
+    height: 100%;
+    margin: 0;
   }
   .paymen_history {
     width: 100%;
-    margin: 15% 0 15% 0;
+    margin: 1% 0 25% 0;
   }
   .profile_block {
     width: 100%;
@@ -2663,5 +2722,9 @@ button[type=submit]:hover, button[type=button]:hover {
     width: 97%;
     height: 200px;
     margin-bottom: 20%;
+  }
+
+  .withdrawal_form__content {
+    flex-direction: column;
   }
 }
