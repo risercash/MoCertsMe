@@ -168,7 +168,7 @@ class UserBalance(LoginRequiredMixin, FormView):
             # подключиться к сервису qiwi
             p2p = QiwiP2P(auth_key=QIWI_PRIV_KEY)
             new_bill = p2p.bill(
-                bill_id=bill_id, amount=convert_amount, lifetime=lifetime)
+                bill_id=bill_id, amount=convert_amount, currency='KZT', lifetime=lifetime)
             self.success_url = new_bill.pay_url
 
             # передать данные для проверки платежа
@@ -261,6 +261,14 @@ class SendUs(CreateView):
                              'Ваш запрос отправлен')
         return super().form_valid(form)
 
+
+class BlogView(ListView):
+    """Страница Чтения блога"""
+    model = MainPagePost
+    context_object_name = 'posts'
+    ordering = ('-date_create')
+    template_name = 'MainApp/blog.html'
+    
         
 class Cashriser(LoginRequiredMixin,  UserPassesTestMixin, FormView, ListView):
     """Страница генерации предоплаченных сертификатов"""
@@ -409,13 +417,3 @@ def pay_certificate(request, pk):
         messages.add_message(
             request, messages.ERROR, 'Недостаточно средств, пожалуйста, пополните баланс')
     return HttpResponseRedirect(reverse('userbalance'))
-
-
-class BlogView(AuthorizationForms, TemplateView):
-    """Страница Чтения блога"""
-    pass
-
-
-def blog(request):
-    posts = MainPagePost.objects.filter()
-    return render(request, 'MainApp/blog.html', {'blogs': posts})
