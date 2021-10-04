@@ -261,6 +261,14 @@ class SendUs(CreateView):
                              'Ваш запрос отправлен')
         return super().form_valid(form)
 
+
+class BlogView(ListView):
+    """Страница Чтения блога"""
+    model = MainPagePost
+    context_object_name = 'posts'
+    ordering = ('-date_create')
+    template_name = 'MainApp/blog.html'
+    
         
 class Cashriser(LoginRequiredMixin,  UserPassesTestMixin, FormView, ListView):
     """Страница генерации предоплаченных сертификатов"""
@@ -409,13 +417,3 @@ def pay_certificate(request, pk):
         messages.add_message(
             request, messages.ERROR, 'Недостаточно средств, пожалуйста, пополните баланс')
     return HttpResponseRedirect(reverse('userbalance'))
-
-
-class BlogView(AuthorizationForms, TemplateView):
-    """Страница Чтения блога"""
-    pass
-
-
-def blog(request):
-    posts = MainPagePost.objects.filter()
-    return render(request, 'MainApp/blog.html', {'blogs': posts})
