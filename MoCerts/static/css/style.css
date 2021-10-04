@@ -2728,4 +2728,7 @@ button[type=submit]:hover, button[type=button]:hover {
   .withdrawal_form__content {
     flex-direction: column;
   }
+  .deposit__text {
+    font-size: 22px;
+  }
 }
