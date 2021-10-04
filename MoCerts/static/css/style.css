@@ -1289,6 +1289,7 @@ svg.intro.go .text-stroke:nth-child(6) {
 .deposit__text {
   padding: 0px;
   color: #FFFFFF;
+  font-size: 18px;
 }
 .profile_block {
   /* background-color: #3b51c2; */
