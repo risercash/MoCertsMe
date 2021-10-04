@@ -5,6 +5,7 @@
 **/__pycache__/
 dump.rdb
 db.sqlite3
+/server_update/
 */*_Zone.Identifier
 */*:Zone.Identifier
 **/.vscode/
