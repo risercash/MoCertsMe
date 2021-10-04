@@ -386,6 +386,10 @@ h2::after {
 
 .second-section, .blog-section {
   padding-top: 80px;
+  background: rgba(235, 231, 224, 0.9);
+  max-width: 1100px;
+  margin: 0 auto;
+  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
   text-align: center;
 }
 
@@ -491,7 +495,7 @@ section.third {
 
 .certificates {
   display: flex;
-  width: 60%;
+  width: 90%;
   justify-content: center;
   align-items: center;
   margin-bottom: 4%;
@@ -833,7 +837,7 @@ main {
   align-items: center;
   text-decoration: none;
   color: #3f85ce;
-  margin-top: 20px;
+  margin-top: 0px;
 }
 
 .card-content__link:hover::after, .card-content__link:hover {
@@ -1694,8 +1698,8 @@ svg.intro.go .text-stroke:nth-child(6) {
 }
 
 .video__block_content {
-  width: 850px;
-  height: 550px;
+  width: 750px;
+  height: 500px;
   border-radius: 1.5%;
   overflow: hidden;
   box-shadow: -5px 20px 32px 3px rgba(0, 0, 0, 0.6);
@@ -2095,7 +2099,7 @@ button[type=submit]:hover, button[type=button]:hover {
   background: rgba(235, 231, 224, 0.9);
   max-width: 1100px;
   margin: 0 auto;
-  box-shadow: rgb(63, 133, 206);
+  box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
 }
 
 .about_project__text {
