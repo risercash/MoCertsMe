@@ -168,7 +168,7 @@ class UserBalance(LoginRequiredMixin, FormView):
             # подключиться к сервису qiwi
             p2p = QiwiP2P(auth_key=QIWI_PRIV_KEY)
             new_bill = p2p.bill(
-                bill_id=bill_id, amount=convert_amount, lifetime=lifetime)
+                bill_id=bill_id, amount=convert_amount, currency='KZT', lifetime=lifetime)
             self.success_url = new_bill.pay_url
 
             # передать данные для проверки платежа
