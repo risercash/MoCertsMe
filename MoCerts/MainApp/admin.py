@@ -104,7 +104,7 @@ class SendUsAdmin(admin.ModelAdmin):
         return False
 
 
-admin.site.register(CustomUser, UserAdmin)
+admin.site.register(CustomUser, UserAdmin)  
 admin.site.register(Certificate, CertAdmin)
 admin.site.register(PreviewSettings, PreviewAdmin)
 admin.site.register(ManualPosts, ManualAdmin)
