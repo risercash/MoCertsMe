@@ -1016,7 +1016,18 @@ footer a {
   width: 85%;
   max-width: 1100px;
   margin: 0 auto;
-  color: #22263a;
+  color: #414040;
+  line-height: 26px;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.wrapper__text-certs {
+  width: 95%;
+  max-width: 1100px;
+  margin: 0 auto;
+  color: #333232;
   line-height: 26px;
   font-size: 18px;
   font-weight: 600;
@@ -2134,10 +2145,11 @@ button[type=submit]:hover, button[type=button]:hover {
 
 .withdrawal_form__block input {
   padding: 12px 20px;
-  margin: 8px 0;
+  margin: 8px 2px;
   border: 2px solid #3f85ce;
   text-align: center;
   font-size: 14px;
+  width: 160px;
 }
 .deposit_button {
   margin: 30px 0;
@@ -2570,7 +2582,7 @@ button[type=submit]:hover, button[type=button]:hover {
   }
   .funds {
     width: 100%;
-    border-radius: 0px;
+    border-radius: 5px;
     padding: 0px, 20px;
     height: 100%;
     margin: 0;
@@ -2734,5 +2746,12 @@ button[type=submit]:hover, button[type=button]:hover {
   }
   .deposit__text {
     font-size: 22px;
+  }
+  .withdrawal_form__block {
+    margin-top: 2px;
+  }
+  .withdrawal_form__block select {
+    text-align: center;
+    width: 200px;
   }
 }
