@@ -4,7 +4,6 @@ Disallow: /ckeditor
 Disallow: /userbalance
 Disallow: /errorview
 Disallow: /nimda
-Disallow: /nimda
 Disallow: /my_certificates
 Disallow: /create_certificate
 Disallow: /pay_certificate
