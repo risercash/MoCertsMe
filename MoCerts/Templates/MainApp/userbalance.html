@@ -26,17 +26,17 @@
         </p>
 
         <form class="withdrawal_form" action="" name="deposit_form" method="POST">
-                {% csrf_token %}
-                <div class="withdrawal_form__content">
-                    <div class="withdrawal_form__block">
-                        <div class="deposit__text">Сумма пополнения</div>
-                        {{ form.amount }}
-                    </div>
-                    <div class="withdrawal_form__block">
-                        <div class="deposit__text">Валюта</div>
-                        {{ form.valute}}
-                    </div>
+            {% csrf_token %}
+            <div class="withdrawal_form__content">
+                <div class="withdrawal_form__block">
+                    <div class="deposit__text">Сумма пополнения</div>
+                    {{ form.amount }}
                 </div>
+                <div class="withdrawal_form__block">
+                    <div class="deposit__text">Валюта</div>
+                    {{ form.valute}}
+                </div>
+            </div>
             <button type="submit" class="deposit_button">
                 <img src="{%static 'img/qiwi.svg'%}" alt="deposit_button">
                 <img src="{%static 'img/visa.svg'%}" alt="deposit_button">

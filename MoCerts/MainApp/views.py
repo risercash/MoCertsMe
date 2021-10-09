@@ -1,7 +1,6 @@
 import logging
 import requests
 from datetime import datetime
-from allauth.socialaccount.models import SocialAccount
 from colorama import Fore, Style
 
 from django.views.generic import ListView, DetailView, UpdateView, FormView, TemplateView, CreateView

@@ -10,7 +10,7 @@ db.sqlite3
 */*:Zone.Identifier
 **/.vscode/
 local_settings.py
-test.py
+test1.py
 test2.py
 server_update.py
 server_update.exe
