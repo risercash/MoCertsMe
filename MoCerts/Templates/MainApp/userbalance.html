@@ -25,36 +25,23 @@
             <span>{% trans 'Пополнить счет' %}</span>
         </p>
 
-        <div class="deposit__text">Сумма пополнения &emsp;&emsp;Валюта</div>
-
         <form class="withdrawal_form" action="" name="deposit_form" method="POST">
-            <div class="deposit_form">
-                {% csrf_token %}
-                {{ form.amount }} {{ form.valute}}
+            {% csrf_token %}
+            <div class="withdrawal_form__content">
+                <div class="withdrawal_form__block">
+                    <div class="deposit__text">Сумма пополнения</div>
+                    {{ form.amount }}
+                </div>
+                <div class="withdrawal_form__block">
+                    <div class="deposit__text">Валюта</div>
+                    {{ form.valute}}
+                </div>
             </div>
             <button type="submit" class="deposit_button">
                 <img src="{%static 'img/qiwi.svg'%}" alt="deposit_button">
                 <img src="{%static 'img/visa.svg'%}" alt="deposit_button">
             </button>
-            <!-- <button type="submit" class="deposit_button">
-                <img src="{%static 'img/gapay.svg'%}" alt="">
-                <img src="{%static 'img/visa.svg'%}" alt="">
-            </button> -->
         </form>
-        {% if form.errors %}
-        <ul class="form_errors">
-            {% for field in form %}
-            {% for error in field.errors %}
-            <li>
-                {% if field != '__all__' %}
-                <strong>{{ field.label }}:</strong>
-                {% endif %}
-                {{ error }}
-            </li>
-            {% endfor %}
-            {% endfor %}
-        </ul>
-        {% endif %}
     </div>
 
     <div class="modal-details__wrapper">

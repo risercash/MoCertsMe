@@ -1,7 +1,6 @@
 import logging
 import requests
 from datetime import datetime
-from allauth.socialaccount.models import SocialAccount
 from colorama import Fore, Style
 
 from django.views.generic import ListView, DetailView, UpdateView, FormView, TemplateView, CreateView
@@ -10,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect, HttpRequest
 from django.urls import reverse, reverse_lazy
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect
 from django.conf import settings
 from pyqiwip2p import QiwiP2P
 

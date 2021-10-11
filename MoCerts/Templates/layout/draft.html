@@ -1,22 +1,41 @@
-<div class="certs-wrapper">
-  <p class="section__title__withdrow">Написать нам</p>
+<div class="funds">
+  <p class="section__title__withdrow">
+      <span>{% trans 'Пополнить счет' %}</span>
+  </p>
 
-  <div class="cover">
-    <form id="contactform"> 
-        <p class="contact"><label for="name">Имя</label></p> 
-        <input id="name" name="name" placeholder="Ваше имя" required="" tabindex="1" type="text"> 
- 
-        <p class="contact"><label for="email">Email</label></p> 
-        <input id="email" name="email" placeholder="example@sitehere.ru" required="" tabindex="2" type="text"> 
- 
-        <p class="contact"><label for="Subject">Тема</label></p> 
-        <input id="subject" name="subject" placeholder="Тема сообщения" required="" tabindex="2" type="text"> 
- 
-        <p class="contact"><label for="comment">Сообщение</label></p> 
-        <textarea name="comment" id="comment" tabindex="4" style="width:300px; height:150px;"></textarea> <br>
-        <div class="prof__buttons">
-            <button type="submit" class="prof_btn">Отправить!</button> 
-    </form> 
+  <div class="deposit__text">Сумма пополнения &emsp;&emsp;Валюта</div>
+
+  <form class="withdrawal_form" action="" name="deposit_form" method="POST">
+      <div class="deposit_form">
+          {% csrf_token %}
+          {{ form.amount }} {{ form.valute}}
+      </div>
+      <button type="submit" class="deposit_button">
+          <img src="{%static 'img/qiwi.svg'%}" alt="deposit_button">
+          <img src="{%static 'img/visa.svg'%}" alt="deposit_button">
+      </button>
+  </form>
+  {% if form.errors %}
+  <ul class="form_errors">
+      {% for field in form %}
+      {% for error in field.errors %}
+      <li>
+          {% if field != '__all__' %}
+          <strong>{{ field.label }}:</strong>
+          {% endif %}
+          {{ error }}
+      </li>
+      {% endfor %}
+      {% endfor %}
+  </ul>
+  {% endif %}
+</div>,
+
+
+
+<div class="deposit_form">
+    {{ form.amount }} {{ form.valute}}
 </div>
-  </div>
-</div>
+
+
+<div class="deposit__text">Сумма пополнения &emsp;&emsp;Валюта</div>
