@@ -545,7 +545,8 @@ main {
 /* Instruction block */
 
 .instruction-block {
-  width: 100%;
+  padding-left: -100px;
+  width: 100vw;
   height: 150px;
   background-color: rgb(63, 133, 206)!important;
   display: flex;
