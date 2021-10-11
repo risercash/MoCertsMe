@@ -1,0 +1,135 @@
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+body{
+  margin: 0;
+}
+.blog{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.blog-item{
+  display: inline-flex;
+  float: left;
+  align-items: center;
+  max-width: 1000px;
+  background: #3F85CE;
+  padding: 40px;
+  margin-top: 50px;
+  }
+
+.blog-item-img{
+  width: 30%;
+
+}
+.item-img{
+  display: block;
+  max-width: 90%;
+}
+.blog-item-wrapper{
+  width: 70%;
+}
+.blog-support,
+.blog-date{
+  display: inline-block;
+  width: 20%;
+  float: left;
+  font-size: 18px;
+}
+.blog-date{
+  width: 80%;
+}
+.blog-info-icon{
+  width: 20px;
+  height: 16px;
+  padding-right: 10px;
+}
+.blog-item-title{
+  margin: 20px 0px;
+  font-size: 25px;
+  font-weight: 700;
+}
+.blog-item-text{
+  font-size: 20px;
+  color:#fff;
+}
+@media screen and (max-width:1024px){
+  .blog-item-title{
+      font-size: 24px;
+  }
+  .blog-item-text{
+      font-size: 19px;
+  }
+}
+@media screen and (max-width:980px){
+  .blog-item-title{
+      font-size: 23px;
+  }
+  .blog-item-text{
+      font-size: 18px;
+  }
+}
+@media screen and (max-width:780px){
+  .blog-item{
+      display: block;
+      background: none;
+      margin-top: 0;
+  }
+
+  .blog-item-info{
+      background: #3F85CE;
+      width: 80%;
+      padding: 30px 30px 60px;
+  }
+  .blog-item-img{
+      width: 100%;
+  }
+  .item-img{
+      max-width: 100%;
+  }
+  .blog-item-info-wrapper{
+      display: none;
+      padding: 20px;
+  }
+  .blog-item-wrapper{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: -60px;
+  }
+  .blog-item-info-wrapper{
+      width: 100%;
+  }
+  .blog-support {
+      width: 30%;
+  }
+  .blog-date{
+      width: 70%;
+  }
+  .blog-info-icon{
+      padding-right: 5px;
+  }
+}
+@media screen and (max-width:580px){
+  .blog-support,
+  .blog-date{
+      font-size: 16px;
+      width: 40%;
+}
+  .blog-date{
+  width: 60%;
+}
+}
+@media screen and (max-width:580px){
+  .blog-support,
+  .blog-date{
+      display: block;
+      width: 100%;
+  }
+  .blog-date{
+      margin-top: 10px;
+  }
+}

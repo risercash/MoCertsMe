@@ -6,8 +6,9 @@
 {% block property %}
 <meta property="og:url" content="{{ 'url'|property }}">
 <meta property="og:image" content="{{ 'image'|property }}">
+<link rel="stylesheet" href="{% static 'css/blog-style.css' %}">
 
-<meta name="description" content="Краткое описание страницы"/>
+<meta name="description" content="Краткое описание страницы" />
 {% endblock property%}
 
 {% block title %}
@@ -15,27 +16,42 @@ Recent post | Money Certificates
 {% endblock %}
 
 {% block content %}
-<div class="watermark_kremlin"></div>
 
-<div class="container mt-3"></div>
-<div class="row"></div>
+
 {% for post in posts %}
-<div class="card mb-3"></div>
-<div class="card-header">Категория</div>
-<div class="card-body">
-    <h5>
-        <div class="card-title">{{ post.headline }}</div>
-    </h5>
-    <div class="card-subtitle">{{ post.subtitle }}</div>
-    <!--     <a href="{% url 'postdetail' post.pk %}">Read more</a> -->
-</div>
-<div class="card-footer text muted"></div>
-{{ post.date_create }}
+<div class="blog">
+    <div class="blog-item">
+        <div class="blog-item-img">
+            <img src="{{ post.photo.url }}" class="item-img" alt="">
+        </div>
+        <div class="blog-item-wrapper">
+            <div class="blog-item-info">
+                <div class="blog-item-info-wrapper clearfix">
+                    <div class="blog-support">
+                        <img class="blog-info-icon" src="{% static 'img/icons/user-blog.svg' %}" alt="">
+                        <span>By Support</span>
+                    </div>
+                    <div class="blog-date">
+                        <img class="blog-info-icon" src="{% static 'img/icons/calendar.svg' %}" alt="">
+                        <span>{{ post.date_create }}</span>
+                    </div>
+                </div>
+                <div class="blog-item-title">
+                    <p>{{ post.headline }}</p>
+                </div>
 
-<br>
-</div>
-<div></div>
-</div>
-{% endfor %}
+                <div class="blog-item-text">
+                    <p>{{ post.subtitle }}...
+                    </p>
+                </div>
+            </div>
+        </div>
 
-{% endblock %}
+    </div>
+</div>
+
+
+
+        {% endfor %}
+
+        {% endblock %}
