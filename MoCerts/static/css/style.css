@@ -381,6 +381,10 @@ h2::after {
   height: 50px;
   background-color: #4E4E50;
 }
+.border-block h1{
+  font-size: 5px;
+  color: #4e4e50;
+}
 
 /* Секция вторая – видео */
 
